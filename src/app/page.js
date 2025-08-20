@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Banner from "./component/Banner/Banner";
 
 export default function Home() {
   return (
@@ -95,7 +96,7 @@ export default function Home() {
             width={16}
             height={16}
           />
-          Go to nextjs.org → maruf lima tamanna
+          Go to nextjs.org →
         </a>
       </footer>
     </div>
