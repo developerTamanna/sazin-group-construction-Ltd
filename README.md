@@ -21,7 +21,7 @@ bun dev
 ## node 
 1. for create a branch : git checkout -b (your branch name)
 2. for connect to upstream : git remote add upstream (owner repo link)
-3. before every push : (i). git fetch upstream (ii). git checkout main (iii) git merge upstream/main (iv) git fetch origin (v) git reset --hard origin/main
+3. before every push : (i). git fetch upstream (ii). git checkout main (iii) git merge upstream/main (iv) git fetch origin (v) git reset --hard origin/main (vi) git push origin main
 4. for switch to your branch : git checkout (your branch name)
 
 # For push :
