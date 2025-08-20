@@ -16,6 +16,19 @@ pnpm dev
 bun dev
 ```
 
+
+
+## node 
+1. for create a branch : git checkout -b (your branch name)
+2. for connect to upstream : git remote add upstream (owner repo link)
+3. before every push : (i). git fetch upstream (ii). git checkout main (iii) git merge upstream/main (iv) git fetch origin (v) git reset --hard origin/main
+4. for switch to your branch : git checkout (your branch name)
+
+# For push :
+git add .
+git commit -m "description of new feature or fix"
+git push origin (Your branch)
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
