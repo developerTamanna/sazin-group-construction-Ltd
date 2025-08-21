@@ -59,6 +59,14 @@ export default function Navbar() {
                   </li>
                   <li>
                     <Link
+                      href="/about#mission"
+                      className="block hover:text-primary"
+                    >
+                      Mission & Vision 222
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
                       href="/about#leadership"
                       className="block hover:text-primary"
                     >
