@@ -1,10 +1,119 @@
-import React from 'react';
+'use client';
+import React, { useEffect, useState } from 'react';
+import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
+import { useTheme } from 'next-themes';
+import { FaChevronDown } from 'react-icons/fa';
+
+const images = [
+  '/banner1.jpg',
+  '/banner2.jpg',
+  '/banner3.jpg',
+];
 
 const Banner = () => {
+  const [current, setCurrent] = useState(0);
+  const { theme } = useTheme();
+
+  // Parallax scroll
+  const [scrollY, setScrollY] = useState(0);
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const parallax = (distance) => scrollY * distance;
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % images.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const scrollToNext = () => {
+    const nextSection = document.getElementById('next-section');
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <div>
-      <h1>problem solve</h1>
-    </div>
+    <section className="relative w-full h-[90vh] overflow-hidden">
+      {/* Background Images */}
+      <AnimatePresence>
+        {images.map((img, index) =>
+          index === current ? (
+            <motion.div
+              key={img}
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: `url(${img})` }}
+              initial={{ opacity: 0, scale: 1.1 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 1.2 }}
+            />
+          ) : null
+        )}
+      </AnimatePresence>
+
+      {/* Overlay */}
+      <div className={`absolute inset-0 ${theme === 'dark' ? 'bg-black/50' : 'bg-black/40'}`}></div>
+
+      {/* Text Content with Parallax */}
+      <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4 md:px-8 lg:px-16">
+        <motion.h3
+          className="text-white text-base md:text-2xl mb-2"
+          style={{ y: parallax(0.3) }}
+        >
+          Welcome to Our Company
+        </motion.h3>
+
+        <motion.h1
+          className="text-white text-2xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight"
+          style={{ y: parallax(0.5) }}
+        >
+          We Build Great Solutions
+        </motion.h1>
+
+        <motion.p
+          className="text-white text-sm md:text-lg max-w-xl mb-6"
+          style={{ y: parallax(0.7) }}
+        >
+          Providing top-notch services and products that help your business grow
+        </motion.p>
+
+        <motion.a
+          href="/contact"
+          className="bg-red-600 text-white font-semibold px-6 py-3 rounded-md shadow-lg hover:bg-red-700 hover:scale-105 transition transform"
+          style={{ y: parallax(0.9) }}
+        >
+          Get Started
+        </motion.a>
+      </div>
+
+      {/* Slider Dots */}
+      <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 flex space-x-2">
+        {images.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrent(index)}
+            className={`w-3 h-3 rounded-full transition-all ${
+              current === index ? 'bg-red-600 scale-125' : 'bg-white/50'
+            }`}
+          />
+        ))}
+      </div>
+
+      {/* Scroll Down Arrow */}
+      <motion.button
+        onClick={scrollToNext}
+        className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-white text-2xl animate-bounce"
+        whileHover={{ scale: 1.2 }}
+      >
+        <FaChevronDown />
+      </motion.button>
+    </section>
   );
 };
 
