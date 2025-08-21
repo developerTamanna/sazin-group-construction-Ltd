@@ -1,19 +1,22 @@
-// ThemeToggle.jsx
+'use client';
 import localforage from 'localforage';
-import { Moon, Sun } from 'lucide-react'; // optional icons
+import { Moon, Sun } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 const Theme = () => {
   const [darkMode, setDarkMode] = useState(false);
 
+  // Load saved theme on mount
   useEffect(() => {
     const loadTheme = async () => {
       const savedTheme = await localforage.getItem('theme');
-      const finalTheme = savedTheme || 'light';
+      const finalTheme = savedTheme === 'dark' ? true : false;
 
-      // Apply theme class
-      document.documentElement.classList.remove('light', 'dark');
-      document.documentElement.classList.add(finalTheme);
+      if (finalTheme) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
 
       setDarkMode(finalTheme);
     };
@@ -21,16 +24,20 @@ const Theme = () => {
     loadTheme();
   }, []);
 
+  // Toggle theme
   const toggleTheme = async () => {
-    console.log('tesjhfjksdhfdksfjsdkl');
-    const newTheme = darkMode === 'dark' ? 'light' : 'dark';
+    const newTheme = !darkMode;
 
-    // Update DOM
-    document.documentElement.classList.remove('light', 'dark');
-    document.documentElement.classList.add(newTheme);
+    if (newTheme) {
+      document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
+    } else {
+      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.add('light');
+    }
 
     setDarkMode(newTheme);
-    await localforage.setItem('theme', newTheme);
+    await localforage.setItem('theme', newTheme ? 'dark' : 'light');
   };
 
   return (
