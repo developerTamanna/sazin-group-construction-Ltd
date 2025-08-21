@@ -52,7 +52,7 @@ export default function Navbar() {
   return (
     <section>
       <motion.nav
-        className={`bg-white/80 dark:bg-gray-900/80 backdrop-blur-md sticky top-0 z-50 transition-all duration-300 ${
+        className={`bg-white/80 dark:bg-black backdrop-blur-md sticky top-0 z-50 transition-all duration-300 ${
           isScrolled ? 'shadow-lg py-3' : 'py-5'
         }`}
       >
