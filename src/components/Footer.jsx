@@ -8,7 +8,7 @@ const Footer = () => {
 
   return (
     <footer className={`w-full py-12 ${theme === 'dark' ? 'bg-gray-900 text-gray-300' : 'bg-black text-gray-100'}`}>
-      <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between gap-8">
+      <div className="w-full px-4 flex flex-col md:flex-row justify-between gap-8">
         {/* Contact Info */}
         <div className="flex-1">
           <h3 className="font-semibold text-lg mb-2 border-b-2 border-red-600 inline-block">CONTACT US</h3>

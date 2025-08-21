@@ -56,19 +56,19 @@ export default function Navbar() {
           isScrolled ? 'shadow-lg py-3' : 'py-5'
         }`}
       >
-        <div className="container mx-auto px-4 flex justify-between items-center transition-all duration-300">
+        <div className="w-full  px-4 flex justify-between items-center transition-all duration-300">
           {/* Logo */}
           <Link href="/" className="text-2xl font-bold text-gray-900 dark:text-white">
             Company<span className="text-red-600">Logo</span>
           </Link>
 
           {/* Desktop Menu */}
-          <ul className="hidden md:flex space-x-6 items-center">
+          <ul className="hidden lg:flex space-x-6 items-center xl:text-xl">
             {/* Home */}
             <li>
               <Link
                 href="/"
-                className={`md:text-xl text-gray-700 dark:text-gray-200 hover:text-red-600 transition-colors relative after:block after:h-[2px] after:w-0 after:bg-red-600 after:transition-all after:duration-300 ${
+                className={` text-gray-700 dark:text-gray-200 hover:text-red-600 transition-colors relative after:block after:h-[2px] after:w-0 after:bg-red-600 after:transition-all after:duration-300 ${
                   pathname === '/' ? 'after:w-full' : ''
                 }`}
               >
@@ -80,7 +80,7 @@ export default function Navbar() {
             <li className="relative" ref={aboutRef}>
               <button
                 onClick={() => setAboutOpen(!aboutOpen)}
-                className="md:text-xl flex items-center gap-1 transition-colors text-gray-700 dark:text-gray-200 hover:text-red-600"
+                className=" flex items-center gap-1 transition-colors text-gray-700 dark:text-gray-200 hover:text-red-600"
               >
                 About Us {aboutOpen ? <FaChevronUp className="w-4 h-4" /> : <FaChevronDown className="w-4 h-4" />}
               </button>
@@ -136,7 +136,7 @@ export default function Navbar() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={`md:text-xl text-gray-700 dark:text-gray-200 hover:text-red-600 transition-colors relative after:block after:h-[2px] after:w-0 after:bg-red-600 after:transition-all after:duration-300 ${
+                  className={` text-gray-700 dark:text-gray-200 hover:text-red-600 transition-colors relative after:block after:h-[2px] after:w-0 after:bg-red-600 after:transition-all after:duration-300 ${
                     pathname === link.href ? 'after:w-full' : ''
                   }`}
                 >
@@ -175,7 +175,7 @@ export default function Navbar() {
           </ul>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center gap-2">
+          <div className="lg:hidden flex items-center gap-2">
             <Theme />
             <button onClick={() => setMobileOpen(!mobileOpen)} className="text-gray-800 dark:text-gray-200">
               <svg
