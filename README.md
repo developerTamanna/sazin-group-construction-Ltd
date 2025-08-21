@@ -16,19 +16,6 @@ pnpm dev
 bun dev
 ```
 
-
-
-## node 
-1. for create a branch : git checkout -b (your branch name)
-2. for connect to upstream : git remote add upstream (owner repo link)
-3. before every push : (i). git fetch upstream (ii). git checkout main (iii) git merge upstream/main (iv) git fetch origin (v) git reset --hard origin/main (vi) git push origin main
-4. for switch to your branch : git checkout (your branch name)
-
-# For push :
-git add .
-git commit -m "description of new feature or fix"
-git push origin (Your branch)
-
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
@@ -37,6 +24,14 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ## Learn More
 
+git fetch upstream
+ git checkout main
+ git merge upstream/main
+ git fetch origin
+ git reset --hard origin/main
+ git push origin main
+
+ Lima Maruf Tamanna
 To learn more about Next.js, take a look at the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
