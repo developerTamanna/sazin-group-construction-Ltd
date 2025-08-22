@@ -5,7 +5,7 @@ export default function Home() {
       <div>
      <Banner></Banner>
       </div>
-  </section>
+    </section>
 
   );
 }

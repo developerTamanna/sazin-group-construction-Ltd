@@ -30,7 +30,8 @@ export default function Navbar() {
         setAboutOpen(false);
       }
     };
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('pointerdown', handleClickOutside);
+
 
     const handleScroll = () => {
       const scrollY = window.scrollY;
@@ -50,10 +51,10 @@ export default function Navbar() {
   };
 
   return (
-    <section>
+    <>
       <motion.nav
-        className={`bg-white/80 dark:bg-black backdrop-blur-md sticky top-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'shadow-lg py-3' : 'py-5'
+        className={`bg-white/80 dark:bg-black backdrop-blur-md sticky top-0 z-[9999] transition-all duration-300 ${
+          isScrolled ? 'shadow-lg py-5' : 'py-5'
         }`}
       >
         <div className="w-full  px-4 flex justify-between items-center transition-all duration-300">
@@ -303,17 +304,16 @@ export default function Navbar() {
             </>
           )}
         </AnimatePresence>
-
+      </motion.nav>
         {/* Scroll to Top Button */}
         {showTopBtn && (
           <button
             onClick={scrollToTop}
-            className="fixed bottom-5 right-5 p-3 rounded-full bg-red-600 text-white shadow-lg hover:bg-red-700 transition-all z-50"
+            className=" fixed bottom-5 right-5 p-3 rounded-full bg-red-600 text-white shadow-lg hover:bg-red-700 transition-all z-[9999]"
           >
             <FaArrowUp />
           </button>
         )}
-      </motion.nav>
-    </section>
+   </>
   );
 }
