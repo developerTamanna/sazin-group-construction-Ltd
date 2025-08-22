@@ -1,5 +1,5 @@
 'use client';
-import Theme from '@/app/utils/Theme';
+import Theme from '@/utils/Theme';
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
 import { FaChevronDown, FaChevronUp, FaSearch, FaArrowUp } from 'react-icons/fa';

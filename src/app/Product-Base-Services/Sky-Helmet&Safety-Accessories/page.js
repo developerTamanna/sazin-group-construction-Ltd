@@ -1,5 +1,6 @@
 import React from 'react'
 import Banner from './components/Banner'
+import ProductCard from './components/ProductCard'
 
 function SkyHelmetsAndAccessories() {
   return (
@@ -7,6 +8,9 @@ function SkyHelmetsAndAccessories() {
       <div>
         <Banner />
       </div>
+      <section>
+        <ProductCard />
+      </section>
     </section>
   )
 }
