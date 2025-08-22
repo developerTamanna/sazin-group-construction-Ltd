@@ -97,7 +97,7 @@ export default function Navbar() {
                   >
                     <li>
                       <Link
-                        href="/about#history"
+                        href="/about/history"
                         className="block text-gray-700 dark:text-gray-200 hover:text-red-600 transition-all transform hover:scale-105"
                       >
                         Detailed Company History
@@ -105,7 +105,7 @@ export default function Navbar() {
                     </li>
                     <li>
                       <Link
-                        href="/about#mission"
+                        href="/about/mission"
                         className="block text-gray-700 dark:text-gray-200 hover:text-red-600 transition-all transform hover:scale-105"
                       >
                         Mission & Vision
@@ -113,7 +113,7 @@ export default function Navbar() {
                     </li>
                     <li>
                       <Link
-                        href="/about#leadership"
+                        href="/about/leadership"
                         className="block text-gray-700 dark:text-gray-200 hover:text-red-600 transition-all transform hover:scale-105"
                       >
                         Leadership Profiles
@@ -121,7 +121,7 @@ export default function Navbar() {
                     </li>
                     <li>
                       <Link
-                        href="/about#sectors"
+                        href="/about/sectors"
                         className="block text-gray-700 dark:text-gray-200 hover:text-red-600 transition-all transform hover:scale-105"
                       >
                         Overview of Business Sectors
