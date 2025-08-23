@@ -10,7 +10,11 @@ function SkyHelmetsAndAccessories() {
       <div>
         <Banner />
       </div>
-      <div className='w-full relative h-auto'>
+      <div className='relative z-[5] w-full h-auto bg-cover bg-center before:z-[6] before:absolute before:inset-0 before:bg-white/80 dark:before:bg-black/90'
+      style={{backgroundImage: 'url(/video_avg_color.png)'}}
+
+      >
+
           <CategotySection />
       </div>
 {/*         <section>
