@@ -57,7 +57,8 @@ export default function Navbar() {
           isScrolled ? 'shadow-lg py-5' : 'py-5'
         }`}
       >
-        <div className="w-full  px-4 flex justify-between items-center transition-all duration-300">
+        <div className="flex justify-between items-center transition-all duration-300">
+          <div className='w-full max-w-[100rem] mx-auto px-4 flex justify-between items-center'>
           {/* Logo */}
           <Link href="/" className="text-2xl font-bold text-gray-900 dark:text-white">
             Company<span className="text-red-600">Logo</span>
@@ -195,6 +196,7 @@ export default function Navbar() {
               </svg>
             </button>
           </div>
+        </div>
         </div>
 
         {/* Mobile Menu */}
