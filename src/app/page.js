@@ -4,18 +4,42 @@ import Banner from './components/Banner';
 import FeatureProducts from './components/FeatureProducts';
 import LatestNews from './components/LatestNews';
 import AboutSnapet from './components/AboutSnapet';
+import Services from './components/Service';
+import Projects from './components/Projects';
+import Equipment from './components/Equipments';
+import Certificates from './components/Certificates';
+import CallToAction from './components/CallToAction';
+import Testimonial from './components/Clients';
+import Team from './components/Team';
+import WhyChooseUs from './components/WhyChoose';
 
+
+
+
+export const metadata = {
+  title: "Sazin Construction Ltd. | Home",
+  description:
+    "Sazin Construction Ltd. – Civil Construction, Electro-Mechanical, EPC, IT-enabled and Fire Protection services across Bangladesh since 2007.",
+};
 export default function Home() {
   return (
-    <section>
-      <div>
+    <main>
+
         <Banner></Banner>
         <AboutSnapet></AboutSnapet>
+        <Services></Services>
+        <Projects></Projects>
+        <Equipment></Equipment>
+        <Team></Team>
+        <Testimonial></Testimonial>
+        <WhyChooseUs></WhyChooseUs>
         <FeatureProducts></FeatureProducts>
         <LatestNews></LatestNews>
+        <Certificates></Certificates>
         <Achievement></Achievement>
+        <CallToAction></CallToAction>
         <ShortContact></ShortContact>
-      </div>
-    </section>
+
+    </main>
   );
 }
