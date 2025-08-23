@@ -2,11 +2,12 @@
 import { useState, useRef } from "react";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper/modules";
+import { Navigation, Autoplay, Grid } from "swiper/modules";
 
 // Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css/grid";
 
 const FeatureProducts = () => {
   const [currentIndex, setCurrentIndex] = useState(1);
@@ -19,26 +20,36 @@ const FeatureProducts = () => {
     { id: 4, title: "Others", img: "/fullface.jpg" },
     { id: 5, title: "Extra Product", img: "/fullface.jpg" },
     { id: 6, title: "New Product", img: "/fullface.jpg" },
-    { id: 1, title: "Tools & Machineries", img: "/fullface.jpg" },
-    { id: 2, title: "Copper, Insulation", img: "/fullface.jpg" },
-    { id: 3, title: "Make to Order", img: "/fullface.jpg" },
-    { id: 4, title: "Others", img: "/fullface.jpg" },
-    { id: 5, title: "Extra Product", img: "/fullface.jpg" },
-    { id: 6, title: "New Product", img: "/fullface.jpg" },
+    { id: 7, title: "Another Product", img: "/fullface.jpg" },
+    { id: 8, title: "Special Item", img: "/fullface.jpg" },
+    { id: 9, title: "Machinery", img: "/fullface.jpg" },
+    { id: 10, title: "Equipment", img: "/fullface.jpg" },
+    { id: 11, title: "Tools & Machineries", img: "/fullface.jpg" },
+    { id: 12, title: "Copper, Insulation", img: "/fullface.jpg" },
+    { id: 13, title: "Make to Order", img: "/fullface.jpg" },
+    { id: 14, title: "Others", img: "/fullface.jpg" },
+    { id: 15, title: "Extra Product", img: "/fullface.jpg" },
+    { id: 16, title: "New Product", img: "/fullface.jpg" },
+    { id: 17, title: "Another Product", img: "/fullface.jpg" },
+    { id: 18, title: "Special Item", img: "/fullface.jpg" },
+    { id: 19, title: "Machinery", img: "/fullface.jpg" },
+    { id: 20, title: "Equipment", img: "/fullface.jpg" },
   ];
 
   return (
     <section className="py-14 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4">
-        <h2 className="text-left text-3xl text-gray-900 font-semi-bold mb-6 dark:text-white">
+        <h2 className="text-left text-3xl text-gray-900 font-semi-bold mb-2 dark:text-white">
           Featured <span className="text-red-500">Products</span>
         </h2>
+        <p className="text-left mb-6 text-xl text-gray-600">Stands for sustainable luxury products</p>
 
         {/* Slider */}
         <Swiper
-          modules={[Navigation, Autoplay]}
+          modules={[Navigation, Autoplay, Grid]}
           spaceBetween={20}
           slidesPerView={5}
+          grid={{ rows: 2, fill: "row" }}
           navigation={{
             nextEl: ".custom-next",
             prevEl: ".custom-prev",
@@ -52,10 +63,10 @@ const FeatureProducts = () => {
           loop={true}
           className="pb-10"
           breakpoints={{
-            320: { slidesPerView: 1 },
-            640: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
-            1280: { slidesPerView: 5 },
+            320: { slidesPerView: 1, grid: { rows: 2 } },
+            640: { slidesPerView: 2, grid: { rows: 2 } },
+            1024: { slidesPerView: 3, grid: { rows: 2 } },
+            1280: { slidesPerView: 5, grid: { rows: 2 } },
           }}
           onMouseEnter={() => swiperRef.current?.autoplay.stop()}
           onMouseLeave={() => swiperRef.current?.autoplay.start()}
@@ -66,7 +77,7 @@ const FeatureProducts = () => {
                 <img
                   src={product.img}
                   alt={product.title}
-                  className="w-full h-48 object-cover"
+                  className="w-full h-40 object-cover"
                 />
                 <div className="p-4">
                   <h3 className="text-lg font-semibold dark:text-white">
