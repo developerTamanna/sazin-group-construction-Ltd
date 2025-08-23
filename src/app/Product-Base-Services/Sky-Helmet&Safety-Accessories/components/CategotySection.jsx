@@ -12,10 +12,12 @@ useEffect(() => {
 
   return (
    <>
-           <div ref={helmRef}>
+           <div ref={helmRef} className='z-[40] relative'>
+
               <Helmetsads />
             </div>
-          <section className="relative  dark:bg-black/40 pb-16 px-4 lg:px-10 overflow-hidden flex flex-col items-center justify-center w-full"
+          <section className="relative z-[50] dark:bg-black/40 pb-16 px-4 lg:px-10 overflow-hidden flex flex-col items-center justify-center w-full"
+
             style={{ marginTop: `-${helmHeight}px`, paddingTop: `${helmHeight/2}px` }}
 
           >
