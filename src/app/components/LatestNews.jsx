@@ -1,6 +1,5 @@
 "use client";
 import { useState, useRef } from "react";
-import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 
@@ -8,34 +7,49 @@ import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
-const LatestNews = () => {
+const services = [
+  {
+    title: "Civil Construction & EPC",
+    desc: "Residential, commercial & industrial projects with end-to-end delivery.",
+  },
+  {
+    title: "Electro-Mechanical Works",
+    desc: "Power systems, substations, fire protection & automation.",
+  },
+  {
+    title: "IT & Automation",
+    desc: "Networking, CCTV, access control & system integration.",
+  },
+  {
+    title: "Fire Protection & Safety",
+    desc: "Detection, suppression and prevention systems.",
+  },
+  {
+    title: "Logistics & Supply",
+    desc: "Equipment, spare parts, and reliable project support.",
+  },
+];
+
+export default function Services() {
   const [currentIndex, setCurrentIndex] = useState(1);
   const swiperRef = useRef(null);
 
-  const products = [
-    { id: 1, title: "Tools & Machineries", img: "/news.avif" },
-    { id: 2, title: "Copper, Insulation", img: "/news.avif" },
-    { id: 3, title: "Make to Order", img: "/news.avif" },
-    { id: 4, title: "Others", img: "/news.avif" },
-    { id: 5, title: "Extra Product", img: "/news.avif" },
-    { id: 7, title: "New Product", img: "/news.avif" },
-    { id: 8, title: "New Product", img: "/news.avif" },
-    { id: 9, title: "New Product", img: "/news.avif" },
-  ];
-
   return (
-    <section className="py-14 bg-white dark:bg-gray-900">
-      <div className="container mx-auto px-4">
-        <h2 className="text-left text-3xl text-gray-900 font-semi-bold mb-2 dark:text-white">
-          Latest <span className="text-red-500">News</span>
+    <section className="bg-neutral-50 dark:bg-neutral-950 py-16 px-6 lg:px-8">
+      <div className="container mx-auto">
+        {/* Heading */}
+        <h2 className="text-3xl font-semibold text-left">
+          Our <span className="text-red-500">Services</span>
         </h2>
-        <p className="mb-8 text-xl text-gray-600">Keep up with what’s happening at Intelligent Engineering</p>
+        <p className="text-left font-medium text-xl mt-2 text-neutral-600 dark:text-neutral-300">
+          From design to delivery, we provide end-to-end solutions.
+        </p>
 
         {/* Slider */}
         <Swiper
           modules={[Navigation, Autoplay]}
           spaceBetween={20}
-          slidesPerView={5}
+          slidesPerView={3}
           navigation={{
             nextEl: ".custom-next",
             prevEl: ".custom-prev",
@@ -44,65 +58,47 @@ const LatestNews = () => {
             delay: 3000,
             disableOnInteraction: false,
           }}
+          loop={true}
           onSwiper={(swiper) => (swiperRef.current = swiper)}
           onSlideChange={(swiper) => setCurrentIndex(swiper.realIndex + 1)}
-          loop={true}
-          className="pb-10"
           breakpoints={{
             320: { slidesPerView: 1 },
             640: { slidesPerView: 2 },
             1024: { slidesPerView: 3 },
-            1280: { slidesPerView: 5 },
           }}
-          onMouseEnter={() => swiperRef.current?.autoplay.stop()}
-          onMouseLeave={() => swiperRef.current?.autoplay.start()}
+          className="mt-10 pb-12"
         >
-          {products.map((product) => (
-            <SwiperSlide key={product.id}>
-              <div className="bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
-                <img
-                  src={product.img}
-                  alt={product.title}
-                  className="w-full h-48 object-cover"
-                />
-                <div className="p-4">
-                  <h3 className="text-lg font-semibold dark:text-white">
-                    {product.title}
-                  </h3>
-                </div>
+          {services.map((s, i) => (
+            <SwiperSlide key={i}>
+              <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 p-6 rounded-xl shadow-sm hover:shadow-lg transition h-full">
+                <h3 className="text-lg font-semibold text-red-600">{s.title}</h3>
+                <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-300">
+                  {s.desc}
+                </p>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
 
-        {/* Custom Footer Bar */}
-        <div className="flex justify-between items-center mt-4">
-          {/* Left side (Navigation + See All) */}
-          <div className="flex items-center gap-4 pt-3">
-            <button className="custom-prev text-xl border border-red-500 text-red-500 w-10 h-10 flex items-center justify-center rounded-full hover:bg-red-500 hover:text-white transition">
-              ←
-            </button>
-            <button className="custom-next text-xl border border-red-500 text-red-500 w-10 h-10 flex items-center justify-center rounded-full hover:bg-red-500 hover:text-white transition">
-              →
-            </button>
+        {/* Footer (Below all cards, Left side only) */}
+        <div className="flex items-center gap-4 mt-6">
+          {/* Prev Button */}
+          <button className="custom-prev text-xl border border-red-500 text-red-500 w-10 h-10 flex items-center justify-center rounded-full hover:bg-red-500 hover:text-white transition">
+            ←
+          </button>
 
-            <Link
-              href="/products"
-              className="text-red-600 font-semibold text-xl hover:underline"
-            >
-              See All
-            </Link>
-          </div>
+          {/* Next Button */}
+          <button className="custom-next text-xl border border-red-500 text-red-500 w-10 h-10 flex items-center justify-center rounded-full hover:bg-red-500 hover:text-white transition">
+            →
+          </button>
 
-          {/* Right side (Counter) */}
-          <div className="font-semibold">
+          {/* Counter */}
+          <div className="font-semibold ml-2">
             <span className="text-red-600 text-xl">{currentIndex}</span>
-            <span className="text-gray-500 text-xl">/{products.length}</span>
+            <span className="text-gray-500 text-xl">/{services.length}</span>
           </div>
         </div>
       </div>
     </section>
   );
-};
-
-export default LatestNews;
+}
