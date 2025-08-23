@@ -1,0 +1,14 @@
+export default function Helmetsads() {
+  return (
+
+      <video
+        src="/helmetsads.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="w-full h-[50vh] min-h-[350px] max-h-[400px] object-cover z-[-1]  rounded-lg shadow-lg"
+
+      />
+  );
+}
