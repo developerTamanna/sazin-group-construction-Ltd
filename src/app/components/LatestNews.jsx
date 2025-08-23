@@ -18,9 +18,9 @@ const LatestNews = () => {
     { id: 3, title: "Make to Order", img: "/news.avif" },
     { id: 4, title: "Others", img: "/news.avif" },
     { id: 5, title: "Extra Product", img: "/news.avif" },
-    { id: 6, title: "New Product", img: "/news.avif" },
-    { id: 6, title: "New Product", img: "/news.avif" },
-    { id: 6, title: "New Product", img: "/news.avif" },
+    { id: 7, title: "New Product", img: "/news.avif" },
+    { id: 8, title: "New Product", img: "/news.avif" },
+    { id: 9, title: "New Product", img: "/news.avif" },
   ];
 
   return (
