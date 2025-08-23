@@ -15,8 +15,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className='bg-black dark:bg-gray-800'>
+<<<<<<< HEAD
       <body className="w-full mx-auto max-w-[100rem] relative">
         <Navbar />
+=======
+
+{/* className="w-full mx-auto max-w-[100rem] relative" */} 
+      <body> 
+        <Navbar/>
+>>>>>>> 3c1693246cdde33dd08800363bd4d9246b32cd42
         {children}
         <Footer/>
       </body>
