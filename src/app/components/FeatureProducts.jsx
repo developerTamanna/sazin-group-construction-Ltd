@@ -19,6 +19,12 @@ const FeatureProducts = () => {
     { id: 4, title: "Others", img: "/fullface.jpg" },
     { id: 5, title: "Extra Product", img: "/fullface.jpg" },
     { id: 6, title: "New Product", img: "/fullface.jpg" },
+    { id: 1, title: "Tools & Machineries", img: "/fullface.jpg" },
+    { id: 2, title: "Copper, Insulation", img: "/fullface.jpg" },
+    { id: 3, title: "Make to Order", img: "/fullface.jpg" },
+    { id: 4, title: "Others", img: "/fullface.jpg" },
+    { id: 5, title: "Extra Product", img: "/fullface.jpg" },
+    { id: 6, title: "New Product", img: "/fullface.jpg" },
   ];
 
   return (
