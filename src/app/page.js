@@ -28,19 +28,24 @@ export default function Home() {
         <Banner></Banner>
         <FeatureProducts></FeatureProducts>
         <Services></Services>
-        <AboutSnapet></AboutSnapet>
-        
         <Projects></Projects>
         <Equipment></Equipment>
+
+        
+        {/* <AboutSnapet></AboutSnapet> */}
+        
+        
+
         <Team></Team>
-        <Testimonial></Testimonial>
-        <WhyChooseUs></WhyChooseUs>
+        {/* <Testimonial></Testimonial> */}
+        
+        {/* <WhyChooseUs></WhyChooseUs> */}
         
         <LatestNews></LatestNews>
-        <Certificates></Certificates>
-        <Achievement></Achievement>
-        <CallToAction></CallToAction>
-        <ShortContact></ShortContact>
+        {/* <Certificates></Certificates> */}
+        {/* <Achievement></Achievement> */}
+        {/* <CallToAction></CallToAction> */}
+        {/* <ShortContact></ShortContact> */}
 
     </main>
   );

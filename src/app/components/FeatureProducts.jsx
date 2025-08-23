@@ -102,7 +102,7 @@ const FeatureProducts = () => {
 
             <Link
               href="/products"
-              className="text-red-600 font-semibold text-xl hover:underline"
+              className="text-red-600 text-xl hover:underline"
             >
               See All
             </Link>

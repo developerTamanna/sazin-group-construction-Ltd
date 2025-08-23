@@ -1,6 +1,11 @@
 "use client";
-import { useRef } from "react";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { useState, useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay } from "swiper/modules";
+
+// Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
 
 const services = [
   {
@@ -26,62 +31,73 @@ const services = [
 ];
 
 export default function Services() {
-  const scrollRef = useRef(null);
-
-  const scroll = (direction) => {
-    if (scrollRef.current) {
-      const { clientWidth } = scrollRef.current;
-      scrollRef.current.scrollBy({
-        left: direction === "left" ? -clientWidth : clientWidth,
-        behavior: "smooth",
-      });
-    }
-  };
+  const [currentIndex, setCurrentIndex] = useState(1);
+  const swiperRef = useRef(null);
 
   return (
-    <section className="bg-neutral-50 dark:bg-neutral-950 py-16 px-6 lg:px-8 relative">
+    <section className="bg-neutral-50 dark:bg-neutral-950 py-16 px-6 lg:px-8">
       <div className="container mx-auto">
-      <h2 className="text-3xl font-semi-bold text-left">Our <span className="text-red-500">Services</span></h2>
-      <p className="text-left font-semi-bold text-xl mt-2 text-neutral-600 dark:text-neutral-300">
-        From design to delivery, we provide end-to-end solutions.
-      </p>
+        {/* Title */}
+        <h2 className="text-3xl font-semi-bold text-left">
+          Our <span className="text-red-500">Services</span>
+        </h2>
+        <p className="text-left text-lg mt-2 text-neutral-600 dark:text-neutral-300">
+          From design to delivery, we provide end-to-end solutions.
+        </p>
 
-      {/* Slider Container */}
-      <div className="relative mt-10">
-        {/* Scrollable Wrapper */}
-        <div
-          ref={scrollRef}
-          className="flex gap-6 overflow-x-hidden scroll-smooth"
+        {/* Swiper Slider */}
+        <Swiper
+          modules={[Navigation, Autoplay]}
+          spaceBetween={20}
+          slidesPerView={3}
+          navigation={{
+            nextEl: ".custom-next",
+            prevEl: ".custom-prev",
+          }}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+          loop={true}
+          onSwiper={(swiper) => (swiperRef.current = swiper)}
+          onSlideChange={(swiper) => setCurrentIndex(swiper.realIndex + 1)}
+          className="mt-10 pb-12"
+          breakpoints={{
+            320: { slidesPerView: 1 },
+            640: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
         >
-          {services.map((s) => (
-            <div
-              key={s.title}
-              className="min-w-[280px] sm:min-w-[320px] flex-shrink-0 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 p-6 rounded-xl shadow-sm hover:shadow-lg transition"
-            >
-              <h3 className="text-lg font-semibold text-red-600">{s.title}</h3>
-              <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-300">
-                {s.desc}
-              </p>
-            </div>
+          {services.map((s, i) => (
+            <SwiperSlide key={i}>
+              <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 p-6 rounded-xl shadow-sm hover:shadow-lg transition h-full">
+                <h3 className="text-lg font-semibold text-red-600">{s.title}</h3>
+                <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-300">
+                  {s.desc}
+                </p>
+              </div>
+            </SwiperSlide>
           ))}
+        </Swiper>
+
+        {/* Footer (Prev/Next + Counter + View All) */}
+        <div className="flex justify-between items-center mt-6">
+          {/* Left side - Buttons */}
+          <div className="flex items-center gap-4">
+            <button className="custom-prev text-xl border border-red-500 text-red-500 w-10 h-10 flex items-center justify-center rounded-full hover:bg-red-500 hover:text-white transition">
+              ←
+            </button>
+            <button className="custom-next text-xl border border-red-500 text-red-500 w-10 h-10 flex items-center justify-center rounded-full hover:bg-red-500 hover:text-white transition">
+              →
+            </button>
+          </div>
+
+          {/* Right side - Counter */}
+          <div className="font-semibold">
+            <span className="text-red-600 text-xl">{currentIndex}</span>
+            <span className="text-gray-500 text-xl">/{services.length}</span>
+          </div>
         </div>
-
-        {/* Prev Button */}
-        <button
-          onClick={() => scroll("left")}
-          className="absolute left-0 top-1/2 -translate-y-1/2 p-3 rounded-full bg-red-600 text-white shadow-lg hover:bg-red-700 transition"
-        >
-          <FaArrowLeft />
-        </button>
-
-        {/* Next Button */}
-        <button
-          onClick={() => scroll("right")}
-          className="absolute right-0 top-1/2 -translate-y-1/2 p-3 rounded-full bg-red-600 text-white shadow-lg hover:bg-red-700 transition"
-        >
-          <FaArrowRight />
-        </button>
-      </div>
       </div>
     </section>
   );

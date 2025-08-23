@@ -34,7 +34,7 @@ export default function Achievement() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % total);
-    }, 4000); // every 4 sec
+    }, 4000);
     return () => clearInterval(interval);
   }, [total]);
 
@@ -44,15 +44,17 @@ export default function Achievement() {
   const { title, description, image, link } = achievements[current];
 
   return (
-    <div className="bg-red-600 dark:bg-gray-900 py-10 flex items-center justify-center transition-colors duration-300">
-      <div className="max-w-6xl w-full grid md:grid-cols-2 items-center gap-10 px-6">
-        {/* Left Text Section */}
-        <div className="py-14 flex flex-col justify-between animate-fadeIn">
+    <div className="container mx-auto">
+      <div className="grid md:grid-cols-2 min-h-[500px]">
+        {/* Left Section (White) */}
+        <div className="bg-white dark:bg-gray-900 py-14 px-8 flex flex-col justify-between animate-fadeIn">
           <div>
             <h3 className="text-3xl font-semibold text-gray-800 dark:text-gray-100">
               Achievement
             </h3>
-            <p className="text-gray-500 dark:text-gray-400 mt-2 text-xl">{description}</p>
+            <p className="text-gray-500 dark:text-gray-400 mt-2 text-xl">
+              {description}
+            </p>
 
             <h2 className="text-2xl font-bold text-red-600 mt-10">{title}</h2>
             <Link
@@ -88,19 +90,21 @@ export default function Achievement() {
           {/* Progress bar */}
           <div className="w-full h-1 bg-gray-200 mt-6 relative overflow-hidden rounded-full">
             <div
-              key={current} // re-trigger animation
+              key={current}
               className="absolute top-0 left-0 h-1 bg-red-500 animate-progress"
             />
           </div>
         </div>
 
-        {/* Right Image Section */}
-        <div className="bg-gray-100 dark:bg-gray-800 flex justify-center items-center rounded-xl p-20 animate-fadeIn">
-          <img
-            src={image}
-            alt={title}
-            className="w-full max-w-4xl object-contain"
-          />
+        {/* Right Section (Gray bg, White inner div) */}
+        <div className="bg-gray-200 dark:bg-gray-800 flex justify-center items-center p-10 animate-fadeIn">
+          <div className="bg-white dark:bg-gray-900 rounded-xl p-10 shadow-lg">
+            <img
+              src={image}
+              alt={title}
+              className="w-full max-w-md object-contain"
+            />
+          </div>
         </div>
       </div>
 
