@@ -57,22 +57,21 @@ export default function HomePage() {
             engineering solutions with reliability, safety, and innovation.
           </p>
 
-
-                  {/* Buttons */}
-        <div className="mt-8 flex flex-col sm:flex-row justify-center gap-2 md:gap-4">
-          <a
-            href="/projects"
-            className="border border-red-500 text-red-600 px-2 md:px-6 py-1.5 rounded-lg font-semi-bold text-base hover:bg-red-500 hover:text-white transition"
-          >
-            Explore Our Projects
-          </a>
-          <a
-            href="/contact"
-            className="border border-red-500 text-red-600 px-6 py-1.5 rounded-lg font-semi-bold text-base hover:bg-red-500 hover:text-white transition"
-          >
-            Get in Touch
-          </a>
-        </div>
+          {/* Buttons */}
+          <div className="mt-8 flex flex-col sm:flex-row justify-center gap-2 md:gap-4">
+            <a
+              href="/projects"
+              className="border border-red-500 text-red-600 px-2 md:px-6 py-1.5 rounded-lg font-semi-bold text-base hover:bg-red-500 hover:text-white transition"
+            >
+              Explore Our Projects
+            </a>
+            <a
+              href="/contact"
+              className="border border-red-500 text-red-600 px-6 py-1.5 rounded-lg font-semi-bold text-base hover:bg-red-500 hover:text-white transition"
+            >
+              Get in Touch
+            </a>
+          </div>
         </div>
       </section>
 
@@ -86,12 +85,12 @@ export default function HomePage() {
           <div className="flex flex-col justify-center order-2 lg:order-1">
             <h2
               id="about-title"
-              className="text-3xl font-extrabold tracking-tight text-neutral-900 dark:text-white sm:text-4xl"
+              className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-white sm:text-4xl"
             >
               Who We Are
             </h2>
 
-            <p className="mt-4 text-base leading-7 text-neutral-700 dark:text-neutral-300 sm:text-lg sm:leading-8">
+            <p className="mt-4 text-xl leading-7 text-neutral-500 dark:text-neutral-300 sm:text-lg sm:leading-8">
               Sazin Construction Ltd. is a trusted one-stop engineering and
               construction company in Bangladesh, established in 2007. We
               specialize in civil construction, electro-mechanical works, EPC,
@@ -105,9 +104,9 @@ export default function HomePage() {
               <a
                 href="/about"
                 aria-label="Learn more about Sazin Construction"
-                className="inline-flex items-center justify-center rounded-2xl border border-red-700 bg-red-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 dark:focus:ring-offset-neutral-900"
+                className="inline-flex items-center justify-center text-red-600 text-base font-semi-bold transition hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 dark:focus:ring-offset-neutral-900"
               >
-                Learn More About Us
+                Learn More About Us →
               </a>
             </div>
           </div>
@@ -126,8 +125,8 @@ export default function HomePage() {
               />
               <div className="border-t border-neutral-100 p-4 dark:border-neutral-800">
                 <p className="text-sm text-neutral-600 dark:text-neutral-300">
-                  Excellence in civil, electro-mechanical, EPC, IT-enabled & fire
-                  protection solutions.
+                  Excellence in civil, electro-mechanical, EPC, IT-enabled &
+                  fire protection solutions.
                 </p>
               </div>
             </div>
