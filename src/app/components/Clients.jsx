@@ -31,10 +31,10 @@ export default function Clients() {
     <section className="bg-white dark:bg-neutral-950 py-16 px-4 lg:px-8 transition-colors duration-500">
       <div className="container mx-auto">
         {/* Heading */}
-        <h2 className="text-3xl font-bold text-center text-gray-800 dark:text-white">
+        <h2 className="text-3xl font-semi-bold text-left text-gray-800 dark:text-white">
           Our Clients & Partners
         </h2>
-        <p className="text-center mt-2 text-neutral-600 dark:text-neutral-300">
+        <p className="text-left text-xl mt-2 text-neutral-600 dark:text-neutral-300">
           Trusted by government & leading organizations across Bangladesh.
         </p>
 
@@ -96,9 +96,9 @@ export default function Clients() {
             </button>
             <Link
               href="/products"
-              className="text-red-600 font-semibold text-xl hover:underline"
+              className="text-red-600 font-semi-bold text-xl hover:underline"
             >
-              See All
+              See All 
             </Link>
           </div>
 

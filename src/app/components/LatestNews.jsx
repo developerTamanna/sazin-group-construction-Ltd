@@ -24,7 +24,7 @@ const LatestNews = () => {
   ];
 
   return (
-    <section className="py-14 bg-white dark:bg-gray-900">
+    <section className="py-14 bg-white dark:bg-black">
       <div className="container mx-auto px-4">
         {/* Heading */}
         <h2 className="text-left text-3xl text-gray-900 font-semi-bold mb-2 dark:text-white">
@@ -90,7 +90,7 @@ const LatestNews = () => {
             </button>
             <Link
               href="/products"
-              className="text-red-600 font-semibold text-xl hover:underline"
+              className="text-red-600 font-semi-bold text-xl hover:underline"
             >
               See All
             </Link>
