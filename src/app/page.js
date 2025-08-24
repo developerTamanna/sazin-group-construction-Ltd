@@ -26,13 +26,14 @@ export default function Home() {
     <main>
 
         <Banner></Banner>
+         <AboutSnapet></AboutSnapet>
         <FeatureProducts></FeatureProducts>
         <Services></Services>
         <Projects></Projects>
         <Equipment></Equipment>
 
         
-        {/* <AboutSnapet></AboutSnapet> */}
+    
         
         
 

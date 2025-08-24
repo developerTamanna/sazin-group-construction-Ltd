@@ -204,15 +204,7 @@ export default function Navbar() {
           {mobileOpen && (
             <>
               <motion.div
-                className="fixed inset-0 bg-black bg-opacity-40 z-40"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                onClick={() => setMobileOpen(false)}
-              />
-
-              <motion.div
-                className="fixed top-0 left-0 w-3/4 max-w-xs h-full bg-white dark:bg-gray-900 shadow-lg p-6 z-50"
+                className="fixed top-20 left-0 h-[calc(100vh-80px)] dark:bg-black overflow-auto bg-white z-[9999] w-3/4 max-w-xs  shadow-lg p-6 "
                 initial={{ x: '-100%' }}
                 animate={{ x: 0 }}
                 exit={{ x: '-100%' }}
@@ -222,7 +214,7 @@ export default function Navbar() {
                   <li>
                     <Link
                       href="/"
-                      className={`text-gray-700 dark:text-gray-200 hover:text-red-600 transition-colors ${
+                      className={`text-gray-700 dark:text-gray-200 hover:text-red-600  ${
                         pathname === '/' ? 'border-b-2 border-red-600' : ''
                       }`}
                       onClick={() => setMobileOpen(false)}
@@ -249,7 +241,7 @@ export default function Navbar() {
                         >
                           <li>
                             <Link
-                              href="/about#history"
+                              href="/about/history"
                               className="text-gray-700 dark:text-gray-200 hover:text-red-600"
                               onClick={() => setMobileOpen(false)}
                             >
@@ -258,7 +250,7 @@ export default function Navbar() {
                           </li>
                           <li>
                             <Link
-                              href="/about#mission"
+                              href="/about/mission"
                               className="text-gray-700 dark:text-gray-200 hover:text-red-600"
                               onClick={() => setMobileOpen(false)}
                             >
@@ -267,7 +259,7 @@ export default function Navbar() {
                           </li>
                           <li>
                             <Link
-                              href="/about#leadership"
+                              href="/about/leadership"
                               className="text-gray-700 dark:text-gray-200 hover:text-red-600"
                               onClick={() => setMobileOpen(false)}
                             >
@@ -276,7 +268,7 @@ export default function Navbar() {
                           </li>
                           <li>
                             <Link
-                              href="/about#sectors"
+                              href="/about/sectors"
                               className="text-gray-700 dark:text-gray-200 hover:text-red-600"
                               onClick={() => setMobileOpen(false)}
                             >
@@ -302,7 +294,7 @@ export default function Navbar() {
                     </li>
                   ))}
                 </ul>
-              </motion.div>
+                </motion.div>
             </>
           )}
         </AnimatePresence>
