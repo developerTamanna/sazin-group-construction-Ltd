@@ -113,7 +113,7 @@ const Banner = () => {
 
         <motion.a
           href="/contact"
-          className="bg-red-600 z-[60] text-white font-semibold px-4 py-2 sm:px-6 sm:py-3 rounded-md shadow-lg text-sm sm:text-base md:text-lg hover:bg-gray-100 hover:text-red-800 hover:scale-105 transition transform"
+          className="bg-red-600 z-[60] text-white font-semi-bold px-3 py-2 sm:px-6 sm:py-2 rounded-md shadow-lg text-sm sm:text-base md:text-xl hover:bg-gray-100 hover:text-red-800 hover:scale-105 transition transform"
           style={{ y: parallax(0.9) }}
         >
           Get Started
