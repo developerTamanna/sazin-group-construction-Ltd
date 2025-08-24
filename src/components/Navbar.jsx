@@ -212,7 +212,7 @@ export default function Navbar() {
                           Safety & Security Construction and Management
                         </Link>
                       </li>
-                        <li>
+                      <li>
                         <Link
                           href="/Product-Base-Services/Agro&Fisheries"
                           className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
@@ -405,7 +405,7 @@ export default function Navbar() {
         <AnimatePresence>
           {mobileOpen && (
             <motion.div
-              className="fixed lg:hidden top-20 left-0 h-[calc(100vh-80px)] dark:bg-black overflow-auto bg-white z-[9999] w-3/4 max-w-xs shadow-lg p-6"
+              className="fixed lg:hidden top-20 left-0 h-[calc(100vh-80px)] dark:bg-black bg-white z-[9999] w-3/4 max-w-xs shadow-lg p-6"
               initial={{ x: '-100%' }}
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}
