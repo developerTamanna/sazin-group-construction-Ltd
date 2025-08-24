@@ -27,16 +27,18 @@ export default function Home() {
 
         <Banner></Banner>
         <FeatureProducts></FeatureProducts>
+        <AboutSnapet></AboutSnapet>
         <Services></Services>
         <Projects></Projects>
         <Equipment></Equipment>
+        {/* <Team></Team> */}
 
         
-        {/* <AboutSnapet></AboutSnapet> */}
+        
         
         
 
-        <Team></Team>
+        
         {/* <Testimonial></Testimonial> */}
         
         {/* <WhyChooseUs></WhyChooseUs> */}
