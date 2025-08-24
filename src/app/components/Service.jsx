@@ -16,6 +16,14 @@ const services = [
     title: "Electro-Mechanical Works",
     desc: "Power systems, substations, fire protection & automation.",
   },
+    { 
+      title: "Agro & Fisheries", 
+      desc: "Supporting sustainable agriculture and fisheries industries." 
+    },
+    { 
+      title: "Helmet & Safety Accessories", 
+      desc: "Providing high-quality helmets and safety gear." 
+    },
   {
     title: "IT & Automation",
     desc: "Networking, CCTV, access control & system integration.",

@@ -26,8 +26,9 @@ export default function Home() {
     <main>
 
         <Banner></Banner>
+         <AboutSnapet></AboutSnapet>
         <FeatureProducts></FeatureProducts>
-        <AboutSnapet></AboutSnapet>
+        {/* <AboutSnapet></AboutSnapet> */}
         <Services></Services>
         <Projects></Projects>
         <Equipment></Equipment>
@@ -39,6 +40,14 @@ export default function Home() {
         
         
         {/* <Team></Team> */}
+
+
+    
+
+        
+        {/* <Testimonial></Testimonial> */}
+        
+
         {/* <WhyChooseUs></WhyChooseUs> */}
         
         
