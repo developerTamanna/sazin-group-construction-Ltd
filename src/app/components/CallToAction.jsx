@@ -1,24 +1,33 @@
 export default function CallToAction() {
   return (
-    <section className="bg-gray-50 text-gary-700 py-16 px-6 lg:px-8 text-center rounded-2xl mx-4 lg:mx-16 shadow-lg">
-      <h2 className="text-3xl font-bold">Let’s Build Together</h2>
-      <p className="mt-4 max-w-2xl mx-auto text-lg">
-        Have a project in mind? Partner with Sazin Construction Ltd. for
-        reliability, safety, and excellence.
-      </p>
-      <div className="mt-8 flex justify-center gap-4">
-        <a
-          href="/contact"
-          className="bg-white text-red-600 px-6 py-3 rounded-lg font-semibold hover:bg-neutral-100"
-        >
-          Contact Us
-        </a>
-        <a
-          href="/projects"
-          className="border border-white px-6 py-3 rounded-lg hover:bg-white hover:text-red-600"
-        >
-          View Projects
-        </a>
+    <section className="bg-white py-16 px-4">
+      <div className="max-w-4xl mx-auto text-center text-gray-700">
+        {/* Title */}
+        <h2 className="text-3xl md:text-4xl font-semi-bold">
+          Let’s <span className="text-red-600">Build Together</span>
+        </h2>
+
+        {/* Subtitle */}
+        <p className="mt-4 text-xl font-semi-bold text-gray-600 max-w-2xl mx-auto">
+          Have a project in mind? Partner with Sazin Construction Ltd. for
+          reliability, safety, and excellence.
+        </p>
+
+        {/* Buttons */}
+        <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+          <a
+            href="/contact"
+            className="border border-red-500 text-red-600 px-6 py-1.5 rounded-lg font-semi-bold text-base hover:bg-red-500 hover:text-white transition"
+          >
+            Contact Us
+          </a>
+          <a
+            href="/projects"
+            className="border border-red-500 text-red-600 px-6 py-1.5 rounded-lg font-semi-bold text-base hover:bg-red-500 hover:text-white transition"
+          >
+            View Projects
+          </a>
+        </div>
       </div>
     </section>
   );

@@ -54,28 +54,36 @@ const Footer = () => {
 
         {/* Services */}
         <div className="flex-1">
-          <h3 className="text-xl mb-2 text-gray-200 inline-block">
-            Services
-          </h3>
+          <h3 className="text-xl mb-2 text-gray-200 inline-block">Services</h3>
           <ul className="mt-2 space-y-2 text-gray-400">
-            <li className="hover:text-red-600 transition-colors">Circuits & Wiring</li>
-            <li className="hover:text-red-600 transition-colors">Code compliance</li>
-            <li className="hover:text-red-600 transition-colors">Power audits</li>
+            <li className="hover:text-red-600 transition-colors">
+              Circuits & Wiring
+            </li>
+            <li className="hover:text-red-600 transition-colors">
+              Code compliance
+            </li>
+            <li className="hover:text-red-600 transition-colors">
+              Power audits
+            </li>
             <li className="hover:text-red-600 transition-colors">Remodels</li>
-            <li className="hover:text-red-600 transition-colors">Smoke detectors</li>
+            <li className="hover:text-red-600 transition-colors">
+              Smoke detectors
+            </li>
           </ul>
         </div>
 
         {/* Supports */}
         <div className="flex-1 ">
-          <h3 className="text-gray-200 text-xl mb-2 inline-block">
-            Supports
-          </h3>
+          <h3 className="text-gray-200 text-xl mb-2 inline-block">Supports</h3>
           <ul className="mt-2 space-y-2 text-gray-400">
             <li className="hover:text-red-600 transition-colors">Careers</li>
-            <li className="hover:text-red-600 transition-colors">Our Process</li>
+            <li className="hover:text-red-600 transition-colors">
+              Our Process
+            </li>
             <li className="hover:text-red-600 transition-colors">FAQs</li>
-            <li className="hover:text-red-600 transition-colors">Client Testimonials</li>
+            <li className="hover:text-red-600 transition-colors">
+              Client Testimonials
+            </li>
             <li className="hover:text-red-600 transition-colors">Our Blog</li>
           </ul>
         </div>
@@ -116,9 +124,11 @@ const Footer = () => {
 
       {/* Copyright */}
       <div
-        className={`mt-8 border-t ${
+        className={`mt-8 border-t container mx-auto ${
           theme === "dark" ? "border-gray-700" : "border-gray-600"
-        } pt-4 text-center text-sm`}
+        } pt-4 text-center text-sm ${
+          theme === "dark" ? "text-gray-300" : "text-gray-600"
+        }`}
       >
         &copy; {new Date().getFullYear()} CompanyLogo. All rights reserved.
       </div>
