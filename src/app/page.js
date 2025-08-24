@@ -31,20 +31,20 @@ export default function Home() {
         <Services></Services>
         <Projects></Projects>
         <Equipment></Equipment>
+        <Testimonial></Testimonial>
+        
+
+        
+        
+        
+        
         {/* <Team></Team> */}
-
-        
-        
-        
-        
-
-        
-        {/* <Testimonial></Testimonial> */}
-        
         {/* <WhyChooseUs></WhyChooseUs> */}
         
+        
+        
+        <Certificates></Certificates>
         <LatestNews></LatestNews>
-        {/* <Certificates></Certificates> */}
         <Achievement></Achievement>
         <CallToAction></CallToAction>
 
