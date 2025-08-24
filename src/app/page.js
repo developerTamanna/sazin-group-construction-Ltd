@@ -28,7 +28,7 @@ export default function Home() {
         <Banner></Banner>
          <AboutSnapet></AboutSnapet>
         <FeatureProducts></FeatureProducts>
-        <AboutSnapet></AboutSnapet>
+        {/* <AboutSnapet></AboutSnapet> */}
         <Services></Services>
         <Projects></Projects>
         <Equipment></Equipment>
