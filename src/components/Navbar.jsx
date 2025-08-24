@@ -19,6 +19,7 @@ export default function Navbar() {
   const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [mobileBusinessOpen, setMobileBusinessOpen] = useState(false);
+  const [mobileMoreOpen, setMobileMoreOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showTopBtn, setShowTopBtn] = useState(false);
@@ -29,8 +30,11 @@ export default function Navbar() {
 
   const links = [
     { name: 'Projects', href: '/projects' },
-    { name: 'Project Gallery', href: '/project-gallery' },
+    { name: 'Gallery', href: '/project-gallery' },
     { name: 'Contact', href: '/contact' },
+    { name: 'Career', href: '/career' },
+    { name: 'New/Blog', href: '/new-blog' },
+    { name: 'Sustainability', href: '/sustainability' },
   ];
 
   useEffect(() => {
@@ -263,19 +267,62 @@ export default function Navbar() {
                 </AnimatePresence>
               </li>
 
-              {/* Other Links */}
-              {links.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className={` text-gray-700 dark:text-gray-200 hover:text-red-600 relative after:block after:h-[2px] after:w-0 after:bg-red-600 after:transition-all ${
-                      pathname === link.href ? 'after:w-full' : ''
-                    }`}
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
+              {/* More Details Hover */}
+              <li className="relative group">
+                <span className="text-gray-700 dark:text-gray-200 hover:text-red-600 cursor-pointer">
+                  More Details
+                </span>
+                <ul className="absolute top-full left-0 bg-white dark:bg-gray-800 shadow-lg mt-2 w-60 rounded-md p-2 space-y-2 z-50 opacity-0 group-hover:opacity-100 transition-all duration-200">
+                  <li>
+                    <Link
+                      href="/projects"
+                      className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
+                    >
+                      Projects
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/project-gallery"
+                      className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
+                    >
+                      Gallery
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/contact"
+                      className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
+                    >
+                      Contact
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/career"
+                      className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
+                    >
+                      Career
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/new-blog"
+                      className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
+                    >
+                      New/Blog
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/sustainability"
+                      className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
+                    >
+                      Sustainability
+                    </Link>
+                  </li>
+                </ul>
+              </li>
 
               {/* Search */}
               <li className="relative">
@@ -515,6 +562,77 @@ export default function Navbar() {
                   </AnimatePresence>
                 </li>
 
+                {/* More Details Mobile */}
+                <li>
+                  <button
+                    onClick={() => setMobileMoreOpen(!mobileMoreOpen)}
+                    className="flex items-center justify-between w-full text-gray-700 dark:text-gray-200 hover:text-red-600"
+                  >
+                    More Details{' '}
+                    {mobileMoreOpen ? <FaChevronUp /> : <FaChevronDown />}
+                  </button>
+                  <AnimatePresence>
+                    {mobileMoreOpen && (
+                      <motion.ul
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="flex flex-col pl-4 mt-2 space-y-2"
+                      >
+                        <li>
+                          <Link
+                            href="/projects"
+                            onClick={() => setMobileOpen(false)}
+                          >
+                            Projects
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            href="/project-gallery"
+                            onClick={() => setMobileOpen(false)}
+                          >
+                            Gallery
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            href="/contact"
+                            onClick={() => setMobileOpen(false)}
+                          >
+                            Contact
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            href="/career"
+                            onClick={() => setMobileOpen(false)}
+                          >
+                            Career
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            href="/new-blog"
+                            onClick={() => setMobileOpen(false)}
+                          >
+                            New/Blog
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            href="/sustainability"
+                            onClick={() => setMobileOpen(false)}
+                          >
+                            Sustainability
+                          </Link>
+                        </li>
+                      </motion.ul>
+                    )}
+                  </AnimatePresence>
+                </li>
+
+                {/* Remaining Links */}
                 {links.map((link) => (
                   <li key={link.href}>
                     <Link
