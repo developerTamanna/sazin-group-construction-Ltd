@@ -212,6 +212,22 @@ export default function Navbar() {
                           Safety & Security Construction and Management
                         </Link>
                       </li>
+                      <li>
+                        <Link
+                          href="/Product-Base-Services/Agro&Fisheries"
+                          className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
+                        >
+                          Sazin Agro & Fisheries
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          href="/Product-Base-Services/Sky-Helmet&Safety-Accessories"
+                          className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
+                        >
+                          Sky Helmet & Safety Accessories
+                        </Link>
+                      </li>
                     </motion.ul>
                   )}
                 </AnimatePresence>
@@ -268,11 +284,11 @@ export default function Navbar() {
               </li>
 
               {/* More Details Hover */}
-              <li className="relative group">
-                <span className="text-gray-700 dark:text-gray-200 hover:text-red-600 cursor-pointer">
+              <li className="relative group py-2">
+                <span className="text-gray-700 dark:text-gray-200 hover:text-red-600 cursor-pointer ">
                   More Details
                 </span>
-                <ul className="absolute top-full right-0 bg-white dark:bg-gray-800 shadow-lg mt-2 w-60 rounded-md p-2 space-y-2 z-50 opacity-0 group-hover:opacity-100 transition-all duration-200">
+                <ul className="absolute hidden group-hover:block top-full right-0 bg-white dark:bg-gray-800 shadow-lg w-60 rounded-md p-2 space-y-2 z-50 opacity-0 group-hover:opacity-100 transition-all duration-200">
                   <li>
                     <Link
                       href="/projects"
