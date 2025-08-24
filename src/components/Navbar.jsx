@@ -593,7 +593,7 @@ export default function Navbar() {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="flex flex-col pl-4 mt-2 space-y-2"
+                        className="flex flex-col pl-4 mt-2 space-y-2 text-gray-700 dark:text-gray-200"
                       >
                         <li>
                           <Link
