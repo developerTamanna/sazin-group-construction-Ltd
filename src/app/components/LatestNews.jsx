@@ -26,10 +26,13 @@ const LatestNews = () => {
   return (
     <section className="py-14 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4">
-        <h2 className="text-left text-3xl text-gray-900 font-semi-bold mb-2 dark:text-white">
+        {/* Heading */}
+        <h2 className="text-left text-3xl text-gray-900 font-semibold mb-2 dark:text-white">
           Latest <span className="text-red-500">News</span>
         </h2>
-        <p className="mb-8 text-xl text-gray-600">Keep up with what’s happening at Intelligent Engineering</p>
+        <p className="mb-8 text-xl text-gray-600">
+          Keep up with what’s happening at Intelligent Engineering
+        </p>
 
         {/* Slider */}
         <Swiper
@@ -85,7 +88,6 @@ const LatestNews = () => {
             <button className="custom-next text-xl border border-red-500 text-red-500 w-10 h-10 flex items-center justify-center rounded-full hover:bg-red-500 hover:text-white transition">
               →
             </button>
-
             <Link
               href="/products"
               className="text-red-600 font-semibold text-xl hover:underline"

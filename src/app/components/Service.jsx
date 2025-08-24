@@ -1,3 +1,12 @@
+"use client";
+import { useState, useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay } from "swiper/modules";
+
+// Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+
 const services = [
   {
     title: "Civil Construction & EPC",
@@ -22,24 +31,73 @@ const services = [
 ];
 
 export default function Services() {
+  const [currentIndex, setCurrentIndex] = useState(1);
+  const swiperRef = useRef(null);
+
   return (
     <section className="bg-neutral-50 dark:bg-neutral-950 py-16 px-6 lg:px-8">
-      <h2 className="text-3xl font-bold text-center">Our Services</h2>
-      <p className="text-center mt-2 text-neutral-600 dark:text-neutral-300">
-        From design to delivery, we provide end-to-end solutions.
-      </p>
-      <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {services.map((s) => (
-          <div
-            key={s.title}
-            className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 p-6 rounded-xl shadow-sm hover:shadow-lg transition"
-          >
-            <h3 className="text-lg font-semibold text-red-600">{s.title}</h3>
-            <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-300">
-              {s.desc}
-            </p>
+      <div className="container mx-auto">
+        {/* Title */}
+        <h2 className="text-3xl font-semi-bold text-left">
+          Our <span className="text-red-500">Services</span>
+        </h2>
+        <p className="text-left text-lg mt-2 text-neutral-600 dark:text-neutral-300">
+          From design to delivery, we provide end-to-end solutions.
+        </p>
+
+        {/* Swiper Slider */}
+        <Swiper
+          modules={[Navigation, Autoplay]}
+          spaceBetween={20}
+          slidesPerView={3}
+          navigation={{
+            nextEl: ".custom-next",
+            prevEl: ".custom-prev",
+          }}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+          loop={true}
+          onSwiper={(swiper) => (swiperRef.current = swiper)}
+          onSlideChange={(swiper) => setCurrentIndex(swiper.realIndex + 1)}
+          className="mt-10 pb-12"
+          breakpoints={{
+            320: { slidesPerView: 1 },
+            640: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+        >
+          {services.map((s, i) => (
+            <SwiperSlide key={i}>
+              <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 p-6 rounded-xl shadow-sm hover:shadow-lg transition h-full">
+                <h3 className="text-lg font-semibold text-red-600">{s.title}</h3>
+                <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-300">
+                  {s.desc}
+                </p>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        {/* Footer (Prev/Next + Counter + View All) */}
+        <div className="flex justify-between items-center mt-6">
+          {/* Left side - Buttons */}
+          <div className="flex items-center gap-4">
+            <button className="custom-prev text-xl border border-red-500 text-red-500 w-10 h-10 flex items-center justify-center rounded-full hover:bg-red-500 hover:text-white transition">
+              ←
+            </button>
+            <button className="custom-next text-xl border border-red-500 text-red-500 w-10 h-10 flex items-center justify-center rounded-full hover:bg-red-500 hover:text-white transition">
+              →
+            </button>
           </div>
-        ))}
+
+          {/* Right side - Counter */}
+          <div className="font-semibold">
+            <span className="text-red-600 text-xl">{currentIndex}</span>
+            <span className="text-gray-500 text-xl">/{services.length}</span>
+          </div>
+        </div>
       </div>
     </section>
   );

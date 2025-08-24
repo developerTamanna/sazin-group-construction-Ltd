@@ -26,19 +26,26 @@ export default function Home() {
     <main>
 
         <Banner></Banner>
-        <AboutSnapet></AboutSnapet>
+        <FeatureProducts></FeatureProducts>
         <Services></Services>
         <Projects></Projects>
         <Equipment></Equipment>
+
+        
+        {/* <AboutSnapet></AboutSnapet> */}
+        
+        
+
         <Team></Team>
-        <Testimonial></Testimonial>
-        <WhyChooseUs></WhyChooseUs>
-        <FeatureProducts></FeatureProducts>
+        {/* <Testimonial></Testimonial> */}
+        
+        {/* <WhyChooseUs></WhyChooseUs> */}
+        
         <LatestNews></LatestNews>
-        <Certificates></Certificates>
-        <Achievement></Achievement>
-        <CallToAction></CallToAction>
-        <ShortContact></ShortContact>
+        {/* <Certificates></Certificates> */}
+        {/* <Achievement></Achievement> */}
+        {/* <CallToAction></CallToAction> */}
+        {/* <ShortContact></ShortContact> */}
 
     </main>
   );

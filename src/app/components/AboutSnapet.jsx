@@ -1,5 +1,5 @@
 // File: app/page.js
-// Next.js Home Page with About Us Snapshot Section (Red / Black / White Theme) - JavaScript Version
+// Next.js Home Page with About Us Snapshot Section (Red / Black / White Theme)
 
 import Image from "next/image";
 
@@ -43,20 +43,20 @@ export const metadata = {
   },
 };
 
-export default function AboutSnapet() {
+export default function HomePage() {
   return (
     <main className="relative isolate">
       {/* Hero Section */}
       <section className="relative bg-black text-white">
-        <div className="mx-auto max-w-7xl px-6 py-24 text-center lg:px-8">
-          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
+        <div className="mx-auto max-w-7xl px-6 py-20 text-center sm:py-28 lg:px-8">
+          <h1 className="text-2xl font-bold tracking-tight sm:text-5xl md:text-6xl">
             Building the Future with Excellence Since 2007
           </h1>
-          <p className="mt-6 text-lg leading-8 text-neutral-300">
+          <p className="mt-6 text-base leading-7 text-neutral-300 sm:text-lg sm:leading-8 max-w-3xl mx-auto">
             Delivering world-class civil, electro-mechanical, and turnkey
             engineering solutions with reliability, safety, and innovation.
           </p>
-          <div className="mt-8 flex justify-center gap-4">
+          <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
             <a
               href="/projects"
               className="rounded-2xl bg-red-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-red-700"
@@ -78,9 +78,9 @@ export default function AboutSnapet() {
         className="relative overflow-hidden bg-white dark:bg-neutral-950"
         aria-labelledby="about-title"
       >
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-24">
-          {/* Copy */}
-          <div className="flex flex-col justify-center">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 py-16 sm:px-8 lg:grid-cols-2 lg:gap-16 lg:py-24">
+          {/* Text Content */}
+          <div className="flex flex-col justify-center order-2 lg:order-1">
             <h2
               id="about-title"
               className="text-3xl font-extrabold tracking-tight text-neutral-900 dark:text-white sm:text-4xl"
@@ -88,7 +88,7 @@ export default function AboutSnapet() {
               Who We Are
             </h2>
 
-            <p className="mt-4 text-base leading-7 text-neutral-700 dark:text-neutral-300">
+            <p className="mt-4 text-base leading-7 text-neutral-700 dark:text-neutral-300 sm:text-lg sm:leading-8">
               Sazin Construction Ltd. is a trusted one-stop engineering and
               construction company in Bangladesh, established in 2007. We
               specialize in civil construction, electro-mechanical works, EPC,
@@ -98,11 +98,11 @@ export default function AboutSnapet() {
             </p>
 
             {/* CTA */}
-            <div className="mt-8 flex flex-wrap items-center gap-3">
+            <div className="mt-8">
               <a
                 href="/about"
                 aria-label="Learn more about Sazin Construction"
-                className="inline-flex items-center justify-center rounded-2xl border border-red-700 bg-red-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 dark:focus:ring-offset-neutral-900"
+                className="inline-flex items-center justify-center rounded-2xl border border-red-700 bg-red-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 dark:focus:ring-offset-neutral-900"
               >
                 Learn More About Us
               </a>
@@ -110,7 +110,7 @@ export default function AboutSnapet() {
           </div>
 
           {/* Visual */}
-          <div className="relative">
+          <div className="relative order-1 lg:order-2">
             <div className="absolute -inset-2 -z-10 rounded-3xl bg-gradient-to-br from-red-600/10 to-black/10 blur-xl dark:from-red-500/20 dark:to-white/5" />
             <div className="overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-xl dark:border-neutral-700 dark:bg-neutral-900">
               <Image
