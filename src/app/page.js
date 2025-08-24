@@ -28,16 +28,15 @@ export default function Home() {
         <Banner></Banner>
          <AboutSnapet></AboutSnapet>
         <FeatureProducts></FeatureProducts>
+        <AboutSnapet></AboutSnapet>
         <Services></Services>
         <Projects></Projects>
         <Equipment></Equipment>
+        {/* <Team></Team> */}
 
-        
     
-        
-        
 
-        <Team></Team>
+        
         {/* <Testimonial></Testimonial> */}
         
         {/* <WhyChooseUs></WhyChooseUs> */}

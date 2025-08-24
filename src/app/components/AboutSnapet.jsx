@@ -47,29 +47,32 @@ export default function HomePage() {
   return (
     <main className="relative isolate">
       {/* Hero Section */}
-      <section className="relative bg-black text-white">
+      <section className="relative bg-neutral-50 text-gray-900 dark:bg-neutral-950 dark:text-white">
         <div className="mx-auto max-w-7xl px-6 py-20 text-center sm:py-28 lg:px-8">
-          <h1 className="text-2xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+          <h1 className="text-2xl font-bold tracking-tight sm:text-3xl md:text-5xl">
             Building the Future with Excellence Since 2007
           </h1>
-          <p className="mt-6 text-base leading-7 text-neutral-300 sm:text-lg sm:leading-8 max-w-3xl mx-auto">
+          <p className="mt-6 text-xl leading-7 text-neutral-500 sm:text-lg sm:leading-8 max-w-3xl mx-auto">
             Delivering world-class civil, electro-mechanical, and turnkey
             engineering solutions with reliability, safety, and innovation.
           </p>
-          <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
-            <a
-              href="/projects"
-              className="rounded-2xl bg-red-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-red-700"
-            >
-              Explore Our Projects
-            </a>
-            <a
-              href="/contact"
-              className="rounded-2xl border border-white px-6 py-3 text-sm font-semibold text-white transition hover:bg-white hover:text-black"
-            >
-              Get in Touch
-            </a>
-          </div>
+
+
+                  {/* Buttons */}
+        <div className="mt-8 flex flex-col sm:flex-row justify-center gap-2 md:gap-4">
+          <a
+            href="/projects"
+            className="border border-red-500 text-red-600 px-2 md:px-6 py-1.5 rounded-lg font-semi-bold text-base hover:bg-red-500 hover:text-white transition"
+          >
+            Explore Our Projects
+          </a>
+          <a
+            href="/contact"
+            className="border border-red-500 text-red-600 px-6 py-1.5 rounded-lg font-semi-bold text-base hover:bg-red-500 hover:text-white transition"
+          >
+            Get in Touch
+          </a>
+        </div>
         </div>
       </section>
 
