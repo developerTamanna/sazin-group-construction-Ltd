@@ -204,7 +204,7 @@ export default function Navbar() {
           {mobileOpen && (
             <>
               <motion.div
-                className="fixed top-20 left-0 h-[calc(100vh-80px)] dark:bg-black overflow-auto bg-white z-[9999] w-3/4 max-w-xs  shadow-lg p-6 "
+                className="fixed lg:hidden top-20 left-0 h-[calc(100vh-80px)] dark:bg-black overflow-auto bg-white z-[9999] w-3/4 max-w-xs  shadow-lg p-6 "
                 initial={{ x: '-100%' }}
                 animate={{ x: 0 }}
                 exit={{ x: '-100%' }}
