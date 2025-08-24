@@ -5,21 +5,21 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const achievements = [
   {
-    title: "Award",
-    description: "Keep up with what’s happening at RFL",
+    title: "Best EPC Contractor Award",
+    description: "Recognized nationally for excellence in project execution.",
     image: "https://i.postimg.cc/MnnY1fYp/images.jpg",
     link: "/award-detail",
   },
   {
-    title: "Award",
-    description: "Keep up with what’s happening at RFL",
+    title: "Innovation in Safety",
+    description: "Awarded for outstanding workplace safety practices.",
     image:
       "https://i.postimg.cc/RW2LdCPQ/pngtree-golden-achievement-unlocked-celebrating-your-success-on-a-blue-3d-background-image-3808269.jpg",
     link: "/award-detail",
   },
   {
-    title: "Award",
-    description: "Keep up with what’s happening at RFL",
+    title: "Global Recognition",
+    description: "Honored for sustainable and eco-friendly construction.",
     image:
       "https://i.postimg.cc/RW2LdCPQ/pngtree-golden-achievement-unlocked-celebrating-your-success-on-a-blue-3d-background-image-3808269.jpg",
     link: "/award-detail",
@@ -44,66 +44,69 @@ export default function Achievement() {
   const { title, description, image, link } = achievements[current];
 
   return (
-    <div className="container mx-auto">
-      <div className="grid md:grid-cols-2 min-h-[500px]">
-        {/* Left Section (White) */}
-        <div className="bg-white dark:bg-gray-900 py-14 px-8 flex flex-col justify-between animate-fadeIn">
-          <div>
-            <h3 className="text-3xl font-semibold text-gray-800 dark:text-gray-100">
-              Achievement
-            </h3>
-            <p className="text-gray-500 dark:text-gray-400 mt-2 text-xl">
-              {description}
-            </p>
+    <section className="py-16 px-4 md:px-6 lg:px-8 bg-neutral-50 dark:bg-neutral-950">
+      <div className="container mx-auto">
+        <div className="grid md:grid-cols-2 min-h-[480px] rounded-xl overflow-hidden shadow-md">
+          {/* Left Side (White Background with Text) */}
+          <div className="bg-white dark:bg-neutral-900 p-8 md:p-10 flex flex-col justify-between animate-fadeIn order-2 md:order-1">
+            <div>
+              <h3 className="text-3xl font-bold text-neutral-900 dark:text-neutral-100">
+                Our <span className="text-red-500">Achievements</span>
+              </h3>
+              <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-300 mt-3">
+                {description}
+              </p>
 
-            <h2 className="text-2xl font-bold text-red-600 mt-10">{title}</h2>
-            <Link
-              href={link}
-              className="text-gray-800 dark:text-gray-200 mt-2 inline-block hover:underline"
-            >
-              Read More →
-            </Link>
-          </div>
-
-          {/* Navigation + Pagination */}
-          <div className="flex items-center justify-between mt-12">
-            <div className="flex gap-4">
-              <button
-                onClick={prevSlide}
-                className="p-3 rounded-full border border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition"
+              <h2 className="text-xl md:text-2xl font-semibold text-red-600 mt-6 md:mt-8">
+                {title}
+              </h2>
+              <Link
+                href={link}
+                className="mt-2 inline-block text-red-600 font-medium hover:underline"
               >
-                <FaArrowLeft />
-              </button>
-              <button
-                onClick={nextSlide}
-                className="p-3 rounded-full bg-red-500 text-white hover:bg-red-600 transition"
-              >
-                <FaArrowRight />
-              </button>
+                Read More →
+              </Link>
             </div>
 
-            <span className="text-sm font-medium text-gray-500">
-              {current + 1}/{total}
-            </span>
+            {/* Navigation + Counter */}
+            <div className="flex justify-between items-center mt-8 md:mt-10">
+              <div className="flex gap-3">
+                <button
+                  onClick={prevSlide}
+                  className="p-2 md:p-3 rounded-full border border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition"
+                >
+                  <FaArrowLeft />
+                </button>
+                <button
+                  onClick={nextSlide}
+                  className="p-2 md:p-3 rounded-full bg-red-500 text-white hover:bg-red-600 transition"
+                >
+                  <FaArrowRight />
+                </button>
+              </div>
+              <span className="text-sm md:text-lg font-medium text-neutral-500">
+                {current + 1}/{total}
+              </span>
+            </div>
+
+            {/* Progress bar */}
+            <div className="w-full h-1 bg-neutral-200 dark:bg-neutral-700 mt-4 md:mt-6 relative overflow-hidden rounded-full">
+              <div
+                key={current}
+                className="absolute top-0 left-0 h-1 bg-red-500 animate-progress"
+              />
+            </div>
           </div>
 
-          {/* Progress bar */}
-          <div className="w-full h-1 bg-gray-200 mt-6 relative overflow-hidden rounded-full">
-            <div
-              key={current}
-              className="absolute top-0 left-0 h-1 bg-red-500 animate-progress"
-            />
-          </div>
-        </div>
-
-        {/* Right Section (Gray bg, White inner div) */}
-        <div className="bg-gray-200 dark:bg-gray-800 flex justify-center items-center p-10 animate-fadeIn">
-          <div className="bg-white dark:bg-gray-900 rounded-xl p-10 shadow-lg">
-            <img
-              src={image}
-              alt={title}
-              className="w-full max-w-md object-contain"
-            />
+          {/* Right Side (Gray BG with White Card) */}
+          <div className="bg-gray-200 dark:bg-gray-800 flex justify-center items-center p-6 md:p-8 animate-fadeIn order-1 md:order-2">
+            <div className="bg-white dark:bg-neutral-900 rounded-xl shadow-lg p-4 md:p-6 w-full max-w-md">
+              <img
+                src={image}
+                alt={title}
+                className="w-full h-[220px] md:h-[320px] object-contain rounded-lg"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -135,6 +138,6 @@ export default function Achievement() {
           }
         }
       `}</style>
-    </div>
+    </section>
   );
 }
