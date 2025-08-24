@@ -1,11 +1,23 @@
-import React from 'react';
+import HeroMission from "./components/HeroMission";
+import VisionBlock from "./components/VisionBlock";
+import MissionBlock from "./components/MissionBlock";
+import CoreValues from "./components/CoreValues";
+import MissionCTA from "./components/MissionCTA";
 
-const page = () => {
-  return (
-    <div>
-      
-    </div>
-  );
+export const metadata = {
+  title: "Sazin Construction Ltd. | Mission & Vision",
+  description:
+    "Explore the mission, vision, and core values that drive Sazin Construction Ltd. to deliver excellence in civil, electro-mechanical, and EPC projects.",
 };
 
-export default page;
+export default function MissionVisionPage() {
+  return (
+    <main>
+      <HeroMission />
+      <VisionBlock />
+      <MissionBlock />
+      <CoreValues />
+      <MissionCTA />
+    </main>
+  );
+}
