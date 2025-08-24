@@ -43,7 +43,7 @@ export default function Home() {
         
         <LatestNews></LatestNews>
         {/* <Certificates></Certificates> */}
-        {/* <Achievement></Achievement> */}
+        <Achievement></Achievement>
         {/* <CallToAction></CallToAction> */}
         {/* <ShortContact></ShortContact> */}
 
