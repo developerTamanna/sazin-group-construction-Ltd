@@ -27,7 +27,7 @@ const LatestNews = () => {
     <section className="py-14 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4">
         {/* Heading */}
-        <h2 className="text-left text-3xl text-gray-900 font-semibold mb-2 dark:text-white">
+        <h2 className="text-left text-3xl text-gray-900 font-semi-bold mb-2 dark:text-white">
           Latest <span className="text-red-500">News</span>
         </h2>
         <p className="mb-8 text-xl text-gray-600">
