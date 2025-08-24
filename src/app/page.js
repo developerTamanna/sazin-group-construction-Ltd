@@ -44,8 +44,7 @@ export default function Home() {
         <LatestNews></LatestNews>
         {/* <Certificates></Certificates> */}
         <Achievement></Achievement>
-        {/* <CallToAction></CallToAction> */}
-        {/* <ShortContact></ShortContact> */}
+        <CallToAction></CallToAction>
 
     </main>
   );
