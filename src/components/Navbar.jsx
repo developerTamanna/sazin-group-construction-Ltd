@@ -272,7 +272,7 @@ export default function Navbar() {
                 <span className="text-gray-700 dark:text-gray-200 hover:text-red-600 cursor-pointer">
                   More Details
                 </span>
-                <ul className="absolute top-full left-0 bg-white dark:bg-gray-800 shadow-lg mt-2 w-60 rounded-md p-2 space-y-2 z-50 opacity-0 group-hover:opacity-100 transition-all duration-200">
+                <ul className="absolute top-full right-0 bg-white dark:bg-gray-800 shadow-lg mt-2 w-60 rounded-md p-2 space-y-2 z-50 opacity-0 group-hover:opacity-100 transition-all duration-200">
                   <li>
                     <Link
                       href="/projects"
