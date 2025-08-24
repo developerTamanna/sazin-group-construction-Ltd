@@ -39,7 +39,7 @@ export default function Equipment() {
             href="/equipment"
             className="text-red-600 text-left text-xl hover:underline transition"
           >
-            View All Equipment
+            View All Equipment →
           </a>
         </div>
       </div>

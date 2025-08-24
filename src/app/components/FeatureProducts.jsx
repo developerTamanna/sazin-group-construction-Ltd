@@ -37,7 +37,7 @@ const FeatureProducts = () => {
   ];
 
   return (
-    <section className="py-14 bg-white dark:bg-gray-900">
+    <section className="py-14 bg-white dark:bg-black">
       <div className="container mx-auto px-4">
         <h2 className="text-left text-3xl text-gray-900 font-semi-bold mb-2 dark:text-white">
           Featured <span className="text-red-500">Products</span>
