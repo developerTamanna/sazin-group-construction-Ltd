@@ -190,7 +190,7 @@ export default function Navbar() {
                       </li>
                       <li>
                         <Link
-                          href="/services/civil"
+                          href="/Services/Civil-construction"
                           className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
                         >
                           Civil Construction
@@ -505,7 +505,7 @@ export default function Navbar() {
                         </li>
                         <li>
                           <Link
-                            href="/services/civil"
+                            href="/Services/Civil-contruction"
                             onClick={() => setMobileOpen(false)}
                           >
                             Civil Construction
