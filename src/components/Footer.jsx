@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import {
   FaFacebookF,
   FaTwitter,
@@ -14,7 +15,7 @@ const Footer = () => {
 
   return (
     <footer
-      className={`w-full py-12 ${
+      className={`w-full py-14 ${
         theme === "dark"
           ? "bg-gray-900 text-gray-300"
           : "bg-black text-gray-100"
@@ -23,7 +24,17 @@ const Footer = () => {
       <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between gap-8">
         {/* Contact Info */}
         <div className="flex-1">
-          <h3 className="font-semibold text-lg mb-2 inline-block">Logo</h3>
+          <h3 className="font-semibold text-lg mb-4 inline-block">
+            <Link href="/">
+              <Image
+                src="/logo.png"
+                alt="Company Logo"
+                width={150}
+                height={60}
+                className="object-contain rounded-full"
+              />
+            </Link>
+          </h3>
           <p className="mt-2 text-gray-400">
             Contractor, Civil Construction, ElectroMechanical Works, Importer &
             Supplier, etc.
@@ -54,28 +65,34 @@ const Footer = () => {
 
         {/* Services */}
         <div className="flex-1">
-          <h3 className="text-xl mb-2 text-gray-200 inline-block">Services</h3>
-          <ul className="mt-2 space-y-2 text-gray-400">
+          <h3 className="text-xl border-b border-red-500 mb-2 text-gray-200 inline-block">
+            Services
+          </h3>
+          <ul className="mt-2 space-y-3 text-gray-400">
             <li className="hover:text-red-600 transition-colors">
-              Circuits & Wiring
+              Electro-Mech
             </li>
             <li className="hover:text-red-600 transition-colors">
-              Code compliance
+              Safety Gear
             </li>
             <li className="hover:text-red-600 transition-colors">
-              Power audits
+              Safety Training
             </li>
-            <li className="hover:text-red-600 transition-colors">Remodels</li>
             <li className="hover:text-red-600 transition-colors">
-              Smoke detectors
+              Agro Products
+            </li>
+            <li className="hover:text-red-600 transition-colors">
+              EPC Projects
             </li>
           </ul>
         </div>
 
         {/* Supports */}
         <div className="flex-1 ">
-          <h3 className="text-gray-200 text-xl mb-2 inline-block">Supports</h3>
-          <ul className="mt-2 space-y-2 text-gray-400">
+          <h3 className="text-gray-200 border-b border-red-500 text-xl mb-2 inline-block">
+            Supports
+          </h3>
+          <ul className="mt-2 space-y-3 text-gray-400">
             <li className="hover:text-red-600 transition-colors">Careers</li>
             <li className="hover:text-red-600 transition-colors">
               Our Process
@@ -88,37 +105,21 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Top Rated Products */}
+        {/* Business */}
         <div className="flex-1">
-          <h3 className="text-gray-200 mb-2  inline-block">
-            Top Rated ProductsT
+          <h3 className="text-gray-200 border-b border-red-500 text-xl mb-2 inline-block">
+            Business
           </h3>
-          <div className="mt-2 space-y-5 text-gray-400">
-            <div className="flex items-center gap-3">
-              <img
-                src="/hand-tool.png"
-                alt="Hand Tools"
-                className="w-16 h-16 object-cover"
-              />
-              <div>
-                <p>Hand Tools</p>
-                <p className="font-bold text-red-600">£119.00</p>
-                <p>⭐⭐⭐⭐⭐</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <img
-                src="/collector-tool.png"
-                alt="Collectors Three Slot Watch Box"
-                className="w-16 h-16 object-cover"
-              />
-              <div>
-                <p>Collectors Three Slot Watch Box</p>
-                <p className="font-bold text-yellow-500">£44.99</p>
-                <p>⭐⭐⭐⭐☆</p>
-              </div>
-            </div>
-          </div>
+          <ul className="mt-2 space-y-3 text-gray-400">
+            <li className="hover:text-red-600 transition-colors">Sazin Construction Ltd</li>
+            <li className="hover:text-red-600 transition-colors">
+              Sazin Agro & Fisheries
+            </li>
+            <li className="hover:text-red-600 transition-colors">Sky Helmet & Safety</li>
+            <li className="hover:text-red-600 transition-colors">
+              Accessories
+            </li>
+          </ul>
         </div>
       </div>
 
