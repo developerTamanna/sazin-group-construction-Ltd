@@ -65,7 +65,7 @@ const Footer = () => {
 
         {/* Services */}
         <div className="flex-1">
-          <h3 className="text-xl border-b border-red-500 mb-2 text-gray-200 inline-block">
+          <h3 className="text-xl border-b-2 border-red-500 mb-2 text-gray-200 inline-block">
             Services
           </h3>
           <ul className="mt-2 space-y-3 text-gray-400">
@@ -89,7 +89,7 @@ const Footer = () => {
 
         {/* Supports */}
         <div className="flex-1 ">
-          <h3 className="text-gray-200 border-b border-red-500 text-xl mb-2 inline-block">
+          <h3 className="text-gray-200 border-b-2 border-red-500 text-xl mb-2 inline-block">
             Supports
           </h3>
           <ul className="mt-2 space-y-3 text-gray-400">
@@ -107,7 +107,7 @@ const Footer = () => {
 
         {/* Business */}
         <div className="flex-1">
-          <h3 className="text-gray-200 border-b border-red-500 text-xl mb-2 inline-block">
+          <h3 className="text-gray-200 border-b-2 border-red-500 text-xl mb-2 inline-block">
             Business
           </h3>
           <ul className="mt-2 space-y-3 text-gray-400">
