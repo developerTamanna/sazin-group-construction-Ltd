@@ -182,7 +182,7 @@ export default function Navbar() {
                     >
                       <li>
                         <Link
-                          href="/services/electro-mechanical"
+                          href="/Services/Electro-mechanical"
                           className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
                         >
                           Electro-Mechanical Construction
@@ -497,7 +497,7 @@ export default function Navbar() {
                       >
                         <li>
                           <Link
-                            href="/services/electro-mechanical"
+                            href="/Services/Electro-mechanical"
                             onClick={() => setMobileOpen(false)}
                           >
                             Electro-Mechanical Construction
