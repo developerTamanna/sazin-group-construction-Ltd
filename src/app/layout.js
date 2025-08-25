@@ -1,6 +1,13 @@
 import Navbar from '@/components/Navbar';
 import './globals.css';
 import Footer from '@/components/Footer';
+import ScrollToTop from '../utils/ScrollToTop';
+import { Montserrat } from 'next/font/google';
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 export const metadata = {
   title: 'Sazin Construction Ltd',
@@ -14,10 +21,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className='bg-black dark:bg-gray-800'>
+    <html lang="en" className={`${montserrat.className} bg-black dark:bg-gray-800`}>
 
 {/* className="w-full mx-auto max-w-[100rem] relative" */} 
       <body> 
+        <ScrollToTop />
         <Navbar/>
         {children}
         <Footer/>

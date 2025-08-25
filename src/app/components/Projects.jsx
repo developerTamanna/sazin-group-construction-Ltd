@@ -24,7 +24,7 @@ export default function Projects() {
     <section className="bg-white dark:bg-neutral-950 py-16 px-6 lg:px-8">
       <div className="container mx-auto">
         {/* Heading */}
-        <h2 className="text-3xl font-semi-bold text-left">
+        <h2 className="text-3xl font-semi-bold text-left dark:text-white">
           Featured <span className="text-red-600">Projects</span>
         </h2>
         <p className="text-left mt-2 text-xl font-semi-bold text-neutral-600 dark:text-neutral-300">

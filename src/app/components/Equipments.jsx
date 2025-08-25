@@ -12,7 +12,7 @@ export default function Equipment() {
     <section className="bg-neutral-50 dark:bg-neutral-950 py-16 px-6 lg:px-8">
       <div className="container mx-auto">
         {/* Title */}
-        <h2 className="text-3xl font-semi-bold text-left">
+        <h2 className="text-3xl font-semi-bold text-left dark:text-white">
           Our <span className="text-red-500">Equipment</span> & Capabilities
         </h2>
         <p className="text-left mt-2 text-xl text-neutral-600 dark:text-neutral-300">

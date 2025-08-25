@@ -32,7 +32,7 @@ export default function Clients() {
       <div className="container mx-auto">
         {/* Heading */}
         <h2 className="text-3xl font-semi-bold text-left text-gray-800 dark:text-white">
-          Our Clients & Partners
+          Our <span className="text-red-600">Clients</span> & Partners
         </h2>
         <p className="text-left text-xl mt-2 text-neutral-600 dark:text-neutral-300">
           Trusted by government & leading organizations across Bangladesh.

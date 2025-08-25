@@ -37,12 +37,12 @@ const FeatureProducts = () => {
   ];
 
   return (
-    <section className="py-14 bg-white dark:bg-black">
+    <section className="py-14 bg-white dark:bg-neutral-950">
       <div className="container mx-auto px-4">
         <h2 className="text-left text-3xl text-gray-900 font-semi-bold mb-2 dark:text-white">
           Featured <span className="text-red-500">Products</span>
         </h2>
-        <p className="text-left mb-6 text-xl text-gray-600">Stands for sustainable luxury products</p>
+        <p className="text-left mb-6 text-xl text-gray-600 dark:text-gray-400">Stands for sustainable luxury products</p>
 
         {/* Slider */}
         <Swiper
