@@ -198,7 +198,7 @@ export default function Navbar() {
                       </li>
                       <li>
                         <Link
-                          href="/services/epc"
+                          href="/Services/engineering-procurement-construction"
                           className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
                         >
                           Engineering Procurement & Construction
@@ -513,7 +513,7 @@ export default function Navbar() {
                         </li>
                         <li>
                           <Link
-                            href="/services/epc"
+                            href="/Services/engineering-procurement-construction"
                             onClick={() => setMobileOpen(false)}
                           >
                             Engineering Procurement & Construction
