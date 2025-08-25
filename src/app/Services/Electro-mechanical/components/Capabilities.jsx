@@ -67,7 +67,7 @@ export default function Capabilities() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-4xl font-extrabold tracking-tight"
+          className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white text-center"
         >
           Core <span className="text-red-600">Capabilities</span>
         </motion.h2>
