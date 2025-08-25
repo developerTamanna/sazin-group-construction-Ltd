@@ -42,13 +42,20 @@ const values = [
       <FaUsers className="w-8 h-8 mx-auto mb-4 text-red-500 dark:text-red-600" />
     ),
   },
+    {
+    title: 'Safety',
+    desc: 'We ensure safe practices across every project.',
+    icon: (
+      <FaShieldAlt className="w-8 h-8 mx-auto mb-4 text-red-500 dark:text-red-600" />
+    ),
+  },
 ];
 
 export default function CoreValues() {
   return (
     <section className="bg-white dark:bg-neutral-950 py-20 px-6 lg:px-8 text-center">
       {/* Heading */}
-      <h2 className="text-3xl md:text-4xl font-extrabold text-red-600 dark:text-red-600">
+      <h2 className="text-3xl md:text-4xl font-semi-bold text-red-600 dark:text-red-600">
         Our Core Values
       </h2>
       <div className="w-20 h-1 bg-red-600 dark:bg-red-600 mx-auto mt-4 rounded-full"></div>

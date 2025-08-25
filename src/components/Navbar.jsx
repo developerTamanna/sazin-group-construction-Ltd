@@ -182,24 +182,38 @@ export default function Navbar() {
                     >
                       <li>
                         <Link
+
                           href="/services/electro-mechanical"
                           className="block text-gray-800 dark:text-gray-200 hover:text-red-600"
+
+                          href="/Services/Electro-mechanical"
+                          className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
                         >
                           Electro-Mechanical Construction
                         </Link>
                       </li>
                       <li>
                         <Link
+
                           href="/services/civil"
                           className="block text-gray-800 dark:text-gray-200 hover:text-red-600"
+
+                          href="/Services/Civil-construction"
+                          className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
+
                         >
                           Civil Construction
                         </Link>
                       </li>
                       <li>
                         <Link
+
                           href="/services/epc"
                           className="block text-gray-800 dark:text-gray-200 hover:text-red-600"
+
+                          href="/Services/engineering-procurement-construction"
+                          className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
+
                         >
                           Engineering Procurement & Construction
                         </Link>
@@ -505,7 +519,7 @@ export default function Navbar() {
                       >
                         <li>
                           <Link
-                            href="/services/electro-mechanical"
+                            href="/Services/Electro-mechanical"
                             onClick={() => setMobileOpen(false)}
                           >
                             Electro-Mechanical Construction
@@ -513,7 +527,7 @@ export default function Navbar() {
                         </li>
                         <li>
                           <Link
-                            href="/services/civil"
+                            href="/Services/Civil-contruction"
                             onClick={() => setMobileOpen(false)}
                           >
                             Civil Construction
@@ -521,7 +535,7 @@ export default function Navbar() {
                         </li>
                         <li>
                           <Link
-                            href="/services/epc"
+                            href="/Services/engineering-procurement-construction"
                             onClick={() => setMobileOpen(false)}
                           >
                             Engineering Procurement & Construction

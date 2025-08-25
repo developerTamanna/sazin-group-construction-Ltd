@@ -21,10 +21,10 @@ export default function HeroHistory() {
         transition={{ duration: 0.7 }}
         className="relative max-w-4xl mx-auto text-center"
       >
-        <h1 className="text-4xl md:text-5xl font-extrabold text-neutral-900 dark:text-white">
+        <h1 className="text-3xl md:text-4xl font-semibold text-neutral-900 dark:text-white">
           {header}
         </h1>
-        <p className="mt-6 text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        <p className="mt-6 text-xl md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed">
           {desc}
         </p>
       </motion.div>
