@@ -210,7 +210,7 @@ export default function Navbar() {
                       </li>
                       <li>
                         <Link
-                          href="/services/safety-security"
+                          href="/Services/safety-security-construction-management"
                           className="block text-gray-800 dark:text-gray-200 hover:text-red-600"
                         >
                           Safety & Security Construction and Management
@@ -533,7 +533,7 @@ export default function Navbar() {
                         </li>
                         <li>
                           <Link
-                            href="/services/safety-security"
+                            href="/Services/safety-security-construction-management"
                             onClick={() => setMobileOpen(false)}
                           >
                             Safety & Security Construction and Management
