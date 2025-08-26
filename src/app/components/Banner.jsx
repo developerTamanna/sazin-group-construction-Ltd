@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from 'next-themes';
 import { FaChevronDown } from 'react-icons/fa';
 
-const images = ['/banner1.jpg', '/banner2.jpg', '/banner3.jpg'];
+const images = ['/Banner1.jpg', '/Banner2.jpg', '/Banner3.jpg','Banner4.jpg'];
 
 function useTypingEffect(text, speed = 100) {
   const [displayed, setDisplayed] = useState('');
