@@ -182,10 +182,6 @@ export default function Navbar() {
                     >
                       <li>
                         <Link
-
-                          href="/services/electro-mechanical"
-                          className="block text-gray-800 dark:text-gray-200 hover:text-red-600"
-
                           href="/Services/Electro-mechanical"
                           className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
                         >
@@ -194,9 +190,6 @@ export default function Navbar() {
                       </li>
                       <li>
                         <Link
-
-                          href="/services/civil"
-                          className="block text-gray-800 dark:text-gray-200 hover:text-red-600"
 
                           href="/Services/Civil-construction"
                           className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
@@ -207,9 +200,6 @@ export default function Navbar() {
                       </li>
                       <li>
                         <Link
-
-                          href="/services/epc"
-                          className="block text-gray-800 dark:text-gray-200 hover:text-red-600"
 
                           href="/Services/engineering-procurement-construction"
                           className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
