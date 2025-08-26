@@ -1,10 +1,19 @@
 // components/Contact.jsx
-'use client';
-import { useState } from 'react';
-import { FaEnvelope, FaHome, FaPhoneAlt } from 'react-icons/fa';
+"use client";
+import { useState } from "react";
+import {
+  FaEnvelope,
+  FaFacebookF,
+  FaGoogle,
+  FaHome,
+  FaLinkedinIn,
+  FaPhoneAlt,
+  FaTwitter,
+  FaYoutube,
+} from "react-icons/fa";
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -13,8 +22,8 @@ export default function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(form);
-    alert('Message Sent!');
-    setForm({ name: '', email: '', message: '' });
+    alert("Message Sent!");
+    setForm({ name: "", email: "", message: "" });
   };
 
   return (
@@ -22,7 +31,7 @@ export default function Contact() {
       <div className="bg-white dark:bg-gray-800 shadow-md rounded-2xl p-8 max-w-6xl w-full grid md:grid-cols-2 gap-8 transition-colors duration-300">
         {/* Left Side - Form */}
         <div>
-          <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
+          <h2 className="text-4xl font-semi-bold mb-6 text-gray-900 dark:text-white">
             Lets <span className="text-red-500">Talk</span>
           </h2>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -35,7 +44,7 @@ export default function Contact() {
                 name="name"
                 value={form.name}
                 onChange={handleChange}
-                className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-400 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                className="w-full border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-400 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                 placeholder="Your Name"
                 required
               />
@@ -50,7 +59,7 @@ export default function Contact() {
                 name="email"
                 value={form.email}
                 onChange={handleChange}
-                className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-400 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                className="w-full border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-400 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                 placeholder="Your Email"
                 required
               />
@@ -64,7 +73,7 @@ export default function Contact() {
                 name="message"
                 value={form.message}
                 onChange={handleChange}
-                className="w-full border rounded-lg px-3 py-2 h-36 focus:outline-none focus:ring-2 focus:ring-red-400 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                className="w-full border border-gray-200 rounded-lg px-3 py-2 h-36 focus:outline-none focus:ring-2 focus:ring-red-400 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                 placeholder="Your message here"
                 required
               ></textarea>
@@ -72,7 +81,7 @@ export default function Contact() {
 
             <button
               type="submit"
-              className="bg-red-500 text-white px-6 py-2 rounded-lg hover:bg-red-600 transition"
+              className="bg-red-500 text-white px-6 py-2 rounded-lg border border-red-600 hover:bg-white hover:text-red-600 transition"
             >
               Send Message
             </button>
@@ -84,7 +93,7 @@ export default function Contact() {
           <img
             src="https://i.ibb.co/29pmXPP/download.jpg"
             alt="Contact Illustration"
-            className="w-full max-w-md rounded-xl border border-gray-300 dark:border-gray-600"
+            className="w-full max-w-md rounded-xl"
           />
 
           <div className="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl shadow-sm w-full space-y-4 transition-colors duration-300">
@@ -117,18 +126,22 @@ export default function Contact() {
               </p>
             </div>
 
-            <div className="flex gap-4 text-gray-600 dark:text-gray-300 text-xl pt-3">
-              <a href="#">
-                <i className="fab fa-facebook"></i>
+            {/* Social Icons */}
+            <div className="mt-8 flex justify-right gap-4 text-xl">
+              <a href="#" className="hover:text-red-600 dark:text-gray-300 transition-colors">
+                <FaFacebookF />
               </a>
-              <a href="#">
-                <i className="fab fa-twitter"></i>
+              <a href="#" className="hover:text-red-600 dark:text-gray-300 transition-colors">
+                <FaTwitter />
               </a>
-              <a href="#">
-                <i className="fab fa-youtube"></i>
+              <a href="#" className="hover:text-red-600 dark:text-gray-300 transition-colors">
+                <FaGoogle />
               </a>
-              <a href="#">
-                <i className="fab fa-linkedin"></i>
+              <a href="#" className="hover:text-red-600 dark:text-gray-300 transition-colors">
+                <FaLinkedinIn />
+              </a>
+              <a href="#" className="hover:text-red-600 dark:text-gray-300 transition-colors">
+                <FaYoutube />
               </a>
             </div>
           </div>

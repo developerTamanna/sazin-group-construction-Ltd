@@ -16,7 +16,7 @@ const SmallBanner = () => {
       <div className="relative z-10 max-w-6xl mx-auto h-60 flex items-end pl-16 justify-start">
         <Link
           href="/contact"
-          className="mb-3 bg-red-600 hover:bg-gray-100 hover:text-red-600 text-white font-semibold px-4 py-2 rounded-lg shadow-lg transition"
+          className="mb-3 bg-black hover:bg-black hover:text-black text-black font-semibold  rounded-full shadow-lg transition"
         >
           Contact Us
         </Link>
