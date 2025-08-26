@@ -190,20 +190,16 @@ export default function Navbar() {
                       </li>
                       <li>
                         <Link
-
                           href="/Services/Civil-construction"
                           className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
-
                         >
                           Civil Construction
                         </Link>
                       </li>
                       <li>
                         <Link
-
                           href="/Services/engineering-procurement-construction"
                           className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
-
                         >
                           Engineering Procurement & Construction
                         </Link>
@@ -291,64 +287,43 @@ export default function Navbar() {
               <li className="relative group py-2">
                 <button
                   type="button"
-                  className="px-3 py-1.5 rounded-md bg-red-600 
-             text-gray-100 dark:text-gray-200
-              dark:bg-red-500
-             hover:bg-red-700 hover:text-gray-50 
-             transition duration-300 cursor-pointer"
+                  className="flex items-center gap-1 text-gray-800 dark:text-gray-200 
+               hover:text-red-600 transition duration-300 cursor-pointer"
                 >
                   More Details
+                  <span className="transition-transform duration-300 group-hover:rotate-180">
+                    ↓
+                  </span>
                 </button>
 
-                <ul className="absolute hidden group-hover:block top-full right-0 bg-white/90 dark:bg-gray-800 shadow-lg w-60 rounded-md p-2 space-y-2 z-50 opacity-0 group-hover:opacity-100 transition-all duration-200">
-                  <li>
-                    <Link
-                      href="/projects"
-                      className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
-                    >
-                      Projects
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/project-gallery"
-                      className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
-                    >
-                      Gallery
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/contact"
-                      className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
-                    >
-                      Contact
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/career"
-                      className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
-                    >
-                      Career
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/new-blog"
-                      className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
-                    >
-                      New/Blog
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/sustainability"
-                      className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
-                    >
-                      Sustainability
-                    </Link>
-                  </li>
+                {/* Dropdown */}
+                <ul
+                  className="absolute hidden group-hover:block top-full right-0 
+               bg-white/90 dark:bg-gray-800 backdrop-blur-md 
+               border border-gray-200 dark:border-gray-700
+               shadow-lg w-56 rounded-xl p-2 space-y-1 z-50 
+               opacity-0 group-hover:opacity-100 
+               transition-all duration-300 ease-in-out"
+                >
+                  {[
+                    { href: "/projects", label: "Projects" },
+                    { href: "/project-gallery", label: "Gallery" },
+                    { href: "/contact", label: "Contact" },
+                    { href: "/career", label: "Career" },
+                    { href: "/new-blog", label: "News / Blog" },
+                    { href: "/sustainability", label: "Sustainability" },
+                  ].map((item, idx) => (
+                    <li key={idx}>
+                      <Link
+                        href={item.href}
+                        className="block px-3 py-2 rounded-md text-gray-700 dark:text-gray-200 
+                     hover:bg-red-50 dark:hover:bg-gray-700 
+                     hover:text-red-600 transition"
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </li>
 
