@@ -1,14 +1,12 @@
 'use client';
+
 import Image from 'next/image';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 
 const projects = [
-  {
-    title: '220/132kV Substation Aux Systems',
-    img: '/images/projects/em-substation.jpg',
-  },
-  { title: 'Industrial HVAC & Cleanroom', img: '/images/projects/em-hvac.jpg' },
-  { title: 'Integrated Fire & BMS', img: '/images/projects/em-bms.jpg' },
+  { title: '220/132kV Substation Aux Systems', img: '/electroCard1.jpg' },
+  { title: 'Industrial HVAC & Cleanroom', img: '/electroCard2.jpg' },
+  { title: 'Integrated Fire & BMS', img: '/electroCard3.jpg' },
 ];
 
 export default function ProjectsShowcase() {
