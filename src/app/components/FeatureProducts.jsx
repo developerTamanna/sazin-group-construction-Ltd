@@ -14,26 +14,26 @@ const FeatureProducts = () => {
   const swiperRef = useRef(null);
 
   const products = [
-    { id: 1, title: "Tools & Machineries", img: "/fullface.jpg" },
-    { id: 2, title: "Copper, Insulation", img: "/helmet.jpg" },
-    { id: 3, title: "Make to Order", img: "/safety.jpg" },
-    { id: 4, title: "Others", img: "/helmet1.jpg" },
-    { id: 5, title: "Extra Product", img: "/safety2.webp" },
-    { id: 6, title: "New Product", img: "/fullface.jpg" },
-    { id: 7, title: "Another Product", img: "/helmet.jpg" },
-    { id: 8, title: "Special Item", img: "/safety.jpg" },
-    { id: 9, title: "Machinery", img: "/fullface.jpg" },
-    { id: 10, title: "Equipment", img: "/fullface.jpg" },
-    { id: 11, title: "Tools & Machineries", img: "/fullface.jpg" },
-    { id: 12, title: "Copper, Insulation", img: "/fullface.jpg" },
-    { id: 13, title: "Make to Order", img: "/helmet.jpg" },
-    { id: 14, title: "Others", img: "/fullface.jpg" },
-    { id: 15, title: "Extra Product", img: "/helmet.jpg" },
-    { id: 16, title: "New Product", img: "/safety.jpg" },
-    { id: 17, title: "Another Product", img: "/helmet.jpg" },
-    { id: 18, title: "Special Item", img: "/fullface.jpg" },
-    { id: 19, title: "Machinery", img: "/fullface.jpg" },
-    { id: 20, title: "Equipment", img: "/safety.jpg" },
+    { id: 1, title: "Tools & Machineries", desc: "Tools & Machineries", img: "/electro.jpg" },
+    { id: 2, title: "Copper, Insulation", desc: "Tools & Machineries", img: "/openface.jpg" },
+    { id: 3, title: "Make to Order", desc: "Tools & Machineries", img: "/safety.jpg" },
+    { id: 4, title: "Others", desc: "Tools & Machineries", img: "/helmet1.jpg" },
+    { id: 5, title: "Extra Product", desc: "Tools & Machineries", img: "/safety2.webp" },
+    { id: 6, title: "New Product", desc: "Tools & Machineries", img: "/epc2.avif" },
+    { id: 7, title: "Another Product", desc: "Tools & Machineries", img: "/helmet.jpg" },
+    { id: 8, title: "Special Item", desc: "Tools & Machineries", img: "/civil3.jpg" },
+    { id: 9, title: "Machinery", desc: "Tools & Machineries", img: "/fullface.jpg" },
+    { id: 10, title: "Equipment", desc: "Tools & Machineries", img: "/epc1.jpg" },
+    { id: 11, title: "Tools & Machineries", desc: "Tools & Machineries", img: "/epc3.jpg" },
+    { id: 12, title: "Copper, Insulation", desc: "Tools & Machineries", img: "/fullface.jpg" },
+    { id: 13, title: "Make to Order", desc: "Tools & Machineries", img: "/helmet.jpg" },
+    { id: 14, title: "Others", desc: "Tools & Machineries", img: "/helmet_.jpg" },
+    { id: 15, title: "Extra Product", desc: "Tools & Machineries", img: "/electroCard3.jpg" },
+    { id: 16, title: "New Product", desc: "Tools & Machineries", img: "/safety.jpg" },
+    { id: 17, title: "Another Product", desc: "Tools & Machineries", img: "/civil2.jpg" },
+    { id: 18, title: "Special Item", desc: "Tools & Machineries", img: "/electroCard2.jpg" },
+    { id: 19, title: "Machinery", desc: "Tools & Machineries", img: "/electroCard1.jpg" },
+    { id: 20, title: "Equipment", desc: "Tools & Machineries", img: "/helmet.webp" },
   ];
 
   return (
@@ -73,15 +73,18 @@ const FeatureProducts = () => {
         >
           {products.map((product) => (
             <SwiperSlide key={product.id}>
-              <div className="bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+              <div className="bg-gray-50 dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
                 <img
                   src={product.img}
                   alt={product.title}
                   className="w-full h-40 object-cover"
                 />
                 <div className="p-4">
-                  <h3 className="text-lg font-semibold dark:text-white">
+                  <h3 className="text-gray-500 dark:text-white">
                     {product.title}
+                  </h3>
+                  <h3 className="text-base font-bold dark:text-white">
+                    {product.desc}
                   </h3>
                 </div>
               </div>
