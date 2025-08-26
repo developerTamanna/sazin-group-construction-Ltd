@@ -57,10 +57,10 @@ const timeline = [
 export default function Timeline() {
   return (
     <section className="bg-white dark:bg-neutral-950 py-14 px-4 md:px-8">
-      <h2 className="text-3xl md:text-4xl font-extrabold text-center text-red-600">
+      <h2 className="text-3xl md:text-4xl font-bold text-center text-red-600">
         20 Years of Excellence
       </h2>
-      <p className="text-center text-neutral-600 dark:text-neutral-400 mt-2">
+      <p className="text-center text-neutral-600 text-xl dark:text-neutral-400 mt-2">
         Our Story
       </p>
 

@@ -3,19 +3,19 @@ const leaders = [
     name: "Engr. Md. Rahman",
     role: "Managing Director",
     bio: "With 20+ years in civil & EPC projects, he ensures strategic vision and excellence.",
-    img: "/images/leaders/md.jpg",
+    img: "/Rahman.jpg",
   },
   {
     name: "Engr. Fatema Akter",
     role: "Director (Engineering)",
     bio: "Leads technical teams and drives innovation in electro-mechanical works.",
-    img: "/images/leaders/eng.jpg",
+    img: "/farjana.jpeg",
   },
   {
     name: "Mr. Kabir Hossain",
     role: "Chief Financial Officer",
     bio: "Expert in financial management, ensuring stability and sustainable growth.",
-    img: "/images/leaders/cfo.jpg",
+    img: "/Hossain.avif",
   },
 ];
 
@@ -24,7 +24,7 @@ import Image from "next/image";
 export default function Profiles() {
   return (
     <section className="bg-white dark:bg-neutral-950 py-16 px-6 lg:px-8">
-      <h2 className="text-3xl font-bold text-center">Our Leadership Team</h2>
+      <h2 className="text-3xl font-semi-bold text-center dark:text-white">Our <span className="text-red-600">Leadership Team</span></h2>
       <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {leaders.map((leader) => (
           <div

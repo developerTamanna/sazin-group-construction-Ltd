@@ -52,7 +52,7 @@ export default function HomePage() {
           <h1 className="text-2xl font-bold tracking-tight sm:text-3xl md:text-5xl">
             Building the Future with Excellence Since 2007
           </h1>
-          <p className="mt-6 text-xl leading-7 text-neutral-500 sm:text-lg sm:leading-8 max-w-3xl mx-auto">
+          <p className="mt-6 text-xl leading-7 text-neutral-500 sm:text-lg sm:leading-8 max-w-3xl mx-auto dark:text-gray-400">
             Delivering world-class civil, electro-mechanical, and turnkey
             engineering solutions with reliability, safety, and innovation.
           </p>
@@ -90,7 +90,7 @@ export default function HomePage() {
               Who We Are
             </h2>
 
-            <p className="mt-4 text-xl leading-7 text-neutral-500 dark:text-neutral-300 sm:text-lg sm:leading-8">
+            <p className="mt-4 text-xl leading-7 text-neutral-500 dark:text-neutral-400 sm:text-lg sm:leading-8">
               Sazin Construction Ltd. is a trusted one-stop engineering and
               construction company in Bangladesh, established in 2007. We
               specialize in civil construction, electro-mechanical works, EPC,
@@ -104,7 +104,7 @@ export default function HomePage() {
               <a
                 href="/about"
                 aria-label="Learn more about Sazin Construction"
-                className="inline-flex items-center justify-center text-red-600 text-base font-semi-bold transition hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 dark:focus:ring-offset-neutral-900"
+                className="inline-flex items-center justify-center text-red-600 text-base font-semi-bold transition hover:text-red-500 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 dark:focus:ring-offset-neutral-900"
               >
                 Learn More About Us →
               </a>

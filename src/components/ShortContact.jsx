@@ -1,6 +1,6 @@
 export default function ShortContact({header,desc}) {
   return (
-    <section className="bg-white py-16 px-4 dark:bg-black ">
+    <section className="bg-white py-16 px-4 dark:bg-neutral-950 ">
       <div className="max-w-4xl mx-auto text-center text-gray-700">
         {/* Title */}
         <h2 className="text-3xl md:text-4xl font-semi-bold dark:text-white">
