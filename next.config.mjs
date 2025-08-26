@@ -5,6 +5,7 @@ const nextConfig = {
      domains: ["images.unsplash.com"], // ✅ Unsplash allow করলাম
   },
   output: 'export',
+  trailingSlash: true
 };
 
 export default nextConfig;
