@@ -1,8 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
       images: {
-    domains: ["images.unsplash.com"], // ✅ Unsplash allow করলাম
+     unoptimized: true,
+     domains: ["images.unsplash.com"], // ✅ Unsplash allow করলাম
   },
+  output: 'export',
+  trailingSlash: true
 };
 
 export default nextConfig;

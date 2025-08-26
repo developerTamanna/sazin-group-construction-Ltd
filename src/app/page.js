@@ -1,51 +1,36 @@
-import ShortContact from '../components/ShortContact';
-import Achievement from './components/Achievement';
-import Banner from './components/Banner';
-import FeatureProducts from './components/FeatureProducts';
-import LatestNews from './components/LatestNews';
-import AboutSnapet from './components/AboutSnapet';
-import Services from './components/Service';
-import Projects from './components/Projects';
-import Equipment from './components/Equipments';
-import Certificates from './components/Certificates';
-import CallToAction from './components/CallToAction';
-import Testimonial from './components/Clients';
-import Team from './components/Team';
-import WhyChooseUs from './components/WhyChoose';
+import dynamic from "next/dynamic";
+import Banner from "./components/Banner";
+import FeatureProducts from "./components/FeatureProducts";
+import AboutSnapet from "./components/AboutSnapet";
+import Services from "./components/Service";
+import LazyLoadDynamic from "@/utils/LazyLoadDynamic";
 
+// ✅ Direct dynamic imports
+const Projects = dynamic(() => import("./components/Projects"));
+const Equipments = dynamic(() => import("./components/Equipments"));
+const Clients = dynamic(() => import("./components/Clients"));
+const Certificates = dynamic(() => import("./components/Certificates"));
+const LatestNews = dynamic(() => import("./components/LatestNews"));
+const Achievement = dynamic(() => import("./components/Achievement"));
+const CallToAction = dynamic(() => import("./components/CallToAction"));
 
-
-
-export const metadata = {
-  title: "Sazin Construction Ltd. | Home",
-  description:
-    "Sazin Construction Ltd. – Civil Construction, Electro-Mechanical, EPC, IT-enabled and Fire Protection services across Bangladesh since 2007.",
-};
 export default function Home() {
   return (
     <main>
+      {/* Above-the-fold */}
+      <Banner />
+      <FeatureProducts />
+      <AboutSnapet />
+      <Services />
 
-        <Banner></Banner>
-        <FeatureProducts></FeatureProducts>
-         <AboutSnapet></AboutSnapet>
-        <Services></Services>
-        <Projects></Projects>
-        <Equipment></Equipment>
-        {/* <Team></Team> */}
-
-
-
-
-        <Testimonial></Testimonial>
-
-        {/* <WhyChooseUs></WhyChooseUs> */}
-
-        
-        <Certificates></Certificates>
-        <LatestNews></LatestNews>
-        <Achievement></Achievement>
-        <CallToAction></CallToAction>
-
+      {/* Lazy load below-the-fold */}
+      <Projects />
+      <Equipments />
+      <Clients />
+      <Certificates />
+      <LatestNews />
+      <Achievement />
+      <CallToAction />
     </main>
   );
 }

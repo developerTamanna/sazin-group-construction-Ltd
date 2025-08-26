@@ -1,33 +1,56 @@
 'use client';
 import { motion } from 'framer-motion';
 
-export default function HeroHistory() {
+export default function HeroHistory({ desc }) {
   const header = 'Our Company Journey';
-  const desc =
-    'Since 2007, Sazin Construction Ltd. has been building Bangladesh’s future through civil, electro-mechanical, and turnkey engineering excellence.';
+
+  const letterAnimation = {
+    hidden: { y: -30, opacity: 0 },
+    visible: (i) => ({
+      y: 0,
+      opacity: 1,
+      transition: { delay: i * 0.05, type: 'spring', stiffness: 80 },
+    }),
+  };
 
   return (
-    <section className="relative bg-gradient-to-b from-red-50 via-white to-white dark:from-neutral-900 dark:via-neutral-950 dark:to-neutral-950 py-20 px-6 lg:px-8">
-      {/* Background pattern */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-20 -left-20 w-72 h-72 bg-red-200 dark:bg-red-500/10 rounded-full blur-3xl opacity-40"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-red-100 dark:bg-red-500/5 rounded-full blur-3xl opacity-40"></div>
-      </div>
+    <section className="relative flex items-center justify-start bg-black overflow-hidden py-20 md:py-28">
+      {/* Right side red diagonal */}
+      <div className="absolute top-0 right-0 h-full w-[20%] md:w-[25%] bg-red-600 transform -skew-x-12 origin-top-right"></div>
 
-      {/* Content */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        className="relative max-w-4xl mx-auto text-center"
-      >
-        <h1 className="text-3xl md:text-4xl font-semibold text-neutral-900 dark:text-white">
-          {header}
-        </h1>
-        <p className="mt-6 text-xl md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          {desc}
-        </p>
-      </motion.div>
+      <div className="relative z-10 pl-6 md:pl-16 max-w-4xl text-left">
+        {/* Header */}
+        <motion.h1
+          className="text-3xl md:text-4xl font-semibold text-white flex flex-wrap gap-1"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          {header.split('').map((char, i) => (
+            <motion.span
+              key={i}
+              custom={i}
+              variants={letterAnimation}
+              initial="hidden"
+              animate="visible"
+            >
+              {char}
+            </motion.span>
+          ))}
+        </motion.h1>
+
+        {/* Description */}
+        {desc && (
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.7 }}
+            className="mt-6 text-white text-base md:text-lg leading-relaxed max-w-2xl"
+          >
+            {desc}
+          </motion.p>
+        )}
+      </div>
     </section>
   );
 }
