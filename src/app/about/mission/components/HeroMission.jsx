@@ -1,46 +1,50 @@
 'use client';
+import { motion } from 'framer-motion';
 
 export default function HeroMission() {
+  const blocks = [
+    { title: "OUR VISION", color: "text-white" },
+    { title: "& MISSION", color: "text-black" },
+  ];
+
+  const letterAnimation = {
+    hidden: { y: -30, opacity: 0 },
+    visible: (i) => ({
+      y: 0,
+      opacity: 1,
+      transition: { delay: i * 0.05, type: "spring", stiffness: 80 },
+    }),
+  };
+
   return (
-    <section className="relative py-28 px-6 md:px-12 text-center">
-      {/* Background Image */}
-      <img
-        src="/pp.jpg"
-        alt="Mission Background"
-        className="w-full h-full object-cover absolute inset-0 z-0"
-      />
+    <section className="relative flex items-center justify-start bg-red-600 overflow-hidden py-20 md:py-28">
+      {/* Right side black diagonal */}
+      <div className="absolute top-0 right-0 h-full w-[20%] md:w-[25%] bg-black transform -skew-x-12 origin-top-right"></div>
 
-      {/* Circular Overlay */}
-      <div className="relative z-10 flex flex-col items-center">
-        <div
-          className="w-[300px] h-[300px] md:w-[400px] md:h-[400px]
-                     border-2 border-red-600 dark:border-red-600
-                     rounded-full flex flex-col justify-center items-center
-                     p-6 text-center
-                     bg-white/70 dark:bg-black/70
-                     shadow-lg backdrop-blur-sm transition-all duration-500"
-        >
-          {/* Vision Block */}
-          <h2 className="text-red-600 dark:text-red-600 font-extrabold text-lg md:text-xl mb-3">
-            OUR VISION
-          </h2>
-          <p className="text-gray-900 dark:text-gray-100 text-sm md:text-base leading-relaxed">
-            To be a recognized leader in engineering and construction,
-            delivering excellence in every project.
-          </p>
-
-          {/* Divider */}
-          <div className="w-16 h-[2px] bg-red-600 dark:bg-red-600 my-4 rounded-full"></div>
-
-          {/* Mission Block */}
-          <h2 className="text-red-600 dark:text-red-600 font-extrabold text-lg md:text-xl mb-3">
-            OUR MISSION
-          </h2>
-          <p className="text-gray-900 dark:text-gray-100 text-sm md:text-base leading-relaxed">
-            To provide sustainable and innovative construction solutions that
-            exceed expectations and build trust.
-          </p>
-        </div>
+      {/* Title row */}
+      <div className="relative z-10 pl-6 md:pl-12 flex flex-wrap items-center">
+        {blocks.map((block, index) => (
+          <motion.h2
+            key={index}
+            initial={{ x: -50, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.2, duration: 0.6, type: "spring", stiffness: 80 }}
+            className={`font-semi-bold text-2xl md:text-4xl ${block.color} flex flex-wrap pl-16`}
+          >
+            {block.title.split("").map((char, i) => (
+              <motion.span
+                key={i}
+                custom={i + index * 10}
+                initial={{ y: -30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: i * 0.05 }}
+              >
+                {char}
+              </motion.span>
+            ))}
+          </motion.h2>
+        ))}
       </div>
     </section>
   );
