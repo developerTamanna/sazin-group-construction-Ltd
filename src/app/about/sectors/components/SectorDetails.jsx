@@ -1,7 +1,7 @@
 export default function SectorDetails() {
   return (
-    <section className="bg-neutral-50 dark:bg-neutral-900 py-16 px-6 lg:px-8">
-      <h2 className="text-3xl font-bold text-center text-red-600">Sector Highlights</h2>
+    <section className="bg-neutral-50 dark:bg-neutral-950 py-16 px-6 lg:px-8">
+      <h2 className="text-4xl font-semi-bold text-center dark:text-white">Sector <span className="text-red-600">Highlights</span></h2>
       <div className="mt-10 max-w-4xl mx-auto space-y-6 text-neutral-700 dark:text-neutral-300">
         <p>
           From large-scale civil infrastructure to cutting-edge IT-enabled

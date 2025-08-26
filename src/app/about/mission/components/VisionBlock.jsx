@@ -3,8 +3,8 @@ export default function VisionBlock() {
     <section className="relative bg-white dark:bg-neutral-950 py-20 px-6 md:px-12 lg:px-20 text-center overflow-hidden">
       <div className="max-w-4xl mx-auto">
         {/* Heading */}
-        <h2 className="text-3xl md:text-4xl font-semi-bold text-red-600 dark:text-red-600 tracking-wide">
-          Our Vision
+        <h2 className="text-3xl md:text-4xl font-semi-bold dark:text-white tracking-wide">
+          Our <span className="text-red-600">Vision</span>
         </h2>
 
         {/* Divider */}

@@ -55,8 +55,8 @@ export default function CoreValues() {
   return (
     <section className="bg-white dark:bg-neutral-950 py-20 px-6 lg:px-8 text-center">
       {/* Heading */}
-      <h2 className="text-3xl md:text-4xl font-semi-bold text-red-600 dark:text-red-600">
-        Our Core Values
+      <h2 className="text-3xl md:text-4xl font-semi-bold dark:text-white">
+        Our <span className='text-red-600'>Core Values</span>
       </h2>
       <div className="w-20 h-1 bg-red-600 dark:bg-red-600 mx-auto mt-4 rounded-full"></div>
 
