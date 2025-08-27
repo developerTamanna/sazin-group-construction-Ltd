@@ -21,7 +21,7 @@ export default function ServicesSafety() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="text-3xl font-bold text-center"
+        className="text-3xl font-bold text-center text-neutral-900 dark:text-neutral-100"
       >
         Our <span className="text-red-600">Safety & Security</span> Services
       </motion.h2>
