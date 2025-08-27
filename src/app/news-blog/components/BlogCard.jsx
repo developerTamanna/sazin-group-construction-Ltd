@@ -20,11 +20,19 @@ export default function BlogCard({ post }) {
         </div>
         <h3 className="text-xl font-semibold mt-2">{post.title}</h3>
         <p className="mt-2 text-neutral-600 dark:text-neutral-300">
-          {expanded ? post.content : post.content.slice(0, 100) + "..."}
+          {expanded ? (
+            post.content
+          ) : (
+            post.content.slice(0, 100) +
+            (post.content.length > 100 ? "..." : "")
+          )}
         </p>
         <button
           onClick={() => setExpanded(!expanded)}
-          className="mt-4 inline-block text-red-600 font-semibold hover:underline transition"
+          disabled={post.content.length <= 100}
+          className={`mt-4 inline-block text-red-600 font-semibold ${
+            post.content.length <= 100 ? "cursor-not-allowed" : "hover:underline"
+          } transition`}
         >
           {expanded ? "Show Less" : "Read More"}
         </button>
