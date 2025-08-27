@@ -30,7 +30,7 @@ export default function Highlights() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="text-3xl font-bold text-center"
+        className="text-3xl font-bold text-center text-gray-900 dark:text-gray-100"
       >
         Why Choose Our <span className="text-red-600">Safety Solutions</span>
       </motion.h2>
