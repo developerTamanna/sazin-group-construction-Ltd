@@ -29,7 +29,7 @@ export default function Navbar() {
   const businessRef = useRef(null);
 
   const links = [
-    { name: "Projects", href: "/projects" },
+    { name: "Projects", href: "/Projects" },
     { name: "Gallery", href: "/project-gallery" },
     { name: "Contact", href: "/contact" },
     { name: "Career", href: "/career" },
@@ -306,7 +306,7 @@ export default function Navbar() {
                transition-all duration-300 ease-in-out"
                 >
                   {[
-                    { href: "/projects", label: "Projects" },
+                    { href: "/Projects", label: "Projects" },
                     { href: "/project-gallery", label: "Gallery" },
                     { href: "/contact", label: "Contact" },
                     { href: "/career", label: "Career" },
