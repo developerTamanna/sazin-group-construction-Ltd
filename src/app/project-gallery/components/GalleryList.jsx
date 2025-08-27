@@ -75,7 +75,7 @@ export default function GalleryList() {
 
       <div ref={loadMoreRef} className="h-12 flex justify-center items-center">
         {isFetchingNextPage && <p className="text-red-600">Loading more...</p>}
-        {!hasNextPage && <p className="text-gray-500">🎉 End of Gallery</p>}
+        {!hasNextPage && <p className="text-gray-600 text-base pt-5 dark:text-gray-200">🎉 End of Gallery</p>}
       </div>
 
       <GalleryLightbox

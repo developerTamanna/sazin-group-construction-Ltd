@@ -7,9 +7,9 @@ export const metadata = {
 
 export default function ProjectGalleryPage() {
   return (
-    <main className="bg-white dark:bg-neutral-950 min-h-screen py-16 px-6 lg:px-8">
-      <h1 className="text-4xl font-bold text-center text-red-600 mb-10">
-        Project Gallery
+    <main className="bg-white dark:bg-black/70 min-h-screen py-16 px-6 lg:px-8">
+      <h1 className="text-4xl font-semi-bold text-center text-black dark:text-white mb-10">
+        Project <span className="text-red-600">Gallery</span>
       </h1>
       <GalleryList />
     </main>
