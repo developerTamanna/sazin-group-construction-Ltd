@@ -3,6 +3,7 @@ import './globals.css';
 import Footer from '@/components/Footer';
 import ScrollToTop from '../utils/ScrollToTop';
 import { Montserrat } from 'next/font/google';
+import Providers from '../utils/QueryProviders';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -25,10 +26,12 @@ export default function RootLayout({ children }) {
 
 {/* className="w-full mx-auto max-w-[100rem] relative" */} 
       <body> 
+        <Providers>
         <ScrollToTop />
         <Navbar/>
         {children}
         <Footer/>
+        </Providers>
       </body>
     </html>
   );
