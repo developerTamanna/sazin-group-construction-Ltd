@@ -17,8 +17,8 @@ export default function GalleryLightbox({ project, onClose, onPrev, onNext }) {
       <button onClick={onClose} className="absolute top-4 right-6 cursor-pointer text-red-800 text-2xl">
         <FaTimes />
       </button>
-      <button onClick={onPrev} className="absolute left-6 text-black font-bold text-4xl cursor-pointer">‹</button>
-      <div className="w-full max-w-[85rem] object-cover h-full ">
+      <button onClick={onPrev} className="absolute left-6 text-white bg-black/40 font-bold text-4xl cursor-pointer">‹</button>
+      <div className="w-full flex items-center justify-center max-w-[85rem] object-cover h-full ">
         <Image
           src={project.image}
           alt={project.title}
@@ -31,7 +31,7 @@ export default function GalleryLightbox({ project, onClose, onPrev, onNext }) {
           <p className="font-bold">{project.category} · {project.year}</p>
         </div>
       </div>
-      <button onClick={onNext} className="absolute right-6 text-black font-bold text-4xl cursor-pointer">›</button>
+      <button onClick={onNext} className="absolute right-6 text-white bg-black/40 font-bold text-4xl cursor-pointer">›</button>
     </div>
   );
 }
