@@ -9,6 +9,8 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.85.5",
+    "@tanstack/react-query-devtools": "^5.85.5",
     "framer-motion": "^12.23.12",
     "localforage": "^1.10.0",
     "lucide-react": "^0.540.0",

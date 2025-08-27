@@ -310,7 +310,7 @@ export default function Navbar() {
                     { href: "/project-gallery", label: "Gallery" },
                     { href: "/contact", label: "Contact" },
                     { href: "/career", label: "Career" },
-                    { href: "/new-blog", label: "News / Blog" },
+                    { href: "/news-blog", label: "News / Blog" },
                     { href: "/sustainability", label: "Sustainability" },
                   ].map((item, idx) => (
                     <li key={idx}>
