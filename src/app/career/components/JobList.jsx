@@ -3,6 +3,7 @@ import { useState } from "react";
 import { jobData } from "./jobData";
 import JobCard from "./JobCard";
 import ApplyForm from "./ApplyForm";
+import { FaTimes } from "react-icons/fa";
 
 export default function JobList() {
   const [selectedJob, setSelectedJob] = useState(null);
@@ -18,6 +19,9 @@ export default function JobList() {
           <h2 className="text-2xl font-bold text-center text-red-600 mb-6">
             Apply for {selectedJob.title}
           </h2>
+         <button onClick={() => setSelectedJob(null)} className="absolute top-4 right-6 cursor-pointer text-red-800 text-2xl">
+                <FaTimes />
+            </button>
           <ApplyForm job={selectedJob} />
         </div>
       )}
