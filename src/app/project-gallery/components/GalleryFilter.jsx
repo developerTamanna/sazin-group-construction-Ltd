@@ -1,7 +1,7 @@
 "use client";
 export default function GalleryFilter({ categories, active, setActive }) {
   return (
-    <div className="flex justify-center space-x-4 mb-8 flex-wrap">
+    <div className="flex md:justify-center justify-start gap-4  mb-8 flex-wrap">
       {["All", ...categories].map((cat) => (
         <button
           key={cat}
