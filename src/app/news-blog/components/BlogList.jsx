@@ -4,9 +4,8 @@ import { useEffect, useRef } from "react";
 import { blogData } from "./blogData";
 import BlogCard from "./BlogCard";
 
-// লোকাল fetch simulate
 async function fetchBlogs({ pageParam = 1 }) {
-  const limit = 2; // প্রতি পেজে কতটা blog দেখাবে
+  const limit = 2;
   const start = (pageParam - 1) * limit;
   const end = start + limit;
 
@@ -34,7 +33,6 @@ export default function BlogList() {
       lastPage.hasMore ? pages.length + 1 : undefined,
   });
 
-  // Intersection Observer (scroll এর পরিবর্তে)
   useEffect(() => {
     if (!loadMoreRef.current) return;
 
@@ -44,7 +42,7 @@ export default function BlogList() {
           fetchNextPage();
         }
       },
-      { rootMargin: "200px" } // 200px আগে detect করবে
+      { rootMargin: "200px" }
     );
 
     observer.observe(loadMoreRef.current);
@@ -68,7 +66,7 @@ export default function BlogList() {
           <p className="text-center text-red-600">Loading more...</p>
         )}
         {!hasNextPage && (
-          <p className="text-center text-neutral-500 mt-4">
+          <p className="text-center text-base text-neutral-700 dark:text-neutral-300 mt-4">
             🎉 You have reached the end!
           </p>
         )}

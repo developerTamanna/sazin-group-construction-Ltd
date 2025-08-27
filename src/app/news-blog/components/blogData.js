@@ -6,7 +6,7 @@ export const blogData = [
     title: "Mega Project Handover",
     date: "2025-08-01",
     author: "Admin",
-    image: "/images/blog/blog1.jpg",
+    image: "/News1.jpg",
     content:
       "Sazin Construction successfully handed over a major industrial project with state-of-the-art civil and electro-mechanical facilities.",
   },
@@ -15,7 +15,7 @@ export const blogData = [
     title: "Fire Safety Training Session",
     date: "2025-07-20",
     author: "Safety Team",
-    image: "/images/blog/blog2.jpg",
+    image: "/News2.jpg",
     content:
       "A hands-on fire safety training was conducted including fire extinguisher drills, evacuation procedures, and awareness sessions.",
   },
@@ -24,7 +24,7 @@ export const blogData = [
     title: "EPC Contract Awarded",
     date: "2025-07-10",
     author: "Projects Dept.",
-    image: "/images/blog/blog3.jpg",
+    image: "/News1.jpg",
     content:
       "We have been awarded a new EPC contract covering civil & electrical works, including design, procurement, and commissioning.",
   },
@@ -33,7 +33,7 @@ export const blogData = [
     title: "Agro & Fisheries Expansion",
     date: "2025-07-01",
     author: "Agro Team",
-    image: "/images/blog/blog4.jpg",
+    image: "/News2.jpg",
     content:
       "Sazin launched a new agro & fisheries project expanding operations to meet the growing demand in Bangladesh.",
   },
@@ -42,7 +42,7 @@ export const blogData = [
     title: "Safety Systems Upgrade",
     date: "2025-06-25",
     author: "Tech Dept.",
-    image: "/images/blog/blog5.jpg",
+    image: "/News2.jpg",
     content:
       "Upgrading safety & security systems across facilities with advanced surveillance and monitoring solutions.",
   },
@@ -51,7 +51,7 @@ export const blogData = [
     title: "Green Energy Initiatives",
     date: "2025-06-15",
     author: "Energy Dept.",
-    image: "/images/blog/blog6.jpg",
+    image: "/News1.jpg",
     content:
       "Launching solar-powered solutions and hybrid systems to reduce carbon footprint in industrial projects.",
   },
@@ -60,7 +60,7 @@ export const blogData = [
     title: "New HQ Office Opened",
     date: "2025-06-05",
     author: "Admin",
-    image: "/images/blog/blog7.jpg",
+    image: "/News2.jpg",
     content:
       "Sazin Construction inaugurated its new headquarters with modern facilities and eco-friendly design.",
   },
@@ -69,7 +69,7 @@ export const blogData = [
     title: "Digital Transformation Drive",
     date: "2025-05-25",
     author: "IT Dept.",
-    image: "/images/blog/blog8.jpg",
+    image: "/News1.jpg",
     content:
       "Company-wide ERP system implementation to improve project monitoring and client services.",
   },
@@ -78,7 +78,7 @@ export const blogData = [
     title: "CSR – School Renovation",
     date: "2025-05-15",
     author: "CSR Team",
-    image: "/images/blog/blog9.jpg",
+    image: "/News2.jpg",
     content:
       "Renovated a rural school with new classrooms, sanitation, and a digital learning lab as part of CSR initiatives.",
   },
@@ -87,7 +87,7 @@ export const blogData = [
     title: "Partnership with Global EPC Firm",
     date: "2025-05-01",
     author: "Management",
-    image: "/images/blog/blog10.jpg",
+    image: "/News1.jpg",
     content:
       "Signed a partnership agreement with an international EPC firm to enhance expertise and capacity.",
   },
@@ -96,7 +96,7 @@ export const blogData = [
     title: "New Safety Equipment Delivered",
     date: "2025-04-20",
     author: "Logistics",
-    image: "/images/blog/blog11.jpg",
+    image: "/News2.jpg",
     content:
       "Received a new fleet of fire trucks, safety gear, and advanced monitoring devices for project sites.",
   },
@@ -105,7 +105,7 @@ export const blogData = [
     title: "Women in Construction Program",
     date: "2025-04-10",
     author: "HR Dept.",
-    image: "/images/blog/blog12.jpg",
+    image: "/News1.jpg",
     content:
       "Launched an initiative to encourage female participation in engineering and construction roles.",
   },
@@ -114,7 +114,7 @@ export const blogData = [
     title: "Smart City Solutions",
     date: "2025-03-28",
     author: "Innovation Team",
-    image: "/images/blog/blog13.jpg",
+    image: "/News2.jpg",
     content:
       "Developing IoT-based smart lighting, traffic control, and surveillance systems for urban projects.",
   },
@@ -123,7 +123,7 @@ export const blogData = [
     title: "National Award for Safety",
     date: "2025-03-15",
     author: "Safety Dept.",
-    image: "/images/blog/blog14.jpg",
+    image: "/News1.jpg",
     content:
       "Sazin Construction received a national award for outstanding commitment to workplace safety.",
   },
@@ -132,7 +132,7 @@ export const blogData = [
     title: "Training Collaboration with BUET",
     date: "2025-03-01",
     author: "Training Dept.",
-    image: "/images/blog/blog15.jpg",
+    image: "/News2.jpg",
     content:
       "Partnered with BUET to provide advanced training programs on construction technology and safety.",
   },

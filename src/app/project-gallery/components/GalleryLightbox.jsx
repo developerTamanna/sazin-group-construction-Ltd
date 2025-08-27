@@ -13,25 +13,25 @@ export default function GalleryLightbox({ project, onClose, onPrev, onNext }) {
   if (!project) return null;
 
   return (
-    <div className="fixed z-[999] inset-0 top-20 bg-black bg-opacity-90 flex items-center justify-center ">
+    <div className="fixed z-[999] inset-0 rounded-lg top-20 bg-black bg-opacity-90 flex items-center justify-center ">
       <button onClick={onClose} className="absolute top-4 right-6 cursor-pointer text-red-800 text-2xl">
         <FaTimes />
       </button>
-      <button onClick={onPrev} className="absolute left-6 text-white text-3xl">‹</button>
-      <div className="max-w-4xl p-4">
+      <button onClick={onPrev} className="absolute left-6 text-black font-bold text-4xl cursor-pointer">‹</button>
+      <div className="w-full max-w-[85rem] object-cover h-full ">
         <Image
           src={project.image}
           alt={project.title}
-          width={1000}
+          width={1366}
           height={700}
-          className="w-full h-auto rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105"
+          className="w-full h-auto rounded-lg shadow-xl  "
         />
-        <div className="text-center mt-4 text-white">
+        <div className="text-center bg-white/40 rounded px-4 py-2 absolute bottom-4 right-1/2 translate-x-1/2 text-black">
           <h2 className="text-xl font-bold">{project.title}</h2>
-          <p>{project.category} · {project.year}</p>
+          <p className="font-bold">{project.category} · {project.year}</p>
         </div>
       </div>
-      <button onClick={onNext} className="absolute right-6 text-white text-3xl">›</button>
+      <button onClick={onNext} className="absolute right-6 text-black font-bold text-4xl cursor-pointer">›</button>
     </div>
   );
 }
