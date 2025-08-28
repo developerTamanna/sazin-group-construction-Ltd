@@ -97,14 +97,14 @@ export default function Certificates() {
       <AnimatePresence>
         {selectedImage && (
           <motion.div
-            className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
+            className="fixed inset-0 top-20 bottom-0 bg-black/70 flex items-center justify-center z-50"
             onClick={() => setSelectedImage(null)}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
             <motion.div
-              className="bg-white dark:bg-neutral-900 p-4 rounded-lg max-w-3xl w-full mx-4"
+              className="bg-white h-full dark:bg-neutral-900 p-4 rounded-lg max-w-3xl w-full mx-4"
               initial={{ scale: 0.7, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.7, opacity: 0 }}
@@ -114,11 +114,11 @@ export default function Certificates() {
               <img
                 src={selectedImage}
                 alt="Certificate"
-                className="w-full rounded-md"
+                className="w-full h-[92%] object-fill rounded-md"
               />
               <button
                 onClick={() => setSelectedImage(null)}
-                className="mt-4 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
+                className="mt-4 px-2 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
               >
                 Close
               </button>

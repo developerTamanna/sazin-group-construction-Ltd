@@ -7,11 +7,9 @@ const page = () => {
   const desc='Partner with Sazin Construction Ltd. for reliability, safety, and excellence.'
   return (
     <header>
-      <div>
         <SmallBanner></SmallBanner>
         <Contact></Contact>
          <ShortContact header={header} desc={desc} />
-      </div>
     </header>
   );
 };

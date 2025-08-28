@@ -50,7 +50,7 @@ export default function HomePage() {
     <main className="relative isolate">
       {/* Hero Section */}
       <section className="relative bg-neutral-50 text-gray-900 dark:bg-neutral-950 dark:text-white">
-        <div className="mx-auto max-w-7xl px-6 py-20 text-center sm:py-28 lg:px-8">
+        <div className="mx-auto max-w-7xl px-6 py-20 text-center sm:py-15 lg:px-8">
           <h1 className="text-2xl font-bold tracking-tight sm:text-3xl md:text-5xl">
             Building the Future with Excellence Since 2007
           </h1>
