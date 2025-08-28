@@ -15,8 +15,8 @@ export default function JobList() {
       ))}
 
       {selectedJob && (
-        <div className=" fixed z-[999] top-20 bottom-0 left-1/2 transform -translate-x-1/2  bg-white dark:bg-black md:p-8 p-2 rounded-xl shadow-2xl w-full max-w-xl overflow-auto">
-          <h2 className="text-2xl font-bold text-center text-red-600 mb-6">
+        <div className="myDiv fixed z-[999] top-20 bottom-0 left-1/2 transform -translate-x-1/2  bg-white dark:bg-black md:px-8 px-4 py-8 rounded-xl shadow-2xl w-full max-w-xl overflow-auto">
+          <h2 className="text-2xl font-bold text-center text-red-600 mb-6 ">
             Apply for {selectedJob.title}
           </h2>
          <button onClick={() => setSelectedJob(null)} className="absolute top-4 right-6 cursor-pointer text-red-800 text-2xl">

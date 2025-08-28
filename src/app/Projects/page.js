@@ -1,10 +1,10 @@
 import React from 'react'
-import ProductShowcase from './Components/ProjectShowcase.jsx'
+import ProjectShowcaseInfinity from './Components/ProjectShowcase'
 
 export default function page() {
   return (
     <div>
-      <ProductShowcase></ProductShowcase>
+      <ProjectShowcaseInfinity></ProjectShowcaseInfinity>
     </div>
   )
 }
