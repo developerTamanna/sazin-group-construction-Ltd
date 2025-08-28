@@ -21,7 +21,7 @@ export default function ApplyForm({ job }) {
       className="bg-white dark:bg-neutral-900 p-6 rounded-xl shadow-lg space-y-4"
     >
       <div>
-        <label className="block text-sm font-medium mb-1 text-black dark:text-gray-400">Full Name</label>
+        <label className="block text-sm font-medium mb-1 text-black dark:text-gray-300">Full Name</label>
         <input
           {...register("name", { required: true })}
           className="w-full p-2 border rounded-lg dark:bg-neutral-800 dark:border-gray-600"
@@ -32,7 +32,7 @@ export default function ApplyForm({ job }) {
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-1 text-black dark:text-gray-400">Email</label>
+        <label className="block text-sm font-medium mb-1 text-black dark:text-gray-300">Email</label>
         <input
           type="email"
           {...register("email", { required: true })}
@@ -44,7 +44,7 @@ export default function ApplyForm({ job }) {
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-1 text-black dark:text-gray-400">Phone</label>
+        <label className="block text-sm font-medium mb-1 text-black dark:text-gray-300">Phone</label>
         <input
           type="text"
           {...register("phone", { required: true })}
@@ -56,11 +56,11 @@ export default function ApplyForm({ job }) {
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-1 text-black dark:text-gray-400">Upload CV</label>
+        <label className="block text-sm font-medium mb-1 text-black dark:text-gray-300">Upload CV</label>
         <input
           type="file"
           {...register("cv", { required: true })}
-          className="w-full text-black dark:text-gray-400 cursor-pointer"
+          className="w-full text-black dark:text-gray-300 cursor-pointer"
         />
         {errors.cv && (
           <p className="text-red-500 text-sm">CV upload is required</p>
