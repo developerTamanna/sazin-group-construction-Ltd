@@ -6,7 +6,6 @@ const subCategories = [
       title: "Full Face",
       image:
         "/fullface.jpg",
-
     },
     {
       title: "Modular Face",
@@ -17,6 +16,16 @@ const subCategories = [
       title: "Open Face",
       image:
         "/openface.jpg",
+    },
+    {
+      title: "Half Face",
+      image:
+        "/halfface.jpg",
+    },
+    {
+      title: "Half Face",
+      image:
+        "/halfface.jpg",
     },
     {
       title: "Half Face",

@@ -16,19 +16,20 @@ useEffect(() => {
 
               <Helmetsads />
             </div>
-          <section className="relative z-[50] dark:bg-black/40 pb-16 px-4 lg:px-10 overflow-hidden flex flex-col items-center justify-center w-full"
+          <section className="relative mx-auto z-[50] dark:bg-black/80 pb-16 px-4 lg:px-10 overflow-hidden flex flex-col items-center justify-center w-full"
 
             style={{ marginTop: `-${helmHeight}px`, paddingTop: `${helmHeight/2}px` }}
 
           >
             <AnimatedSection2>
-                <h2 className="text-center w-full text-4xl font-bold text-white mb-12">
-                  DISCOVER OUR CATEGORIES
+                <h2 className="text-center w-full text-2xl md:text-4xl font-semibold text-white mb-12">
+                  DISCOVER <span className="text-red-600">OUR CATEGORIES</span>
                 </h2>
               </AnimatedSection2>
               <AnimatedSection>
                 <Category/>
               </AnimatedSection>
+              <button to="/see_more" className='mt-10 justify-left hover:text-red-600'>See more →</button>
          </section>
    </>
   )
