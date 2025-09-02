@@ -214,7 +214,7 @@ export default function Navbar() {
                       </li>
                       <li>
                         <Link
-                          href="/Product-Base-Services/Agro&Fisheries"
+                          href="/Product-Base-Services/Sky-Helmet&Safety-Accessories"
                           className="block text-gray-800 dark:text-gray-200 hover:text-red-600"
                         >
                           Sazin Agro & Fisheries
@@ -272,7 +272,7 @@ export default function Navbar() {
                       </li>
                       <li>
                         <Link
-                          href="/products/helmet"
+                          href="/Product-Base-Services/Sky-Helmet&Safety-Accessories"
                           className="block text-gray-800 dark:text-gray-200 hover:text-red-600"
                         >
                           Sky Helmet & Safety Accessories
