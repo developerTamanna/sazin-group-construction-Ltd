@@ -72,7 +72,7 @@ const HelmetAndSafetyCard = ({ data }) => {
   };
 
   return (
-    <div className="container mx-auto p-6">
+    <div className="container mx-auto py-22 p-6">
       {/* 🔍 Search + Filter + Sort Controls */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-6">
         <div className="relative w-full md:w-1/3">
