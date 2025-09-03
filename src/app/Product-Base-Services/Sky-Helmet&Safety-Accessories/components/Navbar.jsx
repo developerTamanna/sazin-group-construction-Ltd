@@ -64,7 +64,7 @@ function Navbar() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.25 }}
-                    className="absolute left-0 mt-2 bg-white/90 dark:bg-black text-black dark:text-white shadow-lg rounded-md w-60 z-50"
+                    className="absolute left-0 mt-2 bg-white/90 dark:bg-black text-black dark:text-white shadow-lg rounded-md w-70 z-50"
                   >
                     {item.submenu.map((sub) => (
                       <li key={sub.name}>

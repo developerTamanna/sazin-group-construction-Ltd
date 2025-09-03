@@ -29,7 +29,7 @@ useEffect(() => {
               <AnimatedSection>
                 <Category/>
               </AnimatedSection>
-              <button to="/see_more" className='mt-10 justify-left hover:text-red-600'>See more →</button>
+              <button to="/see_more" className='mt-10 justify-left hover:text-red-600 dark:text-gray-100'>See more →</button>
          </section>
    </>
   )
