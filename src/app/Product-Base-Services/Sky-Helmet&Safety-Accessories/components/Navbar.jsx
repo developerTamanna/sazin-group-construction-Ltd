@@ -1,33 +1,149 @@
-import React from 'react'
-import Link from 'next/link'
- const option=[
-    {
-        name:'Sky Helmet',
-        link:'/Product-Base-Services/Sky-Helmet&Safety-Accessories/Sky-Helmet'
-    },
-    {
-        name:'Safety Accessories',
-        link:'/Product-Base-Services/Sky-Helmet&Safety-Accessories/Safety-Accessories'
-    },
- ]
+"use client";
+import React, { useState } from "react";
+import Link from "next/link";
+import { HiMenu, HiX } from "react-icons/hi";
+import { motion, AnimatePresence } from "framer-motion";
+
+const option = [
+  {
+    name: "Sky Helmet",
+    link: "/Product-Base-Services/Sky-Helmet&Safety-Accessories/Sky-Helmet",
+    submenu: [
+      { name: "Full Face", link: "/Product-Base-Services/Sky-Helmet&Safety-Accessories/Sky-Helmet/Full-Face" },
+      { name: "Modular Face", link: "/Product-Base-Services/Sky-Helmet&Safety-Accessories/Sky-Helmet/Modular-Face" },
+      { name: "Open Face", link: "/Product-Base-Services/Sky-Helmet&Safety-Accessories/Sky-Helmet/Open-Face" },
+      { name: "Half Face", link: "/Product-Base-Services/Sky-Helmet&Safety-Accessories/Sky-Helmet/Half-Face" },
+    ],
+  },
+  {
+    name: "Safety Accessories",
+    link: "/Product-Base-Services/Sky-Helmet&Safety-Accessories/Safety-Accessories",
+    submenu: [
+      { name: "Safety Helmets (Hard Hats)", link: "/Product-Base-Services/Safety-Accessories/Helmets" },
+      { name: "Safety Goggles / Face Shields", link: "/Product-Base-Services/Safety-Accessories/Goggles" },
+      { name: "Ear Plugs / Ear Muffs", link: "/Product-Base-Services/Safety-Accessories/Hearing-Protection" },
+      { name: "Safety Gloves", link: "/Product-Base-Services/Safety-Accessories/Gloves" },
+      { name: "Safety Shoes / Gumboots", link: "/Product-Base-Services/Safety-Accessories/Shoes" },
+      { name: "High-Visibility Safety Vests", link: "/Product-Base-Services/Safety-Accessories/Vests" },
+      { name: "Respirators / Masks", link: "/Product-Base-Services/Safety-Accessories/Masks" },
+      { name: "Coveralls / Suits", link: "/Product-Base-Services/Safety-Accessories/Coverall" },
+      { name: "Fall Protection Harness", link: "/Product-Base-Services/Safety-Accessories/Harness" },
+      { name: "Welding Helmets & Gloves", link: "/Product-Base-Services/Safety-Accessories/Welding" },
+    ],
+  },
+];
+
 function Navbar() {
+  const [mobileMenu, setMobileMenu] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const [hoverIndex, setHoverIndex] = useState(null);
+
   return (
-    <nav className='bg-black dark:bg-white dark:text-black text-white px-4 py-1 '>
-        <ul className='flex justify-center items-center gap-10'>
+    <nav className="bg-black dark:bg-white dark:text-black text-white px-4 py-3">
+      <div className="max-w-7xl mx-auto flex justify-center items-center">
 
-            {
-                option.map((item)=>{
-                    return <li key={item.name}className=''>
-                        <Link className='link' href={item.link}>
-                          {item.name}
+
+        {/* Desktop Menu */}
+        <ul className="hidden md:flex justify-center items-center gap-10 relative">
+          {option.map((item, index) => (
+            <li
+              key={item.name}
+              className="relative"
+              onMouseEnter={() => setHoverIndex(index)}
+              onMouseLeave={() => setHoverIndex(null)}
+            >
+              <Link className="hover:text-gray-300" href={item.link}>
+                {item.name}
+              </Link>
+
+              {/* Animated Dropdown for Desktop */}
+              <AnimatePresence>
+                {hoverIndex === index && item.submenu && (
+                  <motion.ul
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.25 }}
+                    className="absolute left-0 mt-2 bg-white/90 dark:bg-black text-black dark:text-white shadow-lg rounded-md w-60 z-50"
+                  >
+                    {item.submenu.map((sub) => (
+                      <li key={sub.name}>
+                        <Link
+                          href={sub.link}
+                          className="block px-4 py-2 hover:bg-red-600 hover:text-white dark:hover:bg-red-600 dark:hover-text-white"
+                        >
+                          {sub.name}
                         </Link>
-                        </li>
-
-                })
-            }
+                      </li>
+                    ))}
+                  </motion.ul>
+                )}
+              </AnimatePresence>
+            </li>
+          ))}
         </ul>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden text-2xl"
+          onClick={() => setMobileMenu(!mobileMenu)}
+        >
+          {mobileMenu ? <HiX /> : <HiMenu />}
+        </button>
+      </div>
+
+      {/* Mobile Dropdown Menu */}
+      <AnimatePresence>
+        {mobileMenu && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden mt-3 bg-white dark:bg-black text-black dark:text-white shadow-lg rounded-md p-4"
+          >
+            {option.map((item, index) => (
+              <div key={item.name} className="mb-2">
+                <button
+                  className="w-full flex justify-between items-center py-2 font-medium"
+                  onClick={() =>
+                    setOpenDropdown(openDropdown === index ? null : index)
+                  }
+                >
+                  {item.name}
+                  <span>{openDropdown === index ? "▲" : "▼"}</span>
+                </button>
+
+                {/* Animated Mobile Dropdown */}
+                <AnimatePresence>
+                  {openDropdown === index && item.submenu && (
+                    <motion.ul
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="pl-4 mt-1 space-y-1 overflow-hidden"
+                    >
+                      {item.submenu.map((sub) => (
+                        <li key={sub.name}>
+                          <Link
+                            href={sub.link}
+                            className="block px-2 py-1 hover:bg-gray-200 dark:hover:bg-gray-800 rounded"
+                          >
+                            {sub.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </motion.ul>
+                  )}
+                </AnimatePresence>
+              </div>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;

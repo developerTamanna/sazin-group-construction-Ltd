@@ -61,7 +61,7 @@ const Banner = () => {
   };
 
   return (
-    <section className="relative w-full h-[90vh] overflow-hidden">
+    <section className="relative w-full h-[40vh] md:h-[70vh] lg:h-[90vh] overflow-hidden">
       <AnimatePresence>
         {images.map((img, index) =>
           index === current ? (
@@ -118,7 +118,7 @@ const Banner = () => {
 
         <motion.a
           href="/contact"
-          className="bg-red-600 z-[60] text-white font-semibold px-6 py-3 rounded-md shadow-lg hover:bg-red-700 hover:scale-105 transition transform"
+          className="bg-red-600 z-[60] text-white font-semibold px-4 py-1.5 rounded-md shadow-lg hover:bg-gray-100 hover:text-red-600 hover:scale-105 transition transform"
           style={{ y: parallax(0.9) }}
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
