@@ -1,15 +1,16 @@
 import Image from "next/image";
 import MotionCard from "../utils/MotionForCategory";
 import {AnimatedSection} from "@/utils/ScrollMontion";
+import Link from "next/link";
 
 export default function CategoryCard({ context = {}, subCategories = [] }) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
     {subCategories.map((cat) => (
         <MotionCard key={cat.title}>
-                <a
+                <Link
                     key={cat.title}
-                    href={cat?.link}
+                    href={cat?.path}
                 >
                     <Image
                         src={cat.image}
@@ -23,7 +24,7 @@ export default function CategoryCard({ context = {}, subCategories = [] }) {
                         {cat?.title?.toUpperCase()}
                     </h3>
                     </div>
-                </a>
+                </Link>
             </MotionCard>
         ))}
    </div>

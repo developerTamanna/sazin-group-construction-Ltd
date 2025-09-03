@@ -1,6 +1,5 @@
 import React from 'react'
 import Banner from './components/Banner'
-import ProductCard from './components/ProductCard'
 import CategotySection from './components/CategotySection'
 
 
@@ -20,6 +19,7 @@ function SkyHelmetsAndAccessories() {
 {/*         <section>
           <ProductCard />
         </section> */}
+      
     </section>
   )
 }
