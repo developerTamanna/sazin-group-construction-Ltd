@@ -5,7 +5,7 @@ const nextConfig = {
   swcMinify: true, // JS/TS faster minify
   output: 'standalone', // Vercel optimized deploy
   images: {
-    domains: ["images.unsplash.com", "yourdomain.com"], // trusted sources
+    domains: ["images.unsplash.com", "yourdomain.com","https://i.postimg.cc"], // trusted sources
     /* formats: ["image/avif", "image/webp",'image/jpg'], */ // modern formats for optimization
     minimumCacheTTL: 60, // seconds, for stale images
   },
