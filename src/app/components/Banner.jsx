@@ -90,7 +90,7 @@ const Banner = () => {
                 src={img.src}
                 alt={img.alt}
                 fill
-                priority={index === 0}
+                priority={true}
                 loading={index === 0 ? "eager" : "lazy"}
                 className="object-cover"
               />
