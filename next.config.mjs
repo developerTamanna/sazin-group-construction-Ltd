@@ -3,11 +3,13 @@ const nextConfig = {
   trailingSlash: true,
   reactStrictMode: true,
   swcMinify: true, // JS/TS faster minify
-  output: 'standalone', // Vercel optimized deploy
+/*   output: 'standalone', // Vercel optimized deploy */
+    output: 'export', 
   images: {
     domains: ["images.unsplash.com", "yourdomain.com","https://i.postimg.cc"], // trusted sources
     /* formats: ["image/avif", "image/webp",'image/jpg'], */ // modern formats for optimization
-    minimumCacheTTL: 60, // seconds, for stale images
+    minimumCacheTTL: 60*60*24*30, // seconds, for stale images
+
   },
   async headers() {
     return [
