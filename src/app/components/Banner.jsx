@@ -91,7 +91,6 @@ const Banner = () => {
                 alt={img.alt}
                 fill
                 priority={true}
-                loading={index === 0 ? "eager" : "lazy"}
                 className="object-cover"
               />
             </motion.div>
