@@ -48,6 +48,7 @@ const subCategories = [
     },
 
   ];
+
  const contents={
     title: "Motorcycle Helmet",
     image:

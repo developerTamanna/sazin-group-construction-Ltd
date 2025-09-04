@@ -58,7 +58,7 @@ export default function QueryFunction({value ,ky}) {
       {/* Sentinel element for IntersectionObserver */}
       <div ref={loadMoreRef} className=" w-full z-[999]  h-10 mt-5 text-center">
         {isFetchingNextPage && <p className='text-red-500'>Loading more...</p>}
-        {!hasNextPage && <p className="text-gray-500">No more products</p>}
+        {!hasNextPage && <p className="text-gray-300 text-xl font-semi-bold">No more products</p>}
       </div>
     </>
   );
