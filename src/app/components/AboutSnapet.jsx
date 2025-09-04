@@ -1,47 +1,54 @@
-'use client';
+// File: app/page.jsx
+import dynamic from "next/dynamic";
 
-import GoogleMap from './GoogleMap';
+// ✅ Lazy load Google Map only on client
+const GoogleMap = dynamic(() => import("./GoogleMap"), {
+  ssr: true,
+  loading: () => (
+    <div className="flex items-center justify-center h-64">
+      <p className="text-neutral-500">Loading map...</p>
+    </div>
+  ),
+});
 
-// File: app/page.js
-// Next.js Home Page with About Us Snapshot Section (Red / Black / White Theme)
-
+// ✅ Metadata handled in server component
 export const metadata = {
-  title: 'Sazin Construction Ltd. | Home',
+  title: "Sazin Construction Ltd. | Home",
   description:
-    'Sazin Construction Ltd. is a trusted engineering and construction company in Bangladesh since 2007. Civil, Electro-Mechanical, EPC, IT & Fire Protection Services.',
+    "Sazin Construction Ltd. is a trusted engineering and construction company in Bangladesh since 2007. Civil, Electro-Mechanical, EPC, IT & Fire Protection Services.",
   keywords: [
-    'Sazin Construction',
-    'construction company Bangladesh',
-    'civil construction',
-    'electro-mechanical',
-    'EPC',
-    'fire protection',
-    'engineering services',
+    "Sazin Construction",
+    "construction company Bangladesh",
+    "civil construction",
+    "electro-mechanical",
+    "EPC",
+    "fire protection",
+    "engineering services",
   ],
-  alternates: { canonical: 'https://www.sazin.com.bd' },
+  alternates: { canonical: "https://www.sazin.com.bd" },
   openGraph: {
-    title: 'Sazin Construction Ltd. | Home',
+    title: "Sazin Construction Ltd. | Home",
     description:
-      'Trusted engineering and construction partner in Bangladesh since 2007.',
-    url: 'https://www.sazin.com.bd',
-    siteName: 'Sazin Construction Ltd.',
+      "Trusted engineering and construction partner in Bangladesh since 2007.",
+    url: "https://www.sazin.com.bd",
+    siteName: "Sazin Construction Ltd.",
     images: [
       {
-        url: 'https://www.sazin.com.bd/og/home.jpg',
+        url: "https://www.sazin.com.bd/og/home.jpg",
         width: 1200,
         height: 630,
-        alt: 'Sazin Construction – Home Page',
+        alt: "Sazin Construction – Home Page",
       },
     ],
-    locale: 'en_US',
-    type: 'website',
+    locale: "en_US",
+    type: "website",
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Sazin Construction Ltd. | Home',
+    card: "summary_large_image",
+    title: "Sazin Construction Ltd. | Home",
     description:
-      'Trusted engineering and construction partner in Bangladesh since 2007.',
-    images: ['https://www.sazin.com.bd/og/home.jpg'],
+      "Trusted engineering and construction partner in Bangladesh since 2007.",
+    images: ["https://www.sazin.com.bd/og/home.jpg"],
   },
 };
 
@@ -63,12 +70,14 @@ export default function HomePage() {
           <div className="mt-8 flex flex-col sm:flex-row justify-center gap-2 md:gap-4">
             <a
               href="/projects"
+              aria-label="Explore our past and ongoing projects"
               className="border border-red-500 text-red-600 px-2 md:px-6 py-1.5 rounded-lg font-semi-bold text-base hover:bg-red-500 hover:text-white transition"
             >
               Explore Our Projects
             </a>
             <a
               href="/contact"
+              aria-label="Contact Sazin Construction team"
               className="border border-red-500 text-red-600 px-6 py-1.5 rounded-lg font-semi-bold text-base hover:bg-red-500 hover:text-white transition"
             >
               Get in Touch
@@ -113,10 +122,11 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Visual */}
+          {/* Visual with Lazy Map */}
           <div className="relative order-1 lg:order-2">
             <div className="absolute -inset-2 -z-10 rounded-3xl bg-gradient-to-br from-red-600/10 to-black/10 blur-xl dark:from-red-500/20 dark:to-white/5" />
             <div className="overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-xl dark:border-neutral-700 dark:bg-neutral-900">
+              {/* ✅ Lazy loaded map */}
               <GoogleMap />
               <div className="border-t border-neutral-100 p-4 dark:border-neutral-800">
                 <p className="text-sm text-neutral-600 dark:text-neutral-300">

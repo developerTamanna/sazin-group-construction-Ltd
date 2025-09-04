@@ -3,7 +3,6 @@ import { useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 
-// Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 
@@ -16,14 +15,14 @@ const services = [
     title: "Electro-Mechanical Works",
     desc: "Power systems, substations, fire protection & automation.",
   },
-    { 
-      title: "Agro & Fisheries", 
-      desc: "Supporting sustainable agriculture and fisheries industries." 
-    },
-    { 
-      title: "Helmet & Safety Accessories", 
-      desc: "Providing high-quality helmets and safety gear." 
-    },
+  { 
+    title: "Agro & Fisheries", 
+    desc: "Supporting sustainable agriculture and fisheries industries." 
+  },
+  { 
+    title: "Helmet & Safety Accessories", 
+    desc: "Providing high-quality helmets and safety gear." 
+  },
   {
     title: "IT & Automation",
     desc: "Networking, CCTV, access control & system integration.",
@@ -75,32 +74,41 @@ export default function Services() {
             640: { slidesPerView: 2 },
             1024: { slidesPerView: 3 },
           }}
+          aria-live="polite"
         >
-          {services.map((s, i) => (
+          {services.map((service, i) => (
             <SwiperSlide key={i}>
-              <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 p-6 rounded-xl shadow-sm hover:shadow-lg transition h-full">
-                <h3 className="text-lg font-semibold text-red-600">{s.title}</h3>
+              <article
+                className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 p-6 rounded-xl shadow-sm hover:shadow-lg transition h-full"
+                role="group"
+                aria-label={service.title}
+              >
+                <h3 className="text-lg font-semibold text-red-600">{service.title}</h3>
                 <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-300">
-                  {s.desc}
+                  {service.desc}
                 </p>
-              </div>
+              </article>
             </SwiperSlide>
           ))}
         </Swiper>
 
-        {/* Footer (Prev/Next + Counter + View All) */}
+        {/* Footer (Prev/Next + Counter) */}
         <div className="flex justify-between items-center mt-6">
-          {/* Left side - Buttons */}
           <div className="flex items-center gap-4">
-            <button className="custom-prev text-xl border border-red-500 text-red-500 w-10 h-10 flex items-center justify-center rounded-full hover:bg-red-500 hover:text-white transition">
+            <button
+              className="custom-prev text-xl border border-red-500 text-red-500 w-10 h-10 flex items-center justify-center rounded-full hover:bg-red-500 hover:text-white transition"
+              aria-label="Previous slide"
+            >
               ←
             </button>
-            <button className="custom-next text-xl border border-red-500 text-red-500 w-10 h-10 flex items-center justify-center rounded-full hover:bg-red-500 hover:text-white transition">
+            <button
+              className="custom-next text-xl border border-red-500 text-red-500 w-10 h-10 flex items-center justify-center rounded-full hover:bg-red-500 hover:text-white transition"
+              aria-label="Next slide"
+            >
               →
             </button>
           </div>
 
-          {/* Right side - Counter */}
           <div className="font-semibold">
             <span className="text-red-600 text-xl">{currentIndex}</span>
             <span className="text-gray-500 text-xl">/{services.length}</span>

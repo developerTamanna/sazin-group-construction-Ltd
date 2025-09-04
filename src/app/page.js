@@ -1,36 +1,83 @@
 import dynamic from "next/dynamic";
-import Banner from "./components/Banner";
-import FeatureProducts from "./components/FeatureProducts";
-import AboutSnapet from "./components/AboutSnapet";
-import Services from "./components/Service";
-import LazyLoadDynamic from "@/utils/LazyLoadDynamic";
+import Head from "next/head";
+import Script from "next/script";
 
-// ✅ Direct dynamic imports
-const Projects = dynamic(() => import("./components/Projects"));
-const Equipments = dynamic(() => import("./components/Equipments"));
-const Clients = dynamic(() => import("./components/Clients"));
-const Certificates = dynamic(() => import("./components/Certificates"));
-const LatestNews = dynamic(() => import("./components/LatestNews"));
-const Achievement = dynamic(() => import("./components/Achievement"));
-const CallToAction = dynamic(() => import("./components/CallToAction"));
+// Lazy load below-the-fold with SSR true
+const AboutSnapet=dynamic(()=>import('./components/AboutSnapet'),{ssr:true})
+const Banner=dynamic(()=>import('./components/Banner'),{ssr:true})
+const Services=dynamic(()=>import('./components/Service'),{ssr:true})
+const FeatureProducts=dynamic(()=>import('./components/FeatureProducts'),{ssr:true})
+const Projects = dynamic(() => import("./components/Projects"), { ssr: true });
+const Equipments = dynamic(() => import("./components/Equipments"), { ssr: true });
+const Clients = dynamic(() => import("./components/Clients"), { ssr: true });
+const Certificates = dynamic(() => import("./components/Certificates"), { ssr: true });
+const LatestNews = dynamic(() => import("./components/LatestNews"), { ssr: true });
+const Achievement = dynamic(() => import("./components/Achievement"), { ssr: true });
+const CallToAction = dynamic(() => import("./components/CallToAction"), { ssr: true });
 
 export default function Home() {
   return (
-    <main>
-      {/* Above-the-fold */}
-      <Banner />
-      <FeatureProducts />
-      <AboutSnapet />
-      <Services />
+    <>
+      {/* SEO Head */}
+      <Head>
+        <title>Intelligent Engineering | Home</title>
+        <meta name="description" content="Intelligent Engineering provides top-quality construction, industrial, and safety solutions in Bangladesh. Explore our projects, products, and services." />
+        <link rel="canonical" href="https://www.yourdomain.com/" />
 
-      {/* Lazy load below-the-fold */}
-      <Projects />
-      <Equipments />
-      <Clients />
-      <Certificates />
-      <LatestNews />
-      <Achievement />
-      <CallToAction />
-    </main>
+        {/* Open Graph */}
+        <meta property="og:title" content="Intelligent Engineering | Home" />
+        <meta property="og:description" content="Top-quality construction, industrial, and safety solutions in Bangladesh." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.yourdomain.com/" />
+        <meta property="og:image" content="/og-image.jpg" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Intelligent Engineering | Home" />
+        <meta name="twitter:description" content="Top-quality construction, industrial, and safety solutions in Bangladesh." />
+        <meta name="twitter:image" content="/og-image.jpg" />
+      </Head>
+
+      <main>
+        {/* Above-the-fold */}
+        <Banner />
+        <FeatureProducts />
+        <AboutSnapet />
+        <Services />
+
+        {/* Below-the-fold lazy-loaded */}
+        <Projects />
+        <Equipments />
+        <Clients />
+        <Certificates />
+        <LatestNews />
+        <Achievement />
+        <CallToAction />
+      </main>
+
+      {/* JSON-LD Structured Data - lazy loaded after window load */}
+      <Script
+        id="organization-jsonld"
+        type="application/ld+json"
+        strategy="lazyOnload"
+      >
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "Intelligent Engineering",
+          "url": "https://www.yourdomain.com/",
+          "logo": "https://www.yourdomain.com/logo.png",
+          "sameAs": [
+            "https://www.facebook.com/yourpage",
+            "https://www.linkedin.com/company/yourcompany"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+880123456789",
+            "contactType": "customer service"
+          }
+        })}
+      </Script>
+    </>
   );
 }

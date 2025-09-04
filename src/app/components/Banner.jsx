@@ -1,13 +1,20 @@
-'use client';
-import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useTheme } from 'next-themes';
-import { FaChevronDown } from 'react-icons/fa';
+"use client";
 
-const images = ['/Banner1.jpg', '/Banner2.jpg', '/Banner3.jpg','Banner4.jpg'];
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from "next-themes";
+import Image from "next/image";
+import { FaChevronDown } from "react-icons/fa";
+
+const images = [
+  { src: "/Banner1.jpg", alt: "Modern construction project banner 1" },
+  { src: "/Banner2.jpg", alt: "Civil engineering project banner 2" },
+  { src: "/Banner3.jpg", alt: "Electro-mechanical solutions banner 3" },
+  { src: "/Banner4.jpg", alt: "Innovative construction technology banner 4" },
+];
 
 function useTypingEffect(text, speed = 100) {
-  const [displayed, setDisplayed] = useState('');
+  const [displayed, setDisplayed] = useState("");
   useEffect(() => {
     let i = 0;
     const interval = setInterval(() => {
@@ -27,8 +34,8 @@ const Banner = () => {
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const parallax = (distance) => scrollY * distance;
@@ -41,14 +48,14 @@ const Banner = () => {
   }, []);
 
   const scrollToNext = () => {
-    const nextSection = document.getElementById('next-section');
-    if (nextSection) nextSection.scrollIntoView({ behavior: 'smooth' });
+    const nextSection = document.getElementById("next-section");
+    if (nextSection) nextSection.scrollIntoView({ behavior: "smooth" });
   };
 
-  const h3Text = useTypingEffect('Welcome to Our Company', 80);
-  const h1Text = useTypingEffect('We Build Great Solutions', 50);
+  const h3Text = useTypingEffect("Welcome to Our Company", 80);
+  const h1Text = useTypingEffect("We Build Great Solutions", 50);
   const pText = useTypingEffect(
-    'Providing top-notch services and products that help your business grow',
+    "Providing top-notch services and products that help your business grow",
     30
   );
 
@@ -61,14 +68,16 @@ const Banner = () => {
   };
 
   return (
-    <section className="relative w-full min-h-[70vh] md:min-h-[80vh] lg:min-h-[90vh] overflow-hidden">
+    <section
+      className="relative w-full min-h-[70vh] md:min-h-[80vh] lg:min-h-[90vh] overflow-hidden"
+      aria-label="Hero banner with company introduction and call to action"
+    >
       <AnimatePresence>
         {images.map((img, index) =>
           index === current ? (
             <motion.div
-              key={img}
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: `url(${img})` }}
+              key={img.src}
+              className="absolute inset-0"
               initial={{ opacity: 0, scale: 1.05 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.05 }}
@@ -76,7 +85,16 @@ const Banner = () => {
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
               onDragEnd={handleDragEnd}
-            />
+            >
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                priority={index === 0}
+                loading={index === 0 ? "eager" : "lazy"}
+                className="object-cover"
+              />
+            </motion.div>
           ) : null
         )}
       </AnimatePresence>
@@ -84,18 +102,18 @@ const Banner = () => {
       {/* Overlay */}
       <div
         className={`absolute inset-0 ${
-          theme === 'dark' ? 'bg-black/50' : 'bg-black/40'
+          theme === "dark" ? "bg-black/50" : "bg-black/40"
         }`}
-      ></div>
+      />
 
-      {/* Text */}
+      {/* Text Content */}
       <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4 md:px-8 lg:px-16">
-        <motion.h3
+        <motion.h2
           className="text-white text-sm md:text-lg lg:text-2xl mb-2"
           style={{ y: parallax(0.3) }}
         >
           {h3Text}
-        </motion.h3>
+        </motion.h2>
 
         <motion.h1
           className="text-white text-xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight"
@@ -113,7 +131,8 @@ const Banner = () => {
 
         <motion.a
           href="/contact"
-          className="bg-red-600 z-[60] text-white font-semi-bold px-3 py-2 sm:px-6 sm:py-2 rounded-md shadow-lg text-sm sm:text-base md:text-xl hover:bg-gray-100 hover:text-red-800 hover:scale-105 transition transform"
+          aria-label="Contact us to get started"
+          className="bg-red-600 z-[60] text-white font-semibold px-3 py-2 sm:px-6 sm:py-2 rounded-md shadow-lg text-sm sm:text-base md:text-xl hover:bg-gray-100 hover:text-red-800 hover:scale-105 transition transform"
           style={{ y: parallax(0.9) }}
         >
           Get Started
@@ -126,10 +145,11 @@ const Banner = () => {
           <button
             key={index}
             onClick={() => setCurrent(index)}
+            aria-label={`Go to slide ${index + 1}`}
             className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${
               current === index
-                ? 'bg-red-600 scale-125'
-                : 'bg-white/50 hover:bg-white'
+                ? "bg-red-600 scale-125"
+                : "bg-white/50 hover:bg-white"
             }`}
           />
         ))}
@@ -138,6 +158,7 @@ const Banner = () => {
       {/* Scroll Down */}
       <motion.button
         onClick={scrollToNext}
+        aria-label="Scroll to next section"
         className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-white text-lg sm:text-2xl animate-bounce"
         whileHover={{ scale: 1.2 }}
       >

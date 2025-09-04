@@ -1,3 +1,4 @@
+import React from "react";
 export default function ShortContact({header,desc}) {
   return (
     <section className="bg-white py-16 px-4 dark:bg-neutral-950 ">

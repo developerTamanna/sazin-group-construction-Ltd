@@ -2,7 +2,7 @@
 import { useState, useRef } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper/modules";
+import { Navigation, Autoplay } from "swiper/modules"; // Lazy removed
 
 // Swiper styles
 import "swiper/css";
@@ -23,7 +23,6 @@ export default function Projects() {
   return (
     <section className="bg-white dark:bg-neutral-950 py-16 px-6 lg:px-8">
       <div className="container mx-auto">
-        {/* Heading */}
         <h2 className="text-3xl font-semi-bold text-left dark:text-white">
           Featured <span className="text-red-600">Projects</span>
         </h2>
@@ -31,11 +30,12 @@ export default function Projects() {
           Landmark projects across Bangladesh.
         </p>
 
-        {/* Slider */}
         <Swiper
           modules={[Navigation, Autoplay]}
           spaceBetween={20}
           slidesPerView={3}
+          loop={true}// prevent all images loading at once
+          lazy='true'          // enable lazy load without Lazy module import
           navigation={{
             nextEl: ".custom-next",
             prevEl: ".custom-prev",
@@ -44,7 +44,6 @@ export default function Projects() {
             delay: 3000,
             disableOnInteraction: false,
           }}
-          loop={true}
           onSwiper={(swiper) => (swiperRef.current = swiper)}
           onSlideChange={(swiper) => setCurrentIndex(swiper.realIndex + 1)}
           breakpoints={{
@@ -57,13 +56,16 @@ export default function Projects() {
           {projects.map((p, i) => (
             <SwiperSlide key={i}>
               <div className="rounded-xl overflow-hidden border border-neutral-200 dark:border-neutral-700 shadow-sm hover:shadow-lg transition">
-                <Image
-                  src={p.img}
-                  alt={p.title}
-                  width={600}
-                  height={400}
-                  className="w-full h-48 object-cover"
-                />
+                <div className="relative w-full h-48">
+                  <Image
+                    src={p.img}
+                    alt={p.title}
+                    fill
+                    className="object-cover"
+                    loading="lazy"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                </div>
                 <div className="p-4 text-center font-semibold dark:text-white">
                   {p.title}
                 </div>
@@ -72,9 +74,7 @@ export default function Projects() {
           ))}
         </Swiper>
 
-        {/* Footer (Prev/Next + Counter + View All) */}
         <div className="flex justify-between items-center mt-6">
-          {/* Left side - Buttons + Counter */}
           <div className="flex items-center gap-4">
             <button className="custom-prev text-xl border border-red-500 text-red-500 w-10 h-10 flex items-center justify-center rounded-full hover:bg-red-500 hover:text-white transition">
               ←
@@ -83,7 +83,6 @@ export default function Projects() {
               →
             </button>
 
-            {/* Right side - View All */}
             <a
               href="/projects"
               className="text-red-600 text-xl hover:underline transition"
@@ -92,7 +91,6 @@ export default function Projects() {
             </a>
           </div>
 
-          {/* Counter */}
           <div className="font-semibold ml-2">
             <span className="text-red-600 text-xl">{currentIndex}</span>
             <span className="text-gray-500 text-xl">/{projects.length}</span>
