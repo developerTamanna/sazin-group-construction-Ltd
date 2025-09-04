@@ -1,6 +1,6 @@
 const GoogleMap = ({
   address = 'House 42, Road 7, Section 10, Mirpur, Dhaka 1216, Bangladesh',
-  width = '600',
+  width = '100%',
   height = '400',
   zoom = '15',
 }) => {
