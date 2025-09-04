@@ -6,7 +6,7 @@ const nextConfig = {
   output: 'standalone', // Vercel optimized deploy
   images: {
     domains: ["images.unsplash.com", "yourdomain.com"], // trusted sources
-    formats: ["image/avif", "image/webp"], // modern formats for optimization
+    /* formats: ["image/avif", "image/webp",'image/jpg'], */ // modern formats for optimization
     minimumCacheTTL: 60, // seconds, for stale images
   },
   async headers() {
