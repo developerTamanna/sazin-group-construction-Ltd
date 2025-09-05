@@ -11,7 +11,7 @@ const nextConfig = {
     minimumCacheTTL: 60*60*24*30, // seconds, for stale images,
     unoptimized: true
   },
-  async headers() {
+/*   async headers() {
     return [
       {
         source: '/(.*)', // all routes
@@ -40,7 +40,7 @@ const nextConfig = {
         ],
       },
     ];
-  },
+  }, */
 
 };
 

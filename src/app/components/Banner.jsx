@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import { FaChevronDown } from "react-icons/fa";
-
+import { useRouter } from 'next/navigation';
 const images = [
   { src: "/Banner1.jpg", alt: "Modern construction project banner 1" },
   { src: "/Banner2.jpg", alt: "Civil engineering project banner 2" },
@@ -31,6 +31,11 @@ const Banner = () => {
   const [current, setCurrent] = useState(0);
   const { theme } = useTheme();
   const [scrollY, setScrollY] = useState(0);
+    const router = useRouter();
+
+  const handleClick = () => {
+    router.push('/contact'); // navigate programmatically
+  };
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -66,6 +71,7 @@ const Banner = () => {
       setCurrent((prev) => (prev - 1 + images.length) % images.length);
     }
   };
+
 
   return (
     <section
@@ -128,14 +134,14 @@ const Banner = () => {
           {pText}
         </motion.p>
 
-        <motion.a
-          href="/contact"
-          aria-label="Contact us to get started"
-          className="bg-red-600 z-[60] text-white font-semibold px-3 py-2 sm:px-6 sm:py-2 rounded-md shadow-lg text-sm sm:text-base md:text-xl hover:bg-gray-100 hover:text-red-800 hover:scale-105 transition transform"
-          style={{ y: parallax(0.9) }}
+        <motion.div    
+          className="cursor-pointer bg-red-600 z-[60] text-white font-semibold px-3 py-2 sm:px-6 sm:py-2 rounded-md shadow-lg text-sm sm:text-base md:text-xl hover:bg-gray-100 hover:text-red-800 hover:scale-105 transition transform"
+          style={{ y: parallax(0.9) }}  
+          onClick={handleClick}
+           aria-label="Contact us to get started"
         >
-          Get Started
-        </motion.a>
+            Get Started
+        </motion.div>
       </div>
 
       {/* Slider Dots */}

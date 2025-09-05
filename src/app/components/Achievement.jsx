@@ -68,6 +68,7 @@ export default function Achievement() {
                 {title}
               </h3>
               <Link
+                prefetch={false}
                 href={link}
                 aria-label={`Read more about ${title}`}
                 className="mt-2 inline-block text-red-600 font-medium hover:underline"

@@ -1,17 +1,74 @@
+import Script from "next/script";
 import BlogList from "./components/BlogList";
 
 export const metadata = {
   title: "News & Blog | Sazin Construction Ltd.",
-  description: "Latest updates, industry insights, and company news.",
+  description:
+    "Latest updates, industry insights, and company news from Sazin Construction Ltd. Explore articles, blogs, and expert opinions.",
+  alternates: {
+    canonical: "https://www.yourdomain.com/news-blog",
+  },
+  openGraph: {
+    title: "News & Blog | Sazin Construction Ltd.",
+    description:
+      "Stay updated with the latest news, blogs, and insights from Sazin Construction Ltd.",
+    url: "https://www.yourdomain.com/news-blog",
+    type: "website",
+    images: [
+      {
+        url: "https://www.yourdomain.com/og-news.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Sazin Construction Ltd. News and Blog",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "News & Blog | Sazin Construction Ltd.",
+    description:
+      "Latest updates, industry insights, and company news from Sazin Construction Ltd.",
+    images: ["https://www.yourdomain.com/og-news.jpg"],
+  },
 };
 
 export default function NewsBlogPage() {
   return (
-    <main className="bg-white dark:bg-neutral-950 min-h-screen py-16 px-6 lg:px-8">
-      <h1 className="text-4xl font-semi-bold text-center dark:text-white mb-10">
-        News <span className="text-red-600"> & Blog</span>
-      </h1>
-      <BlogList />
-    </main>
+    <>
+      <main className="bg-white dark:bg-neutral-950 min-h-screen py-16 px-6 lg:px-8">
+        {/* Page Heading */}
+        <h1 className="text-4xl font-bold text-center dark:text-white mb-10">
+          News <span className="text-red-600">& Blog</span>
+        </h1>
+
+        {/* Blog List */}
+        <BlogList />
+      </main>
+
+      {/* ✅ JSON-LD Structured Data */}
+      <Script
+        id="blog-structured-data"
+        type="application/ld+json"
+        strategy="lazyOnload"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Blog",
+            url: "https://www.yourdomain.com/news-blog",
+            name: "News & Blog | Sazin Construction Ltd.",
+            description:
+              "Latest updates, industry insights, and company news from Sazin Construction Ltd.",
+            publisher: {
+              "@type": "Organization",
+              name: "Sazin Construction Ltd.",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://www.yourdomain.com/logo.png",
+              },
+            },
+          }),
+        }}
+      />
+    </>
   );
 }

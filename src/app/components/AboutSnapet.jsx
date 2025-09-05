@@ -1,4 +1,5 @@
 // File: app/page.jsx
+import Link from 'next/link'
 import dynamic from "next/dynamic";
 
 // ✅ Lazy load Google Map only on client
@@ -68,20 +69,22 @@ export default function HomePage() {
 
           {/* Buttons */}
           <div className="mt-8 flex flex-col sm:flex-row justify-center gap-2 md:gap-4">
-            <a
+            <Link
+              prefetch={false}
               href="/projects"
               aria-label="Explore our past and ongoing projects"
               className="border border-red-500 text-red-600 px-2 md:px-6 py-1.5 rounded-lg font-semi-bold text-base hover:bg-red-500 hover:text-white transition"
             >
               Explore Our Projects
-            </a>
-            <a
+            </Link>
+            <Link
+              prefetch={false}
               href="/contact"
               aria-label="Contact Sazin Construction team"
               className="border border-red-500 text-red-600 px-6 py-1.5 rounded-lg font-semi-bold text-base hover:bg-red-500 hover:text-white transition"
             >
               Get in Touch
-            </a>
+            </Link>
           </div>
         </div>
       </section>

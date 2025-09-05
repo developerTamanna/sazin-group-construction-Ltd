@@ -24,9 +24,12 @@ export default function QueryFunction({value ,ky}) {
     queryKey: ["products",query,ky],
     queryFn: ({ pageParam = 1 }) => fetchProducts(pageParam,query,ky ),
     getNextPageParam: (lastPage) => lastPage.nextPage,
-    staleTime: 5 * 60 * 1000, // 5 minutes
-    catchTimeout: 10 * 1000, // 10 seconds
-    refetchOnWindowFocus: false,
+     // 🔹 Performance Tunings
+    staleTime: 1000 * 60 * 5, // 5 minutes → reduce refetching
+    cacheTime: 1000 * 60 * 30, // 30 minutes cache in memory
+    refetchOnWindowFocus: false, // don’t refetch unnecessarily
+    refetchOnReconnect: false, // no refetch if net reconnects
+    retry: 1, // retry only once if fails
   });
   useEffect(() => {
     refetch();
