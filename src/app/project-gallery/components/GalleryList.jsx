@@ -23,10 +23,16 @@ export default function GalleryList() {
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
     useInfiniteQuery({
-      queryKey: ["projects"],
+      queryKey: ["projects-gallery"],
       queryFn: fetchProjects,
       getNextPageParam: (last, pages) =>
-        last.hasMore ? pages.length + 1 : undefined,
+      last.hasMore ? pages.length + 1 : undefined,
+             // 🔹 Performance Tunings
+    staleTime: 1000 * 60 * 5, // 5 minutes → reduce refetching
+    cacheTime: 1000 * 60 * 30, // 30 minutes cache in memory
+    refetchOnWindowFocus: false, // don’t refetch unnecessarily
+    refetchOnReconnect: false, // no refetch if net reconnects
+    retry: 1, // retry only once if fails
     });
 
   // infinite scroll
