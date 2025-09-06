@@ -48,9 +48,9 @@ export default function RootLayout({ children }) {
       <body>
         <Providers>
           <ScrollToTop />
-          <SpeedInsights />
           <Navbar />
           {children}
+          <SpeedInsights />
           <Footer />
 
           {/* ✅ JSON-LD structured data for Organization */}
