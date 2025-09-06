@@ -5,6 +5,7 @@ import { projects } from "./projectsData";
 import { useRouter } from "next/navigation";
 import Head from "next/head";
 import Image from "next/image";
+import Script from "next/script";
 
 const limit = 6; // প্রতি page এ কয়টা project দেখাবে
 
@@ -113,8 +114,9 @@ export default function ProjectShowcaseInfinity() {
         <meta property="og:image" content="/default-project-thumbnail.jpg" />
         <meta property="og:type" content="website" />
         <link rel="canonical" href="https://yourdomain.com/projects" />
-        <script
+        <Script
           type="application/ld+json"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(projectJsonLd) }}
         />
       </Head>
