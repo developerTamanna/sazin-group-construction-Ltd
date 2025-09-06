@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import Theme from "@/utils/Theme";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
@@ -8,7 +8,6 @@ import {
   FaArrowUp,
   FaChevronDown,
   FaChevronUp,
-  FaSearch,
 } from "react-icons/fa";
 
 export default function Navbar() {
@@ -20,7 +19,6 @@ export default function Navbar() {
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [mobileBusinessOpen, setMobileBusinessOpen] = useState(false);
   const [mobileMoreOpen, setMobileMoreOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showTopBtn, setShowTopBtn] = useState(false);
   const pathname = usePathname();
@@ -29,25 +27,58 @@ export default function Navbar() {
   const businessRef = useRef(null);
 
   const links = [
-    { name: "Projects", href: "/Projects" },
-    { name: "Gallery", href: "/project-gallery" },
-    { name: "Contact", href: "/contact" },
-    { name: "Career", href: "/career" },
-    { name: "New/Blog", href: "/new-blog" },
-    { name: "Sustainability", href: "/sustainability" },
+    { name: "Projects", href: "/Projects", prefetch: true },
+    { name: "Gallery", href: "/project-gallery", prefetch: true },
+    { name: "Contact", href: "/contact", prefetch: true },
+    { name: "Career", href: "/career", prefetch: false },
+    { name: "News/Blog", href: "/news-blog", prefetch: false },
+    { name: "Sustainability", href: "/sustainability", prefetch: false },
   ];
+
+  const aboutLinks = [
+  { name: "Detailed Company History", href: "/about/history", prefetch: true },
+  { name: "Mission & Vision", href: "/about/mission", prefetch: true },
+  { name: "Leadership Profiles", href: "/about/leadership", prefetch: false },
+  { name: "Overview of Business Sectors", href: "/about/sectors", prefetch: false },
+];
+
+const servicesLinks = [
+  { name: "Electro-Mechanical Construction", href: "/Services/Electro-mechanical", prefetch: true },
+  { name: "Civil Construction", href: "/Services/Civil-construction", prefetch: true },
+  { name: "Engineering Procurement & Construction", href: "/Services/engineering-procurement-construction", prefetch: false },
+  { name: "Safety & Security Construction and Management", href: "/Services/safety-security-construction-management", prefetch: false },
+];
+
+const businessLinks = [
+  { name: "Sazin Construction Ltd", href: "/products/construction", prefetch: true },
+  { name: "Sazin Agro & Fisheries", href: "/products/agro", prefetch: true },
+  { name: "Sky Helmet & Safety Accessories", href: "/products/helmet", prefetch: false },
+];
+
 
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (
-        (aboutRef.current && !aboutRef.current.contains(e.target)) ||
-        (servicesRef.current && !servicesRef.current.contains(e.target)) ||
-        (businessRef.current && !businessRef.current.contains(e.target))
-      ) {
-        setAboutOpen(false);
-        setServicesOpen(false);
-        setBusinessOpen(false);
-      }
+              if (aboutRef.current && aboutRef.current.contains(e.target)) {
+                // click inside About → keep About, close others
+                setAboutOpen(true);
+                setServicesOpen(false);
+                setBusinessOpen(false);
+              } else if (servicesRef.current && servicesRef.current.contains(e.target)) {
+                // click inside Services → keep Services, close others
+                setServicesOpen(true);
+                setAboutOpen(false);
+                setBusinessOpen(false);
+              } else if (businessRef.current && businessRef.current.contains(e.target)) {
+                // click inside Business → keep Business, close others
+                setBusinessOpen(true);
+                setAboutOpen(false);
+                setServicesOpen(false);
+              } else {
+                // click outside → close all
+                setAboutOpen(false);
+                setServicesOpen(false);
+                setBusinessOpen(false);
+              }
     };
     document.addEventListener("pointerdown", handleClickOutside);
 
@@ -80,6 +111,7 @@ export default function Navbar() {
             {/* Logo */}
             <Link
               href="/"
+              prefetch={true}
               className="text-2xl font-bold text-gray-900 dark:text-white"
             >
               Company<span className="text-red-600">Logo</span>
@@ -91,7 +123,8 @@ export default function Navbar() {
               <li>
                 <Link
                   href="/"
-                  className={` text-gray-700 dark:text-gray-200 hover:text-red-600 transition-colors relative after:block after:h-[2px] after:w-0 after:bg-red-600 after:transition-all after:duration-300 ${
+                  prefetch={true}
+                  className={` text-gray-700 dark:text-gray-200 hover:text-red-600 relative after:block after:h-[2px] after:w-0 after:bg-red-600 after:transition-all after:duration-300 ${
                     pathname === "/" ? "after:w-full" : ""
                   }`}
                 >
@@ -103,14 +136,14 @@ export default function Navbar() {
               <li className="relative" ref={aboutRef}>
                 <button
                   onClick={() => setAboutOpen(!aboutOpen)}
-                  className=" flex items-center gap-1 transition-colors text-gray-700 dark:text-gray-200 hover:text-red-600"
+                  className={`after:block after:h-[2px] after:w-0 after:bg-red-600 after:transition-all after:duration-300 
+                      ${pathname.startsWith("/about") ? "after:w-full" : ""}
+                    `}
                 >
+                  <div className="flex items-center gap-1 transition-colors text-gray-700 dark:text-gray-200 hover:text-red-600">
                   About Us{" "}
-                  {aboutOpen ? (
-                    <FaChevronUp className="w-4 h-4" />
-                  ) : (
-                    <FaChevronDown className="w-4 h-4" />
-                  )}
+                  {aboutOpen ? <FaChevronUp className="w-4 h-4" /> : <FaChevronDown className="w-4 h-4" />}
+                  </div>
                 </button>
 
                 <AnimatePresence>
@@ -122,38 +155,19 @@ export default function Navbar() {
                       transition={{ duration: 0.2 }}
                       className="absolute top-full left-0  bg-white/90 dark:bg-gray-800 shadow-lg mt-2 w-60 rounded-md p-2 space-y-2 z-50"
                     >
-                      <li>
-                        <Link
-                          href="/about/history"
-                          className="block text-gray-800 dark:text-gray-200 hover:text-red-600"
-                        >
-                          Detailed Company History
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/about/mission"
-                          className="block text-gray-800 dark:text-gray-200 hover:text-red-600"
-                        >
-                          Mission & Vision
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/about/leadership"
-                          className="block text-gray-800 dark:text-gray-200 hover:text-red-600"
-                        >
-                          Leadership Profiles
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/about/sectors"
-                          className="block text-gray-800 dark:text-gray-200 hover:text-red-600"
-                        >
-                          Overview of Business Sectors
-                        </Link>
-                      </li>
+                    {aboutLinks.map((link, idx) => (
+                            <li key={idx}>
+                              <Link
+                                href={link.href}
+                                prefetch={link.prefetch}
+                                className={`block text-gray-800 dark:text-gray-200 hover:text-red-600 relative after:block after:h-[2px] after:w-0 after:bg-red-600 after:transition-all after:duration-300 ${
+                                  pathname.startsWith(link.href) ? "after:w-full" : ""
+                                }`}
+                              >
+                                {link.name}
+                              </Link>
+                            </li>
+                          ))}
                     </motion.ul>
                   )}
                 </AnimatePresence>
@@ -163,14 +177,14 @@ export default function Navbar() {
               <li className="relative" ref={servicesRef}>
                 <button
                   onClick={() => setServicesOpen(!servicesOpen)}
-                  className="flex items-center gap-1 text-gray-700 dark:text-gray-200 hover:text-red-600"
+                  className={`after:block after:h-[2px] after:w-0 after:bg-red-600 after:transition-all after:duration-300 
+                      ${pathname.startsWith("/Services") ? "after:w-full" : ""}
+                    `}
                 >
+                  <div className="flex items-center gap-1 transition-colors text-gray-700 dark:text-gray-200 hover:text-red-600">
                   Services{" "}
-                  {servicesOpen ? (
-                    <FaChevronUp className="w-4 h-4" />
-                  ) : (
-                    <FaChevronDown className="w-4 h-4" />
-                  )}
+                  {servicesOpen ? <FaChevronUp className="w-4 h-4" /> : <FaChevronDown className="w-4 h-4" />}
+                  </div>
                 </button>
                 <AnimatePresence>
                   {servicesOpen && (
@@ -180,71 +194,37 @@ export default function Navbar() {
                       exit={{ opacity: 0, y: -10 }}
                       className="absolute top-full left-0 bg-white/90 dark:bg-gray-800 shadow-lg mt-2 w-72 rounded-md p-2 space-y-2 z-50"
                     >
-                      <li>
-                        <Link
-                          href="/Services/Electro-mechanical"
-                          className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
-                        >
-                          Electro-Mechanical Construction
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/Services/Civil-construction"
-                          className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
-                        >
-                          Civil Construction
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/Services/engineering-procurement-construction"
-                          className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
-                        >
-                          Engineering Procurement & Construction
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/Services/safety-security-construction-management"
-                          className="block text-gray-800 dark:text-gray-200 hover:text-red-600"
-                        >
-                          Safety & Security Construction and Management
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/Product-Base-Services/Sky-Helmet&Safety-Accessories"
-                          className="block text-gray-800 dark:text-gray-200 hover:text-red-600"
-                        >
-                          Sazin Agro & Fisheries
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/Product-Base-Services/Sky-Helmet&Safety-Accessories"
-                          className="block text-gray-800 dark:text-gray-200 hover:text-red-600"
-                        >
-                          Sky Helmet & Safety Accessories
-                        </Link>
-                      </li>
+                        {servicesLinks.map((link, idx) => (
+                          <li key={idx}>
+                            <Link
+                              href={link.href}
+                              prefetch={link.prefetch}
+                              className={`block text-gray-700 dark:text-gray-200 hover:text-red-600 after:block after:h-[2px] after:w-0 after:bg-red-600 after:transition-all after:duration-300  ${
+                                pathname.startsWith(link.href) ? "after:w-full" : ""
+                              }`}
+                            >
+                              {link.name}
+                            </Link>
+                          </li>
+                        ))}
+
                     </motion.ul>
                   )}
                 </AnimatePresence>
               </li>
 
-              {/* Business/Products Dropdown */}
+              {/* Business Dropdown */}
               <li className="relative" ref={businessRef}>
                 <button
                   onClick={() => setBusinessOpen(!businessOpen)}
-                  className="flex items-center gap-1 text-gray-700 dark:text-gray-200 hover:text-red-600"
+                  className={`after:block after:h-[2px] after:w-0 after:bg-red-600 after:transition-all after:duration-300 
+                      ${pathname.startsWith("/products") ? "after:w-full" : ""}
+                    `}
                 >
+                  <div className="flex items-center gap-1 transition-colors text-gray-700 dark:text-gray-200 hover:text-red-600">
                   Business/Products{" "}
-                  {businessOpen ? (
-                    <FaChevronUp className="w-4 h-4" />
-                  ) : (
-                    <FaChevronDown className="w-4 h-4" />
-                  )}
+                  {businessOpen ? <FaChevronUp className="w-4 h-4" /> : <FaChevronDown className="w-4 h-4" />}
+                  </div>
                 </button>
                 <AnimatePresence>
                   {businessOpen && (
@@ -254,30 +234,19 @@ export default function Navbar() {
                       exit={{ opacity: 0, y: -10 }}
                       className="absolute top-full left-0 bg-white/90 dark:bg-gray-800 shadow-lg mt-2 w-72 rounded-md p-2 space-y-2 z-50"
                     >
-                      <li>
-                        <Link
-                          href="/products/construction"
-                          className="block text-gray-800 dark:text-gray-200 hover:text-red-600"
-                        >
-                          Sazin Construction Ltd
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/products/agro"
-                          className="block text-gray-800 dark:text-gray-200 hover:text-red-600"
-                        >
-                          Sazin Agro & Fisheries
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/Product-Base-Services/Sky-Helmet&Safety-Accessories"
-                          className="block text-gray-800 dark:text-gray-200 hover:text-red-600"
-                        >
-                          Sky Helmet & Safety Accessories
-                        </Link>
-                      </li>
+                    {businessLinks.map((link, idx) => (
+                        <li key={idx}>
+                          <Link
+                            href={link.href}
+                            prefetch={link.prefetch}
+                            className={`block text-gray-800 dark:text-gray-200 hover:text-red-600 after:block after:h-[2px] after:w-0 after:bg-red-600 after:transition-all after:duration-300 ${
+                              pathname.startsWith(link.href) ? "after:w-full" : ""
+                            }`}
+                          >
+                            {link.name}
+                          </Link>
+                        </li>
+                       ))}
                     </motion.ul>
                   )}
                 </AnimatePresence>
@@ -285,72 +254,31 @@ export default function Navbar() {
 
               {/* More Details Hover */}
               <li className="relative group py-2">
-                <button
-                  type="button"
-                  className="flex items-center gap-1 text-gray-800 dark:text-gray-200 
-               hover:text-red-600 transition duration-300 cursor-pointer"
-                >
-                  More Details
-                  <span className="transition-transform duration-300 group-hover:rotate-180">
-                    ↓
-                  </span>
+                <button type="button"                             
+                className={`after:block after:h-[2px] after:w-0 after:bg-red-600 after:transition-all after:duration-300   ${
+                      (links.map(link=>pathname.startsWith(link.href)).includes(true)) ? "after:w-full" : ""
+                 }`}>
+                    <div className="flex items-center gap-1 text-gray-800 dark:text-gray-200 hover:text-red-600 transition duration-300 cursor-pointer">
+                     More Details
+                     <span className="transition-transform duration-300 group-hover:rotate-180">↓</span>
+                    </div>
                 </button>
 
-                {/* Dropdown */}
-                <ul
-                  className="absolute hidden group-hover:block top-full right-0 
-               bg-white/90 dark:bg-gray-800 backdrop-blur-md 
-               border border-gray-200 dark:border-gray-700
-               shadow-lg w-56 rounded-xl p-2 space-y-1 z-50 
-               opacity-0 group-hover:opacity-100 
-               transition-all duration-300 ease-in-out"
-                >
-                  {[
-                    { href: "/Projects", label: "Projects" },
-                    { href: "/project-gallery", label: "Gallery" },
-                    { href: "/contact", label: "Contact" },
-                    { href: "/career", label: "Career" },
-                    { href: "/news-blog", label: "News / Blog" },
-                    { href: "/sustainability", label: "Sustainability" },
-                  ].map((item, idx) => (
+                <ul className="absolute hidden group-hover:block top-full right-0 bg-white/90 dark:bg-gray-800 backdrop-blur-md border border-gray-200 dark:border-gray-700 shadow-lg w-56 rounded-xl p-2 space-y-1 z-50 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out">
+                  {links.map((item, idx) => (
                     <li key={idx}>
                       <Link
                         href={item.href}
-                        className="block px-3 py-2 rounded-md text-gray-700 dark:text-gray-200 
-                     hover:bg-red-50 dark:hover:bg-gray-700 
-                     hover:text-red-600 transition"
+                        prefetch={item.prefetch}
+                            className={`block text-gray-800 dark:text-gray-200 hover:text-red-600 after:block after:h-[2px] after:w-0 after:bg-red-600 after:transition-all after:duration-300  ${
+                              pathname.startsWith(item.href) ? "after:w-full" : ""
+                            }`}
                       >
-                        {item.label}
+                        {item.name}
                       </Link>
                     </li>
                   ))}
                 </ul>
-              </li>
-
-              {/* Search */}
-              <li className="relative">
-                <button
-                  onClick={() => setSearchOpen(!searchOpen)}
-                  className="hover:text-red-800 text-red-600 dark:text-gray-200 transition-colors"
-                >
-                  <FaSearch size={18} />
-                </button>
-                <AnimatePresence>
-                  {searchOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.95 }}
-                      className="absolute right-0 mt-2 bg-white dark:bg-gray-800 p-2 rounded shadow-lg z-50"
-                    >
-                      <input
-                        type="text"
-                        placeholder="Search..."
-                        className="px-3 py-2 rounded border w-48 dark:bg-gray-700 dark:text-white border-gray-300 dark:border-gray-600 focus:outline-none"
-                      />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
               </li>
 
               {/* Theme Toggle */}
@@ -366,21 +294,12 @@ export default function Navbar() {
                 onClick={() => setMobileOpen(!mobileOpen)}
                 className="text-gray-800 dark:text-gray-200"
               >
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d={
-                      mobileOpen
-                        ? "M6 18L18 6M6 6l12 12"
-                        : "M4 6h16M4 12h16M4 18h16"
-                    }
+                    d={mobileOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
                   />
                 </svg>
               </button>
@@ -391,267 +310,150 @@ export default function Navbar() {
         {/* Mobile Menu */}
         <AnimatePresence>
           {mobileOpen && (
-            <motion.div
-              className="fixed lg:hidden top-20 left-0 h-[calc(100vh-80px)] dark:bg-black bg-white z-[9999] w-3/4 max-w-xs shadow-lg p-6"
-              initial={{ x: "-100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "-100%" }}
-              transition={{ type: "tween", duration: 0.3 }}
-            >
-              <ul className="flex flex-col space-y-4">
-                <li>
-                  <Link
-                    href="/"
-                    className={`text-gray-700 dark:text-gray-200 hover:text-red-600 ${
-                      pathname === "/" ? "border-b-2 border-red-600" : ""
-                    }`}
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    Home
-                  </Link>
-                </li>
-
-                {/* About Mobile */}
-                <li>
-                  <button
-                    onClick={() => setMobileAboutOpen(!mobileAboutOpen)}
-                    className="flex items-center justify-between w-full text-gray-700 dark:text-gray-200 hover:text-red-600"
-                  >
-                    About Us{" "}
-                    {mobileAboutOpen ? <FaChevronUp /> : <FaChevronDown />}
-                  </button>
-                  <AnimatePresence>
-                    {mobileAboutOpen && (
-                      <motion.ul
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="flex flex-col pl-4 mt-3 space-y-2"
-                      >
-                        <li>
-                          <Link
-                            href="/about/history"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            Detailed Company History
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/about/mission"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            Mission & Vision
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/about/leadership"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            Leadership Profiles
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/about/sectors"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            Overview of Business Sectors
-                          </Link>
-                        </li>
-                      </motion.ul>
-                    )}
-                  </AnimatePresence>
-                </li>
-
-                {/* Services Mobile */}
-                <li>
-                  <button
-                    onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                    className="flex items-center justify-between w-full text-gray-700 dark:text-gray-200 hover:text-red-600"
-                  >
-                    Services{" "}
-                    {mobileServicesOpen ? <FaChevronUp /> : <FaChevronDown />}
-                  </button>
-                  <AnimatePresence>
-                    {mobileServicesOpen && (
-                      <motion.ul
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="flex flex-col pl-4 mt-2 space-y-2"
-                      >
-                        <li>
-                          <Link
-                            href="/Services/Electro-mechanical"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            Electro-Mechanical Construction
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/Services/Civil-contruction"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            Civil Construction
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/Services/engineering-procurement-construction"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            Engineering Procurement & Construction
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/Services/safety-security-construction-management"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            Safety & Security Construction and Management
-                          </Link>
-                        </li>
-                      </motion.ul>
-                    )}
-                  </AnimatePresence>
-                </li>
-
-                {/* Business Mobile */}
-                <li>
-                  <button
-                    onClick={() => setMobileBusinessOpen(!mobileBusinessOpen)}
-                    className="flex items-center justify-between w-full text-gray-700 dark:text-gray-200 hover:text-red-600"
-                  >
-                    Business/Products{" "}
-                    {mobileBusinessOpen ? <FaChevronUp /> : <FaChevronDown />}
-                  </button>
-                  <AnimatePresence>
-                    {mobileBusinessOpen && (
-                      <motion.ul
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="flex flex-col pl-4 mt-2 space-y-2"
-                      >
-                        <li>
-                          <Link
-                            href="/products/construction"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            Sazin Construction Ltd
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/products/agro"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            Sazin Agro & Fisheries
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/products/helmet"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            Sky Helmet & Safety Accessories
-                          </Link>
-                        </li>
-                      </motion.ul>
-                    )}
-                  </AnimatePresence>
-                </li>
-
-                {/* More Details Mobile */}
-                <li>
-                  <button
-                    onClick={() => setMobileMoreOpen(!mobileMoreOpen)}
-                    className="flex items-center justify-between w-full text-gray-700 dark:text-gray-200 hover:text-red-600"
-                  >
-                    More Details{" "}
-                    {mobileMoreOpen ? <FaChevronUp /> : <FaChevronDown />}
-                  </button>
-                  <AnimatePresence>
-                    {mobileMoreOpen && (
-                      <motion.ul
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="flex flex-col pl-4 mt-2 space-y-2 text-gray-700 dark:text-gray-200"
-                      >
-                        <li>
-                          <Link
-                            href="/projects"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            Projects
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/project-gallery"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            Gallery
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/contact"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            Contact
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/career"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            Career
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/new-blog"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            New/Blog
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/sustainability"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            Sustainability
-                          </Link>
-                        </li>
-                      </motion.ul>
-                    )}
-                  </AnimatePresence>
-                </li>
-
-                {/* Remaining Links */}
-                {links.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className={`text-gray-700 dark:text-gray-200 hover:text-red-600 ${
-                        pathname === link.href
-                          ? "border-b-2 border-red-600"
-                          : ""
-                      }`}
-                      onClick={() => setMobileOpen(false)}
+                  <motion.div
+                      className="fixed lg:hidden top-20 left-0 h-[calc(100vh-80px)] dark:bg-black bg-white z-[9999] w-3/4 max-w-xs shadow-lg p-6 overflow-y-auto"
+                      initial={{ x: "-100%" }}
+                      animate={{ x: 0 }}
+                      exit={{ x: "-100%" }}
+                      transition={{ type: "tween", duration: 0.3 }}
                     >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+                      <ul className="flex flex-col space-y-4">
+
+                        {/* Home */}
+                        <li>
+                          <Link
+                            href="/"
+                            prefetch={true}
+                            className={`text-gray-700 dark:text-gray-200 hover:text-red-600 ${
+                              pathname === "/" ? "border-b-2 border-red-600" : ""
+                            }`}
+                            onClick={() => setMobileOpen(false)}
+                          >
+                            Home
+                          </Link>
+                        </li>
+
+                        {/* About */}
+                        <li>
+                          <button
+                            onClick={() => setMobileAboutOpen(!mobileAboutOpen)}
+                            className="flex justify-between w-full text-gray-700 dark:text-gray-200 hover:text-red-600"
+                          >
+                            About Us {mobileAboutOpen ? <FaChevronUp /> : <FaChevronDown />}
+                          </button>
+                          {mobileAboutOpen && (
+                            <ul className="pl-4 mt-2 space-y-2">
+                              {aboutLinks.map((link, idx) => (
+                                <li key={idx}>
+                                  <Link
+                                    href={link.href}
+                                    prefetch={link.prefetch}
+                                    className={`block text-gray-700 dark:text-gray-200 hover:text-red-600 ${
+                                      pathname.startsWith(link.href)
+                                        ? "border-b-2 border-red-600"
+                                        : ""
+                                    }`}
+                                    onClick={() => setMobileOpen(false)}
+                                  >
+                                    {link.name}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </li>
+
+                        {/* Services */}
+                        <li>
+                          <button
+                            onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                            className="flex justify-between w-full text-gray-700 dark:text-gray-200 hover:text-red-600"
+                          >
+                            Services {mobileServicesOpen ? <FaChevronUp /> : <FaChevronDown />}
+                          </button>
+                          {mobileServicesOpen && (
+                            <ul className="pl-4 mt-2 space-y-2">
+                              {servicesLinks.map((link, idx) => (
+                                <li key={idx}>
+                                  <Link
+                                    href={link.href}
+                                    prefetch={link.prefetch}
+                                    className={`block text-gray-700 dark:text-gray-200 hover:text-red-600 ${
+                                      pathname.startsWith(link.href)
+                                        ? "border-b-2 border-red-600"
+                                        : ""
+                                    }`}
+                                    onClick={() => setMobileOpen(false)}
+                                  >
+                                    {link.name}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </li>
+
+                        {/* Business */}
+                        <li>
+                          <button
+                            onClick={() => setMobileBusinessOpen(!mobileBusinessOpen)}
+                            className="flex justify-between w-full text-gray-700 dark:text-gray-200 hover:text-red-600"
+                          >
+                            Business/Products {mobileBusinessOpen ? <FaChevronUp /> : <FaChevronDown />}
+                          </button>
+                          {mobileBusinessOpen && (
+                            <ul className="pl-4 mt-2 space-y-2">
+                              {businessLinks.map((link, idx) => (
+                                <li key={idx}>
+                                  <Link
+                                    href={link.href}
+                                    prefetch={link.prefetch}
+                                    className={`block text-gray-700 dark:text-gray-200 hover:text-red-600 ${
+                                      pathname.startsWith(link.href)
+                                        ? "border-b-2 border-red-600"
+                                        : ""
+                                    }`}
+                                    onClick={() => setMobileOpen(false)}
+                                  >
+                                    {link.name}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </li>
+
+                        {/* More Details */}
+                        <li>
+                          <button
+                            onClick={() => setMobileMoreOpen(!mobileMoreOpen)}
+                            className="flex justify-between w-full text-gray-700 dark:text-gray-200 hover:text-red-600"
+                          >
+                            More Details {mobileMoreOpen ? <FaChevronUp /> : <FaChevronDown />}
+                          </button>
+                          {mobileMoreOpen && (
+                            <ul className="pl-4 mt-2 space-y-2">
+                              {links.map((link, idx) => (
+                                <li key={idx}>
+                                  <Link
+                                    href={link.href}
+                                    prefetch={link.prefetch}
+                                    className={`block text-gray-700 dark:text-gray-200 hover:text-red-600 ${
+                                      pathname.startsWith(link.href)
+                                        ? "border-b-2 border-red-600"
+                                        : ""
+                                    }`}
+                                    onClick={() => setMobileOpen(false)}
+                                  >
+                                    {link.name}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </li>
+
+                      </ul>
             </motion.div>
           )}
         </AnimatePresence>
