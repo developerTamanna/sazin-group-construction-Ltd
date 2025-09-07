@@ -62,10 +62,10 @@ export default function CoreValues() {
 
       {/* Values Grid */}
       <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        {values.map((v) => (
+        {values.map((v,index) => (
           
           <div
-            key={v.title}
+            key={index}
             className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 p-8 rounded-2xl text-center shadow-sm hover:shadow-lg transition-all duration-300"
           >
             {/* Icon */}
