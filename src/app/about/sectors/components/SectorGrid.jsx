@@ -34,7 +34,7 @@ export default function SectorGrid() {
             nextEl: ".sector-next",
             prevEl: ".sector-prev",
           }}
-          pagination={{ clickable: true,el:".sector-pagination"}}
+          pagination={{ clickable: true,el:".sector-pagination "}}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
           breakpoints={{
             640: { slidesPerView: 2 },

@@ -32,12 +32,8 @@ export default function Strengths() {
             prevEl: ".strength-prev",
           }}
           pagination={{
-            el: ".strength-pagination",
+            el: ".sector-pagination ",
             clickable: true,
-            renderBullet: (index, className) => {
-              // Tailwind classes for dots
-              return `<span class="${className} w-3 h-3 rounded-full mx-1 bg-gray-400 dark:bg-gray-500 inline-block"></span>`;
-            },
           }}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
           breakpoints={{
@@ -55,7 +51,7 @@ export default function Strengths() {
           ))}
 
           {/* Pagination Dots - Center under cards */}
-          <div className="strength-pagination !mt-6 flex justify-center"></div>
+          <div className="sector-pagination  !mt-6 flex justify-center"></div>
         </Swiper>
 
         {/* Footer Bar */}
