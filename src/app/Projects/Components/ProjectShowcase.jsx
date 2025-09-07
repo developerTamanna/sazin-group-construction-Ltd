@@ -134,8 +134,11 @@ export default function ProjectShowcaseInfinity() {
               <div
                 key={p.id}
                 onPointerEnter={() => setHoveredId(p.id)}
-                onPointerLeave={() => setHoveredId(null)}
+                onPointerDown={() => setHoveredId(p.id)}
+                onPointerUp={() => setHoveredId(p.id)}
+                onPointerLeave={() => setHoveredId(p.id)} // 👉 phone এ কাজ করবে
                 onPointerMove={() => setHoveredId(p.id)} // 👉 phone এ কাজ করবে
+                onPointerOut={() => setHoveredId(null)} // 👉 phone এ কাজ করবে
                 className="relative rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition group"
               >
                 <Image

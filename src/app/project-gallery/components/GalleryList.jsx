@@ -20,6 +20,7 @@ export default function GalleryList() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [lightbox, setLightbox] = useState(null);
   const loadMoreRef = useRef(null);
+  const [hoveredId, setHoveredId] = useState(null);
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
     useInfiniteQuery({
@@ -75,7 +76,8 @@ export default function GalleryList() {
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
         {filtered.map((p) => (
-          <GalleryCard key={p.id} project={p} onClick={setLightbox} />
+          <GalleryCard key={p.id} project={p} onClick={setLightbox} hoveredId={hoveredId}
+           setHoveredId={setHoveredId} />
         ))}
       </div>
 
