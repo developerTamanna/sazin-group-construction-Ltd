@@ -45,3 +45,14 @@
 .myDiv {
   -ms-overflow-style: none; 
 }
+
+/* @layer components {
+  .sector-pagination .swiper-pagination-bullet {
+    @apply bg-gray-400 dark:bg-gray-600 opacity-100 w-3 h-3 rounded-full transition;
+  }
+
+  .sector-pagination .swiper-pagination-bullet-active {
+    @apply bg-red-600;
+  }
+} */
+

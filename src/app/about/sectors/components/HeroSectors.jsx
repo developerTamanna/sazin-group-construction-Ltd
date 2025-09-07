@@ -1,6 +1,5 @@
 'use client';
 import { motion } from 'framer-motion';
-import HeaderOfAbout from '@/components/HeaderOfAbout';
 
 export default function HeroSectors() {
   const header = "Business Sectors";
@@ -25,7 +24,7 @@ export default function HeroSectors() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="text-2xl md:text-4xl pl-16 font-semi-bold text-white flex flex-wrap gap-2"
+          className="text-2xl md:text-4xl  font-semi-bold text-white flex justify-start items-center flex-wrap gap-2"
         >
           {header.split('').map((char, i) => (
             <motion.span

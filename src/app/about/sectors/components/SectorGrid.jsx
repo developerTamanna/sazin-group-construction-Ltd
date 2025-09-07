@@ -24,7 +24,7 @@ export default function SectorGrid() {
         Our <span className="text-red-600">Core Sectors</span>
       </h2>
 
-      <div className="mt-10 max-w-6xl mx-auto relative">
+      <div className="mt-10 max-w-6xl mx-auto relative h-fit">
         {/* Swiper */}
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
@@ -34,7 +34,7 @@ export default function SectorGrid() {
             nextEl: ".sector-next",
             prevEl: ".sector-prev",
           }}
-          pagination={{ clickable: true }}
+          pagination={{ clickable: true,el:".sector-pagination"}}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
           breakpoints={{
             640: { slidesPerView: 2 },
@@ -50,6 +50,7 @@ export default function SectorGrid() {
               </div>
             </SwiperSlide>
           ))}
+          <div className="sector-pagination  flex justify-center gap-2 !mt-2"></div>
         </Swiper>
 
         {/* Footer Bar */}
@@ -70,8 +71,6 @@ export default function SectorGrid() {
             </Link>
           </div>
 
-          {/* Pagination Dots (Right side) */}
-          <div className="sector-pagination"></div>
         </div>
       </div>
     </section>
