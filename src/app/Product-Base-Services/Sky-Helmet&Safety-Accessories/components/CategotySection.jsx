@@ -16,7 +16,7 @@ useEffect(() => {
 
               <Helmetsads />
             </div>
-          <section className="relative mx-auto z-[50] dark:bg-black/80 pb-16 px-4 lg:px-10 overflow-hidden flex flex-col items-center justify-center w-full"
+          <section className="relative mx-auto z-[50] dark:bg-black/30 pb-16 px-4 lg:px-10 overflow-hidden flex flex-col items-center justify-center w-full"
 
             style={{ marginTop: `-${helmHeight}px`, paddingTop: `${helmHeight/2}px` }}
 

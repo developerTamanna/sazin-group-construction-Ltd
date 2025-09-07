@@ -3,10 +3,10 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
-import { FaRegBuilding } from "react-icons/fa";     
-import { MdBusinessCenter, MdOutlineLocalFireDepartment, MdVerifiedUser } from "react-icons/md"; 
-import { BiReceipt } from "react-icons/bi";        
-import { FaRegFileAlt } from "react-icons/fa";     
+import { FaRegBuilding } from "react-icons/fa";
+import { MdBusinessCenter, MdOutlineLocalFireDepartment, MdVerifiedUser } from "react-icons/md";
+import { BiReceipt } from "react-icons/bi";
+import { FaRegFileAlt } from "react-icons/fa";
 
 const certificates = [
   { name: "Incorporation Certificate", image: "/certificates.jpeg", icon: FaRegBuilding, animation: { rotate: 15 } },
@@ -55,31 +55,34 @@ export default function MotionCertificates() {
       <AnimatePresence>
         {selectedImage && (
           <motion.div
-            className="fixed inset-0 top-20 bottom-0 bg-black/70 flex items-center justify-center z-50"
+            className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
             onClick={() => setSelectedImage(null)}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
             <motion.div
-              className="bg-white h-full dark:bg-neutral-900 p-4 rounded-lg max-w-3xl w-full mx-4"
+              className="bg-white dark:bg-neutral-900 p-4 rounded-lg max-w-4xl w-[95%] h-[90%] flex flex-col"
               initial={{ scale: 0.7, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.7, opacity: 0 }}
               transition={{ duration: 0.3 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <Image
-                src={selectedImage}
-                alt="Certificate"
-                width={1000}
-                height={600}
-                className="w-full h-[92%] object-fill rounded-md"
-                priority={false}
-              />
+              {/* Responsive Image */}
+              <div className="flex-1 relative w-full">
+                <Image
+                  src={selectedImage}
+                  alt="Certificate"
+                  fill
+                  className="object-contain rounded-md"
+                  priority={false}
+                />
+              </div>
+
               <button
                 onClick={() => setSelectedImage(null)}
-                className="mt-4 px-2 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
+                className="mt-4 px-3 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition self-center"
               >
                 Close
               </button>

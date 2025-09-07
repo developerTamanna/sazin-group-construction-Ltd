@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import React from "react";
 import { FaStar } from "react-icons/fa";
 
@@ -18,9 +19,11 @@ const HelmetAndSafetyCard = ({ data }) => {
               >
                 {/* Image */}
                 <div className="overflow-hidden">
-                  <img
+                  <Image
                     src={item?.image}
                     alt={item?.title}
+                    width={300}
+                    height={200}
                     className="w-full h-48 object-cover transition-transform duration-500 hover:scale-110"
                   />
                 </div>

@@ -6,7 +6,7 @@ import { useInView } from "framer-motion";
 
 export  function AnimatedSection({ children }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { amount: 0.3, once: false }); 
+  const isInView = useInView(ref, { amount: 0.1, once: false }); 
   // once: false মানে বারবার ঢোকা-বের হলে animate হবে
 
   return (
