@@ -2,14 +2,15 @@ import Image from "next/image";
 import MotionCard from "../utils/MotionForCategory";
 import Link from "next/link";
 
-export default function CategoryCard({ context = {}, subCategories = [] }) {
+export default function CategoryCard({  subCategories = [] }) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-    {subCategories.map((cat) => (
-        <MotionCard key={cat.title}>
+    {subCategories.map((cat,indx) => (
+        <MotionCard key={indx}>
                 <Link
                     key={cat.title}
                     href={cat?.path}
+                    prefetch={false}
                 >
                     <Image
                         src={cat.image}
