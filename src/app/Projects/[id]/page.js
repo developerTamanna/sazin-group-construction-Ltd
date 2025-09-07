@@ -1,5 +1,5 @@
+import Image from "next/image";
 import { projects } from "../Components/projectsData";
-import page from "./../../sustainability/page";
 
 export async function generateStaticParams() {
   return projects.map((p) => ({
@@ -22,9 +22,12 @@ export default function ProjectDetail({ params }) {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 items-start">
         {/* Left: Image */}
         <div className="flex justify-center lg:justify-end">
-          <img
+          <Image
             src={project.img}
             alt={project.title}
+            width={600}
+            height={400}
+            priority={true}
             className="w-full max-w-xl rounded-lg object-cover shadow-md"
           />
         </div>
