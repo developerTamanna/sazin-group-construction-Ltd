@@ -60,17 +60,17 @@ const businessLinks = [
     const handleClickOutside = (e) => {
               if (aboutRef.current && aboutRef.current.contains(e.target)) {
                 // click inside About → keep About, close others
-                setAboutOpen(true);
+                setAboutOpen((t)=>!t);
                 setServicesOpen(false);
                 setBusinessOpen(false);
               } else if (servicesRef.current && servicesRef.current.contains(e.target)) {
                 // click inside Services → keep Services, close others
-                setServicesOpen(true);
+                setServicesOpen((t)=>!t);
                 setAboutOpen(false);
                 setBusinessOpen(false);
               } else if (businessRef.current && businessRef.current.contains(e.target)) {
                 // click inside Business → keep Business, close others
-                setBusinessOpen(true);
+                setBusinessOpen((t)=>!t);
                 setAboutOpen(false);
                 setServicesOpen(false);
               } else {
@@ -133,9 +133,8 @@ const businessLinks = [
               </li>
 
               {/* About Dropdown */}
-              <li className="relative" ref={aboutRef}>
+              <li className="relative"  ref={aboutRef} >
                 <button
-                  onClick={() => setAboutOpen(!aboutOpen)}
                   className={`after:block after:h-[2px] after:w-0 after:bg-red-600 after:transition-all after:duration-300 
                       ${pathname.startsWith("/about") ? "after:w-full" : ""}
                     `}
@@ -176,7 +175,6 @@ const businessLinks = [
               {/* Services Dropdown */}
               <li className="relative" ref={servicesRef}>
                 <button
-                  onClick={() => setServicesOpen(!servicesOpen)}
                   className={`after:block after:h-[2px] after:w-0 after:bg-red-600 after:transition-all after:duration-300 
                       ${pathname.startsWith("/Services") ? "after:w-full" : ""}
                     `}
@@ -216,7 +214,6 @@ const businessLinks = [
               {/* Business Dropdown */}
               <li className="relative" ref={businessRef}>
                 <button
-                  onClick={() => setBusinessOpen(!businessOpen)}
                   className={`after:block after:h-[2px] after:w-0 after:bg-red-600 after:transition-all after:duration-300 
                       ${pathname.startsWith("/products") ? "after:w-full" : ""}
                     `}
