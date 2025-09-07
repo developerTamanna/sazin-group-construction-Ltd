@@ -4,7 +4,7 @@ export default function LeadershipMessage() {
   return (
     <section className="bg-white dark:bg-neutral-950 py-16 px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
-        <div className="bg-white dark:bg-neutral-800 rounded-3xl p-10 text-center">
+        <div className="bg-white dark:bg-neutral-800 rounded-3xl md:p-10 p-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-red-600">
             Message from Our Leadership
           </h2>
