@@ -27,7 +27,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="bg-gray-50 dark:bg-gray-950 min-h-screen flex items-center justify-center md:p-6 p-0 transition-colors duration-300">
+    <div className="bg-gray-50 dark:bg-gray-950 min-h-screen flex items-center justify-center md:p-6 p-1 transition-colors duration-300">
       <div className="bg-white dark:bg-gray-800 shadow-md rounded-2xl md:p-8 p-2 max-w-6xl w-full grid md:grid-cols-2 gap-8 transition-colors duration-300">
         {/* Left Side - Form */}
         <div>
