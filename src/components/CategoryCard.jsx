@@ -1,6 +1,5 @@
 import Image from "next/image";
 import MotionCard from "../utils/MotionForCategory";
-import {AnimatedSection} from "@/utils/ScrollMontion";
 import Link from "next/link";
 
 export default function CategoryCard({ context = {}, subCategories = [] }) {
