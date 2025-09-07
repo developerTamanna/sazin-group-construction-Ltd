@@ -39,18 +39,20 @@ export default function Navbar() {
     { name: "Overview of Business Sectors", href: "/about/sectors", prefetch: false },
   ];
 
-  const servicesLinks = [
-    { name: "Electro-Mechanical Construction", href: "/Services/Electro-mechanical", prefetch: true },
-    { name: "Civil Construction", href: "/Services/Civil-construction", prefetch: true },
-    { name: "Engineering Procurement & Construction", href: "/Services/engineering-procurement-construction", prefetch: false },
-    { name: "Safety & Security Construction and Management", href: "/Services/safety-security-construction-management", prefetch: false },
-  ];
+const servicesLinks = [
+  { name: "Electro-Mechanical Construction", href: "/Services/Electro-mechanical", prefetch: true },
+  { name: "Civil Construction", href: "/Services/Civil-construction", prefetch: true },
+  { name: "Engineering Procurement & Construction", href: "/Services/engineering-procurement-construction", prefetch: false },
+  { name: "Safety & Security Construction and Management", href: "/Services/safety-security-construction-management", prefetch: false },
+  { name: "Helmet & Safety Accessories", href: "/Product-Base-Services/Sky-Helmet&Safety-Accessories", prefetch: false },
+  { name: "Agro & Fisheries", href: "/Services/agro-fisheries", prefetch: false },
+];
 
-  const businessLinks = [
-    { name: "Sazin Construction Ltd", href: "/products/construction", prefetch: true },
-    { name: "Sazin Agro & Fisheries", href: "/products/agro", prefetch: true },
-    { name: "Sky Helmet & Safety Accessories", href: "/products/helmet", prefetch: false },
-  ];
+const businessLinks = [
+  { name: "Sazin Construction Ltd", href: "/products/construction", prefetch: true },
+  { name: "Sazin Agro & Fisheries", href: "/products/agro", prefetch: true },
+  { name: "Sky Helmet & Safety Accessories", href: "/Product-Base-Services/Sky-Helmet&Safety-Accessories", prefetch: false },
+];
 
   // Click outside & scroll logic
   useEffect(() => {
