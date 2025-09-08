@@ -103,11 +103,11 @@ export default function QueryFunction({value ,ky}) {
      filterAndSortData();
   }, [search,filterPrice,sort,data]);
 
-  if (status === "loading") return <p>Loading...</p>;
-  if (status === "error") return <p>Error fetching products!</p>;
+  if (status === "loading") return <p className='text-center dark:text-white'>Loading...</p>;
+  if (status === "error") return <p className='text-center dark:text-white'>Error fetching products!</p>;
 
   return (
-  <div className="container mx-auto w-full md:p-8 p-6">
+  <div className="container mx-auto w-full md:p-8 p-4">
       {/* 🔍 Search + Filter + Sort Controls */}
       <div className="flex flex-col  items-center justify-between gap-3 mb-6">
         <div className="relative w-full ">
@@ -164,7 +164,7 @@ export default function QueryFunction({value ,ky}) {
       {/* Sentinel element for IntersectionObserver */}
       <div ref={loadMoreRef} className=" w-full z-[999]  h-10 mt-5 text-center">
         {isFetchingNextPage && <p className='text-red-500'>Loading more...</p>}
-        {!hasNextPage && <p className="text-gray-300 text-xl font-semi-bold">No more products</p>}
+        {!hasNextPage && <p className="text-gray-900 text-xl font-semi-bold dark:text-white">No more products</p>}
       </div>
     </div>
   );
