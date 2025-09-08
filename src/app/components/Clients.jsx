@@ -1,33 +1,35 @@
 // Clients.jsx
-"use client";
+'use client';
+import Link from 'next/link';
 
-import { useRef, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
-import "swiper/css";
-import { FaBuilding } from "react-icons/fa";
-import { motion } from "framer-motion";
-import { BsArrowRight, BsArrowLeft } from "react-icons/bs";
-import Link from "next/link";
+import { motion } from 'framer-motion';
+import { useRef, useState } from 'react';
+import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
+import { FaBuilding } from 'react-icons/fa';
+import 'swiper/css';
+import { Autoplay } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 const clients = [
-  { name: "Public Works Department (PWD)", icon: FaBuilding },
-  { name: "Bangladesh Power Development Board", icon: FaBuilding },
-  { name: "BPC & Petrobangla", icon: FaBuilding },
-  { name: "Private Corporates", icon: FaBuilding },
-  { name: "Grameen Bank", icon: FaBuilding },
-  { name: "BRAC", icon: FaBuilding },
-  { name: "Bangladesh Railway", icon: FaBuilding },
-  { name: "Local NGOs", icon: FaBuilding },
+  { name: 'Public Works Department (PWD)', icon: FaBuilding },
+  { name: 'Bangladesh Power Development Board', icon: FaBuilding },
+  { name: 'BPC & Petrobangla', icon: FaBuilding },
+  { name: 'Private Corporates', icon: FaBuilding },
+  { name: 'Grameen Bank', icon: FaBuilding },
+  { name: 'BRAC', icon: FaBuilding },
+  { name: 'Bangladesh Railway', icon: FaBuilding },
+  { name: 'Local NGOs', icon: FaBuilding },
 ];
 
 export const metadata = {
-  title: "Our Clients & Partners | Your Company",
-  description: "Trusted by government & leading organizations across Bangladesh.",
+  title: 'Our Clients & Partners | Your Company',
+  description:
+    'Trusted by government & leading organizations across Bangladesh.',
   openGraph: {
-    title: "Our Clients & Partners",
-    description: "Trusted by government & leading organizations across Bangladesh.",
-    images: ["/clients-og.jpg"],
+    title: 'Our Clients & Partners',
+    description:
+      'Trusted by government & leading organizations across Bangladesh.',
+    images: ['/clients-og.jpg'],
   },
 };
 
@@ -83,9 +85,9 @@ export default function Clients() {
                     <motion.div
                       className="text-red-500 dark:text-red-400 text-3xl"
                       whileHover={{ scale: 1.2 }}
-                      transition={{ type: "spring", stiffness: 300 }}
+                      transition={{ type: 'spring', stiffness: 300 }}
                     >
-                      <Icon aria-label={client.name + " logo"} />
+                      <Icon aria-label={client.name + ' logo'} />
                     </motion.div>
 
                     {/* Text */}
@@ -117,10 +119,11 @@ export default function Clients() {
               <BsArrowRight />
             </button>
             <Link
-              href="/products"
-              className="text-red-600 font-semibold text-xl hover:underline"
+              href="/clients"
+              className="text-red-600 text-left text-xl hover:underline transition"
+              aria-label="View all clients and partners"
             >
-              See All
+              See All →
             </Link>
           </div>
 
