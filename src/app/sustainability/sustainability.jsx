@@ -6,20 +6,21 @@ import { motion } from "framer-motion";
 const sections = [
   {
     title: "Our Mission",
-    text: "আমাদের কোম্পানির মূল লক্ষ্য হলো একটি সবুজ ভবিষ্যৎ তৈরি করা। আমরা পরিবেশের ক্ষতি না করে টেকসই সমাধান তৈরি করি।",
+    text: `The main goal of our company is to create a green future. We develop sustainable solutions without harming the environment.`,
     img: "/green.jpg",
   },
   {
     title: "Our Work",
-    text: "আমরা পরিচ্ছন্ন শক্তি, পুনর্ব্যবহারযোগ্য উপাদান এবং পরিবেশ-বান্ধব প্রযুক্তির মাধ্যমে কাজ করি।",
+    text: "We work through clean energy, recyclable materials, and eco-friendly technologies.",
     img: "/recycle.jpg",
   },
   {
     title: "Our People",
-    text: "আমাদের টিমের প্রতিটি সদস্য টেকসই উন্নয়নে বিশ্বাসী। তারা প্রতিদিন নতুন নতুন আইডিয়া তৈরি করে।",
+    text: "Every member of our team believes in sustainable development. They come up with new ideas every day.",
     img: "/innovation.jpg",
   },
 ];
+
 
 export default function Sustainability() {
   const [currentIndex, setCurrentIndex] = useState(0);
