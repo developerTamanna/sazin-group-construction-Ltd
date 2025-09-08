@@ -126,7 +126,7 @@ export default function HomePage() {
           </div>
 
           {/* Visual with Lazy Map */}
-          <div className="relative order-1 lg:order-2">
+          <div className="relative order-1 lg:order-2 px-2">
             <div className="absolute -inset-2 -z-10 rounded-3xl bg-gradient-to-br from-red-600/10 to-black/10 blur-xl dark:from-red-500/20 dark:to-white/5" />
             <div className="overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-xl dark:border-neutral-700 dark:bg-neutral-900">
               {/* ✅ Lazy loaded map */}
