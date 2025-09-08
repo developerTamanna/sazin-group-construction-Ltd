@@ -115,13 +115,13 @@ export default function HomePage() {
 
             {/* CTA */}
             <div className="mt-8">
-              <a
-                href="/about"
+              <Link
+                href="/about/history"
                 aria-label="Learn more about Sazin Construction"
                 className="inline-flex items-center justify-center text-red-600 text-base font-semi-bold transition hover:text-red-500 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 dark:focus:ring-offset-neutral-900"
               >
                 Learn More About Us →
-              </a>
+              </Link>
             </div>
           </div>
 
