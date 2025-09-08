@@ -1,24 +1,25 @@
-// Equipment.jsx
-"use client";
+'use client'; // ⚠️ সবথেকে উপরে
+
+import Link from 'next/link';
 
 const equipment = [
-  "Cranes & Heavy Lifters",
-  "Concrete Mixers",
-  "Generators",
-  "Excavators",
-  "Testing & Measuring Tools",
-  "Concrete Mixers",
+  'Cranes & Heavy Lifters',
+  'Concrete Mixers',
+  'Generators',
+  'Excavators',
+  'Testing & Measuring Tools',
+  'Concrete Mixers',
 ];
 
 export const metadata = {
-  title: "Our Equipment & Capabilities | Your Company",
+  title: 'Our Equipment & Capabilities | Your Company',
   description:
-    "Modern construction equipment ensures timely, safe, and high-quality project execution.",
+    'Modern construction equipment ensures timely, safe, and high-quality project execution.',
   openGraph: {
-    title: "Our Equipment & Capabilities",
+    title: 'Our Equipment & Capabilities',
     description:
-      "Modern construction equipment ensures timely, safe, and high-quality project execution.",
-    images: ["/equipment-og.jpg"],
+      'Modern construction equipment ensures timely, safe, and high-quality project execution.',
+    images: ['/equipment-og.jpg'],
   },
 };
 
@@ -49,13 +50,13 @@ export default function Equipment() {
 
         {/* CTA */}
         <div className="mt-10">
-          <a
+          <Link
             href="/equipment"
             className="text-red-600 text-left text-xl hover:underline transition"
             aria-label="View all equipment and capabilities"
           >
             View All Equipment →
-          </a>
+          </Link>
         </div>
       </div>
     </section>

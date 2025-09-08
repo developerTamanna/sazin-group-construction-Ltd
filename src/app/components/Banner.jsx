@@ -1,10 +1,10 @@
 'use client';
-
-import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useTheme } from "next-themes";
-import Image from "next/image";
-import { FaChevronDown } from "react-icons/fa";
+import { AnimatePresence, motion } from 'framer-motion';
+import { useTheme } from 'next-themes';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { FaChevronDown } from 'react-icons/fa';
 
 const images = [
   { src: '/Banner1.jpg', alt: 'Modern construction project banner 1' },
@@ -31,7 +31,7 @@ const Banner = () => {
   const [current, setCurrent] = useState(0);
   const { theme } = useTheme();
   const [scrollY, setScrollY] = useState(0);
-    const router = useRouter();
+  const router = useRouter();
 
   const handleClick = () => {
     router.push('/contact'); // navigate programmatically
@@ -71,7 +71,6 @@ const Banner = () => {
       setCurrent((prev) => (prev - 1 + images.length) % images.length);
     }
   };
-
 
   return (
     <section
@@ -138,9 +137,9 @@ const Banner = () => {
           className="cursor-pointer bg-red-600 z-[60] text-white font-semibold px-3 py-2 sm:px-6 sm:py-2 rounded-md shadow-lg text-sm sm:text-base md:text-xl hover:bg-gray-100 hover:text-red-800 hover:scale-105 transition transform"
           style={{ y: parallax(0.9) }}
           onClick={handleClick}
-           aria-label="Contact us to get started"
+          aria-label="Contact us to get started"
         >
-            Get Started
+          Get Started
         </motion.div>
       </div>
 
