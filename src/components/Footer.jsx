@@ -1,20 +1,22 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import Script from "next/script"; // ✅ SEO JSON-LD এর জন্য
+import Script from "next/script"; 
 import {
   FaFacebookF,
   FaTwitter,
   FaGoogle,
   FaLinkedinIn,
   FaYoutube,
+  FaWhatsapp,
+  FaPinterestP,
 } from "react-icons/fa";
 import { useTheme } from "next-themes";
 
 const Footer = () => {
   const { theme } = useTheme();
 
-  // ✅ JSON-LD Structured Data (LocalBusiness + Organization)
+  // ✅ JSON-LD Structured Data (Organization)
   const footerJsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -35,6 +37,8 @@ const Footer = () => {
       "https://twitter.com/yourpage",
       "https://linkedin.com/company/yourpage",
       "https://youtube.com/yourchannel",
+      "https://wa.me/yourwhatsapp",
+      "https://pinterest.com/yourpage",
     ],
     contactPoint: {
       "@type": "ContactPoint",
@@ -46,13 +50,7 @@ const Footer = () => {
   };
 
   return (
-    <footer
-      className={`w-full py-14 ${
-        theme === "dark"
-          ? "bg-gray-900 text-gray-300"
-          : "bg-black text-gray-100"
-      }`}
-    >
+    <footer className="w-full py-12 bg-neutral-800 text-gray-200">
       {/* ✅ JSON-LD Lazy Load */}
       <Script
         id="footer-jsonld"
@@ -63,19 +61,19 @@ const Footer = () => {
 
       <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between gap-8">
         {/* Contact Info */}
-        <div className="flex-1">
-          <h3 className="font-semibold text-lg mb-4 inline-block">
-            <Link href="/">
+        <div className="flex-1 text-center md:text-left">
+          <Link href="/" className="inline-block mb-4">
+            <div className="w-30 h-30 flex items-center justify-center rounded-full mx-auto md:mx-0 ">
               <Image
-                src="/logo.png"
+                src="/Sazin.svg"
                 alt="Company Logo"
-                width={150}
-                height={60}
-                className="object-contain rounded-full"
-                priority={false} // ✅ performance hint
+                width={100}
+                height={100}
+                className="object-contain"
+                priority={false}
               />
-            </Link>
-          </h3>
+            </div>
+          </Link>
           <p className="mt-2 text-gray-400">
             Contractor, Civil Construction, ElectroMechanical Works, Importer &
             Supplier, etc.
@@ -85,113 +83,67 @@ const Footer = () => {
           </p>
 
           {/* Social Icons */}
-          <div className="mt-8 flex justify-left gap-4 text-xl">
-            <a
-              href="https://facebook.com/yourpage"
-              aria-label="Facebook"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-red-600 transition-colors"
-            >
-              <FaFacebookF />
-            </a>
-            <a
-              href="https://twitter.com/yourpage"
-              aria-label="Twitter"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-red-600 transition-colors"
-            >
-              <FaTwitter />
-            </a>
-            <a
-              href="https://google.com/"
-              aria-label="Google"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-red-600 transition-colors"
-            >
-              <FaGoogle />
-            </a>
-            <a
-              href="https://linkedin.com/company/yourpage"
-              aria-label="LinkedIn"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-red-600 transition-colors"
-            >
-              <FaLinkedinIn />
-            </a>
-            <a
-              href="https://youtube.com/yourchannel"
-              aria-label="YouTube"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-red-600 transition-colors"
-            >
-              <FaYoutube />
-            </a>
+          <div className="mt-6 flex justify-center md:justify-start gap-4 text-xl">
+            {[
+              { icon: <FaWhatsapp />, link: "https://wa.me/yourwhatsapp" },
+              { icon: <FaFacebookF />, link: "https://facebook.com/yourpage" },
+              { icon: <FaTwitter />, link: "https://twitter.com/yourpage" },
+              { icon: <FaGoogle />, link: "https://google.com/" },
+              { icon: <FaLinkedinIn />, link: "https://linkedin.com/company/yourpage" },
+              { icon: <FaPinterestP />, link: "https://pinterest.com/yourpage" },
+              { icon: <FaYoutube />, link: "https://youtube.com/yourchannel" },
+            ].map(({ icon, link }, i) => (
+              <a
+                key={i}
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-red-600 transition-colors"
+              >
+                {icon}
+              </a>
+            ))}
           </div>
         </div>
 
         {/* Services */}
         <div className="flex-1">
-          <h3 className="text-xl border-b-2 border-red-500 mb-2 text-gray-200 inline-block">
+          <h3 className="text-xl border-b-2 border-red-500 mb-3 inline-block">
             Services
           </h3>
-          <ul className="mt-2 space-y-3 text-gray-400">
-            <li className="hover:text-red-600 transition-colors">
-              Electro-Mech
-            </li>
-            <li className="hover:text-red-600 transition-colors">Safety Gear</li>
-            <li className="hover:text-red-600 transition-colors">
-              Safety Training
-            </li>
-            <li className="hover:text-red-600 transition-colors">
-              Agro Products
-            </li>
-            <li className="hover:text-red-600 transition-colors">
-              EPC Projects
-            </li>
+          <ul className="mt-2 space-y-2 text-gray-400">
+            <li><Link href="/Services/Electro-mechanical" className="hover:text-red-600">Electro-Mech</Link></li>
+            <li><Link href="/Services/safety-security-construction-management" className="hover:text-red-600">Safety Gear</Link></li>
+            <li><Link href="/Services/safety-security-construction-management" className="hover:text-red-600">Safety Training</Link></li>
+            <li><Link href="/products/agro-products" className="hover:text-red-600">Agro Products</Link></li>
+            <li><Link href="/services/epc-projects" className="hover:text-red-600">EPC Projects</Link></li>
           </ul>
         </div>
 
         {/* Supports */}
-        <div className="flex-1 ">
-          <h3 className="text-gray-200 border-b-2 border-red-500 text-xl mb-2 inline-block">
+        <div className="flex-1">
+          <h3 className="text-xl border-b-2 border-red-500 mb-3 inline-block">
             Supports
           </h3>
-          <ul className="mt-2 space-y-3 text-gray-400">
-            <li className="hover:text-red-600 transition-colors">Careers</li>
-            <li className="hover:text-red-600 transition-colors">
-              Our Process
-            </li>
-            <li className="hover:text-red-600 transition-colors">FAQs</li>
-            <li className="hover:text-red-600 transition-colors">
-              Client Testimonials
-            </li>
-            <li className="hover:text-red-600 transition-colors">Our Blog</li>
+          <ul className="mt-2 space-y-2 text-gray-400">
+            <li><Link href="/career" className="hover:text-red-600">Careers</Link></li>
+            <li><Link href="/supports/our-process" className="hover:text-red-600">Our Process</Link></li>
+            <li><Link href="/supports/faqs" className="hover:text-red-600">FAQs</Link></li>
+            <li><Link href="/supports/client-testimonials" className="hover:text-red-600">Client Testimonials</Link></li>
+            <li><Link href="/news-blog" className="hover:text-red-600">Our Blog</Link></li>
           </ul>
         </div>
 
         {/* Business */}
         <div className="flex-1">
-          <h3 className="text-gray-200 border-b-2 border-red-500 text-xl mb-2 inline-block">
+          <h3 className="text-xl border-b-2 border-red-500 mb-3 inline-block">
             Business
           </h3>
-          <ul className="mt-2 space-y-3 text-gray-400">
-            <li className="hover:text-red-600 transition-colors">
-              Sazin Construction Ltd
-            </li>
-            <li className="hover:text-red-600 transition-colors">
-              Sazin Agro & Fisheries
-            </li>
-            <li className="hover:text-red-600 transition-colors">
-              Sky Helmet & Safety
-            </li>
-            <li className="hover:text-red-600 transition-colors">
-              Accessories
-            </li>
+          <ul className="mt-2 space-y-2 text-gray-400">
+            <li><Link href="/" className="hover:text-red-600">Sazin Construction Ltd</Link></li>
+            <li><Link href="/business/sazin-agro" className="hover:text-red-600">Sazin Agro & Fisheries</Link></li>
+            <li><Link href="/business/sky-helmet" className="hover:text-red-600">Sky Helmet & Safety</Link></li>
+            <li><Link href="/business/accessories" className="hover:text-red-600">Accessories</Link></li>
           </ul>
         </div>
       </div>
@@ -200,11 +152,9 @@ const Footer = () => {
       <div
         className={`mt-8 border-t container mx-auto ${
           theme === "dark" ? "border-gray-700" : "border-gray-600"
-        } pt-4 text-center text-sm ${
-          theme === "dark" ? "text-gray-300" : "text-gray-600"
-        }`}
+        } pt-4 text-center text-sm text-gray-400`}
       >
-        &copy; {new Date().getFullYear()} CompanyLogo. All rights reserved.
+        &copy; {new Date().getFullYear()} Sazin Construction LTD. All rights reserved.
       </div>
     </footer>
   );
