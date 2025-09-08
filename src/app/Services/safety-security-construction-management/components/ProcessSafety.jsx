@@ -62,7 +62,7 @@ export default function ProcessSafety() {
           const Icon = s.icon;
           return (
             <motion.div
-              key={s.title}
+              key={idx}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: idx * 0.15 }}
@@ -75,7 +75,7 @@ export default function ProcessSafety() {
               {/* Step Number (background watermark) */}
               <div
                 className="absolute top-4 right-6 text-5xl font-extrabold
-                              text-neutral-200 dark:text-neutral-800 opacity-40"
+                              text-neutral-600 dark:text-neutral-200 opacity-30"
               >
                 {s.n}
               </div>

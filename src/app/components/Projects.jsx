@@ -7,6 +7,7 @@ import { Navigation, Autoplay } from "swiper/modules"; // Lazy removed
 // Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
+import Link from "next/link";
 
 const projects = [
   { title: "Rooppur Nuclear Plant", img: "/Nuclear.jpeg" },
@@ -83,12 +84,13 @@ export default function Projects() {
               →
             </button>
 
-            <a
-              href="/projects"
+            <Link
+              href="/Projects"
+              prefetch={false}
               className="text-red-600 text-xl hover:underline transition"
             >
-              View All Projects
-            </a>
+              View All 
+            </Link>
           </div>
 
           <div className="font-semibold ml-2">

@@ -92,7 +92,6 @@ export default function Navbar() {
   // 🔹 Active Border
   const ActiveBorder = () => (
     <motion.span
-      layoutId="activeBorder"
       className="absolute bottom-0 left-0 h-[1.8px] bg-red-600"
       initial={{ width: 0 }}
       animate={{ width: "100%" }}
@@ -113,15 +112,19 @@ export default function Navbar() {
             Company<span className="text-red-600">Logo</span>
           </Link>
 
-          {/* Desktop Menu */}
-          <ul className="hidden lg:flex space-x-6 items-center xl:text-xl">
-            {/* Home */}
-            <li className="relative">
-              <Link href="/" prefetch className="text-gray-700 dark:text-gray-200 hover:text-red-600 relative transition-colors">
-                Home
+            {/* Desktop Menu */}
+            <ul className="hidden lg:flex space-x-6 items-center xl:text-xl">
+              {/* Home */}
+              <li className="relative">
+                <Link
+                  href="/"
+                  prefetch={true}
+                  className="text-gray-700 dark:text-gray-200 hover:text-red-600 relative transition-colors"
+                >
+                  Home
+                </Link>
                 {pathname === "/" && <ActiveBorder />}
-              </Link>
-            </li>
+              </li>
 
             {/* Dropdowns */}
             {["about", "services", "business"].map((key) => (

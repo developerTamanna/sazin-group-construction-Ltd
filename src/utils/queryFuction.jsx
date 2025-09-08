@@ -103,14 +103,14 @@ export default function QueryFunction({value ,ky}) {
      filterAndSortData();
   }, [search,filterPrice,sort,data]);
 
-  if (status === "loading") return <p>Loading...</p>;
-  if (status === "error") return <p>Error fetching products!</p>;
+  if (status === "loading") return <p className='text-center dark:text-white'>Loading...</p>;
+  if (status === "error") return <p className='text-center dark:text-white'>Error fetching products!</p>;
 
   return (
-  <div className="container mx-auto py-22 p-6">
+  <div className="container mx-auto w-full md:p-8 p-4">
       {/* 🔍 Search + Filter + Sort Controls */}
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-6">
-        <div className="relative w-full md:w-1/3">
+      <div className="flex flex-col  items-center justify-between gap-3 mb-6">
+        <div className="relative w-full ">
           <FiSearch
             className="absolute left-3 top-3 text-gray-500 dark:text-gray-400"
             size={18}
@@ -120,16 +120,16 @@ export default function QueryFunction({value ,ky}) {
             placeholder="Search product..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-400 focus:outline-none bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100"
+            className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-1 focus:ring-red-800 focus:outline-none bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100"
           />
         </div>
 
         {/* Filter & Sort */}
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap items-center justify-between gap-3">
           <select
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-400 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100"
+            className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-1 focus:ring-red-800 focus:outline-none bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100"
           >
             <option value="all">All Categories</option>
             <option value="Full-Face">Full-Face</option>
@@ -141,7 +141,7 @@ export default function QueryFunction({value ,ky}) {
           <select
             value={filterPrice}
             onChange={(e) => setFilterPrice(e.target.value)}
-            className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-400 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100"
+            className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-1 focus:ring-red-800 focus:outline-none bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100"
           >
             <option value="all">All Prices</option>
             <option value="low">Below 1000</option>
@@ -151,7 +151,7 @@ export default function QueryFunction({value ,ky}) {
           <select
             value={sort}
             onChange={(e) => setSort(e.target.value)}
-            className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-red-400 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100"
+            className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-1 focus:ring-red-800 focus:outline-none bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100"
           >
             <option value="none">Sort by</option>
             <option value="asc">Price: Low → High</option>
@@ -161,11 +161,10 @@ export default function QueryFunction({value ,ky}) {
       </div>
         <HelmetAndSafetyCard data={mainData} />
   
-
       {/* Sentinel element for IntersectionObserver */}
       <div ref={loadMoreRef} className=" w-full z-[999]  h-10 mt-5 text-center">
         {isFetchingNextPage && <p className='text-red-500'>Loading more...</p>}
-        {!hasNextPage && <p className="text-gray-300 text-xl font-semi-bold">No more products</p>}
+        {!hasNextPage && <p className="text-gray-900 text-xl font-semi-bold dark:text-white">No more products</p>}
       </div>
     </div>
   );

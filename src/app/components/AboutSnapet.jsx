@@ -71,7 +71,7 @@ export default function HomePage() {
           <div className="mt-8 flex flex-col sm:flex-row justify-center gap-2 md:gap-4">
             <Link
               prefetch={false}
-              href="/projects"
+              href="/Projects"
               aria-label="Explore our past and ongoing projects"
               className="border border-red-500 text-red-600 px-2 md:px-6 py-1.5 rounded-lg font-semi-bold text-base hover:bg-red-500 hover:text-white transition"
             >
@@ -94,9 +94,9 @@ export default function HomePage() {
         className="relative overflow-hidden bg-white dark:bg-neutral-950"
         aria-labelledby="about-title"
       >
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 py-16 sm:px-8 lg:grid-cols-2 lg:gap-16 lg:py-24">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2 lg:px-10 gap-10 py-16 lg:gap-16 lg:py-24">
           {/* Text Content */}
-          <div className="flex flex-col justify-center order-2 lg:order-1">
+          <div className="flex flex-col justify-center order-2 lg:order-1  lg:px-0 px-6 ">
             <h2
               id="about-title"
               className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-white sm:text-4xl"
@@ -115,18 +115,18 @@ export default function HomePage() {
 
             {/* CTA */}
             <div className="mt-8">
-              <a
-                href="/about"
+              <Link
+                href="/about/history"
                 aria-label="Learn more about Sazin Construction"
                 className="inline-flex items-center justify-center text-red-600 text-base font-semi-bold transition hover:text-red-500 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 dark:focus:ring-offset-neutral-900"
               >
                 Learn More About Us →
-              </a>
+              </Link>
             </div>
           </div>
 
           {/* Visual with Lazy Map */}
-          <div className="relative order-1 lg:order-2">
+          <div className="relative order-1 lg:order-2 px-2">
             <div className="absolute -inset-2 -z-10 rounded-3xl bg-gradient-to-br from-red-600/10 to-black/10 blur-xl dark:from-red-500/20 dark:to-white/5" />
             <div className="overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-xl dark:border-neutral-700 dark:bg-neutral-900">
               {/* ✅ Lazy loaded map */}
