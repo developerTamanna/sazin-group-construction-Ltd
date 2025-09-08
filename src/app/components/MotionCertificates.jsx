@@ -62,7 +62,7 @@ export default function MotionCertificates() {
             exit={{ opacity: 0 }}
           >
             <motion.div
-              className="bg-white dark:bg-neutral-900 p-4 rounded-lg max-w-4xl w-[95%] md:h-[90%] sm:h-[50%] h-[40%]  flex flex-col"
+              className="bg-white dark:bg-neutral-900 p-4 rounded-lg max-w-4xl w-[95%] md:h-[90%] h-[70%]  flex flex-col"
               initial={{ scale: 0.7, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.7, opacity: 0 }}
@@ -75,7 +75,7 @@ export default function MotionCertificates() {
                   src={selectedImage}
                   alt="Certificate"
                   fill
-                  className="object-contain rounded-md"
+                  className="object-fill w-full rounded-md"
                   priority={false}
                 />
               </div>
