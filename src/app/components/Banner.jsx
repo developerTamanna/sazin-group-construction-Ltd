@@ -1,20 +1,20 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useTheme } from "next-themes";
-import Image from "next/image";
-import { FaChevronDown } from "react-icons/fa";
+'use client';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useTheme } from 'next-themes';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { FaChevronDown } from 'react-icons/fa';
+
 const images = [
-  { src: "/Banner1.jpg", alt: "Modern construction project banner 1" },
-  { src: "/Banner2.jpg", alt: "Civil engineering project banner 2" },
-  { src: "/Banner3.jpg", alt: "Electro-mechanical solutions banner 3" },
-  { src: "/Banner4.jpg", alt: "Innovative construction technology banner 4" },
+  { src: '/Banner1.jpg', alt: 'Modern construction project banner 1' },
+  { src: '/Banner2.jpg', alt: 'Civil engineering project banner 2' },
+  { src: '/Banner3.jpg', alt: 'Electro-mechanical solutions banner 3' },
+  { src: '/Banner4.jpg', alt: 'Innovative construction technology banner 4' },
 ];
 
 function useTypingEffect(text, speed = 100) {
-  const [displayed, setDisplayed] = useState("");
+  const [displayed, setDisplayed] = useState('');
   useEffect(() => {
     let i = 0;
     const interval = setInterval(() => {
@@ -31,7 +31,7 @@ const Banner = () => {
   const [current, setCurrent] = useState(0);
   const { theme } = useTheme();
   const [scrollY, setScrollY] = useState(0);
-    const router = useRouter();
+  const router = useRouter();
 
   const handleClick = () => {
     router.push('/contact'); // navigate programmatically
@@ -39,8 +39,8 @@ const Banner = () => {
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const parallax = (distance) => scrollY * distance;
@@ -53,14 +53,14 @@ const Banner = () => {
   }, []);
 
   const scrollToNext = () => {
-    const nextSection = document.getElementById("next-section");
-    if (nextSection) nextSection.scrollIntoView({ behavior: "smooth" });
+    const nextSection = document.getElementById('next-section');
+    if (nextSection) nextSection.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const h3Text = useTypingEffect("Welcome to Our Company", 80);
-  const h1Text = useTypingEffect("We Build Great Solutions", 50);
+  const h3Text = useTypingEffect('Welcome to Our Company', 80);
+  const h1Text = useTypingEffect('We Build Great Solutions', 50);
   const pText = useTypingEffect(
-    "Providing top-notch services and products that help your business grow",
+    'Providing top-notch services and products that help your business grow',
     30
   );
 
@@ -71,7 +71,6 @@ const Banner = () => {
       setCurrent((prev) => (prev - 1 + images.length) % images.length);
     }
   };
-
 
   return (
     <section
@@ -107,7 +106,7 @@ const Banner = () => {
       {/* Overlay */}
       <div
         className={`absolute inset-0 ${
-          theme === "dark" ? "bg-black/50" : "bg-black/40"
+          theme === 'dark' ? 'bg-black/50' : 'bg-black/40'
         }`}
       />
 
@@ -134,13 +133,13 @@ const Banner = () => {
           {pText}
         </motion.p>
 
-        <motion.div    
+        <motion.div
           className="cursor-pointer bg-red-600 z-[60] text-white font-semibold px-3 py-2 sm:px-6 sm:py-2 rounded-md shadow-lg text-sm sm:text-base md:text-xl hover:bg-gray-100 hover:text-red-800 hover:scale-105 transition transform"
-          style={{ y: parallax(0.9) }}  
+          style={{ y: parallax(0.9) }}
           onClick={handleClick}
-           aria-label="Contact us to get started"
+          aria-label="Contact us to get started"
         >
-            Get Started
+          Get Started
         </motion.div>
       </div>
 
@@ -153,8 +152,8 @@ const Banner = () => {
             aria-label={`Go to slide ${index + 1}`}
             className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${
               current === index
-                ? "bg-red-600 scale-125"
-                : "bg-white/50 hover:bg-white"
+                ? 'bg-red-600 scale-125'
+                : 'bg-white/50 hover:bg-white'
             }`}
           />
         ))}
