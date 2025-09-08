@@ -71,7 +71,7 @@ export default function HomePage() {
           <div className="mt-8 flex flex-col sm:flex-row justify-center gap-2 md:gap-4">
             <Link
               prefetch={false}
-              href="/projects"
+              href="/Projects"
               aria-label="Explore our past and ongoing projects"
               className="border border-red-500 text-red-600 px-2 md:px-6 py-1.5 rounded-lg font-semi-bold text-base hover:bg-red-500 hover:text-white transition"
             >

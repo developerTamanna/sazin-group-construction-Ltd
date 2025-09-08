@@ -26,7 +26,7 @@ export default function Navbar() {
   const links = [
     { name: "Projects", href: "/Projects", prefetch: true },
     { name: "Gallery", href: "/project-gallery", prefetch: true },
-    { name: "Contact", href: "/contact", prefetch: true },
+    { name: "Contact", href: "/contact", prefetch: false },
     { name: "Career", href: "/career", prefetch: false },
     { name: "News/Blog", href: "/news-blog", prefetch: false },
     { name: "Sustainability", href: "/sustainability", prefetch: false },
@@ -49,8 +49,8 @@ const servicesLinks = [
 ];
 
 const businessLinks = [
-  { name: "Sazin Construction Ltd", href: "/products/construction", prefetch: true },
-  { name: "Sazin Agro & Fisheries", href: "/products/agro", prefetch: true },
+  { name: "Sazin Construction Ltd", href: "/products/construction", prefetch: false },
+  { name: "Sazin Agro & Fisheries", href: "/products/agro", prefetch: false },
   { name: "Sky Helmet & Safety Accessories", href: "/Product-Base-Services/Sky-Helmet&Safety-Accessories", prefetch: false },
 ];
 
@@ -97,7 +97,6 @@ const businessLinks = [
   // Function to render active border for desktop & mobile
   const ActiveBorder = () => (
     <motion.span
-      layoutId="activeBorder"
       className="absolute bottom-0 left-0 h-[1.8px] bg-red-600"
       initial={{ width: 0 }}
       animate={{ width: "100%", }}
@@ -133,8 +132,8 @@ const businessLinks = [
                   className="text-gray-700 dark:text-gray-200 hover:text-red-600 relative transition-colors"
                 >
                   Home
-                  {pathname === "/" && <ActiveBorder />}
                 </Link>
+                {pathname === "/" && <ActiveBorder />}
               </li>
 
               {/* About Dropdown */}
