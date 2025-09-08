@@ -55,14 +55,14 @@ export default function MotionCertificates() {
       <AnimatePresence>
         {selectedImage && (
           <motion.div
-            className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
+            className="fixed top-20 inset-0 bg-black/70 flex items-center justify-center z-50"
             onClick={() => setSelectedImage(null)}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
             <motion.div
-              className="bg-white dark:bg-neutral-900 p-4 rounded-lg max-w-4xl w-[95%] h-[90%] flex flex-col"
+              className="bg-white dark:bg-neutral-900 p-4 rounded-lg max-w-4xl w-[95%] md:h-[90%] sm:h-[50%] h-[40%]  flex flex-col"
               initial={{ scale: 0.7, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.7, opacity: 0 }}
