@@ -9,7 +9,7 @@ const layout = ({children}) => {
       <header>
         <Navbar />
       </header>
-      <main>
+      <main className=' bg-white dark:bg-gray-800 w-full'>
         {children}
       </main>
     </div>

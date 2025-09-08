@@ -48,15 +48,10 @@ const subCategories = [
     },
 
   ];
-
- const contents={
-    title: "Motorcycle Helmet",
-    image:
-      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1600&auto=format&fit=crop",
-  }  
+ 
   return (
     <div>
-      <CategoryCard subCategories={subCategories} context={contents} />
+      <CategoryCard subCategories={subCategories}  />
 
     </div>
   )

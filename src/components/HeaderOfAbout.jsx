@@ -25,9 +25,10 @@ export default function HeroLeadership() {
       <div className="absolute top-0 right-0 h-full w-[20%] bg-black transform -skew-x-12 origin-top-right"></div>
 
       {/* Title on left center */}
-      <div className="relative z-10 pl-40">
+      <div className="relative z-10 px-6 ">
         <h1 className="text-xl md:text-4xl font-semi-bold flex flex-wrap gap-2">
           {/* First Word (White) */}
+          <div className="inline-flex gap-1">
           {firstWord.split("").map((char, i) => (
             <motion.span
               key={i}
@@ -40,7 +41,8 @@ export default function HeroLeadership() {
               {char}
             </motion.span>
           ))}
-
+          </div>
+          <div>
           {/* Second Word (Red) */}
           {secondWord.split("").map((char, i) => (
             <motion.span
@@ -49,11 +51,12 @@ export default function HeroLeadership() {
               variants={letterAnimation}
               initial="hidden"
               animate="visible"
-              className="text-black"
+              className="text-white"
             >
               {char}
             </motion.span>
           ))}
+          </div>
         </h1>
       </div>
     </div>

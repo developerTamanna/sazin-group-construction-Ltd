@@ -82,7 +82,7 @@ export default function HeroCivil() {
             <div className="p-3 bg-red-600 text-white rounded-xl shadow-lg">
               <Globe className="w-6 h-6" />
             </div>
-            <span className="text-gray-700 dark:text-gray-300 text-lg">
+            <span className="text-gray-900 dark:text-gray-300 text-lg">
               reallygreatsite.com
             </span>
           </div>

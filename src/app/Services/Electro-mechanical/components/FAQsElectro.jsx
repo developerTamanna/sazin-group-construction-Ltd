@@ -19,7 +19,7 @@ const faqs = [
 export default function FAQsElectro() {
   return (
     <section className="bg-neutral-50 dark:bg-neutral-950 py-16 px-6 lg:px-8">
-      <h2 className="text-3xl lg:text-4xl font-bold text-center text-gray-900 dark:text-white">
+      <h2 className="text-3xl lg:text-4xl font-semibold text-center text-gray-900 dark:text-white">
         FAQs
       </h2>
 

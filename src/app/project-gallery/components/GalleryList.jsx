@@ -20,13 +20,20 @@ export default function GalleryList() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [lightbox, setLightbox] = useState(null);
   const loadMoreRef = useRef(null);
+  const [hoveredId, setHoveredId] = useState(null);
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
     useInfiniteQuery({
-      queryKey: ["projects"],
+      queryKey: ["projects-gallery"],
       queryFn: fetchProjects,
       getNextPageParam: (last, pages) =>
-        last.hasMore ? pages.length + 1 : undefined,
+      last.hasMore ? pages.length + 1 : undefined,
+             // 🔹 Performance Tunings
+    staleTime: 1000 * 60 * 5, // 5 minutes → reduce refetching
+    cacheTime: 1000 * 60 * 30, // 30 minutes cache in memory
+    refetchOnWindowFocus: false, // don’t refetch unnecessarily
+    refetchOnReconnect: false, // no refetch if net reconnects
+    retry: 1, // retry only once if fails
     });
 
   // infinite scroll
@@ -69,7 +76,8 @@ export default function GalleryList() {
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
         {filtered.map((p) => (
-          <GalleryCard key={p.id} project={p} onClick={setLightbox} />
+          <GalleryCard key={p.id} project={p} onClick={setLightbox} hoveredId={hoveredId}
+           setHoveredId={setHoveredId} />
         ))}
       </div>
 

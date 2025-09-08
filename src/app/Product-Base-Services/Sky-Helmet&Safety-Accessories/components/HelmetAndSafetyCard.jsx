@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import React from "react";
 import { FaStar } from "react-icons/fa";
 
@@ -10,7 +11,7 @@ const HelmetAndSafetyCard = ({ data }) => {
 
   <>
       {/* 📦 Cards Grid */}
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-between items-center">
+      <div className="grid w-full gap-4 grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 place-items-center ">
             {(data || []).map((item, index) => (
               <div
                 key={index}
@@ -18,9 +19,11 @@ const HelmetAndSafetyCard = ({ data }) => {
               >
                 {/* Image */}
                 <div className="overflow-hidden">
-                  <img
+                  <Image
                     src={item?.image}
                     alt={item?.title}
+                    width={300}
+                    height={200}
                     className="w-full h-48 object-cover transition-transform duration-500 hover:scale-110"
                   />
                 </div>

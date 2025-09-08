@@ -1,15 +1,10 @@
-"use client";
+'use client';
 import Theme from "@/utils/Theme";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import {
-  FaArrowUp,
-  FaChevronDown,
-  FaChevronUp,
-  FaSearch,
-} from "react-icons/fa";
+import { FaArrowUp, FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 export default function Navbar() {
   const [aboutOpen, setAboutOpen] = useState(false);
@@ -20,30 +15,61 @@ export default function Navbar() {
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [mobileBusinessOpen, setMobileBusinessOpen] = useState(false);
   const [mobileMoreOpen, setMobileMoreOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showTopBtn, setShowTopBtn] = useState(false);
   const pathname = usePathname();
+
   const aboutRef = useRef(null);
   const servicesRef = useRef(null);
   const businessRef = useRef(null);
 
   const links = [
-    { name: "Projects", href: "/Projects" },
-    { name: "Gallery", href: "/project-gallery" },
-    { name: "Contact", href: "/contact" },
-    { name: "Career", href: "/career" },
-    { name: "New/Blog", href: "/new-blog" },
-    { name: "Sustainability", href: "/sustainability" },
+    { name: "Projects", href: "/Projects", prefetch: true },
+    { name: "Gallery", href: "/project-gallery", prefetch: true },
+    { name: "Contact", href: "/contact", prefetch: false },
+    { name: "Career", href: "/career", prefetch: false },
+    { name: "News/Blog", href: "/news-blog", prefetch: false },
+    { name: "Sustainability", href: "/sustainability", prefetch: false },
   ];
 
+  const aboutLinks = [
+    { name: "Detailed Company History", href: "/about/history", prefetch: true },
+    { name: "Mission & Vision", href: "/about/mission", prefetch: true },
+    { name: "Leadership Profiles", href: "/about/leadership", prefetch: false },
+    { name: "Overview of Business Sectors", href: "/about/sectors", prefetch: false },
+  ];
+
+const servicesLinks = [
+  { name: "Electro-Mechanical Construction", href: "/Services/Electro-mechanical", prefetch: true },
+  { name: "Civil Construction", href: "/Services/Civil-construction", prefetch: true },
+  { name: "Engineering Procurement & Construction", href: "/Services/engineering-procurement-construction", prefetch: false },
+  { name: "Safety & Security Construction and Management", href: "/Services/safety-security-construction-management", prefetch: false },
+  { name: "Helmet & Safety Accessories", href: "/Product-Base-Services/Sky-Helmet&Safety-Accessories", prefetch: false },
+  { name: "Agro & Fisheries", href: "/Services/agro-fisheries", prefetch: false },
+];
+
+const businessLinks = [
+  { name: "Sazin Construction Ltd", href: "/products/construction", prefetch: false },
+  { name: "Sazin Agro & Fisheries", href: "/products/agro", prefetch: false },
+  { name: "Sky Helmet & Safety Accessories", href: "/Product-Base-Services/Sky-Helmet&Safety-Accessories", prefetch: false },
+];
+
+  // Click outside & scroll logic
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (
-        (aboutRef.current && !aboutRef.current.contains(e.target)) ||
-        (servicesRef.current && !servicesRef.current.contains(e.target)) ||
-        (businessRef.current && !businessRef.current.contains(e.target))
-      ) {
+      if (aboutRef.current && aboutRef.current.contains(e.target)) {
+        setAboutOpen((t) => !t);
+        setServicesOpen(false);
+        setBusinessOpen(false);
+      } else if (servicesRef.current && servicesRef.current.contains(e.target)) {
+        setServicesOpen((t) => !t);
+        setAboutOpen(false);
+        setBusinessOpen(false);
+      } else if (businessRef.current && businessRef.current.contains(e.target)) {
+        setBusinessOpen((t) => !t);
+        setAboutOpen(false);
+        setServicesOpen(false);
+      } else {
         setAboutOpen(false);
         setServicesOpen(false);
         setBusinessOpen(false);
@@ -59,7 +85,7 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("pointerdown", handleClickOutside);
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
@@ -67,6 +93,16 @@ export default function Navbar() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  // Function to render active border for desktop & mobile
+  const ActiveBorder = () => (
+    <motion.span
+      className="absolute bottom-0 left-0 h-[1.8px] bg-red-600"
+      initial={{ width: 0 }}
+      animate={{ width: "100%", }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    />
+  );
 
   return (
     <>
@@ -80,6 +116,7 @@ export default function Navbar() {
             {/* Logo */}
             <Link
               href="/"
+              prefetch={true}
               className="text-2xl font-bold text-gray-900 dark:text-white"
             >
               Company<span className="text-red-600">Logo</span>
@@ -88,31 +125,23 @@ export default function Navbar() {
             {/* Desktop Menu */}
             <ul className="hidden lg:flex space-x-6 items-center xl:text-xl">
               {/* Home */}
-              <li>
+              <li className="relative">
                 <Link
                   href="/"
-                  className={` text-gray-700 dark:text-gray-200 hover:text-red-600 transition-colors relative after:block after:h-[2px] after:w-0 after:bg-red-600 after:transition-all after:duration-300 ${
-                    pathname === "/" ? "after:w-full" : ""
-                  }`}
+                  prefetch={true}
+                  className="text-gray-700 dark:text-gray-200 hover:text-red-600 relative transition-colors"
                 >
                   Home
                 </Link>
+                {pathname === "/" && <ActiveBorder />}
               </li>
 
               {/* About Dropdown */}
               <li className="relative" ref={aboutRef}>
-                <button
-                  onClick={() => setAboutOpen(!aboutOpen)}
-                  className=" flex items-center gap-1 transition-colors text-gray-700 dark:text-gray-200 hover:text-red-600"
-                >
-                  About Us{" "}
-                  {aboutOpen ? (
-                    <FaChevronUp className="w-4 h-4" />
-                  ) : (
-                    <FaChevronDown className="w-4 h-4" />
-                  )}
+                <button className="relative flex items-center gap-1 text-gray-700 dark:text-gray-200 hover:text-red-600 transition-colors">
+                  About Us {aboutOpen ? <FaChevronUp className="w-4 h-4" /> : <FaChevronDown className="w-4 h-4" />}
+                  {pathname.startsWith("/about") && <ActiveBorder />}
                 </button>
-
                 <AnimatePresence>
                   {aboutOpen && (
                     <motion.ul
@@ -120,40 +149,20 @@ export default function Navbar() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute top-full left-0  bg-white/90 dark:bg-gray-800 shadow-lg mt-2 w-60 rounded-md p-2 space-y-2 z-50"
+                      className="absolute top-full left-0 bg-white/90 dark:bg-gray-800 shadow-lg mt-2 w-60 rounded-md p-2 space-y-2 z-50"
                     >
-                      <li>
-                        <Link
-                          href="/about/history"
-                          className="block text-gray-800 dark:text-gray-200 hover:text-red-600"
-                        >
-                          Detailed Company History
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/about/mission"
-                          className="block text-gray-800 dark:text-gray-200 hover:text-red-600"
-                        >
-                          Mission & Vision
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/about/leadership"
-                          className="block text-gray-800 dark:text-gray-200 hover:text-red-600"
-                        >
-                          Leadership Profiles
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/about/sectors"
-                          className="block text-gray-800 dark:text-gray-200 hover:text-red-600"
-                        >
-                          Overview of Business Sectors
-                        </Link>
-                      </li>
+                      {aboutLinks.map((link, idx) => (
+                        <li key={idx} className="relative">
+                          <Link
+                            href={link.href}
+                            prefetch={link.prefetch}
+                            className="block text-gray-800 dark:text-gray-200 hover:text-red-600 relative transition-colors"
+                          >
+                            {link.name}
+                            {pathname.startsWith(link.href) && <ActiveBorder />}
+                          </Link>
+                        </li>
+                      ))}
                     </motion.ul>
                   )}
                 </AnimatePresence>
@@ -161,16 +170,9 @@ export default function Navbar() {
 
               {/* Services Dropdown */}
               <li className="relative" ref={servicesRef}>
-                <button
-                  onClick={() => setServicesOpen(!servicesOpen)}
-                  className="flex items-center gap-1 text-gray-700 dark:text-gray-200 hover:text-red-600"
-                >
-                  Services{" "}
-                  {servicesOpen ? (
-                    <FaChevronUp className="w-4 h-4" />
-                  ) : (
-                    <FaChevronDown className="w-4 h-4" />
-                  )}
+                <button className="relative flex items-center gap-1 text-gray-700 dark:text-gray-200 hover:text-red-600 transition-colors">
+                  Services {servicesOpen ? <FaChevronUp className="w-4 h-4" /> : <FaChevronDown className="w-4 h-4" />}
+                  {pathname.startsWith("/Services") && <ActiveBorder />}
                 </button>
                 <AnimatePresence>
                   {servicesOpen && (
@@ -180,71 +182,28 @@ export default function Navbar() {
                       exit={{ opacity: 0, y: -10 }}
                       className="absolute top-full left-0 bg-white/90 dark:bg-gray-800 shadow-lg mt-2 w-72 rounded-md p-2 space-y-2 z-50"
                     >
-                      <li>
-                        <Link
-                          href="/Services/Electro-mechanical"
-                          className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
-                        >
-                          Electro-Mechanical Construction
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/Services/Civil-construction"
-                          className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
-                        >
-                          Civil Construction
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/Services/engineering-procurement-construction"
-                          className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
-                        >
-                          Engineering Procurement & Construction
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/Services/safety-security-construction-management"
-                          className="block text-gray-800 dark:text-gray-200 hover:text-red-600"
-                        >
-                          Safety & Security Construction and Management
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/Product-Base-Services/Sky-Helmet&Safety-Accessories"
-                          className="block text-gray-800 dark:text-gray-200 hover:text-red-600"
-                        >
-                          Sazin Agro & Fisheries
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/Product-Base-Services/Sky-Helmet&Safety-Accessories"
-                          className="block text-gray-800 dark:text-gray-200 hover:text-red-600"
-                        >
-                          Sky Helmet & Safety Accessories
-                        </Link>
-                      </li>
+                      {servicesLinks.map((link, idx) => (
+                        <li key={idx} className="relative">
+                          <Link
+                            href={link.href}
+                            prefetch={link.prefetch}
+                            className="block text-gray-700 dark:text-gray-200 hover:text-red-600 relative transition-colors"
+                          >
+                            {link.name}
+                            {pathname.startsWith(link.href) && <ActiveBorder />}
+                          </Link>
+                        </li>
+                      ))}
                     </motion.ul>
                   )}
                 </AnimatePresence>
               </li>
 
-              {/* Business/Products Dropdown */}
+              {/* Business Dropdown */}
               <li className="relative" ref={businessRef}>
-                <button
-                  onClick={() => setBusinessOpen(!businessOpen)}
-                  className="flex items-center gap-1 text-gray-700 dark:text-gray-200 hover:text-red-600"
-                >
-                  Business/Products{" "}
-                  {businessOpen ? (
-                    <FaChevronUp className="w-4 h-4" />
-                  ) : (
-                    <FaChevronDown className="w-4 h-4" />
-                  )}
+                <button className="relative flex items-center gap-1 text-gray-700 dark:text-gray-200 hover:text-red-600 transition-colors">
+                  Business/Products {businessOpen ? <FaChevronUp className="w-4 h-4" /> : <FaChevronDown className="w-4 h-4" />}
+                  {pathname.startsWith("/products") && <ActiveBorder />}
                 </button>
                 <AnimatePresence>
                   {businessOpen && (
@@ -254,30 +213,18 @@ export default function Navbar() {
                       exit={{ opacity: 0, y: -10 }}
                       className="absolute top-full left-0 bg-white/90 dark:bg-gray-800 shadow-lg mt-2 w-72 rounded-md p-2 space-y-2 z-50"
                     >
-                      <li>
-                        <Link
-                          href="/products/construction"
-                          className="block text-gray-800 dark:text-gray-200 hover:text-red-600"
-                        >
-                          Sazin Construction Ltd
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/products/agro"
-                          className="block text-gray-800 dark:text-gray-200 hover:text-red-600"
-                        >
-                          Sazin Agro & Fisheries
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/Product-Base-Services/Sky-Helmet&Safety-Accessories"
-                          className="block text-gray-800 dark:text-gray-200 hover:text-red-600"
-                        >
-                          Sky Helmet & Safety Accessories
-                        </Link>
-                      </li>
+                      {businessLinks.map((link, idx) => (
+                        <li key={idx} className="relative">
+                          <Link
+                            href={link.href}
+                            prefetch={link.prefetch}
+                            className="block text-gray-800 dark:text-gray-200 hover:text-red-600 relative transition-colors"
+                          >
+                            {link.name}
+                            {pathname.startsWith(link.href) && <ActiveBorder />}
+                          </Link>
+                        </li>
+                      ))}
                     </motion.ul>
                   )}
                 </AnimatePresence>
@@ -285,72 +232,26 @@ export default function Navbar() {
 
               {/* More Details Hover */}
               <li className="relative group py-2">
-                <button
-                  type="button"
-                  className="flex items-center gap-1 text-gray-800 dark:text-gray-200 
-               hover:text-red-600 transition duration-300 cursor-pointer"
-                >
+                <button type="button" className="relative flex items-center gap-1 text-gray-800 dark:text-gray-200 hover:text-red-600 transition-colors">
                   More Details
-                  <span className="transition-transform duration-300 group-hover:rotate-180">
-                    ↓
-                  </span>
+                  <span className="transition-transform duration-300 group-hover:rotate-180">↓</span>
+                  {links.some(link => pathname.startsWith(link.href)) && <ActiveBorder />}
                 </button>
 
-                {/* Dropdown */}
-                <ul
-                  className="absolute hidden group-hover:block top-full right-0 
-               bg-white/90 dark:bg-gray-800 backdrop-blur-md 
-               border border-gray-200 dark:border-gray-700
-               shadow-lg w-56 rounded-xl p-2 space-y-1 z-50 
-               opacity-0 group-hover:opacity-100 
-               transition-all duration-300 ease-in-out"
-                >
-                  {[
-                    { href: "/Projects", label: "Projects" },
-                    { href: "/project-gallery", label: "Gallery" },
-                    { href: "/contact", label: "Contact" },
-                    { href: "/career", label: "Career" },
-                    { href: "/news-blog", label: "News / Blog" },
-                    { href: "/sustainability", label: "Sustainability" },
-                  ].map((item, idx) => (
-                    <li key={idx}>
+                <ul className="absolute hidden group-hover:block top-full right-0 bg-white/90 dark:bg-gray-800 backdrop-blur-md border border-gray-200 dark:border-gray-700 shadow-lg w-40 rounded-xl p-2 space-y-1 z-50 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out">
+                  {links.map((item, idx) => (
+                    <li key={idx} className="relative">
                       <Link
                         href={item.href}
-                        className="block px-3 py-2 rounded-md text-gray-700 dark:text-gray-200 
-                     hover:bg-red-50 dark:hover:bg-gray-700 
-                     hover:text-red-600 transition"
+                        prefetch={item.prefetch}
+                        className="block text-gray-800 dark:text-gray-200 hover:text-red-600 relative transition-colors"
                       >
-                        {item.label}
+                        {item.name}
+                        {pathname.startsWith(item.href) && <ActiveBorder/>}
                       </Link>
                     </li>
                   ))}
                 </ul>
-              </li>
-
-              {/* Search */}
-              <li className="relative">
-                <button
-                  onClick={() => setSearchOpen(!searchOpen)}
-                  className="hover:text-red-800 text-red-600 dark:text-gray-200 transition-colors"
-                >
-                  <FaSearch size={18} />
-                </button>
-                <AnimatePresence>
-                  {searchOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.95 }}
-                      className="absolute right-0 mt-2 bg-white dark:bg-gray-800 p-2 rounded shadow-lg z-50"
-                    >
-                      <input
-                        type="text"
-                        placeholder="Search..."
-                        className="px-3 py-2 rounded border w-48 dark:bg-gray-700 dark:text-white border-gray-300 dark:border-gray-600 focus:outline-none"
-                      />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
               </li>
 
               {/* Theme Toggle */}
@@ -366,21 +267,12 @@ export default function Navbar() {
                 onClick={() => setMobileOpen(!mobileOpen)}
                 className="text-gray-800 dark:text-gray-200"
               >
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d={
-                      mobileOpen
-                        ? "M6 18L18 6M6 6l12 12"
-                        : "M4 6h16M4 12h16M4 18h16"
-                    }
+                    d={mobileOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
                   />
                 </svg>
               </button>
@@ -392,263 +284,75 @@ export default function Navbar() {
         <AnimatePresence>
           {mobileOpen && (
             <motion.div
-              className="fixed lg:hidden top-20 left-0 h-[calc(100vh-80px)] dark:bg-black bg-white z-[9999] w-3/4 max-w-xs shadow-lg p-6"
+              className="fixed lg:hidden top-20 left-0 h-[calc(100vh-80px)] dark:bg-black bg-white z-[9999] w-3/4 max-w-xs shadow-lg p-6 overflow-y-auto myDiv"
               initial={{ x: "-100%" }}
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "tween", duration: 0.3 }}
             >
               <ul className="flex flex-col space-y-4">
-                <li>
-                  <Link
-                    href="/"
-                    className={`text-gray-700 dark:text-gray-200 hover:text-red-600 ${
-                      pathname === "/" ? "border-b-2 border-red-600" : ""
-                    }`}
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    Home
-                  </Link>
-                </li>
-
-                {/* About Mobile */}
-                <li>
-                  <button
-                    onClick={() => setMobileAboutOpen(!mobileAboutOpen)}
-                    className="flex items-center justify-between w-full text-gray-700 dark:text-gray-200 hover:text-red-600"
-                  >
-                    About Us{" "}
-                    {mobileAboutOpen ? <FaChevronUp /> : <FaChevronDown />}
-                  </button>
-                  <AnimatePresence>
-                    {mobileAboutOpen && (
-                      <motion.ul
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="flex flex-col pl-4 mt-3 space-y-2"
+                {/* Mobile Links with ActiveBorder */}
+                {[
+                  { name: "Home", href: "/" },
+                  { name: "About Us", href: "/about", children: aboutLinks, toggle: mobileAboutOpen, setToggle: setMobileAboutOpen },
+                  { name: "Services", href: "/Services", children: servicesLinks, toggle: mobileServicesOpen, setToggle: setMobileServicesOpen },
+                  { name: "Business/Products", href: "/products", children: businessLinks, toggle: mobileBusinessOpen, setToggle: setMobileBusinessOpen },
+                  { name: "More Details", href: "", children: links, toggle: mobileMoreOpen, setToggle: setMobileMoreOpen }
+                ].map((item, idx) => (
+                  <li key={idx} className="relative">
+                    {item.children ? (
+                      <>
+                        <button
+                          onClick={() => item.setToggle(!item.toggle)}
+                          className="flex justify-between w-full text-gray-700 dark:text-gray-200 hover:text-red-600 transition-colors"
+                        >
+                          {item.name} {item.toggle ? <FaChevronUp /> : <FaChevronDown />}
+                        </button>
+                        {item.toggle && (
+                          <ul className="pl-4 mt-2 space-y-2 relative">
+                            {item.children.map((link, idx2) => (
+                              <li key={idx2} className="relative">
+                                <Link
+                                  href={link.href}
+                                  prefetch={link.prefetch}
+                                  className="block text-gray-700 dark:text-gray-200 hover:text-red-600 transition-colors"
+                                  onClick={() => setMobileOpen(false)}
+                                >
+                                  {link.name}
+                                  {pathname.startsWith(link.href) && (
+                                    <motion.span
+                                      layoutId="mobileActiveBorder"
+                                      className="absolute bottom-0 left-0 h-[2px] bg-red-600"
+                                      initial={{ width: 0 }}
+                                      animate={{ width: "100%" }}
+                                      transition={{ duration: 0.5, ease: "easeOut" }}
+                                    />
+                                  )}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        prefetch={true}
+                        className="block text-gray-700 dark:text-gray-200 hover:text-red-600 transition-colors"
+                        onClick={() => setMobileOpen(false)}
                       >
-                        <li>
-                          <Link
-                            href="/about/history"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            Detailed Company History
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/about/mission"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            Mission & Vision
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/about/leadership"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            Leadership Profiles
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/about/sectors"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            Overview of Business Sectors
-                          </Link>
-                        </li>
-                      </motion.ul>
+                        {item.name}
+                        {pathname === item.href && (
+                          <motion.span
+                            layoutId="mobileActiveBorder"
+                            className="absolute bottom-0 left-0 h-[2px] bg-red-600"
+                            initial={{ width: 0 }}
+                            animate={{ width: "100%" }}
+                            transition={{ duration: 0.5, ease: "easeOut" }}
+                          />
+                        )}
+                      </Link>
                     )}
-                  </AnimatePresence>
-                </li>
-
-                {/* Services Mobile */}
-                <li>
-                  <button
-                    onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                    className="flex items-center justify-between w-full text-gray-700 dark:text-gray-200 hover:text-red-600"
-                  >
-                    Services{" "}
-                    {mobileServicesOpen ? <FaChevronUp /> : <FaChevronDown />}
-                  </button>
-                  <AnimatePresence>
-                    {mobileServicesOpen && (
-                      <motion.ul
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="flex flex-col pl-4 mt-2 space-y-2"
-                      >
-                        <li>
-                          <Link
-                            href="/Services/Electro-mechanical"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            Electro-Mechanical Construction
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/Services/Civil-contruction"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            Civil Construction
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/Services/engineering-procurement-construction"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            Engineering Procurement & Construction
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/Services/safety-security-construction-management"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            Safety & Security Construction and Management
-                          </Link>
-                        </li>
-                      </motion.ul>
-                    )}
-                  </AnimatePresence>
-                </li>
-
-                {/* Business Mobile */}
-                <li>
-                  <button
-                    onClick={() => setMobileBusinessOpen(!mobileBusinessOpen)}
-                    className="flex items-center justify-between w-full text-gray-700 dark:text-gray-200 hover:text-red-600"
-                  >
-                    Business/Products{" "}
-                    {mobileBusinessOpen ? <FaChevronUp /> : <FaChevronDown />}
-                  </button>
-                  <AnimatePresence>
-                    {mobileBusinessOpen && (
-                      <motion.ul
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="flex flex-col pl-4 mt-2 space-y-2"
-                      >
-                        <li>
-                          <Link
-                            href="/products/construction"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            Sazin Construction Ltd
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/products/agro"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            Sazin Agro & Fisheries
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/products/helmet"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            Sky Helmet & Safety Accessories
-                          </Link>
-                        </li>
-                      </motion.ul>
-                    )}
-                  </AnimatePresence>
-                </li>
-
-                {/* More Details Mobile */}
-                <li>
-                  <button
-                    onClick={() => setMobileMoreOpen(!mobileMoreOpen)}
-                    className="flex items-center justify-between w-full text-gray-700 dark:text-gray-200 hover:text-red-600"
-                  >
-                    More Details{" "}
-                    {mobileMoreOpen ? <FaChevronUp /> : <FaChevronDown />}
-                  </button>
-                  <AnimatePresence>
-                    {mobileMoreOpen && (
-                      <motion.ul
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="flex flex-col pl-4 mt-2 space-y-2 text-gray-700 dark:text-gray-200"
-                      >
-                        <li>
-                          <Link
-                            href="/projects"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            Projects
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/project-gallery"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            Gallery
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/contact"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            Contact
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/career"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            Career
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/new-blog"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            New/Blog
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="/sustainability"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            Sustainability
-                          </Link>
-                        </li>
-                      </motion.ul>
-                    )}
-                  </AnimatePresence>
-                </li>
-
-                {/* Remaining Links */}
-                {links.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className={`text-gray-700 dark:text-gray-200 hover:text-red-600 ${
-                        pathname === link.href
-                          ? "border-b-2 border-red-600"
-                          : ""
-                      }`}
-                      onClick={() => setMobileOpen(false)}
-                    >
-                      {link.name}
-                    </Link>
                   </li>
                 ))}
               </ul>

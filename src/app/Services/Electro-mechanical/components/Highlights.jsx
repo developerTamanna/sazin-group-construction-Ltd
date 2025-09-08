@@ -32,7 +32,7 @@ export default function Highlights() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-4xl font-extrabold tracking-tight"
+          className="text-4xl font-semibold tracking-tight"
         >
           What Sets <span className="text-red-600">Us Apart</span>
         </motion.h2>

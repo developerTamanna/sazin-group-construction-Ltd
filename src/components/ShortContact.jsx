@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 export default function ShortContact({header,desc}) {
   return (
@@ -15,18 +16,18 @@ export default function ShortContact({header,desc}) {
 
         {/* Buttons */}
         <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
-          <a
+          <Link
             href="/contact"
             className="border border-red-500 text-red-600 px-6 py-1.5 rounded-lg font-semi-bold text-base hover:bg-red-500 hover:text-white transition"
           >
             Contact Us
-          </a>
-          <a
-            href="/projects"
+          </Link>
+          <Link
+            href="/Projects"
             className="border border-red-500 text-red-600 px-6 py-1.5 rounded-lg font-semi-bold text-base hover:bg-red-500 hover:text-white transition"
           >
             View Projects
-          </a>
+          </Link>
         </div>
       </div>
     </section>

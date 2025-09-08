@@ -31,6 +31,12 @@ export default function BlogList() {
     queryFn: fetchBlogs,
     getNextPageParam: (lastPage, pages) =>
       lastPage.hasMore ? pages.length + 1 : undefined,
+        // 🔹 Performance Tunings
+    staleTime: 1000 * 60 * 5, // 5 minutes → reduce refetching
+    cacheTime: 1000 * 60 * 30, // 30 minutes cache in memory
+    refetchOnWindowFocus: false, // don’t refetch unnecessarily
+    refetchOnReconnect: false, // no refetch if net reconnects
+    retry: 1, // retry only once if fails
   });
 
   useEffect(() => {
@@ -52,9 +58,41 @@ export default function BlogList() {
     };
   }, [fetchNextPage, hasNextPage, isFetchingNextPage]);
 
+  // ✅ JSON-LD for Blog + ItemList
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    headline: "Our Latest Blog Posts",
+    description: "Read the latest articles and insights from our blog.",
+    blogPost: blogData.map((post) => ({
+      "@type": "BlogPosting",
+      headline: post.title,
+      image: post.image,
+      datePublished: new Date(post.date).toISOString(),
+      author: {
+        "@type": "Person",
+        name: post.author,
+      },
+      description: post.content.slice(0, 160),
+    })),
+  };
+
+  const itemListJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: blogData.map((post, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: post.title,
+      url: `https://www.yourdomain.com/news-blog`,
+    })),
+  };
+
   return (
-    <div className="flex flex-col items-center max-w-2xl mx-auto space-y-8">
-      {isLoading && <p className="text-center">Loading posts...</p>}
+    <section
+      className="flex flex-col items-center max-w-2xl mx-auto space-y-8"
+    >
+      {isLoading && <p className="text-center dark:text-white">Loading posts...</p>}
 
       {data?.pages.map((page) =>
         page.data.map((post) => <BlogCard key={post.id} post={post} />)
@@ -71,6 +109,16 @@ export default function BlogList() {
           </p>
         )}
       </div>
-    </div>
+
+      {/* ✅ Inject JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+      />
+    </section>
   );
 }

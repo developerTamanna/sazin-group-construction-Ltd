@@ -21,7 +21,7 @@ export default function HeroHistory({ desc }) {
       <div className="relative z-10 pl-6 md:pl-16 max-w-4xl text-left">
         {/* Header */}
         <motion.h1
-          className="text-3xl md:text-4xl font-semibold text-white flex flex-wrap gap-1"
+          className="text-3xl md:text-4xl font-semibold text-white flex flex-wrap gap-2"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}

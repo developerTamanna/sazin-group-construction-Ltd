@@ -39,12 +39,12 @@ function Navbar() {
   const [hoverIndex, setHoverIndex] = useState(null);
 
   return (
-    <nav className="bg-black dark:bg-white dark:text-black text-white px-4 py-3">
-      <div className="max-w-7xl mx-auto flex justify-center items-center">
+    <nav className="bg-black dark:bg-white dark:text-black text-white px-4 py-2">
+      <div className="max-w-7xl mx-auto flex justify-center items-center h-full ">
 
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex justify-center items-center gap-10 relative">
+        <ul className="hidden h-full md:flex justify-center items-center gap-10 relative">
           {option.map((item, index) => (
             <li
               key={item.name}
@@ -52,7 +52,7 @@ function Navbar() {
               onMouseEnter={() => setHoverIndex(index)}
               onMouseLeave={() => setHoverIndex(null)}
             >
-              <Link className="hover:text-gray-300" href={item.link}>
+              <Link className="hover:text-gray-300" href={item.link} prefetch={false}>
                 {item.name}
               </Link>
 
@@ -70,6 +70,7 @@ function Navbar() {
                       <li key={sub.name}>
                         <Link
                           href={sub.link}
+                          prefetch={false}
                           className="block px-4 py-2 hover:bg-red-600 hover:text-white dark:hover:bg-red-600 dark:hover-text-white"
                         >
                           {sub.name}

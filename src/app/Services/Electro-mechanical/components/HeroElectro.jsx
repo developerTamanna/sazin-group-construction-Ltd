@@ -59,7 +59,7 @@ export default function HeroElectro() {
               initial={{ opacity: 0, y: 5 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.6 }}
-              className="mt-4 flex items-center gap-2 text-lg font-medium"
+              className="mt-4 flex items-center text-black dark:text-gray-200 gap-2 text-lg font-medium"
             >
               <span className="text-yellow-400">⏰</span> Emergencies 24 hours
             </motion.p>
