@@ -37,7 +37,7 @@ export default function NewsBlogPage() {
     <>
       <main className="bg-white dark:bg-neutral-950 min-h-screen py-16 px-6 lg:px-8">
         {/* Page Heading */}
-        <h1 className="text-4xl font-bold text-center dark:text-white mb-10">
+        <h1 className="text-4xl font-semibold text-center dark:text-white mb-10">
           News <span className="text-red-600">& Blog</span>
         </h1>
 
