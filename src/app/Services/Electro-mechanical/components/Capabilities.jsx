@@ -59,7 +59,7 @@ const capabilities = [
 
 export default function Capabilities() {
   return (
-    <section className="relative bg-neutral-50 dark:bg-neutral-900 py-20 px-6 lg:px-12 transition-colors duration-500">
+    <section className="relative bg-neutral-50 dark:bg-neutral-900 py-20 px-4 sm:px-6 lg:px-12 transition-colors duration-500">
       <div className="max-w-6xl mx-auto text-center">
         {/* Heading */}
         <motion.h2
@@ -67,13 +67,13 @@ export default function Capabilities() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white text-center"
+          className="text-3xl sm:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white text-center"
         >
           Core <span className="text-red-600">Capabilities</span>
         </motion.h2>
 
         {/* Grid */}
-        <div className="mt-14 grid lg:grid-cols-2 gap-8">
+        <div className="mt-14 grid gap-8 sm:grid-cols-2">
           {capabilities.map((cap, idx) => {
             const Icon = cap.icon;
             return (
@@ -83,7 +83,7 @@ export default function Capabilities() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: idx * 0.15 }}
                 viewport={{ once: true }}
-                className="group flex items-start gap-5 bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-700 rounded-2xl p-7 shadow-md hover:shadow-xl transition-all duration-500"
+                className="group flex items-start gap-5 bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-700 rounded-2xl p-7 shadow-md hover:shadow-xl transition-all duration-500 w-full max-w-md mx-auto"
               >
                 {/* Icon */}
                 <div className="flex-shrink-0 w-14 h-14 flex items-center justify-center rounded-xl bg-gradient-to-r from-red-600 to-red-400 text-white shadow-lg group-hover:scale-110 transition">
@@ -94,11 +94,11 @@ export default function Capabilities() {
                 <div className="text-left">
                   <h3
                     className="
-    text-xl font-semibold
-    text-neutral-900 dark:text-neutral-100
-    group-hover:text-red-600 dark:group-hover:text-red-400
-    transition
-  "
+                      text-xl font-semibold
+                      text-neutral-900 dark:text-neutral-100
+                      group-hover:text-red-600 dark:group-hover:text-red-400
+                      transition
+                    "
                   >
                     {cap.title}
                   </h3>

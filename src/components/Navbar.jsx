@@ -4,11 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import {
-  FaArrowUp,
-  FaChevronDown,
-  FaChevronUp,
-} from "react-icons/fa";
+import { FaArrowUp, FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 export default function Navbar() {
   const [aboutOpen, setAboutOpen] = useState(false);
@@ -22,6 +18,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showTopBtn, setShowTopBtn] = useState(false);
   const pathname = usePathname();
+
   const aboutRef = useRef(null);
   const servicesRef = useRef(null);
   const businessRef = useRef(null);
@@ -36,11 +33,11 @@ export default function Navbar() {
   ];
 
   const aboutLinks = [
-  { name: "Detailed Company History", href: "/about/history", prefetch: true },
-  { name: "Mission & Vision", href: "/about/mission", prefetch: true },
-  { name: "Leadership Profiles", href: "/about/leadership", prefetch: false },
-  { name: "Overview of Business Sectors", href: "/about/sectors", prefetch: false },
-];
+    { name: "Detailed Company History", href: "/about/history", prefetch: true },
+    { name: "Mission & Vision", href: "/about/mission", prefetch: true },
+    { name: "Leadership Profiles", href: "/about/leadership", prefetch: false },
+    { name: "Overview of Business Sectors", href: "/about/sectors", prefetch: false },
+  ];
 
 const servicesLinks = [
   { name: "Electro-Mechanical Construction", href: "/Services/Electro-mechanical", prefetch: true },
@@ -57,30 +54,26 @@ const businessLinks = [
   { name: "Sky Helmet & Safety Accessories", href: "/Product-Base-Services/Sky-Helmet&Safety-Accessories", prefetch: false },
 ];
 
-
+  // Click outside & scroll logic
   useEffect(() => {
     const handleClickOutside = (e) => {
-              if (aboutRef.current && aboutRef.current.contains(e.target)) {
-                // click inside About → keep About, close others
-                setAboutOpen((t)=>!t);
-                setServicesOpen(false);
-                setBusinessOpen(false);
-              } else if (servicesRef.current && servicesRef.current.contains(e.target)) {
-                // click inside Services → keep Services, close others
-                setServicesOpen((t)=>!t);
-                setAboutOpen(false);
-                setBusinessOpen(false);
-              } else if (businessRef.current && businessRef.current.contains(e.target)) {
-                // click inside Business → keep Business, close others
-                setBusinessOpen((t)=>!t);
-                setAboutOpen(false);
-                setServicesOpen(false);
-              } else {
-                // click outside → close all
-                setAboutOpen(false);
-                setServicesOpen(false);
-                setBusinessOpen(false);
-              }
+      if (aboutRef.current && aboutRef.current.contains(e.target)) {
+        setAboutOpen((t) => !t);
+        setServicesOpen(false);
+        setBusinessOpen(false);
+      } else if (servicesRef.current && servicesRef.current.contains(e.target)) {
+        setServicesOpen((t) => !t);
+        setAboutOpen(false);
+        setBusinessOpen(false);
+      } else if (businessRef.current && businessRef.current.contains(e.target)) {
+        setBusinessOpen((t) => !t);
+        setAboutOpen(false);
+        setServicesOpen(false);
+      } else {
+        setAboutOpen(false);
+        setServicesOpen(false);
+        setBusinessOpen(false);
+      }
     };
     document.addEventListener("pointerdown", handleClickOutside);
 
@@ -92,7 +85,7 @@ const businessLinks = [
     window.addEventListener("scroll", handleScroll);
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("pointerdown", handleClickOutside);
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
@@ -100,6 +93,17 @@ const businessLinks = [
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  // Function to render active border for desktop & mobile
+  const ActiveBorder = () => (
+    <motion.span
+      layoutId="activeBorder"
+      className="absolute bottom-0 left-0 h-[1.8px] bg-red-600"
+      initial={{ width: 0 }}
+      animate={{ width: "100%", }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    />
+  );
 
   return (
     <>
@@ -122,31 +126,23 @@ const businessLinks = [
             {/* Desktop Menu */}
             <ul className="hidden lg:flex space-x-6 items-center xl:text-xl">
               {/* Home */}
-              <li>
+              <li className="relative">
                 <Link
                   href="/"
                   prefetch={true}
-                  className={` text-gray-700 dark:text-gray-200 hover:text-red-600 relative after:block after:h-[2px] after:w-0 after:bg-red-600 after:transition-all after:duration-300 ${
-                    pathname === "/" ? "after:w-full" : ""
-                  }`}
+                  className="text-gray-700 dark:text-gray-200 hover:text-red-600 relative transition-colors"
                 >
                   Home
+                  {pathname === "/" && <ActiveBorder />}
                 </Link>
               </li>
 
               {/* About Dropdown */}
-              <li className="relative"  ref={aboutRef} >
-                <button
-                  className={`after:block after:h-[2px] after:w-0 after:bg-red-600 after:transition-all after:duration-300 
-                      ${pathname.startsWith("/about") ? "after:w-full" : ""}
-                    `}
-                >
-                  <div className="flex items-center gap-1 transition-colors text-gray-700 dark:text-gray-200 hover:text-red-600">
-                  About Us{" "}
-                  {aboutOpen ? <FaChevronUp className="w-4 h-4" /> : <FaChevronDown className="w-4 h-4" />}
-                  </div>
+              <li className="relative" ref={aboutRef}>
+                <button className="relative flex items-center gap-1 text-gray-700 dark:text-gray-200 hover:text-red-600 transition-colors">
+                  About Us {aboutOpen ? <FaChevronUp className="w-4 h-4" /> : <FaChevronDown className="w-4 h-4" />}
+                  {pathname.startsWith("/about") && <ActiveBorder />}
                 </button>
-
                 <AnimatePresence>
                   {aboutOpen && (
                     <motion.ul
@@ -154,21 +150,20 @@ const businessLinks = [
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute top-full left-0  bg-white/90 dark:bg-gray-800 shadow-lg mt-2 w-60 rounded-md p-2 space-y-2 z-50"
+                      className="absolute top-full left-0 bg-white/90 dark:bg-gray-800 shadow-lg mt-2 w-60 rounded-md p-2 space-y-2 z-50"
                     >
-                    {aboutLinks.map((link, idx) => (
-                            <li key={idx}>
-                              <Link
-                                href={link.href}
-                                prefetch={link.prefetch}
-                                className={`block text-gray-800 dark:text-gray-200 hover:text-red-600 relative after:block after:h-[2px] after:w-0 after:bg-red-600 after:transition-all after:duration-300 ${
-                                  pathname.startsWith(link.href) ? "after:w-full" : ""
-                                }`}
-                              >
-                                {link.name}
-                              </Link>
-                            </li>
-                          ))}
+                      {aboutLinks.map((link, idx) => (
+                        <li key={idx} className="relative">
+                          <Link
+                            href={link.href}
+                            prefetch={link.prefetch}
+                            className="block text-gray-800 dark:text-gray-200 hover:text-red-600 relative transition-colors"
+                          >
+                            {link.name}
+                            {pathname.startsWith(link.href) && <ActiveBorder />}
+                          </Link>
+                        </li>
+                      ))}
                     </motion.ul>
                   )}
                 </AnimatePresence>
@@ -176,15 +171,9 @@ const businessLinks = [
 
               {/* Services Dropdown */}
               <li className="relative" ref={servicesRef}>
-                <button
-                  className={`after:block after:h-[2px] after:w-0 after:bg-red-600 after:transition-all after:duration-300 
-                      ${pathname.startsWith("/Services") ? "after:w-full" : ""}
-                    `}
-                >
-                  <div className="flex items-center gap-1 transition-colors text-gray-700 dark:text-gray-200 hover:text-red-600">
-                  Services{" "}
-                  {servicesOpen ? <FaChevronUp className="w-4 h-4" /> : <FaChevronDown className="w-4 h-4" />}
-                  </div>
+                <button className="relative flex items-center gap-1 text-gray-700 dark:text-gray-200 hover:text-red-600 transition-colors">
+                  Services {servicesOpen ? <FaChevronUp className="w-4 h-4" /> : <FaChevronDown className="w-4 h-4" />}
+                  {pathname.startsWith("/Services") && <ActiveBorder />}
                 </button>
                 <AnimatePresence>
                   {servicesOpen && (
@@ -194,20 +183,18 @@ const businessLinks = [
                       exit={{ opacity: 0, y: -10 }}
                       className="absolute top-full left-0 bg-white/90 dark:bg-gray-800 shadow-lg mt-2 w-72 rounded-md p-2 space-y-2 z-50"
                     >
-                        {servicesLinks.map((link, idx) => (
-                          <li key={idx}>
-                            <Link
-                              href={link.href}
-                              prefetch={link.prefetch}
-                              className={`block text-gray-700 dark:text-gray-200 hover:text-red-600 after:block after:h-[2px] after:w-0 after:bg-red-600 after:transition-all after:duration-300  ${
-                                pathname.startsWith(link.href) ? "after:w-full" : ""
-                              }`}
-                            >
-                              {link.name}
-                            </Link>
-                          </li>
-                        ))}
-
+                      {servicesLinks.map((link, idx) => (
+                        <li key={idx} className="relative">
+                          <Link
+                            href={link.href}
+                            prefetch={link.prefetch}
+                            className="block text-gray-700 dark:text-gray-200 hover:text-red-600 relative transition-colors"
+                          >
+                            {link.name}
+                            {pathname.startsWith(link.href) && <ActiveBorder />}
+                          </Link>
+                        </li>
+                      ))}
                     </motion.ul>
                   )}
                 </AnimatePresence>
@@ -215,15 +202,9 @@ const businessLinks = [
 
               {/* Business Dropdown */}
               <li className="relative" ref={businessRef}>
-                <button
-                  className={`after:block after:h-[2px] after:w-0 after:bg-red-600 after:transition-all after:duration-300 
-                      ${pathname.startsWith("/products") ? "after:w-full" : ""}
-                    `}
-                >
-                  <div className="flex items-center gap-1 transition-colors text-gray-700 dark:text-gray-200 hover:text-red-600">
-                  Business/Products{" "}
-                  {businessOpen ? <FaChevronUp className="w-4 h-4" /> : <FaChevronDown className="w-4 h-4" />}
-                  </div>
+                <button className="relative flex items-center gap-1 text-gray-700 dark:text-gray-200 hover:text-red-600 transition-colors">
+                  Business/Products {businessOpen ? <FaChevronUp className="w-4 h-4" /> : <FaChevronDown className="w-4 h-4" />}
+                  {pathname.startsWith("/products") && <ActiveBorder />}
                 </button>
                 <AnimatePresence>
                   {businessOpen && (
@@ -233,19 +214,18 @@ const businessLinks = [
                       exit={{ opacity: 0, y: -10 }}
                       className="absolute top-full left-0 bg-white/90 dark:bg-gray-800 shadow-lg mt-2 w-72 rounded-md p-2 space-y-2 z-50"
                     >
-                    {businessLinks.map((link, idx) => (
-                        <li key={idx}>
+                      {businessLinks.map((link, idx) => (
+                        <li key={idx} className="relative">
                           <Link
                             href={link.href}
                             prefetch={link.prefetch}
-                            className={`block text-gray-800 dark:text-gray-200 hover:text-red-600 after:block after:h-[2px] after:w-0 after:bg-red-600 after:transition-all after:duration-300 ${
-                              pathname.startsWith(link.href) ? "after:w-full" : ""
-                            }`}
+                            className="block text-gray-800 dark:text-gray-200 hover:text-red-600 relative transition-colors"
                           >
                             {link.name}
+                            {pathname.startsWith(link.href) && <ActiveBorder />}
                           </Link>
                         </li>
-                       ))}
+                      ))}
                     </motion.ul>
                   )}
                 </AnimatePresence>
@@ -253,27 +233,22 @@ const businessLinks = [
 
               {/* More Details Hover */}
               <li className="relative group py-2">
-                <button type="button"                             
-                className={`after:block after:h-[2px] after:w-0 after:bg-red-600 after:transition-all after:duration-300   ${
-                      (links.map(link=>pathname.startsWith(link.href)).includes(true)) ? "after:w-full" : ""
-                 }`}>
-                    <div className="flex items-center gap-1 text-gray-800 dark:text-gray-200 hover:text-red-600 transition duration-300 cursor-pointer">
-                     More Details
-                     <span className="transition-transform duration-300 group-hover:rotate-180">↓</span>
-                    </div>
+                <button type="button" className="relative flex items-center gap-1 text-gray-800 dark:text-gray-200 hover:text-red-600 transition-colors">
+                  More Details
+                  <span className="transition-transform duration-300 group-hover:rotate-180">↓</span>
+                  {links.some(link => pathname.startsWith(link.href)) && <ActiveBorder />}
                 </button>
 
-                <ul className="absolute hidden group-hover:block top-full right-0 bg-white/90 dark:bg-gray-800 backdrop-blur-md border border-gray-200 dark:border-gray-700 shadow-lg w-56 rounded-xl p-2 space-y-1 z-50 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out">
+                <ul className="absolute hidden group-hover:block top-full right-0 bg-white/90 dark:bg-gray-800 backdrop-blur-md border border-gray-200 dark:border-gray-700 shadow-lg w-40 rounded-xl p-2 space-y-1 z-50 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out">
                   {links.map((item, idx) => (
-                    <li key={idx}>
+                    <li key={idx} className="relative">
                       <Link
                         href={item.href}
                         prefetch={item.prefetch}
-                            className={`block text-gray-800 dark:text-gray-200 hover:text-red-600 after:block after:h-[2px] after:w-0 after:bg-red-600 after:transition-all after:duration-300  ${
-                              pathname.startsWith(item.href) ? "after:w-full" : ""
-                            }`}
+                        className="block text-gray-800 dark:text-gray-200 hover:text-red-600 relative transition-colors"
                       >
                         {item.name}
+                        {pathname.startsWith(item.href) && <ActiveBorder/>}
                       </Link>
                     </li>
                   ))}
@@ -309,150 +284,79 @@ const businessLinks = [
         {/* Mobile Menu */}
         <AnimatePresence>
           {mobileOpen && (
-                  <motion.div
-                      className="fixed lg:hidden top-20 left-0 h-[calc(100vh-80px)] dark:bg-black bg-white z-[9999] w-3/4 max-w-xs shadow-lg p-6 overflow-y-auto myDiv"
-                      initial={{ x: "-100%" }}
-                      animate={{ x: 0 }}
-                      exit={{ x: "-100%" }}
-                      transition={{ type: "tween", duration: 0.3 }}
-                    >
-                      <ul className="flex flex-col space-y-4">
-
-                        {/* Home */}
-                        <li>
-                          <Link
-                            href="/"
-                            prefetch={true}
-                            className={`text-gray-700 dark:text-gray-200 hover:text-red-600 ${
-                              pathname === "/" ? "border-b-2 border-red-600" : ""
-                            }`}
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            Home
-                          </Link>
-                        </li>
-
-                        {/* About */}
-                        <li>
-                          <button
-                            onClick={() => setMobileAboutOpen(!mobileAboutOpen)}
-                            className="flex justify-between w-full text-gray-700 dark:text-gray-200 hover:text-red-600"
-                          >
-                            About Us {mobileAboutOpen ? <FaChevronUp /> : <FaChevronDown />}
-                          </button>
-                          {mobileAboutOpen && (
-                            <ul className="pl-4 mt-2 space-y-2">
-                              {aboutLinks.map((link, idx) => (
-                                <li key={idx}>
-                                  <Link
-                                    href={link.href}
-                                    prefetch={link.prefetch}
-                                    className={`block text-gray-700 dark:text-gray-200 hover:text-red-600 ${
-                                      pathname.startsWith(link.href)
-                                        ? "border-b-2 border-red-600"
-                                        : ""
-                                    }`}
-                                    onClick={() => setMobileOpen(false)}
-                                  >
-                                    {link.name}
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          )}
-                        </li>
-
-                        {/* Services */}
-                        <li>
-                          <button
-                            onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                            className="flex justify-between w-full text-gray-700 dark:text-gray-200 hover:text-red-600"
-                          >
-                            Services {mobileServicesOpen ? <FaChevronUp /> : <FaChevronDown />}
-                          </button>
-                          {mobileServicesOpen && (
-                            <ul className="pl-4 mt-2 space-y-2">
-                              {servicesLinks.map((link, idx) => (
-                                <li key={idx}>
-                                  <Link
-                                    href={link.href}
-                                    prefetch={link.prefetch}
-                                    className={`block text-gray-700 dark:text-gray-200 hover:text-red-600 ${
-                                      pathname.startsWith(link.href)
-                                        ? "border-b-2 border-red-600"
-                                        : ""
-                                    }`}
-                                    onClick={() => setMobileOpen(false)}
-                                  >
-                                    {link.name}
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          )}
-                        </li>
-
-                        {/* Business */}
-                        <li>
-                          <button
-                            onClick={() => setMobileBusinessOpen(!mobileBusinessOpen)}
-                            className="flex justify-between w-full text-gray-700 dark:text-gray-200 hover:text-red-600"
-                          >
-                            Business/Products {mobileBusinessOpen ? <FaChevronUp /> : <FaChevronDown />}
-                          </button>
-                          {mobileBusinessOpen && (
-                            <ul className="pl-4 mt-2 space-y-2">
-                              {businessLinks.map((link, idx) => (
-                                <li key={idx}>
-                                  <Link
-                                    href={link.href}
-                                    prefetch={link.prefetch}
-                                    className={`block text-gray-700 dark:text-gray-200 hover:text-red-600 ${
-                                      pathname.startsWith(link.href)
-                                        ? "border-b-2 border-red-600"
-                                        : ""
-                                    }`}
-                                    onClick={() => setMobileOpen(false)}
-                                  >
-                                    {link.name}
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          )}
-                        </li>
-
-                        {/* More Details */}
-                        <li>
-                          <button
-                            onClick={() => setMobileMoreOpen(!mobileMoreOpen)}
-                            className="flex justify-between w-full text-gray-700 dark:text-gray-200 hover:text-red-600"
-                          >
-                            More Details {mobileMoreOpen ? <FaChevronUp /> : <FaChevronDown />}
-                          </button>
-                          {mobileMoreOpen && (
-                            <ul className="pl-4 mt-2 space-y-2">
-                              {links.map((link, idx) => (
-                                <li key={idx}>
-                                  <Link
-                                    href={link.href}
-                                    prefetch={link.prefetch}
-                                    className={`block text-gray-700 dark:text-gray-200 hover:text-red-600 ${
-                                      pathname.startsWith(link.href)
-                                        ? "border-b-2 border-red-600"
-                                        : ""
-                                    }`}
-                                    onClick={() => setMobileOpen(false)}
-                                  >
-                                    {link.name}
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          )}
-                        </li>
-
-                      </ul>
+            <motion.div
+              className="fixed lg:hidden top-20 left-0 h-[calc(100vh-80px)] dark:bg-black bg-white z-[9999] w-3/4 max-w-xs shadow-lg p-6 overflow-y-auto myDiv"
+              initial={{ x: "-100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "-100%" }}
+              transition={{ type: "tween", duration: 0.3 }}
+            >
+              <ul className="flex flex-col space-y-4">
+                {/* Mobile Links with ActiveBorder */}
+                {[
+                  { name: "Home", href: "/" },
+                  { name: "About Us", href: "/about", children: aboutLinks, toggle: mobileAboutOpen, setToggle: setMobileAboutOpen },
+                  { name: "Services", href: "/Services", children: servicesLinks, toggle: mobileServicesOpen, setToggle: setMobileServicesOpen },
+                  { name: "Business/Products", href: "/products", children: businessLinks, toggle: mobileBusinessOpen, setToggle: setMobileBusinessOpen },
+                  { name: "More Details", href: "", children: links, toggle: mobileMoreOpen, setToggle: setMobileMoreOpen }
+                ].map((item, idx) => (
+                  <li key={idx} className="relative">
+                    {item.children ? (
+                      <>
+                        <button
+                          onClick={() => item.setToggle(!item.toggle)}
+                          className="flex justify-between w-full text-gray-700 dark:text-gray-200 hover:text-red-600 transition-colors"
+                        >
+                          {item.name} {item.toggle ? <FaChevronUp /> : <FaChevronDown />}
+                        </button>
+                        {item.toggle && (
+                          <ul className="pl-4 mt-2 space-y-2 relative">
+                            {item.children.map((link, idx2) => (
+                              <li key={idx2} className="relative">
+                                <Link
+                                  href={link.href}
+                                  prefetch={link.prefetch}
+                                  className="block text-gray-700 dark:text-gray-200 hover:text-red-600 transition-colors"
+                                  onClick={() => setMobileOpen(false)}
+                                >
+                                  {link.name}
+                                  {pathname.startsWith(link.href) && (
+                                    <motion.span
+                                      layoutId="mobileActiveBorder"
+                                      className="absolute bottom-0 left-0 h-[2px] bg-red-600"
+                                      initial={{ width: 0 }}
+                                      animate={{ width: "100%" }}
+                                      transition={{ duration: 0.5, ease: "easeOut" }}
+                                    />
+                                  )}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        prefetch={true}
+                        className="block text-gray-700 dark:text-gray-200 hover:text-red-600 transition-colors"
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        {item.name}
+                        {pathname === item.href && (
+                          <motion.span
+                            layoutId="mobileActiveBorder"
+                            className="absolute bottom-0 left-0 h-[2px] bg-red-600"
+                            initial={{ width: 0 }}
+                            animate={{ width: "100%" }}
+                            transition={{ duration: 0.5, ease: "easeOut" }}
+                          />
+                        )}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           )}
         </AnimatePresence>

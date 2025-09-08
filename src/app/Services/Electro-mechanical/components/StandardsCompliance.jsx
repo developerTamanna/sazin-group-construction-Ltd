@@ -38,8 +38,8 @@ const standards = [
 export default function StandardsCompliance() {
   return (
     <section className="bg-neutral-50 dark:bg-neutral-950 py-16 px-6 lg:px-8">
-      <h2 className="text-3xl lg:text-4xl font-bold text-center text-red-600">
-        Standards & Compliance
+      <h2 className="text-3xl lg:text-4xl font-semibold text-center text-black dark:text-white">
+        Standards <span className='text-red-600'>& Compliance</span>
       </h2>
       <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {standards.map((s) => {
