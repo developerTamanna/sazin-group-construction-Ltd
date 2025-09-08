@@ -106,7 +106,7 @@ export default function FeatureProducts() {
               →
             </button>
 
-            <Link href="/products" className="text-red-600 text-xl hover:underline">
+            <Link prefetch={false} href="/Product-Base-Services/Sky-Helmet&Safety-Accessories" className="text-red-600 text-xl hover:underline">
               See All
             </Link>
           </div>
