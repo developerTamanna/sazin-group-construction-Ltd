@@ -94,9 +94,9 @@ export default function HomePage() {
         className="relative overflow-hidden bg-white dark:bg-neutral-950"
         aria-labelledby="about-title"
       >
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 py-16 sm:px-8 lg:grid-cols-2 lg:gap-16 lg:py-24">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2 lg:px-10 gap-10 py-16 lg:gap-16 lg:py-24">
           {/* Text Content */}
-          <div className="flex flex-col justify-center order-2 lg:order-1">
+          <div className="flex flex-col justify-center order-2 lg:order-1  lg:px-0 px-6 ">
             <h2
               id="about-title"
               className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-white sm:text-4xl"
