@@ -51,7 +51,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="w-full py-12 bg-neutral-800 text-gray-200">
+    <footer className="w-full py-4 bg-neutral-900 text-gray-200">
       {/* ✅ JSON-LD Lazy Load */}
       <Script
         id="footer-jsonld"
@@ -63,9 +63,9 @@ const Footer = () => {
       <div className="container mx-auto px-4 flex items-start flex-col md:flex-row justify-between gap-8">
         {/* Contact Info */}
         <div className="flex-1 text-center md:text-left">
-          <Link prefetch={false} href="/" className=" w-fit h-fit flex items-start justify-start bg-blue-500 ">
-          <div className="w-fit h-fit ">
-                  <Logo  redClass="#CA111A" blackClass="white" />
+          <Link prefetch={false} href="/" >
+          <div className="w-[120px] h-[120px] ">
+                  <Logo  redclass="#CA111A" blackclass="white" />
              </div>
           </Link>
           <p className="text-gray-400">

@@ -44,7 +44,7 @@ export default function Navbar() {
       { name: "Agro & Fisheries", href: "/Services/agro-fisheries", prefetch: false },
     ],
     business: [
-      { name: "Sazin Construction Ltd", href: "/products/construction", prefetch: true },
+      { name: "Sazin Construction Ltd", href: "/Projects", prefetch: true },
       { name: "Sazin Agro & Fisheries", href: "/products/agro", prefetch: true },
       { name: "Sky Helmet & Safety Accessories", href: "/Product-Base-Services/Sky-Helmet&Safety-Accessories", prefetch: false },
     ],

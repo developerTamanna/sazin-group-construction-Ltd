@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import Head from "next/head";
 import Image from "next/image";
 import Script from "next/script";
+import GalleryFilter from "@/app/project-gallery/components/GalleryFilter";
 
 const limit = 6; // প্রতি page এ কয়টা project দেখাবে
 
@@ -46,6 +47,9 @@ export default function ProjectShowcaseInfinity() {
   // Intersection Observer দিয়ে auto load
   const loadMoreRef = useRef(null);
   const [hoveredId, setHoveredId] = useState(null);
+   const [activeCategory, setActiveCategory] = useState("All");
+   const [filteredData, setFilteredData] = useState([]);
+   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     if (!hasNextPage || isFetchingNextPage) return;
@@ -69,6 +73,16 @@ export default function ProjectShowcaseInfinity() {
       }
     };
   }, [fetchNextPage, hasNextPage, isFetchingNextPage]);
+
+ useEffect(()=>{
+     const filtered = (data?.pages.flatMap((p) => p.data) || []).filter(
+    (p) => activeCategory === "All" || p.category === activeCategory
+    );
+    const categories = [...new Set(data?.pages.flatMap((p) => p.data.map((p) => p.category)))];
+    setFilteredData(filtered);
+    setCategories(categories);
+ },[activeCategory,data]) 
+
 
   if (status === "loading") return <p className="text-center">Loading...</p>;
   if (status === "error")
@@ -126,11 +140,14 @@ export default function ProjectShowcaseInfinity() {
         <h2 className="text-3xl sm:text-4xl font-semibold text-center text-gray-800 dark:text-gray-200 mb-10">
           Explore <span className="text-red-600">Our Projects</span>
         </h2>
-
+        <GalleryFilter
+            categories={categories}
+            active={activeCategory}
+            setActive={setActiveCategory}
+          />
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-             {data?.pages?.map((page) =>
-            page.data.map((p) => (
+            {filteredData.map((p) => (
               <div
                 key={p.id}
                 onPointerEnter={() => setHoveredId(p.id)}
@@ -168,8 +185,7 @@ export default function ProjectShowcaseInfinity() {
                   </button>
                 </div>
               </div>
-            ))
-             )}
+            ))}
           </div>
 
         {/* Loader / End message */}

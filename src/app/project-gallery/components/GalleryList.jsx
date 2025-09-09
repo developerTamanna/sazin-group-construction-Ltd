@@ -18,6 +18,8 @@ async function fetchProjects({ pageParam = 1 }) {
 
 export default function GalleryList() {
   const [activeCategory, setActiveCategory] = useState("All");
+   const [filteredData, setFilteredData] = useState([]);
+   const [categories, setCategories] = useState([]);
   const [lightbox, setLightbox] = useState(null);
   const loadMoreRef = useRef(null);
   const [hoveredId, setHoveredId] = useState(null);
@@ -53,18 +55,28 @@ export default function GalleryList() {
     };
   }, [fetchNextPage, hasNextPage, isFetchingNextPage]);
 
-  const filtered = (data?.pages.flatMap((p) => p.data) || []).filter(
+ 
+  const [currentIndex,setCurrentIndex]=useState(0);
+
+  useEffect(()=>{
+     const filtered = (data?.pages.flatMap((p) => p.data) || []).filter(
     (p) => activeCategory === "All" || p.category === activeCategory
-  );
+    );
+    const categories = [...new Set(data?.pages.flatMap((p) => p.data.map((p) => p.category)))];
+    setFilteredData(filtered);
+    setCategories(categories);
+ },[activeCategory,data]) 
+ useEffect(()=>{
+     // lightbox navigation
+  const currentIndex = filteredData.findIndex((p) => p.id === lightbox?.id);
+  setCurrentIndex(currentIndex);
+ },[filteredData,lightbox])
 
-  const categories = [...new Set(galleryData.map((p) => p.category))];
 
-  // lightbox navigation
-  const currentIndex = filtered.findIndex((p) => p.id === lightbox?.id);
   const handlePrev = () =>
-    setLightbox(filtered[(currentIndex - 1 + filtered.length) % filtered.length]);
+    setLightbox(filteredData[(currentIndex - 1 + filteredData.length) % filteredData.length]);
   const handleNext = () =>
-    setLightbox(filtered[(currentIndex + 1) % filtered.length]);
+    setLightbox(filteredData[(currentIndex + 1) % filteredData.length]);
 
   return (
     <div>
@@ -75,7 +87,7 @@ export default function GalleryList() {
       />
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-        {filtered.map((p) => (
+        {filteredData.map((p) => (
           <GalleryCard key={p.id} project={p} onClick={setLightbox} hoveredId={hoveredId}
            setHoveredId={setHoveredId} />
         ))}
