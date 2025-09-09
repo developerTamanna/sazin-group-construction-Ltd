@@ -57,8 +57,8 @@ function Navbar() {
   },[pathname])
 
   return (
-    <nav className="bg-black dark:bg-white dark:text-black text-white px-4 py-2">
-      <div className="max-w-7xl mx-auto flex md:justify-center justify-between items-center h-full ">
+    <nav className="bg-black dark:bg-white dark:text-black text-white h-auto px-4 py-2">
+      <div className="max-w-7xl mx-auto flex md:justify-center justify-between items-center h-auto ">
                         {/* Breadcrumb */}
         {product?.title && <div className="flex items-center gap-2">
           <Link
@@ -125,10 +125,10 @@ function Navbar() {
       <AnimatePresence>
         {mobileMenu && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
+            initial={{ height: 0, opacity: 1 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 1 }}
+            transition={{ duration: 0.5 }}
             className="md:hidden mt-3 bg-white dark:bg-black text-black dark:text-white shadow-lg rounded-md p-4"
           >
             {option.map((item, index) => (
