@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { projects } from "../Components/projectsData";
+import Link from "next/link";
 
 export async function generateStaticParams() {
   return projects.map((p) => ({
@@ -18,6 +19,22 @@ export default function ProjectDetail({ params }) {
     );
 
   return (
+    <>
+                {/* Breadcrumb */}
+      <nav className="bg-white dark:bg-gray-800 border-b px-6 py-3 text-sm">
+        <div className="max-w-7xl mx-auto flex items-center gap-2">
+          <Link
+            href="/Projects"
+            prefetch={false}
+            className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 transition-colors"
+          >
+            {`<< Projects`}
+          </Link>
+          <span className="text-gray-400">/</span>
+          <span className="text-gray-600 dark:text-gray-300 max-w-[120px] truncate" title={project.title}>{project.title}</span>
+        </div>
+      </nav>
+
     <div className="py-10 bg-white dark:bg-black/60 px-4 md:px-6 lg:px-8">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 items-start">
         {/* Left: Image */}
@@ -50,5 +67,6 @@ export default function ProjectDetail({ params }) {
         </div>
       </div>
     </div>
+    </>
   );
 }
