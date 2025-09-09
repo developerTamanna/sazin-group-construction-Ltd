@@ -20,16 +20,6 @@ const products = [
   { id: 8, title: "Special Item", desc: "Tools & Machineries", img: "/civil3.jpg" },
   { id: 9, title: "Machinery", desc: "Tools & Machineries", img: "/fullface.jpg" },
   { id: 10, title: "Equipment", desc: "Tools & Machineries", img: "/epc1.jpg" },
-  { id: 11, title: "Tools & Machineries", desc: "Tools & Machineries", img: "/epc3.jpg" },
-  { id: 12, title: "Copper, Insulation", desc: "Tools & Machineries", img: "/fullface.jpg" },
-  { id: 13, title: "Make to Order", desc: "Tools & Machineries", img: "/helmet.jpg" },
-  { id: 14, title: "Others", desc: "Tools & Machineries", img: "/helmet_.jpg" },
-  { id: 15, title: "Extra Product", desc: "Tools & Machineries", img: "/electroCard3.jpg" },
-  { id: 16, title: "New Product", desc: "Tools & Machineries", img: "/safety.jpg" },
-  { id: 17, title: "Another Product", desc: "Tools & Machineries", img: "/civil2.jpg" },
-  { id: 18, title: "Special Item", desc: "Tools & Machineries", img: "/electroCard2.jpg" },
-  { id: 19, title: "Machinery", desc: "Tools & Machineries", img: "/electroCard1.jpg" },
-  { id: 20, title: "Equipment", desc: "Tools & Machineries", img: "/helmet.webp" },
 ];
 
 export default function FeatureProducts() {
@@ -49,29 +39,27 @@ export default function FeatureProducts() {
         <Swiper
           modules={[Navigation, Autoplay, Grid]}
           spaceBetween={20}
-          slidesPerView={5}
+          slidesPerView={1} // Default, overridden by breakpoints
           grid={{ rows: 2, fill: "row" }}
-          navigation={{
-            nextEl: ".custom-next",
-            prevEl: ".custom-prev",
-          }}
+          loop={true}
+          speed={800} // Smoother transition
           autoplay={{
             delay: 3000,
             disableOnInteraction: false,
           }}
+          navigation={{
+            nextEl: ".custom-next",
+            prevEl: ".custom-prev",
+          }}
           onSwiper={(swiper) => (swiperRef.current = swiper)}
-          onSlideChange={(swiper) => setCurrentIndex(swiper.realIndex + 1)}
-          loop='true'
-          className="pb-10"
-          lazy="true"          // enable Swiper lazy load
+          onSlideChange={(swiper) => setCurrentIndex(swiper.realIndex + 2)}
           breakpoints={{
-            320: { slidesPerView: 1, grid: { rows: 2 } },
             640: { slidesPerView: 2, grid: { rows: 2 } },
             1024: { slidesPerView: 3, grid: { rows: 2 } },
             1280: { slidesPerView: 5, grid: { rows: 2 } },
           }}
-          onMouseEnter={() => swiperRef.current?.autoplay.stop()}
-          onMouseLeave={() => swiperRef.current?.autoplay.start()}
+          onPointerEnter={() => swiperRef.current?.autoplay.stop()}
+          onPointerLeave={() => swiperRef.current?.autoplay.start()}
         >
           {products.map((product) => (
             <SwiperSlide key={product.id}>
@@ -83,7 +71,6 @@ export default function FeatureProducts() {
                     fill
                     className="object-cover"
                     loading="lazy"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     placeholder="blur"
                     blurDataURL="/placeholder.png"
                   />

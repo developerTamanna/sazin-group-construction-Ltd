@@ -12,6 +12,7 @@ import {
   FaPinterestP,
 } from "react-icons/fa";
 import { useTheme } from "next-themes";
+import Logo from "../Logo";
 
 const Footer = () => {
   const { theme } = useTheme();
@@ -59,22 +60,15 @@ const Footer = () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(footerJsonLd) }}
       />
 
-      <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between gap-8">
+      <div className="container mx-auto px-4 flex items-start flex-col md:flex-row justify-between gap-8">
         {/* Contact Info */}
         <div className="flex-1 text-center md:text-left">
-          <Link href="/" className="inline-block mb-4">
-            <div className="w-30 h-30 flex items-center justify-center rounded-full mx-auto md:mx-0 ">
-              <Image
-                src="/Sazin.svg"
-                alt="Company Logo"
-                width={100}
-                height={100}
-                className="object-contain"
-                priority={false}
-              />
-            </div>
+          <Link prefetch={false} href="/" className=" w-fit h-fit flex items-start justify-start bg-blue-500 ">
+          <div className="w-fit h-fit ">
+                  <Logo  redClass="#CA111A" blackClass="white" />
+             </div>
           </Link>
-          <p className="mt-2 text-gray-400">
+          <p className="text-gray-400">
             Contractor, Civil Construction, ElectroMechanical Works, Importer &
             Supplier, etc.
           </p>
