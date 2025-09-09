@@ -46,7 +46,7 @@ export default function AchievementDetail() {
       >
         <div className="absolute inset-0 bg-gradient-to-r from-red-900/80 to-gray-900/80" />
         <div className="relative z-10 text-center text-white px-4">
-          <h1 className="md:text-5xl text-2xl font-bold mb-4">Milestones & Achievements</h1>
+          <h1 className="md:text-5xl text-4xl font-bold mb-4">Milestones & Achievements</h1>
           <p className="md:text-xl text-lg max-w-3xl mx-auto">
             Celebrating Excellence in Construction and Engineering
           </p>
