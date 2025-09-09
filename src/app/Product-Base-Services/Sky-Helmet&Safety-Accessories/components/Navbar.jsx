@@ -129,7 +129,7 @@ function Navbar() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="md:hidden mt-3 bg-white dark:bg-black text-black dark:text-white shadow-lg rounded-md p-4"
+            className="md:hidden mt-3 bg-white dark:bg-black text-black dark:text-white shadow-lg overflow-hidden rounded-md p-4"
           >
             {option.map((item, index) => (
               <div key={item.name} className="mb-2">
@@ -150,7 +150,7 @@ function Navbar() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
+                      transition={{ duration: 0.6 }}
                       className="pl-4 mt-1 space-y-1 overflow-hidden"
                     >
                       {item.submenu.map((sub) => (
