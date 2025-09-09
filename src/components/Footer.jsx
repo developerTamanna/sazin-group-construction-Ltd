@@ -60,9 +60,9 @@ const Footer = () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(footerJsonLd) }}
       />
 
-      <div className="container mx-auto px-4 flex items-start flex-col md:flex-row justify-between gap-8">
+      <div className="container mx-auto px-4 flex items-start flex-wrap md:flex-row justify-between gap-8">
         {/* Contact Info */}
-        <div className="flex-1 text-center md:text-left">
+        <div className="md:flex-1 w-full text-left">
           <Link prefetch={false} href="/" >
           <div className="w-[120px] h-[120px] ">
                   <Logo  redclass="#CA111A" blackclass="white" />
@@ -77,7 +77,7 @@ const Footer = () => {
           </p>
 
           {/* Social Icons */}
-          <div className="mt-6 flex justify-center md:justify-start gap-4 text-xl">
+          <div className="mt-6 flex justify-start gap-4 text-xl">
             {[
               { icon: <FaWhatsapp />, link: "https://wa.me/yourwhatsapp" },
               { icon: <FaFacebookF />, link: "https://facebook.com/yourpage" },
