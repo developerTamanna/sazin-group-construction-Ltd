@@ -44,11 +44,6 @@ export default function Navbar() {
       },
     ],
     business: [
-<<<<<<<<< Temporary merge branch 1
-      { name: "Sazin Construction Ltd", href: "/Projects", prefetch: true },
-      { name: "Sazin Agro & Fisheries", href: "/products/agro", prefetch: true },
-      { name: "Sky Helmet & Safety Accessories", href: "/Product-Base-Services/Sky-Helmet&Safety-Accessories", prefetch: false },
-=========
       {
         name: 'Electro-Mechanical Construction',
         href: '/Services/Electro-mechanical',
@@ -84,17 +79,9 @@ export default function Navbar() {
         href: '/products/construction',
         prefetch: true,
       },
-      {
-        name: 'Sazin Agro & Fisheries',
-        href: '/products/agro',
-        prefetch: true,
-      },
-      {
-        name: 'Sky Helmet & Safety Accessories',
-        href: '/Product-Base-Services/Sky-Helmet&Safety-Accessories',
-        prefetch: false,
-      },
->>>>>>>>> Temporary merge branch 2
+
+      { name: "Sazin Agro & Fisheries", href: "/products/agro", prefetch:false },
+      { name: "Sky Helmet & Safety Accessories", href: "/Product-Base-Services/Sky-Helmet&Safety-Accessories", prefetch: false },
     ],
     more: [
       { name: 'Projects', href: '/Projects', prefetch: true },
