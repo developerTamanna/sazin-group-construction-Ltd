@@ -85,7 +85,7 @@ const LatestNews = () => {
             <button className="custom-next text-xl border border-red-500 text-red-500 w-10 h-10 flex items-center justify-center rounded-full hover:bg-red-500 hover:text-white transition">
               →
             </button>
-            <Link href="/products" className="text-red-600 font-semi-bold text-xl hover:underline">
+            <Link href="/news-blog" prefetch={false} className="text-red-600 font-semi-bold text-xl hover:underline">
               See All
             </Link>
           </div>

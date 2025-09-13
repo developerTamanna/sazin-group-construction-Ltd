@@ -1,8 +1,9 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { HiMenu, HiX } from "react-icons/hi";
 import { motion, AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 const option = [
   {
@@ -37,14 +38,41 @@ function Navbar() {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
   const [hoverIndex, setHoverIndex] = useState(null);
+  const pathname=usePathname();
+  const [product, setProduct] = useState({
+    title: "",
+  });
+
+  useEffect(()=>{
+    const currentPath=pathname.split('/').filter(Boolean)
+    if(currentPath.length>2){
+      setProduct({
+        title: currentPath[2],
+      })
+    }else{
+        setProduct({
+          title: "",
+        })
+      }
+  },[pathname])
 
   return (
-    <nav className="bg-black dark:bg-white dark:text-black text-white px-4 py-2">
-      <div className="max-w-7xl mx-auto flex justify-center items-center h-full ">
-
-
+    <nav className="bg-black dark:bg-white dark:text-black text-white h-auto px-4 py-2">
+      <div className="max-w-7xl mx-auto flex md:justify-center justify-between items-center h-auto ">
+                        {/* Breadcrumb */}
+        {product?.title && <div className="flex items-center gap-2">
+          <Link
+            href="/Product-Base-Services/Sky-Helmet&Safety-Accessories"
+            prefetch={false}
+            className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 transition-colors"
+          >
+            {`<< Back`}
+          </Link>
+          <span className="text-gray-400">/</span>
+          <span className="text-gray-300 dark:text-gray-800 max-w-[120px] truncate" title={product.title}>{product.title}</span>
+         </div>}
         {/* Desktop Menu */}
-        <ul className="hidden h-full md:flex justify-center items-center gap-10 relative">
+        <ul className="hidden flex-1 h-full md:flex justify-center items-center gap-10 relative">
           {option.map((item, index) => (
             <li
               key={item.name}
@@ -86,7 +114,7 @@ function Navbar() {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-2xl"
+          className="md:hidden  text-2xl"
           onClick={() => setMobileMenu(!mobileMenu)}
         >
           {mobileMenu ? <HiX /> : <HiMenu />}
@@ -97,11 +125,11 @@ function Navbar() {
       <AnimatePresence>
         {mobileMenu && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden mt-3 bg-white dark:bg-black text-black dark:text-white shadow-lg rounded-md p-4"
+            initial={{ height: 0, opacity: 1 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="md:hidden mt-3 bg-white dark:bg-black text-black dark:text-white shadow-lg overflow-hidden rounded-md p-4"
           >
             {option.map((item, index) => (
               <div key={item.name} className="mb-2">
@@ -122,7 +150,7 @@ function Navbar() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
+                      transition={{ duration: 0.6 }}
                       className="pl-4 mt-1 space-y-1 overflow-hidden"
                     >
                       {item.submenu.map((sub) => (

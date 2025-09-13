@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import Script from "next/script";
+import StatsSection from "./components/StatsSection";
 
 // Lazy load below-the-fold with SSR true
 const AboutSnapet=dynamic(()=>import('./components/AboutSnapet'),{ssr:true})
@@ -52,6 +53,7 @@ export default function Home() {
         <Certificates />
         <LatestNews />
         <Achievement />
+        <StatsSection />
         <CallToAction />
       </main>
 

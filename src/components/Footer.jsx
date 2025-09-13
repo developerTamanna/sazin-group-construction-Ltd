@@ -12,6 +12,7 @@ import {
   FaPinterestP,
 } from "react-icons/fa";
 import { useTheme } from "next-themes";
+import Logo from "../Logo";
 
 const Footer = () => {
   const { theme } = useTheme();
@@ -50,7 +51,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="w-full py-12 bg-neutral-800 text-gray-200">
+    <footer className="w-full py-4 bg-neutral-900 text-gray-200">
       {/* ✅ JSON-LD Lazy Load */}
       <Script
         id="footer-jsonld"
@@ -59,22 +60,15 @@ const Footer = () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(footerJsonLd) }}
       />
 
-      <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between gap-8">
+      <div className="container mx-auto px-4 flex items-start flex-wrap md:flex-row justify-between gap-8">
         {/* Contact Info */}
-        <div className="flex-1 text-center md:text-left">
-          <Link href="/" className="inline-block mb-4">
-            <div className="w-30 h-30 flex items-center justify-center rounded-full mx-auto md:mx-0 ">
-              <Image
-                src="/Sazin.svg"
-                alt="Company Logo"
-                width={100}
-                height={100}
-                className="object-contain"
-                priority={false}
-              />
-            </div>
+        <div className="md:flex-1 w-full text-left">
+          <Link prefetch={false} href="/" >
+          <div className="w-[120px] h-[120px] ">
+                  <Logo  redclass="#CA111A" blackclass="white" />
+             </div>
           </Link>
-          <p className="mt-2 text-gray-400">
+          <p className="text-gray-400">
             Contractor, Civil Construction, ElectroMechanical Works, Importer &
             Supplier, etc.
           </p>
@@ -83,7 +77,7 @@ const Footer = () => {
           </p>
 
           {/* Social Icons */}
-          <div className="mt-6 flex justify-center md:justify-start gap-4 text-xl">
+          <div className="mt-6 flex justify-start gap-4 text-xl">
             {[
               { icon: <FaWhatsapp />, link: "https://wa.me/yourwhatsapp" },
               { icon: <FaFacebookF />, link: "https://facebook.com/yourpage" },

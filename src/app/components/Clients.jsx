@@ -120,6 +120,7 @@ export default function Clients() {
             </button>
             <Link
               href="/clients"
+              prefetch={false}
               className="text-red-600 text-left text-xl hover:underline transition"
               aria-label="View all clients and partners"
             >
@@ -128,8 +129,8 @@ export default function Clients() {
           </div>
 
           <div className="font-semibold text-xl">
-            <span className="text-red-600">{currentIndex}</span>/
-            <span className="text-gray-500">{clients.length}</span>
+            <span className="text-red-600">{currentIndex}</span>
+            <span className="text-gray-500">/{clients.length}</span>
           </div>
         </div>
       </div>
