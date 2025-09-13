@@ -26,7 +26,7 @@ const slides = [
     buttonColor: 'bg-green-600 hover:bg-white hover:text-green-600',
   },
   {
-    src: '/helmets_hero.jpeg',
+    src: '/helmetbanner.jpg',
     alt: 'Helmets solutions banner 3',
     title: 'Welcome to Our Safety World',
     subtitle: 'Sky Helmet & Safety Accessories',
