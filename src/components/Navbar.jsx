@@ -1,21 +1,19 @@
-"use client";
-import Theme from "@/utils/Theme";
-import { AnimatePresence, motion } from "framer-motion";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
-import { FaArrowUp, FaChevronDown, FaChevronUp } from "react-icons/fa";
+'use client';
+import Theme from '@/utils/Theme';
+import { AnimatePresence, motion } from 'framer-motion';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useEffect, useRef, useState } from 'react';
+import { FaArrowUp, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
 export default function Navbar() {
   const [dropdown, setDropdown] = useState({
     about: false,
-    services: false,
     business: false,
   });
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileDropdown, setMobileDropdown] = useState({
     about: false,
-    services: false,
     business: false,
     more: false,
   });
@@ -24,37 +22,81 @@ export default function Navbar() {
   const pathname = usePathname();
 
   const aboutRef = useRef(null);
-  const servicesRef = useRef(null);
   const businessRef = useRef(null);
 
-  
   const menuData = {
     about: [
-      { name: "Detailed Company History", href: "/about/history", prefetch: true },
-      { name: "Mission & Vision", href: "/about/mission", prefetch: true },
-      { name: "Leadership Profiles", href: "/about/leadership", prefetch: false },
-      { name: "Overview of Business Sectors", href: "/about/sectors", prefetch: false },
-    ],
-    services: [
-      { name: "Electro-Mechanical Construction", href: "/Services/Electro-mechanical", prefetch: true },
-      { name: "Civil Construction", href: "/Services/Civil-construction", prefetch: true },
-      { name: "Engineering Procurement & Construction", href: "/Services/engineering-procurement-construction", prefetch: false },
-      { name: "Safety & Security Construction and Management", href: "/Services/safety-security-construction-management", prefetch: false },
-      { name: "Helmet & Safety Accessories", href: "/Product-Base-Services/Sky-Helmet&Safety-Accessories", prefetch: false },
-      { name: "Agro & Fisheries", href: "/Services/agro-fisheries", prefetch: false },
+      {
+        name: 'Detailed Company History',
+        href: '/about/history',
+        prefetch: true,
+      },
+      { name: 'Mission & Vision', href: '/about/mission', prefetch: true },
+      {
+        name: 'Leadership Profiles',
+        href: '/about/leadership',
+        prefetch: false,
+      },
+      {
+        name: 'Overview of Business Sectors',
+        href: '/about/sectors',
+        prefetch: false,
+      },
     ],
     business: [
-      { name: "Sazin Construction Ltd", href: "/products/construction", prefetch: true },
-      { name: "Sazin Agro & Fisheries", href: "/products/agro", prefetch: true },
-      { name: "Sky Helmet & Safety Accessories", href: "/Product-Base-Services/Sky-Helmet&Safety-Accessories", prefetch: false },
+      {
+        name: 'Electro-Mechanical Construction',
+        href: '/Services/Electro-mechanical',
+        prefetch: true,
+      },
+      {
+        name: 'Civil Construction',
+        href: '/Services/Civil-construction',
+        prefetch: true,
+      },
+      {
+        name: 'Engineering Procurement & Construction',
+        href: '/Services/engineering-procurement-construction',
+        prefetch: false,
+      },
+      {
+        name: 'Safety & Security Construction and Management',
+        href: '/Services/safety-security-construction-management',
+        prefetch: false,
+      },
+      {
+        name: 'Helmet & Safety Accessories',
+        href: '/Product-Base-Services/Sky-Helmet&Safety-Accessories',
+        prefetch: false,
+      },
+      {
+        name: 'Agro & Fisheries',
+        href: '/Services/agro-fisheries',
+        prefetch: false,
+      },
+      {
+        name: 'Sazin Construction Ltd',
+        href: '/products/construction',
+        prefetch: true,
+      },
+      {
+        name: 'Sazin Agro & Fisheries',
+        href: '/products/agro',
+        prefetch: true,
+      },
+      {
+        name: 'Sky Helmet & Safety Accessories',
+        href: '/Product-Base-Services/Sky-Helmet&Safety-Accessories',
+        prefetch: false,
+      },
     ],
     more: [
-      { name: "Projects", href: "/Projects", prefetch: true },
-      { name: "Gallery", href: "/project-gallery", prefetch: true },
-      { name: "Contact", href: "/contact", prefetch: true },
-      { name: "Career", href: "/career", prefetch: false },
-      { name: "News/Blog", href: "/news-blog", prefetch: false },
-      { name: "Sustainability", href: "/sustainability", prefetch: false },
+      { name: 'Projects', href: '/Projects', prefetch: true },
+      { name: 'Gallery', href: '/project-gallery', prefetch: true },
+      { name: 'Contact', href: '/contact', prefetch: true },
+      { name: 'Career', href: '/career', prefetch: false },
+      { name: 'News/Blog', href: '/news-blog', prefetch: false },
+      { name: 'Sustainability', href: '/sustainability', prefetch: false },
     ],
   };
 
@@ -62,40 +104,38 @@ export default function Navbar() {
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (aboutRef.current?.contains(e.target)) {
-        setDropdown({ about: !dropdown.about, services: false, business: false });
-      } else if (servicesRef.current?.contains(e.target)) {
-        setDropdown({ services: !dropdown.services, about: false, business: false });
+        setDropdown({ about: !dropdown.about, business: false });
       } else if (businessRef.current?.contains(e.target)) {
-        setDropdown({ business: !dropdown.business, about: false, services: false });
+        setDropdown({ business: !dropdown.business, about: false });
       } else {
-        setDropdown({ about: false, services: false, business: false });
+        setDropdown({ about: false, business: false });
       }
     };
-    document.addEventListener("pointerdown", handleClickOutside);
+    document.addEventListener('pointerdown', handleClickOutside);
 
     const handleScroll = () => {
       const scrollY = window.scrollY;
       setIsScrolled(scrollY > 20);
       setShowTopBtn(scrollY > 300);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
-      document.removeEventListener("pointerdown", handleClickOutside);
-      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener('pointerdown', handleClickOutside);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, [dropdown]);
 
   // 🔹 Scroll to Top
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   // 🔹 Active Border
   const ActiveBorder = () => (
     <motion.span
       className="absolute bottom-0 left-0 h-[1.8px] bg-red-600"
       initial={{ width: 0 }}
-      animate={{ width: "100%" }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      animate={{ width: '100%' }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
     />
   );
 
@@ -103,35 +143,47 @@ export default function Navbar() {
     <>
       <motion.nav
         className={`bg-white/90 dark:bg-black/70 backdrop-blur-lg sticky top-0 z-[9999] transition-all duration-300 ${
-          isScrolled ? "shadow-lg py-5" : "py-5"
+          isScrolled ? 'shadow-lg py-5' : 'py-5'
         }`}
       >
         <div className="w-full max-w-[100rem] mx-auto px-4 flex justify-between items-center">
           {/* Logo */}
-          <Link href="/" prefetch className="text-2xl font-bold text-gray-900 dark:text-white">
+          <Link
+            href="/"
+            prefetch
+            className="text-2xl font-bold text-gray-900 dark:text-white"
+          >
             Company<span className="text-red-600">Logo</span>
           </Link>
 
-            {/* Desktop Menu */}
-            <ul className="hidden lg:flex space-x-6 items-center xl:text-xl">
-              {/* Home */}
-              <li className="relative">
-                <Link
-                  href="/"
-                  prefetch={true}
-                  className="text-gray-700 dark:text-gray-200 hover:text-red-600 relative transition-colors"
-                >
-                  Home
-                </Link>
-                {pathname === "/" && <ActiveBorder />}
-              </li>
+          {/* Desktop Menu */}
+          <ul className="hidden lg:flex space-x-6 items-center xl:text-xl">
+            {/* Home */}
+            <li className="relative">
+              <Link
+                href="/"
+                prefetch={true}
+                className="text-gray-700 dark:text-gray-200 hover:text-red-600 relative transition-colors"
+              >
+                Home
+              </Link>
+              {pathname === '/' && <ActiveBorder />}
+            </li>
 
             {/* Dropdowns */}
-            {["about", "services", "business"].map((key) => (
-              <li key={key} className="relative" ref={key === "about" ? aboutRef : key === "services" ? servicesRef : businessRef}>
+            {['about', 'business'].map((key) => (
+              <li
+                key={key}
+                className="relative"
+                ref={key === 'about' ? aboutRef : businessRef}
+              >
                 <button className="relative flex items-center gap-1 text-gray-700 dark:text-gray-200 hover:text-red-600 transition-colors">
-                  {key === "about" ? "About Us" : key === "services" ? "Services" : "Business/Products"}{" "}
-                  {dropdown[key] ? <FaChevronUp className="w-4 h-4" /> : <FaChevronDown className="w-4 h-4" />}
+                  {key === 'about' ? 'About Us' : 'Business/Products'}{' '}
+                  {dropdown[key] ? (
+                    <FaChevronUp className="w-4 h-4" />
+                  ) : (
+                    <FaChevronDown className="w-4 h-4" />
+                  )}
                   {pathname.startsWith(`/${key}`) && <ActiveBorder />}
                 </button>
                 <AnimatePresence>
@@ -145,7 +197,11 @@ export default function Navbar() {
                     >
                       {menuData[key].map((link, idx) => (
                         <li key={idx} className="relative">
-                          <Link href={link.href} prefetch={link.prefetch} className="block text-gray-800 dark:text-gray-200 hover:text-red-600 relative transition-colors">
+                          <Link
+                            href={link.href}
+                            prefetch={link.prefetch}
+                            className="block text-gray-800 dark:text-gray-200 hover:text-red-600 relative transition-colors"
+                          >
                             {link.name}
                             {pathname.startsWith(link.href) && <ActiveBorder />}
                           </Link>
@@ -160,12 +216,19 @@ export default function Navbar() {
             {/* More */}
             <li className="relative group py-2">
               <button className="relative flex items-center gap-1 text-gray-800 dark:text-gray-200 hover:text-red-600 transition-colors">
-                More Details <span className="transition-transform duration-300 group-hover:rotate-180">↓</span>
+                More Details{' '}
+                <span className="transition-transform duration-300 group-hover:rotate-180">
+                  ↓
+                </span>
               </button>
               <ul className="absolute hidden group-hover:block top-full right-0 bg-white/90 dark:bg-gray-800 shadow-lg w-40 rounded-xl p-2 space-y-1 z-50">
                 {menuData.more.map((item, idx) => (
                   <li key={idx} className="relative">
-                    <Link href={item.href} prefetch={item.prefetch} className="block text-gray-800 dark:text-gray-200 hover:text-red-600 relative transition-colors">
+                    <Link
+                      href={item.href}
+                      prefetch={item.prefetch}
+                      className="block text-gray-800 dark:text-gray-200 hover:text-red-600 relative transition-colors"
+                    >
                       {item.name}
                       {pathname.startsWith(item.href) && <ActiveBorder />}
                     </Link>
@@ -183,9 +246,26 @@ export default function Navbar() {
           {/* Mobile Button */}
           <div className="lg:hidden flex items-center gap-2">
             <Theme />
-            <button onClick={() => setMobileOpen(!mobileOpen)} className="text-gray-800 dark:text-gray-200">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={mobileOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="text-gray-800 dark:text-gray-200"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d={
+                    mobileOpen
+                      ? 'M6 18L18 6M6 6l12 12'
+                      : 'M4 6h16M4 12h16M4 18h16'
+                  }
+                />
               </svg>
             </button>
           </div>
@@ -196,35 +276,47 @@ export default function Navbar() {
           {mobileOpen && (
             <motion.div
               className="fixed lg:hidden top-20 left-0 h-[calc(100vh-80px)] dark:bg-black bg-white z-[9999] w-3/4 max-w-xs shadow-lg p-6 overflow-y-auto"
-              initial={{ x: "-100%" }}
+              initial={{ x: '-100%' }}
               animate={{ x: 0 }}
-              exit={{ x: "-100%" }}
-              transition={{ type: "tween", duration: 0.3 }}
+              exit={{ x: '-100%' }}
+              transition={{ type: 'tween', duration: 0.3 }}
             >
               <ul className="flex flex-col space-y-4">
                 {/* Static Home */}
                 <li className="relative">
-                  <Link href="/" prefetch className="block text-gray-700 dark:text-gray-200 hover:text-red-600" onClick={() => setMobileOpen(false)}>
+                  <Link
+                    href="/"
+                    prefetch
+                    className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
+                    onClick={() => setMobileOpen(false)}
+                  >
                     Home
-                    {pathname === "/" && <ActiveBorder />}
+                    {pathname === '/' && <ActiveBorder />}
                   </Link>
                 </li>
 
                 {/* Mobile Dropdowns */}
-                {["about", "services", "business", "more"].map((key) => (
+                {['about', 'business', 'more'].map((key) => (
                   <li key={key} className="relative">
                     <button
-                      onClick={() => setMobileDropdown({ ...mobileDropdown, [key]: !mobileDropdown[key] })}
+                      onClick={() =>
+                        setMobileDropdown({
+                          ...mobileDropdown,
+                          [key]: !mobileDropdown[key],
+                        })
+                      }
                       className="flex justify-between w-full text-gray-700 dark:text-gray-200 hover:text-red-600"
                     >
-                      {key === "about"
-                        ? "About Us"
-                        : key === "services"
-                        ? "Services"
-                        : key === "business"
-                        ? "Business/Products"
-                        : "More Details"}
-                      {mobileDropdown[key] ? <FaChevronUp /> : <FaChevronDown />}
+                      {key === 'about'
+                        ? 'About Us'
+                        : key === 'business'
+                        ? 'Business/Products'
+                        : 'More Details'}
+                      {mobileDropdown[key] ? (
+                        <FaChevronUp />
+                      ) : (
+                        <FaChevronDown />
+                      )}
                     </button>
                     {mobileDropdown[key] && (
                       <ul className="pl-4 mt-2 space-y-2 relative">
@@ -237,7 +329,9 @@ export default function Navbar() {
                               onClick={() => setMobileOpen(false)}
                             >
                               {link.name}
-                              {pathname.startsWith(link.href) && <ActiveBorder />}
+                              {pathname.startsWith(link.href) && (
+                                <ActiveBorder />
+                              )}
                             </Link>
                           </li>
                         ))}
