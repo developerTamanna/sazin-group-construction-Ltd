@@ -64,7 +64,7 @@ export default function SectorGrid() {
               →
             </button>
             <Link
-              href="/products"
+              href="/Projects"
               className="text-red-600 font-semibold text-lg hover:underline"
             >
               See All
