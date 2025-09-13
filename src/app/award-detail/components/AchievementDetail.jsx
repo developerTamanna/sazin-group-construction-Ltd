@@ -46,8 +46,8 @@ export default function AchievementDetail() {
       >
         <div className="absolute inset-0 bg-gradient-to-r from-red-900/80 to-gray-900/80" />
         <div className="relative z-10 text-center text-white px-4">
-          <h1 className="text-5xl font-bold mb-4">Milestones & Achievements</h1>
-          <p className="text-xl max-w-3xl mx-auto">
+          <h1 className="md:text-5xl text-4xl font-bold mb-4">Milestones & Achievements</h1>
+          <p className="md:text-xl text-lg max-w-3xl mx-auto">
             Celebrating Excellence in Construction and Engineering
           </p>
         </div>
@@ -58,6 +58,7 @@ export default function AchievementDetail() {
         <div className="max-w-7xl mx-auto flex items-center gap-2">
           <Link
             href="/"
+            prefetch={false}
             className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 transition-colors"
           >
             Home

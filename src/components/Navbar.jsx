@@ -89,6 +89,8 @@ export default function Navbar() {
         href: '/Product-Base-Services/Sky-Helmet&Safety-Accessories',
         prefetch: false,
       },
+      { name: "Sazin Agro & Fisheries", href: "/products/agro", prefetch:false },
+      { name: "Sky Helmet & Safety Accessories", href: "/Product-Base-Services/Sky-Helmet&Safety-Accessories", prefetch: false },
     ],
     more: [
       { name: 'Projects', href: '/Projects', prefetch: true },
