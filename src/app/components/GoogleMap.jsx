@@ -1,9 +1,7 @@
 'use client';
 
-import React from 'react';
-
 const GoogleMap = ({
-  address = 'House 42, Road 7, Section 10, Mirpur, Dhaka 1216, Bangladesh',
+  address = 'House: 432 Road:30, DOHS Mohakhali, Dhaka',
   width = '100%',
   height = '400',
   zoom = '15',
