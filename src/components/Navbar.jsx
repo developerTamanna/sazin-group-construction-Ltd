@@ -26,6 +26,8 @@ export default function Navbar() {
 
   const menuData = {
     about: [
+      { name: 'Who We Are', href: '/about/who-we-are', prefetch: true },
+
       {
         name: 'Detailed Company History',
         href: '/about/history',
@@ -74,7 +76,22 @@ export default function Navbar() {
         href: '/Services/agro-fisheries',
         prefetch: false,
       },
- 
+      {
+        name: 'Sazin Construction Ltd',
+        href: '/products/construction',
+        prefetch: true,
+      },
+
+      {
+        name: 'Sazin Agro & Fisheries',
+        href: '/products/agro',
+        prefetch: false,
+      },
+      {
+        name: 'Sky Helmet & Safety Accessories',
+        href: '/Product-Base-Services/Sky-Helmet&Safety-Accessories',
+        prefetch: false,
+      },
     ],
     more: [
       { name: 'Projects', href: '/Projects', prefetch: true },
