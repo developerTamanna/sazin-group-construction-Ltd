@@ -6,36 +6,47 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
 
-const images = [
-  { src: '/Banner1.jpg', alt: 'Modern construction project banner 1' },
-  { src: '/Banner2.jpg', alt: 'Civil engineering project banner 2' },
-  { src: '/Banner3.jpg', alt: 'Electro-mechanical solutions banner 3' },
-  { src: '/Banner4.jpg', alt: 'Innovative construction technology banner 4' },
+const slides = [
+  {
+    src: '/Banner1.jpg',
+    alt: 'Modern construction project banner 1',
+    title: 'We Build Great Solutions',
+    subtitle: 'Welcome to Our Company',
+    desc: 'Providing top-notch services and products that help your business grow',
+    buttonText: 'Get Started',
+    buttonColor: 'bg-red-600 text-white hover:bg-white hover:text-red-600',
+  },
+  {
+    src: '/agro_hero.jpeg',
+    alt: 'Agro and Fisheries project banner 2',
+    title: 'Growing With Nature',
+    subtitle: 'Sazin Agro & Fisheries',
+    desc: 'Sustainable farming and agro-based solutions for a greener tomorrow.',
+    buttonText: 'Explore Agro',
+    buttonColor: 'bg-green-600 hover:bg-white hover:text-green-600',
+  },
+  {
+    src: '/helmetbanner.jpg',
+    alt: 'Helmets solutions banner 3',
+    title: 'Welcome to Our Safety World',
+    subtitle: 'Sky Helmet & Safety Accessories',
+    desc: 'Providing premium helmets and safety equipment for every need.',
+    buttonText: 'Shop Now',
+    buttonColor: 'bg-red-600 text-white hover:bg-white hover:text-red-600',
+  },
 ];
 
-function useTypingEffect(text, speed = 100) {
-  const [displayed, setDisplayed] = useState('');
-  useEffect(() => {
-    let i = 0;
-    const interval = setInterval(() => {
-      setDisplayed(text.slice(0, i + 1));
-      i++;
-      if (i === text.length) clearInterval(interval);
-    }, speed);
-    return () => clearInterval(interval);
-  }, [text, speed]);
-  return displayed;
-}
+const textVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+  exit: { opacity: 0, y: -40, transition: { duration: 0.5 } },
+};
 
 const Banner = () => {
   const [current, setCurrent] = useState(0);
   const { theme } = useTheme();
   const [scrollY, setScrollY] = useState(0);
   const router = useRouter();
-
-  const handleClick = () => {
-    router.push('/contact'); // navigate programmatically
-  };
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -47,8 +58,8 @@ const Banner = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % images.length);
-    }, 5000);
+      setCurrent((prev) => (prev + 1) % slides.length);
+    }, 6000);
     return () => clearInterval(interval);
   }, []);
 
@@ -57,20 +68,15 @@ const Banner = () => {
     if (nextSection) nextSection.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const h3Text = useTypingEffect('Welcome to Our Company', 80);
-  const h1Text = useTypingEffect('We Build Great Solutions', 50);
-  const pText = useTypingEffect(
-    'Providing top-notch services and products that help your business grow',
-    30
-  );
-
   const handleDragEnd = (event, info) => {
     if (info.offset.x < -50) {
-      setCurrent((prev) => (prev + 1) % images.length);
+      setCurrent((prev) => (prev + 1) % slides.length);
     } else if (info.offset.x > 50) {
-      setCurrent((prev) => (prev - 1 + images.length) % images.length);
+      setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
     }
   };
+
+  const currentSlide = slides[current];
 
   return (
     <section
@@ -78,10 +84,10 @@ const Banner = () => {
       aria-label="Hero banner with company introduction and call to action"
     >
       <AnimatePresence>
-        {images.map((img, index) =>
+        {slides.map((slide, index) =>
           index === current ? (
             <motion.div
-              key={img.src}
+              key={slide.src}
               className="absolute inset-0"
               initial={{ opacity: 0, scale: 1.05 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -92,8 +98,8 @@ const Banner = () => {
               onDragEnd={handleDragEnd}
             >
               <Image
-                src={img.src}
-                alt={img.alt}
+                src={slide.src}
+                alt={slide.alt}
                 fill
                 priority={true}
                 className="object-cover"
@@ -112,40 +118,51 @@ const Banner = () => {
 
       {/* Text Content */}
       <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4 md:px-8 lg:px-16">
-        <motion.h2
-          className="text-white text-sm md:text-lg lg:text-2xl mb-2"
-          style={{ y: parallax(0.3) }}
-        >
-          {h3Text}
-        </motion.h2>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentSlide.title}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={textVariants}
+            className="flex flex-col items-center"
+          >
+            <motion.h2
+              className="text-white text-sm md:text-lg lg:text-2xl mb-2"
+              style={{ y: parallax(0.3) }}
+            >
+              {currentSlide.subtitle}
+            </motion.h2>
 
-        <motion.h1
-          className="text-white text-xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight"
-          style={{ y: parallax(0.5) }}
-        >
-          {h1Text}
-        </motion.h1>
+            <motion.h1
+              className="text-white text-xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight"
+              style={{ y: parallax(0.5) }}
+            >
+              {currentSlide.title}
+            </motion.h1>
 
-        <motion.p
-          className="text-white text-xs sm:text-sm md:text-lg lg:text-xl max-w-md md:max-w-xl mb-6"
-          style={{ y: parallax(0.7) }}
-        >
-          {pText}
-        </motion.p>
+            <motion.p
+              className="text-white text-xs sm:text-sm md:text-lg lg:text-xl max-w-md md:max-w-xl mb-6"
+              style={{ y: parallax(0.7) }}
+            >
+              {currentSlide.desc}
+            </motion.p>
 
-        <motion.div
-          className="cursor-pointer bg-red-600 z-[60] text-white font-semibold px-3 py-2 sm:px-6 sm:py-2 rounded-md shadow-lg text-sm sm:text-base md:text-xl hover:bg-gray-100 hover:text-red-800 hover:scale-105 transition transform"
-          style={{ y: parallax(0.9) }}
-          onClick={handleClick}
-          aria-label="Contact us to get started"
-        >
-          Get Started
-        </motion.div>
+            <motion.button
+              className={`${currentSlide.buttonColor} z-[60] font-semibold px-4 py-2 sm:px-6 sm:py-2 rounded-md shadow-lg text-sm sm:text-base md:text-xl transition transform`}
+              style={{ y: parallax(0.9) }}
+              onClick={() => router.push('/contact')}
+              aria-label="Contact us to get started"
+            >
+              {currentSlide.buttonText}
+            </motion.button>
+          </motion.div>
+        </AnimatePresence>
       </div>
 
       {/* Slider Dots */}
       <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 flex space-x-2 z-50">
-        {images.map((_, index) => (
+        {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrent(index)}

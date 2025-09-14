@@ -1,21 +1,21 @@
 const leaders = [
   {
-    name: "Engr. Md. Rahman",
-    role: "Managing Director",
+    name: "DANIELLE REYNOLDS",
+    role: "Project Manager",
     bio: "With 20+ years in civil & EPC projects, he ensures strategic vision and excellence.",
     img: "/Rahman.jpg",
   },
   {
-    name: "Engr. Fatema Akter",
-    role: "Director (Engineering)",
+    name: "CHRISTOPHER REYES",
+    role: "CEO Founder",
+    bio: "CEO Founder of Sazin Construction",
+    img: "/Hossain.avif",
+  },
+    {
+    name: "STEPHEN OBRIEN",
+    role: "Project Engineering",
     bio: "Leads technical teams and drives innovation in electro-mechanical works.",
     img: "/farjana.jpeg",
-  },
-  {
-    name: "Mr. Kabir Hossain",
-    role: "Chief Financial Officer",
-    bio: "Expert in financial management, ensuring stability and sustainable growth.",
-    img: "/Hossain.avif",
   },
 ];
 
