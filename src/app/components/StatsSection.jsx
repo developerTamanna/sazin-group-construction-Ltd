@@ -9,22 +9,22 @@ const StatsSection = () => {
   const statsData = [
     {
       id: 1,
-      endValue: 975,
+      endValue: 3000,
       title: "Construction Projects",
       icon: <FaBuilding className="text-3xl text-red-500" />,
       bg: "bg-red-100",
     },
     {
       id: 2,
-      endValue: 150,
-      title: "Helmet Projects",
+      endValue: 1850,
+      title: "Helmet & Accessories",
       icon: <FaHardHat className="text-3xl text-blue-500" />,
       bg: "bg-blue-100",
     },
     {
       id: 3,
-      endValue: 27,
-      title: "Agro Projects",
+      endValue: 2027,
+      title: "Agro & Fisheries",
       icon: <FaSeedling className="text-3xl text-green-500" />,
       bg: "bg-green-100",
     },
