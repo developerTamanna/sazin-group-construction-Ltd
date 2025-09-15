@@ -21,12 +21,12 @@ export const agroData = {
   lemonTrees: 500,
   bananaTrees: "500–600",
   heroImage:
-    "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?q=80&w=1600&auto=format&fit=crop",
+    "agro_hero.jpeg",
   gallery: [
-    "https://images.unsplash.com/photo-1528825871115-3581a5387919?q=80&w=1200&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1200&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1506806732259-39c2d0268443?q=80&w=1200&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?q=80&w=1200&auto=format&fit=crop",
+    "pont1.jpeg",
+    "pont2.jpeg",
+    "pont3.jpeg",
+    "pont4.jpeg",
   ],
   addressLine: "House #432, Road #30, DOHS Mohakhali, Dhaka",
   phone: "+880 1770-887721",
