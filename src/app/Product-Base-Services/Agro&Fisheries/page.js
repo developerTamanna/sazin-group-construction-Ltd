@@ -1,18 +1,17 @@
+// ./page.jsx
 "use client";
 
-import Contact from "@/app/contact/components/Contact";
-import Fisheries from "./components/Fisheries";
-import FuturePlans from "./components/FuturePlans";
 import Hero from "./components/Hero";
 import SummaryCards from "./components/SummaryCards";
-import Gallery from "./components/Gallery";
-import Facilities from "./components/Facilities";
-import Orchards from "./components/Orchards";
+import Fisheries from "./components/Fisheries";
 import Agriculture from "./components/Agriculture";
+import Orchards from "./components/Orchards";
+import Facilities from "./components/Facilities";
+import Gallery from "./components/Gallery";
 import AgroStats from "./components/AgroStats";
+import FuturePlans from "./components/FuturePlans";
 
-
-
+// central data object
 export const agroData = {
   name: "Sazin Agro & Fisheries",
   ponds: 11,
@@ -29,24 +28,25 @@ export const agroData = {
     "https://images.unsplash.com/photo-1506806732259-39c2d0268443?q=80&w=1200&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?q=80&w=1200&auto=format&fit=crop",
   ],
-  addressLine: "Village/Area, District, Bangladesh",
+  addressLine: "House #432, Road #30, DOHS Mohakhali, Dhaka",
   phone: "+880 1770-887721",
   email: "info@sazinagro.com",
-  mapEmbedSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!...", // replace with real
+  mapEmbedSrc:
+    "https://maps.google.com/maps?q=DOHS%20Mohakhali,%20Dhaka&t=&z=15&ie=UTF8&iwloc=&output=embed",
 };
 
 export default function Home() {
   return (
     <div className="min-h-screen font-sans text-slate-800 bg-slate-50">
-        <Hero />
-        <SummaryCards />
-        <Fisheries />
-        <Agriculture />
-        <Orchards />
-        <Facilities />
-        <Gallery />
-        <AgroStats data={agroData} />
-        <FuturePlans />
+      <Hero data={agroData} />
+      <SummaryCards data={agroData} />
+      <Fisheries data={agroData} />
+      <Agriculture data={agroData} />
+      <Orchards data={agroData} />
+      <Facilities data={agroData} />
+      <Gallery data={agroData} />
+      <AgroStats data={agroData} />
+      <FuturePlans />
     </div>
   );
 }
