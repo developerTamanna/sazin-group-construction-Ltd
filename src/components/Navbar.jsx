@@ -26,8 +26,6 @@ export default function Navbar() {
 
   const menuData = {
     about: [
-      { name: 'Who We Are', href: '/about/who-we-are', prefetch: true },
-
       {
         name: 'Detailed Company History',
         href: '/about/history',
