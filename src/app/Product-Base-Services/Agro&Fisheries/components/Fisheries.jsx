@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { DATA } from "@/app/page";
+import { agroData } from "../page";
 
 
 export default function Fisheries() {
@@ -9,7 +9,7 @@ return (
 <div className="prose max-w-none">
 <h2>Fisheries</h2>
 <p>
-মোট <strong>{DATA.ponds}</strong>টি পুকুর — মোট আয়তন <strong>{DATA.pondArea}</strong>.
+মোট <strong>{agroData.ponds}</strong>টি পুকুর — মোট আয়তন <strong>{agroData.pondArea}</strong>.
 </p>
 </div>
 </section>

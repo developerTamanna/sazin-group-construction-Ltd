@@ -1,17 +1,19 @@
 "use client";
 
+import Contact from "@/app/contact/components/Contact";
+import Fisheries from "./components/Fisheries";
+import FuturePlans from "./components/FuturePlans";
 import Hero from "./components/Hero";
 import SummaryCards from "./components/SummaryCards";
-import Fisheries from "./components/Fisheries";
-import Agriculture from "./components/Agriculture";
-import Orchards from "./components/Orchards";
-import Facilities from "./components/Facilities";
 import Gallery from "./components/Gallery";
-import Contact from "./components/Contact";
-import FuturePlans from "./components/FuturePlans";
+import Facilities from "./components/Facilities";
+import Orchards from "./components/Orchards";
+import Agriculture from "./components/Agriculture";
+import AgroStats from "./components/AgroStats";
 
 
-export const DATA = {
+
+export const agroData = {
   name: "Sazin Agro & Fisheries",
   ponds: 11,
   pondArea: "≈ 80 বিঘা",
@@ -43,7 +45,7 @@ export default function Home() {
         <Orchards />
         <Facilities />
         <Gallery />
-        <Contact />
+        <AgroStats data={agroData} />
         <FuturePlans />
     </div>
   );

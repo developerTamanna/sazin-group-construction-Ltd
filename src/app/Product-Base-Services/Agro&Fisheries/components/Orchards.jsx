@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { DATA } from "@/app/page";
+import { agroData } from "../page";
 
 
 export default function Orchards() {
@@ -9,9 +9,9 @@ return (
 <div className="prose max-w-none">
 <h2>Orchards & Gardens</h2>
 <ul>
-<li>আমের বাগান: <strong>{DATA.mangoTrees} গাছ</strong> (৩ টি বাগান)</li>
-<li>লেবু বাগান: <strong>{DATA.lemonTrees} গাছ</strong></li>
-<li>কলার গাছ: ~ <strong>{DATA.bananaTrees}</strong></li>
+<li>আমের বাগান: <strong>{agroData.mangoTrees} গাছ</strong> (৩ টি বাগান)</li>
+<li>লেবু বাগান: <strong>{agroData.lemonTrees} গাছ</strong></li>
+<li>কলার গাছ: ~ <strong>{agroData.bananaTrees}</strong></li>
 </ul>
 </div>
 </section>

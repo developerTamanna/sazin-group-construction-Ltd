@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { DATA } from "@/app/page";
+import { agroData } from "../page";
 
 
 export default function Gallery() {
@@ -11,7 +11,7 @@ return (
 <p className="text-sm text-slate-500">Recent photos</p>
 </div>
 <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-{DATA.gallery.map((src, i) => (
+{agroData.gallery.map((src, i) => (
 <div key={i} className="rounded-lg overflow-hidden shadow-sm bg-white">
 <img src={src} alt={`gallery-${i}`} className="w-full h-40 object-cover" />
 </div>
