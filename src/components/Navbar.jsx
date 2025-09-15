@@ -64,21 +64,6 @@ export default function Navbar() {
         href: '/Services/safety-security-construction-management',
         prefetch: false,
       },
-      {
-        name: 'Helmet & Safety Accessories',
-        href: '/Product-Base-Services/Sky-Helmet&Safety-Accessories',
-        prefetch: false,
-      },
-      {
-        name: 'Agro & Fisheries',
-        href: '/Services/agro-fisheries',
-        prefetch: false,
-      },
-      {
-        name: 'Sazin Construction Ltd',
-        href: '/products/construction',
-        prefetch: true,
-      },
 
       {
         name: 'Sazin Agro & Fisheries',
