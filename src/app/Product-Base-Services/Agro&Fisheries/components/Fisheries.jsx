@@ -9,14 +9,18 @@ export default function Fisheries({ data }) {
         <div>
           <h3 className="text-2xl font-bold text-slate-800 mb-3">Fisheries</h3>
           <p className="text-slate-600 mb-4">
-            আমাদের মাছ চাষ আধুনিক পদ্ধতিতে পরিচালিত হয় — মোট {data.ponds}টি পুকুরে মোট পরিমাণ প্রায় {data.pondArea}।
-            পুকুরগুলো নিয়মিত মেইনটেইন করা হয় এবং উচ্চমানের চারা ও খাবার ব্যবহৃত হয়।
+            Our fish farming is managed using modern techniques — with a total
+            of {data.ponds} ponds covering approximately {data.pondArea}. The
+            ponds are regularly maintained, and high-quality fingerlings and
+            feed are used.
           </p>
 
           <ul className="space-y-2 text-slate-600">
-            <li>• আধুনিক পুকুর ব্যবস্থাপনা ও ভরায়ণ।</li>
-            <li>• পরিবেশ-বান্ধব এক্সচেঞ্জ সিস্টেম, অক্সিজেন মেইন্টেইন করা হয়।</li>
-            <li>• সরাসরি ক্রেতা/বাজার সরবরাহের সুবিধা।</li>
+            <li>• Modern pond management and stocking practices.</li>
+            <li>
+              • Eco-friendly exchange systems with proper oxygen maintenance.
+            </li>
+            <li>• Direct supply to buyers and local markets.</li>
           </ul>
         </div>
 
@@ -27,8 +31,16 @@ export default function Fisheries({ data }) {
             className="w-full rounded-xl shadow-md object-cover h-56 sm:h-72"
           />
           <div className="grid grid-cols-2 gap-3">
-            <img src={data.gallery[1]} alt="pond" className="rounded-lg object-cover h-28 w-full" />
-            <img src={data.gallery[2]} alt="feeding" className="rounded-lg object-cover h-28 w-full" />
+            <img
+              src={data.gallery[1]}
+              alt="pond"
+              className="rounded-lg object-cover h-28 w-full"
+            />
+            <img
+              src={data.gallery[2]}
+              alt="feeding"
+              className="rounded-lg object-cover h-28 w-full"
+            />
           </div>
         </div>
       </div>

@@ -21,12 +21,12 @@ export const agroData = {
   lemonTrees: 500,
   bananaTrees: "500–600",
   heroImage:
-    "agro_hero.jpeg",
+    "/agro_hero.jpeg",
   gallery: [
-    "pont1.jpeg",
-    "pont2.jpeg",
-    "pont3.jpeg",
-    "pont4.jpeg",
+    "/pont1.jpeg",
+    "/pont2.jpeg",
+    "/pont3.jpeg",
+    "/pont4.jpeg",
   ],
   addressLine: "House #432, Road #30, DOHS Mohakhali, Dhaka",
   phone: "+880 1770-887721",

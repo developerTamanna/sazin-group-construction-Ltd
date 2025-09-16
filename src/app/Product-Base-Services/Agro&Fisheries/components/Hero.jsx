@@ -29,7 +29,8 @@ export default function Hero({ data }) {
           </h1>
 
           <p className="text-sm sm:text-base md:text-lg text-white/90 mb-6">
-            ১১টি পুকুর, প্রায় {data.pondArea} পুকুরের আয়তন, এবং প্রায় {data.agriLand} কৃষিজমি — আমরা প্রযুক্তিভিত্তিক, পরিবেশ-বন্ধু পদ্ধতিতে উৎপাদন করি।
+           11 ponds, approximately {data.pondArea} of pond area, and around {data.agriLand} of agricultural land — we practice technology-driven, eco-friendly production methods.
+
           </p>
 
           <div className="flex flex-wrap gap-3">
