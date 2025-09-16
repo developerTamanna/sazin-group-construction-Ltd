@@ -3,6 +3,7 @@ import Head from "next/head";
 
 // Lazy-load below-the-fold components with SSR true (hydration safe)
 const HeroHistory = dynamic(() => import("./components/HeroHistory"), { ssr: true });
+const WhoWeAreSection = dynamic(() => import("./components/WhoWeAreSection"), { ssr: true });
 const Timeline = dynamic(() => import("./components/Timelines"), { ssr: true });
 const Milestones = dynamic(() => import("./components/Milestones"), { ssr: true });
 const LeadershipMessage = dynamic(() => import("./components/LeaderShipes"), { ssr: true });
@@ -64,7 +65,7 @@ export default function DetailedHistoryPage() {
       <main>
         {/* Above-the-fold / hero section */}
         <HeroHistory />
-
+        <WhoWeAreSection />
         {/* Below-the-fold lazy sections */}
         <Timeline />
         <Milestones />
