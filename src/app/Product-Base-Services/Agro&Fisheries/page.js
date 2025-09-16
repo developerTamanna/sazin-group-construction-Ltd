@@ -1,4 +1,3 @@
-// ./page.jsx
 "use client";
 
 import Hero from "./components/Hero";
@@ -15,8 +14,8 @@ import FuturePlans from "./components/FuturePlans";
 export const agroData = {
   name: "Sazin Agro & Fisheries",
   ponds: 11,
-  pondArea: "≈ 80 বিঘা",
-  agriLand: "≈ 75 বিঘা",
+  pondArea: "≈ 80 Bigha",
+  agriLand: "≈ 75 Bigha",
   mangoTrees: 1100,
   lemonTrees: 500,
   bananaTrees: "500–600",
@@ -26,7 +25,12 @@ export const agroData = {
     "/pont1.jpeg",
     "/pont2.jpeg",
     "/pont3.jpeg",
+    "/agro1.jpeg",
     "/pont4.jpeg",
+    "/agro2.jpeg",
+    "/agro3.jpeg",
+    "/pont5.jpeg",
+    "/pont6.jpeg",
   ],
   addressLine: "House #432, Road #30, DOHS Mohakhali, Dhaka",
   phone: "+880 1770-887721",
