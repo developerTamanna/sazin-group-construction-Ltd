@@ -4,7 +4,7 @@ import React from "react";
 
 export default function SummaryCards({ data }) {
   return (
-    <section className="py-10 bg-white">
+    <section className="py-10 bg-white dark:bg-black">
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
         <div className="flex items-center gap-4 bg-slate-50 rounded-xl p-4 shadow-sm">
           <div className="p-3 rounded-lg bg-green-50 text-green-700">
