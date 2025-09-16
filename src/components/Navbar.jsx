@@ -67,7 +67,7 @@ export default function Navbar() {
 
       {
         name: 'Sazin Agro & Fisheries',
-        href: '/products/agro',
+        href: '/Product-Base-Services/Agro&Fisheries',
         prefetch: false,
       },
       {
