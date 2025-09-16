@@ -1,4 +1,3 @@
-// ./page.jsx
 "use client";
 
 import Hero from "./components/Hero";
@@ -15,8 +14,8 @@ import FuturePlans from "./components/FuturePlans";
 export const agroData = {
   name: "Sazin Agro & Fisheries",
   ponds: 11,
-  pondArea: "≈ 80 বিঘা",
-  agriLand: "≈ 75 বিঘা",
+  pondArea: "≈ 80 Bigha",
+  agriLand: "≈ 75 Bigha",
   mangoTrees: 1100,
   lemonTrees: 500,
   bananaTrees: "500–600",

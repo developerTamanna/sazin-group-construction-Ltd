@@ -4,9 +4,9 @@ import React from "react";
 
 export default function Facilities({ data }) {
   return (
-    <section id="facilities" className="py-12 bg-slate-50">
+    <section className="py-12 bg-slate-50 dark:bg-black">
       <div className="max-w-6xl mx-auto px-6">
-        <h3 className="text-2xl font-bold text-slate-800 mb-6">Facilities & Infrastructure</h3>
+        <h3 className="text-3xl font-semibold text-green-600 mb-6">Facilities & <span className="text-blue-800">Infrastructure</span></h3>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <FacilityCard
@@ -43,13 +43,13 @@ export default function Facilities({ data }) {
 
 function FacilityCard({ title, value, desc, icon }) {
   return (
-    <div className="bg-white rounded-xl p-5 shadow-sm border border-slate-100">
+    <div className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm">
       <div className="flex items-start gap-4">
         <div className="bg-green-50 p-3 rounded-lg text-green-700">{icon}</div>
         <div>
-          <h4 className="font-semibold text-lg">{title}</h4>
-          <div className="text-sm text-slate-700 mt-1">{value}</div>
-          <p className="text-sm text-slate-500 mt-2">{desc}</p>
+          <h4 className="font-semibold text-lg dark:text-gray-300 ">{title}</h4>
+          <div className="text-sm text-slate-700 dark:text-gray-300 mt-1">{value}</div>
+          <p className="text-sm text-slate-500 mt-2 dark:text-gray-400">{desc}</p>
         </div>
       </div>
     </div>
