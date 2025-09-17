@@ -9,6 +9,8 @@ import Facilities from "./components/Facilities";
 import Gallery from "./components/Gallery";
 import AgroStats from "./components/AgroStats";
 import FuturePlans from "./components/FuturePlans";
+import About from "./components/About";
+
 
 // central data object
 export const agroData = {
@@ -20,7 +22,7 @@ export const agroData = {
   lemonTrees: 500,
   bananaTrees: "500–600",
   heroImage:
-    "/agro_hero.jpeg",
+    "/Agrooo.png",
   gallery: [
     "/pont1.jpeg",
     "/pont2.jpeg",
@@ -44,6 +46,7 @@ export default function Home() {
     <div className="min-h-screen font-sans text-slate-800 bg-slate-50">
       <Hero data={agroData} />
       <SummaryCards data={agroData} />
+      <About/>
       <Fisheries data={agroData} />
       <Agriculture data={agroData} />
       <Orchards data={agroData} />
