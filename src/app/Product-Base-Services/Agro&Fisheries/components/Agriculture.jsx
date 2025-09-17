@@ -4,7 +4,7 @@ import React from "react";
 
 export default function Agriculture({ data }) {
   return (
-    <section id="agriculture" className="py-12 bg-slate-50 dark:bg-black">
+    <section className="py-12 bg-slate-50 dark:bg-black">
       <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-8 items-center">
         <div>
           <h3 className="text-3xl font-semibold text-green-600 mb-3">
