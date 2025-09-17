@@ -1,7 +1,7 @@
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-const Logo = ({  blackclass = "#221E28",redclass = "#CA111A" }) => {
+const Logo = ({  blackclass = "black",darkclass="white",redclass = "#CA111A" }) => {
     const [path, setPath] = useState('');
   const pathname=usePathname();
 
@@ -19,7 +19,10 @@ if(path=='/') return(
       <defs>
         <style>
     {`      .cls-1 {
-            fill: ${blackclass};
+            fill: ${blackclass} ;
+          }
+         .dark .cls-1 {
+            fill: ${darkclass};
           }
 
           .cls-2 {

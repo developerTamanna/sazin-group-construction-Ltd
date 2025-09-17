@@ -30,7 +30,7 @@ const Footer = () => {
     }
      else if(pathname.startsWith('/')){
        setTheme([{
-        bg:"bg-neutral-900",
+        bg:"bg-gradient-to-b from-[#020407be] to-[#750808]",
         underline:"border-b-2 border-red-500",
         hover:"hover:text-red-600",
 

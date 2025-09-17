@@ -1,4 +1,5 @@
 'use client';
+import Logo from '@/Logo';
 import Theme from '@/utils/Theme';
 import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
@@ -125,11 +126,32 @@ export default function Navbar() {
     />
   );
 
+  const [theme, setTheme] = useState([]);
+  useEffect(()=>{
+    if(pathname.startsWith('/Product-Base-Services/Agro&Fisheries')){
+      setTheme([
+        {
+          bg:"bg-gradient-to-b from-[#020407be] to-[#144bb8]",
+          underline:"border-b-2 border-[#144bb8]",
+          hover:"hover:text-[#6cb12c]",
+        }])
+    }
+     else if(pathname.startsWith('/')){
+       setTheme([{
+        bg:"bg-gradient-to-b from-[#020407be] to-[#750808]",
+        underline:"border-b-2 border-red-500",
+        hover:"hover:text-red-600",
+
+       }])
+     }
+
+  },[pathname])
+
   return (
     <>
       <motion.nav
         className={`bg-white/90 dark:bg-black/70 backdrop-blur-lg sticky top-0 z-[9999] transition-all duration-300 ${
-          isScrolled ? 'shadow-lg py-5' : 'py-5'
+          isScrolled ? 'shadow-lg py-2' : 'py-2'
         }`}
       >
         <div className="w-full max-w-[100rem] mx-auto px-4 flex justify-between items-center">
@@ -137,9 +159,10 @@ export default function Navbar() {
           <Link
             href="/"
             prefetch
-            className="text-2xl font-bold text-gray-900 dark:text-white"
+            className=" font-bold w-18 h-18 "
           >
-            Company<span className="text-red-600">Logo</span>
+            {/* Company<span className="text-red-600">Logo</span> */}
+            <Logo  redclass="#CA111A" blackclass = "black" darkclass="black" />
           </Link>
 
           {/* Desktop Menu */}
