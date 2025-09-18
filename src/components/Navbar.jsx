@@ -116,36 +116,38 @@ export default function Navbar() {
   // 🔹 Scroll to Top
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  // 🔹 Active Border
-  const ActiveBorder = () => (
-    <motion.span
-      className="absolute bottom-0 left-0 h-[1.8px] bg-red-600"
-      initial={{ width: 0 }}
-      animate={{ width: '100%' }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
-    />
-  );
+
 
   const [theme, setTheme] = useState([]);
   useEffect(()=>{
     if(pathname.startsWith('/Product-Base-Services/Agro&Fisheries')){
       setTheme([
         {
-          bg:"bg-gradient-to-b from-[#020407be] to-[#144bb8]",
-          underline:"border-b-2 border-[#144bb8]",
+          underline:"bg-[#144bb8]",
           hover:"hover:text-[#6cb12c]",
+          themeText:'text-[#6cb12c]',
         }])
     }
      else if(pathname.startsWith('/')){
        setTheme([{
-        bg:"bg-gradient-to-b from-[#020407be] to-[#750808]",
-        underline:"border-b-2 border-red-500",
+        underline:"bg-red-500",
         hover:"hover:text-red-600",
+        themeText:'text-red-600',
 
        }])
      }
 
   },[pathname])
+
+    // 🔹 Active Border
+  const ActiveBorder = () => (
+    <motion.span
+      className={`absolute bottom-0 left-0 h-[1.8px]  ${theme[0]?.underline}`}
+      initial={{ width: 0 }}
+      animate={{ width: '100%' }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+    />
+  );
 
   return (
     <>
@@ -172,7 +174,7 @@ export default function Navbar() {
               <Link
                 href="/"
                 prefetch={true}
-                className="text-gray-700 dark:text-gray-200 hover:text-red-600 relative transition-colors"
+                className={`text-gray-700 dark:text-gray-200  relative transition-colors ${theme[0]?.hover}`}
               >
                 Home
               </Link>
@@ -186,7 +188,7 @@ export default function Navbar() {
                 className="relative"
                 ref={key === 'about' ? aboutRef : businessRef}
               >
-                <button className="relative flex items-center gap-1 text-gray-700 dark:text-gray-200 hover:text-red-600 transition-colors">
+                <button className={`relative flex items-center gap-1 text-gray-700 dark:text-gray-200  transition-colors ${theme[0]?.hover}`}>
                   {key === 'about' ? 'About Us' : 'Business/Products'}{' '}
                   {dropdown[key] ? (
                     <FaChevronUp className="w-4 h-4" />
@@ -209,7 +211,7 @@ export default function Navbar() {
                           <Link
                             href={link.href}
                             prefetch={link.prefetch}
-                            className="block text-gray-800 dark:text-gray-200 hover:text-red-600 relative transition-colors"
+                            className={`block text-gray-800 dark:text-gray-200  relative transition-colors ${theme[0]?.hover}`}
                           >
                             {link.name}
                             {pathname.startsWith(link.href) && <ActiveBorder />}
@@ -224,7 +226,7 @@ export default function Navbar() {
 
             {/* More */}
             <li className="relative group py-2">
-              <button className="relative flex items-center gap-1 text-gray-800 dark:text-gray-200 hover:text-red-600 transition-colors">
+              <button className={`relative flex items-center gap-1 text-gray-800 dark:text-gray-200  transition-colors ${theme[0]?.hover}`}>
                 More Details{' '}
                 <span className="transition-transform duration-300 group-hover:rotate-180">
                   ↓
@@ -236,7 +238,7 @@ export default function Navbar() {
                     <Link
                       href={item.href}
                       prefetch={item.prefetch}
-                      className="block text-gray-800 dark:text-gray-200 hover:text-red-600 relative transition-colors"
+                      className={`block text-gray-800 dark:text-gray-200  relative transition-colors ${theme[0]?.hover}`}
                     >
                       {item.name}
                       {pathname.startsWith(item.href) && <ActiveBorder />}
@@ -248,13 +250,13 @@ export default function Navbar() {
 
             {/* Theme Toggle */}
             <li>
-              <Theme />
+              <Theme theme={theme} />
             </li>
           </ul>
 
           {/* Mobile Button */}
           <div className="lg:hidden flex items-center gap-2">
-            <Theme />
+            <Theme theme={theme}/>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className="text-gray-800 dark:text-gray-200"
@@ -296,7 +298,7 @@ export default function Navbar() {
                   <Link
                     href="/"
                     prefetch
-                    className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
+                    className={`block text-gray-700 dark:text-gray-200  relative transition-colors ${theme[0]?.hover}`}
                     onClick={() => setMobileOpen(false)}
                   >
                     Home
@@ -314,7 +316,7 @@ export default function Navbar() {
                           [key]: !mobileDropdown[key],
                         })
                       }
-                      className="flex justify-between w-full text-gray-700 dark:text-gray-200 hover:text-red-600"
+                      className={`flex justify-between w-full text-gray-700 dark:text-gray-200  relative transition-colors ${theme[0]?.hover}`}
                     >
                       {key === 'about'
                         ? 'About Us'
@@ -334,7 +336,7 @@ export default function Navbar() {
                             <Link
                               href={link.href}
                               prefetch={link.prefetch}
-                              className="block text-gray-700 dark:text-gray-200 hover:text-red-600"
+                              className={`block text-gray-700 dark:text-gray-200  relative transition-colors ${theme[0]?.hover}`}
                               onClick={() => setMobileOpen(false)}
                             >
                               {link.name}
@@ -358,7 +360,7 @@ export default function Navbar() {
       {showTopBtn && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-5 right-5 p-3 rounded-full bg-red-600 text-white shadow-lg hover:bg-red-700 transition-all z-[9999]"
+          className={`fixed bottom-5 right-5 p-3 rounded-full ${theme[0]?.underline} text-white shadow-lg ${theme[0]?.hover} transition-all z-[9999]`}
         >
           <FaArrowUp />
         </button>

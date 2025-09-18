@@ -3,7 +3,16 @@ import React, { useEffect, useState } from "react";
 
 const Logo = ({  blackclass = "black",darkclass="white",redclass = "#CA111A" }) => {
     const [path, setPath] = useState('');
-  const pathname=usePathname();
+    const pathname=usePathname();
+    
+    const [bl,setbl]=useState(blackclass)
+    const [rd,setrd]=useState(redclass)
+    const [dk,setdk]=useState(darkclass)
+    useEffect(()=>{
+      setbl(blackclass)
+      setdk(darkclass)
+      setrd(redclass)
+    },[blackclass,darkclass,redclass])
 
   useEffect(()=>{
     if(pathname.startsWith('/Product-Base-Services/Agro&Fisheries')){
@@ -19,14 +28,14 @@ if(path=='/') return(
       <defs>
         <style>
     {`      .cls-1 {
-            fill: ${blackclass} ;
+            fill: ${bl} ;
           }
          .dark .cls-1 {
-            fill: ${darkclass};
+            fill: ${dk};
           }
 
           .cls-2 {
-            fill: ${redclass};
+            fill: ${rd};
           }`}
         </style>
       </defs>
