@@ -188,14 +188,14 @@ export default function Navbar() {
                 className="relative"
                 ref={key === 'about' ? aboutRef : businessRef}
               >
-                <button className={`relative flex items-center gap-1 text-gray-700 dark:text-gray-200  transition-colors ${theme[0]?.hover}`}>
+                <button className={`relative cursor-pointer flex items-center gap-1 text-gray-700 dark:text-gray-200  transition-colors ${theme[0]?.hover}`}>
                   {key === 'about' ? 'About Us' : 'Business/Products'}{' '}
                   {dropdown[key] ? (
                     <FaChevronUp className="w-4 h-4" />
                   ) : (
                     <FaChevronDown className="w-4 h-4" />
                   )}
-                  {pathname.startsWith(`/${key}`) && <ActiveBorder />}
+                  {menuData[key].some((item)=>pathname.startsWith(item.href)) && <ActiveBorder />}
                 </button>
                 <AnimatePresence>
                   {dropdown[key] && (
@@ -231,6 +231,7 @@ export default function Navbar() {
                 <span className="transition-transform duration-300 group-hover:rotate-180">
                   ↓
                 </span>
+                {menuData.more.some((item)=>pathname.startsWith(item.href)) && <ActiveBorder />}
               </button>
               <ul className="absolute hidden group-hover:block top-full right-0 bg-white/90 dark:bg-gray-800 shadow-lg w-40 rounded-xl p-2 space-y-1 z-50">
                 {menuData.more.map((item, idx) => (
@@ -255,7 +256,7 @@ export default function Navbar() {
           </ul>
 
           {/* Mobile Button */}
-          <div className="lg:hidden flex items-center gap-2">
+          <div className="lg:hidden flex items-center gap-2 ">
             <Theme theme={theme}/>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -286,7 +287,7 @@ export default function Navbar() {
         <AnimatePresence>
           {mobileOpen && (
             <motion.div
-              className="fixed lg:hidden top-20 left-0 h-[calc(100vh-80px)] dark:bg-black bg-white z-[9999] w-3/4 max-w-xs shadow-lg p-6 overflow-y-auto"
+              className="myDiv fixed lg:hidden top-20 left-0 h-[calc(100vh-80px)] dark:bg-black bg-white z-[9999] w-3/4 max-w-xs shadow-lg p-6 overflow-y-auto"
               initial={{ x: '-100%' }}
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}
@@ -328,6 +329,7 @@ export default function Navbar() {
                       ) : (
                         <FaChevronDown />
                       )}
+                      {menuData[key].some((item)=>pathname.startsWith(item.href)) && <ActiveBorder />}
                     </button>
                     {mobileDropdown[key] && (
                       <ul className="pl-4 mt-2 space-y-2 relative">
