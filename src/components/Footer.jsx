@@ -131,8 +131,8 @@ const Footer = () => {
             <li><Link href="/Services/Electro-mechanical" className={`${theme[0]?.hover} transition-colors`}>Electro-Mech</Link></li>
             <li><Link href="/Services/safety-security-construction-management" className={`${theme[0]?.hover} transition-colors`}>Safety Gear</Link></li>
             <li><Link href="/Services/safety-security-construction-management" className={`${theme[0]?.hover} transition-colors`}>Safety Training</Link></li>
-            <li><Link href="/products/agro-products" className={`${theme[0]?.hover} transition-colors`}>Agro Products</Link></li>
-            <li><Link href="/services/epc-projects" className={`${theme[0]?.hover} transition-colors`}>EPC Projects</Link></li>
+            <li><Link href="/Product-Base-Services/Agro&Fisheries" className={`${theme[0]?.hover} transition-colors`}>Agro Products</Link></li>
+            <li><Link href="/Services/engineering-procurement-construction" className={`${theme[0]?.hover} transition-colors`}>EPC Projects</Link></li>
           </ul>
         </div>
 
@@ -143,9 +143,9 @@ const Footer = () => {
           </h3>
           <ul className="mt-2 space-y-2 dark:text-gray-400 text-black">
             <li><Link href="/career" className={`${theme[0]?.hover} transition-colors`}>Careers</Link></li>
-            <li><Link href="/supports/our-process" className={`${theme[0]?.hover} transition-colors`}>Our Process</Link></li>
-            <li><Link href="/supports/faqs" className={`${theme[0]?.hover} transition-colors`}>FAQs</Link></li>
-            <li><Link href="/supports/client-testimonials" className={`${theme[0]?.hover} transition-colors`}>Client Testimonials</Link></li>
+            <li><a className={`${theme[0]?.hover} transition-colors`}>Our Process</a></li>
+            <li><a className={`${theme[0]?.hover} transition-colors`}>FAQs</a></li>
+            <li><a className={`${theme[0]?.hover} transition-colors`}>Client Testimonials</a></li>
             <li><Link href="/news-blog" className={`${theme[0]?.hover} transition-colors`}>Our Blog</Link></li>
           </ul>
         </div>
@@ -157,9 +157,8 @@ const Footer = () => {
           </h3>
           <ul className="mt-2 space-y-2 dark:text-gray-400 text-black">
             <li><Link href="/" className={`${theme[0]?.hover} transition-colors`}>Sazin Construction Ltd</Link></li>
-            <li><Link href="/business/sazin-agro"  className={`${theme[0]?.hover} transition-colors`}>Sazin Agro & Fisheries</Link></li>
-            <li><Link href="/business/sky-helmet"  className={`${theme[0]?.hover} transition-colors`}>Sky Helmet & Safety</Link></li>
-            <li><Link href="/business/accessories" className={`${theme[0]?.hover} transition-colors`}>Accessories</Link></li>
+            <li><Link href="/Product-Base-Services/Agro&Fisheries"  className={`${theme[0]?.hover} transition-colors`}>Sazin Agro & Fisheries</Link></li>
+            <li><Link href="/Product-Base-Services/Sky-Helmet&Safety-Accessories"  className={`${theme[0]?.hover} transition-colors`}>Sky Helmet & Safety</Link></li>
           </ul>
         </div>
       </div>
