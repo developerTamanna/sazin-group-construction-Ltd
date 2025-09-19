@@ -9,7 +9,7 @@ const page = () => {
     <header>
         <SmallBanner></SmallBanner>
         <Contact></Contact>
-         <ShortContact header={header} desc={desc} />
+{/*          <ShortContact header={header} desc={desc} /> */}
     </header>
   );
 };

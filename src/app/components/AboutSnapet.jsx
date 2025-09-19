@@ -113,16 +113,6 @@ export default function HomePage() {
               are delivered on time, with quality and safety at the forefront.
             </p>
 
-            {/* CTA */}
-            <div className="mt-8">
-              <Link
-                href="/about/history"
-                aria-label="Learn more about Sazin Construction"
-                className="inline-flex items-center justify-center text-red-600 text-base font-semi-bold transition hover:text-red-500 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 dark:focus:ring-offset-neutral-900"
-              >
-                Learn More About Us →
-              </Link>
-            </div>
           </div>
 
           {/* Visual with Lazy Map */}

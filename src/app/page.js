@@ -43,7 +43,7 @@ export default function Home() {
         {/* Above-the-fold */}
         <Banner />
         <FeatureProducts />
-        <AboutSnapet />
+        {/* <AboutSnapet /> */}
         <Services />
 
         {/* Below-the-fold lazy-loaded */}

@@ -19,46 +19,25 @@ const Footer = () => {
   const [theme, setTheme] = useState([]);
   const pathname=usePathname();
 
-// useEffect(() => {
-//   if (pathname.startsWith('/Product-Base-Services/Agro&Fisheries')) {
-//     setTheme([
-//       {
-//         bg: "bg-gradient-to-b from-[#020407be] to-[#2e7d32]", // dark green gradient
-//         underline: "border-b-2 border-[#2e7d32]", // green underline
-//         hover: "hover:text-[#6cb12c]", // light green hover
-//       },
-//     ]);
-//   } else if (pathname.startsWith('/')) {
-//     setTheme([
-//       {
-//         bg: "bg-neutral-900",
-//         underline: "border-b-2 border-red-500",
-//         hover: "hover:text-red-600",
-//       },
-//     ]);
-//   }
-// }, [pathname]);
+  useEffect(()=>{
+    if(pathname.startsWith('/Product-Base-Services/Agro&Fisheries')){
+      setTheme([
+        {
+          bg:"dark:bg-gradient-to-b dark:from-[#020407be] dark:to-[#144bb8] bg-gradient-to-b from-[#ebe7df] to-[#144bb8]",
+          underline:"border-b-2 border-[#144bb8]",
+          hover:"hover:text-[#6cb12c]",
+        }])
+    }
+     else if(pathname.startsWith('/')){
+       setTheme([{
+        bg:"dark:bg-gradient-to-b dark:from-[#020407be] dark:to-[#750808] bg-gradient-to-b from-[#ebe7df] to-[#750808]",
+        underline:"border-b-2 border-red-500",
+        hover:"hover:text-red-600",
 
-useEffect(() => {
-  if (pathname.startsWith('/Product-Base-Services/Agro&Fisheries')) {
-    setTheme([
-      {
-        bg: "bg-gradient-to-b from-[#14532d] to-[#064e3b]",  
-        underline: "border-b-2 border-green-600",            
-        hover: "hover:text-green-400",                      
-      },
-    ]);
-  } else if (pathname.startsWith('/')) {
-    setTheme([
-      {
-        bg: "bg-neutral-900",
-        underline: "border-b-2 border-red-500",
-        hover: "hover:text-red-600",
-      },
-    ]);
-  }
-}, [pathname]);
+       }])
+     }
 
+  },[pathname])
 
   // ✅ JSON-LD Structured Data (Organization)
   const footerJsonLd = {
@@ -94,7 +73,7 @@ useEffect(() => {
   };
 
   return (
-    <footer className={`w-full py-4 ${theme[0]?.bg}  text-gray-200`}>
+    <footer className={`w-full py-4 ${theme[0]?.bg}  dark:text-gray-200 text-black`}>
       {/* ✅ JSON-LD Lazy Load */}
       <Script
         id="footer-jsonld"
@@ -107,15 +86,15 @@ useEffect(() => {
         {/* Contact Info */}
         <div className="md:flex-1 w-full text-left">
           <Link prefetch={false} href="/" >
-          <div className="w-[120px] h-[120px] ">
-                  <Logo  redclass="#CA111A" blackclass="white" />
+          <div className="w-40 h-fit ">
+                  <Logo  />
              </div>
           </Link>
-          <p className="text-gray-400">
+          <p className="dark:text-gray-400 text-black">
             Contractor, Civil Construction, ElectroMechanical Works, Importer &
             Supplier, etc.
           </p>
-          <p className="mt-4 text-gray-400">
+          <p className="mt-4 dark:text-gray-400 text-black">
             House #42, Road #07, Section-10, Mirpur, Dhaka-1216, Bangladesh.
           </p>
 
@@ -148,7 +127,7 @@ useEffect(() => {
           <h3 className={`text-xl  mb-3 inline-block ${theme[0]?.underline}`}>
             Services
           </h3>
-          <ul className="mt-2 space-y-2 text-gray-400">
+          <ul className="mt-2 space-y-2 dark:text-gray-400 text-black">
             <li><Link href="/Services/Electro-mechanical" className={`${theme[0]?.hover} transition-colors`}>Electro-Mech</Link></li>
             <li><Link href="/Services/safety-security-construction-management" className={`${theme[0]?.hover} transition-colors`}>Safety Gear</Link></li>
             <li><Link href="/Services/safety-security-construction-management" className={`${theme[0]?.hover} transition-colors`}>Safety Training</Link></li>
@@ -162,7 +141,7 @@ useEffect(() => {
           <h3 className={`text-xl  mb-3 inline-block ${theme[0]?.underline}`}>
             Supports
           </h3>
-          <ul className="mt-2 space-y-2 text-gray-400">
+          <ul className="mt-2 space-y-2 dark:text-gray-400 text-black">
             <li><Link href="/career" className={`${theme[0]?.hover} transition-colors`}>Careers</Link></li>
             <li><Link href="/supports/our-process" className={`${theme[0]?.hover} transition-colors`}>Our Process</Link></li>
             <li><Link href="/supports/faqs" className={`${theme[0]?.hover} transition-colors`}>FAQs</Link></li>
@@ -176,7 +155,7 @@ useEffect(() => {
           <h3 className={`text-xl  mb-3 inline-block ${theme[0]?.underline}`}>
             Business
           </h3>
-          <ul className="mt-2 space-y-2 text-gray-400">
+          <ul className="mt-2 space-y-2 dark:text-gray-400 text-black">
             <li><Link href="/" className={`${theme[0]?.hover} transition-colors`}>Sazin Construction Ltd</Link></li>
             <li><Link href="/business/sazin-agro"  className={`${theme[0]?.hover} transition-colors`}>Sazin Agro & Fisheries</Link></li>
             <li><Link href="/business/sky-helmet"  className={`${theme[0]?.hover} transition-colors`}>Sky Helmet & Safety</Link></li>

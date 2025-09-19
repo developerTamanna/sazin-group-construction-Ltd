@@ -64,7 +64,7 @@ export default function Strengths() {
               →
             </button>
             <Link
-              href="/about/mission"
+              href="/award-detail"
               className="text-red-600 font-semibold text-lg hover:underline"
             >
               See All
