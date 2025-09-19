@@ -20,14 +20,16 @@ const Footer = () => {
   const pathname=usePathname();
 
   useEffect(()=>{
-    if(pathname.startsWith('/Product-Base-Services/Agro&Fisheries')){
-      setTheme([
-        {
-          bg:"dark:bg-gradient-to-b dark:from-[#020407be] dark:to-[#144bb8] bg-gradient-to-b from-[#ebe7df] to-[#144bb8]",
-          underline:"border-b-2 border-[#144bb8]",
-          hover:"hover:text-[#6cb12c]",
-        }])
+if (pathname.startsWith('/Product-Base-Services/Agro&Fisheries')) {
+  setTheme([
+    {
+      bg: "dark:bg-gradient-to-b dark:from-[#021402] dark:to-[#0a3d0a] bg-gradient-to-b from-[#eaf5e1] to-[#0a3d0a]",
+      underline: "border-b-2 border-[#0a3d0a]",
+      hover: "hover:text-[#6cb12c]",
     }
+  ]);
+}
+
      else if(pathname.startsWith('/')){
        setTheme([{
         bg:"dark:bg-gradient-to-b dark:from-[#020407be] dark:to-[#750808] bg-gradient-to-b from-[#ebe7df] to-[#750808]",
