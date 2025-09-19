@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
 import Script from "next/script"; 
 import {
   FaFacebookF,
@@ -11,11 +10,55 @@ import {
   FaWhatsapp,
   FaPinterestP,
 } from "react-icons/fa";
-import { useTheme } from "next-themes";
 import Logo from "../Logo";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 const Footer = () => {
-  const { theme } = useTheme();
+
+  const [theme, setTheme] = useState([]);
+  const pathname=usePathname();
+
+// useEffect(() => {
+//   if (pathname.startsWith('/Product-Base-Services/Agro&Fisheries')) {
+//     setTheme([
+//       {
+//         bg: "bg-gradient-to-b from-[#020407be] to-[#2e7d32]", // dark green gradient
+//         underline: "border-b-2 border-[#2e7d32]", // green underline
+//         hover: "hover:text-[#6cb12c]", // light green hover
+//       },
+//     ]);
+//   } else if (pathname.startsWith('/')) {
+//     setTheme([
+//       {
+//         bg: "bg-neutral-900",
+//         underline: "border-b-2 border-red-500",
+//         hover: "hover:text-red-600",
+//       },
+//     ]);
+//   }
+// }, [pathname]);
+
+useEffect(() => {
+  if (pathname.startsWith('/Product-Base-Services/Agro&Fisheries')) {
+    setTheme([
+      {
+        bg: "bg-gradient-to-b from-[#14532d] to-[#064e3b]",  
+        underline: "border-b-2 border-green-600",            
+        hover: "hover:text-green-400",                      
+      },
+    ]);
+  } else if (pathname.startsWith('/')) {
+    setTheme([
+      {
+        bg: "bg-neutral-900",
+        underline: "border-b-2 border-red-500",
+        hover: "hover:text-red-600",
+      },
+    ]);
+  }
+}, [pathname]);
+
 
   // ✅ JSON-LD Structured Data (Organization)
   const footerJsonLd = {
@@ -51,7 +94,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="w-full py-4 bg-neutral-900 text-gray-200">
+    <footer className={`w-full py-4 ${theme[0]?.bg}  text-gray-200`}>
       {/* ✅ JSON-LD Lazy Load */}
       <Script
         id="footer-jsonld"
@@ -92,7 +135,7 @@ const Footer = () => {
                 href={link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-red-600 transition-colors"
+                className={`${theme[0]?.hover} transition-colors`}
               >
                 {icon}
               </a>
@@ -102,50 +145,49 @@ const Footer = () => {
 
         {/* Services */}
         <div className="flex-1">
-          <h3 className="text-xl border-b-2 border-red-500 mb-3 inline-block">
+          <h3 className={`text-xl  mb-3 inline-block ${theme[0]?.underline}`}>
             Services
           </h3>
           <ul className="mt-2 space-y-2 text-gray-400">
-            <li><Link href="/Services/Electro-mechanical" className="hover:text-red-600">Electro-Mech</Link></li>
-            <li><Link href="/Services/safety-security-construction-management" className="hover:text-red-600">Safety Gear</Link></li>
-            <li><Link href="/Services/safety-security-construction-management" className="hover:text-red-600">Safety Training</Link></li>
-            <li><Link href="/products/agro-products" className="hover:text-red-600">Agro Products</Link></li>
-            <li><Link href="/services/epc-projects" className="hover:text-red-600">EPC Projects</Link></li>
+            <li><Link href="/Services/Electro-mechanical" className={`${theme[0]?.hover} transition-colors`}>Electro-Mech</Link></li>
+            <li><Link href="/Services/safety-security-construction-management" className={`${theme[0]?.hover} transition-colors`}>Safety Gear</Link></li>
+            <li><Link href="/Services/safety-security-construction-management" className={`${theme[0]?.hover} transition-colors`}>Safety Training</Link></li>
+            <li><Link href="/products/agro-products" className={`${theme[0]?.hover} transition-colors`}>Agro Products</Link></li>
+            <li><Link href="/services/epc-projects" className={`${theme[0]?.hover} transition-colors`}>EPC Projects</Link></li>
           </ul>
         </div>
 
         {/* Supports */}
         <div className="flex-1">
-          <h3 className="text-xl border-b-2 border-red-500 mb-3 inline-block">
+          <h3 className={`text-xl  mb-3 inline-block ${theme[0]?.underline}`}>
             Supports
           </h3>
           <ul className="mt-2 space-y-2 text-gray-400">
-            <li><Link href="/career" className="hover:text-red-600">Careers</Link></li>
-            <li><Link href="/supports/our-process" className="hover:text-red-600">Our Process</Link></li>
-            <li><Link href="/supports/faqs" className="hover:text-red-600">FAQs</Link></li>
-            <li><Link href="/supports/client-testimonials" className="hover:text-red-600">Client Testimonials</Link></li>
-            <li><Link href="/news-blog" className="hover:text-red-600">Our Blog</Link></li>
+            <li><Link href="/career" className={`${theme[0]?.hover} transition-colors`}>Careers</Link></li>
+            <li><Link href="/supports/our-process" className={`${theme[0]?.hover} transition-colors`}>Our Process</Link></li>
+            <li><Link href="/supports/faqs" className={`${theme[0]?.hover} transition-colors`}>FAQs</Link></li>
+            <li><Link href="/supports/client-testimonials" className={`${theme[0]?.hover} transition-colors`}>Client Testimonials</Link></li>
+            <li><Link href="/news-blog" className={`${theme[0]?.hover} transition-colors`}>Our Blog</Link></li>
           </ul>
         </div>
 
         {/* Business */}
         <div className="flex-1">
-          <h3 className="text-xl border-b-2 border-red-500 mb-3 inline-block">
+          <h3 className={`text-xl  mb-3 inline-block ${theme[0]?.underline}`}>
             Business
           </h3>
           <ul className="mt-2 space-y-2 text-gray-400">
-            <li><Link href="/" className="hover:text-red-600">Sazin Construction Ltd</Link></li>
-            <li><Link href="/business/sazin-agro" className="hover:text-red-600">Sazin Agro & Fisheries</Link></li>
-            <li><Link href="/business/sky-helmet" className="hover:text-red-600">Sky Helmet & Safety</Link></li>
-            <li><Link href="/business/accessories" className="hover:text-red-600">Accessories</Link></li>
+            <li><Link href="/" className={`${theme[0]?.hover} transition-colors`}>Sazin Construction Ltd</Link></li>
+            <li><Link href="/business/sazin-agro"  className={`${theme[0]?.hover} transition-colors`}>Sazin Agro & Fisheries</Link></li>
+            <li><Link href="/business/sky-helmet"  className={`${theme[0]?.hover} transition-colors`}>Sky Helmet & Safety</Link></li>
+            <li><Link href="/business/accessories" className={`${theme[0]?.hover} transition-colors`}>Accessories</Link></li>
           </ul>
         </div>
       </div>
 
       {/* Copyright */}
       <div
-        className={`mt-8 border-t container mx-auto ${
-          theme === "dark" ? "border-gray-700" : "border-gray-600"
+        className={`mt-8 border-t container mx-auto ${ "border-gray-600"
         } pt-4 text-center text-sm text-gray-400`}
       >
         &copy; {new Date().getFullYear()} Sazin Construction LTD. All rights reserved.

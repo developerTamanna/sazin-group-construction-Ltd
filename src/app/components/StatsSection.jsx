@@ -86,7 +86,7 @@ const StatCard = ({ stat, isVisible }) => {
   }, [isVisible, stat.endValue]);
 
   return (
-    <div className="flex items-center justify-center gap-4 bg-white dark:bg-gray-800 rounded-xl p-6  dark:border-gray-700">
+    <div className="flex items-center justify-start gap-4 bg-white dark:bg-gray-800 rounded-xl p-6  dark:border-gray-700">
       {/* Icon */}
       <div
         className={`p-4 ${stat.bg} rounded-xl flex items-center justify-center`}
