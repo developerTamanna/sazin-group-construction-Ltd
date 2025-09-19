@@ -86,8 +86,8 @@ const Footer = () => {
         {/* Contact Info */}
         <div className="md:flex-1 w-full text-left">
           <Link prefetch={false} href="/" >
-          <div className="w-[120px] h-[120px] ">
-                  <Logo  redclass="#CA111A" blackclass="white" />
+          <div className="w-40 h-fit ">
+                  <Logo  />
              </div>
           </Link>
           <p className="dark:text-gray-400 text-black">

@@ -161,10 +161,10 @@ export default function Navbar() {
           <Link
             href="/"
             prefetch
-            className=" font-bold w-18 h-18 "
+            className=" font-bold w-35 h-fit "
           >
             {/* Company<span className="text-red-600">Logo</span> */}
-            <Logo  redclass="#CA111A" blackclass = "black" darkclass="black" />
+            <Logo  />
           </Link>
 
           {/* Desktop Menu */}

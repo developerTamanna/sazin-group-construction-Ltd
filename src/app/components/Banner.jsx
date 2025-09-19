@@ -15,6 +15,7 @@ const slides = [
     desc: 'Providing top-notch services and products that help your business grow',
     buttonText: 'Get Started',
     buttonColor: 'bg-red-600 text-white hover:bg-white hover:text-red-600',
+    path:'/contact'
   },
   {
     src: '/Agrooo.png',
@@ -24,6 +25,7 @@ const slides = [
     desc: 'Sustainable Farming & Responsible Fisheries.',
     buttonText: 'Explore Agro',
     buttonColor: 'bg-green-600 hover:bg-white hover:text-green-600',
+    path:'/Product-Base-Services/Agro&Fisheries'
   },
   {
     src: '/helmetbanner.jpg',
@@ -33,6 +35,7 @@ const slides = [
     desc: 'Providing premium helmets and safety equipment for every need.',
     buttonText: 'Shop Now',
     buttonColor: 'bg-red-600 text-white hover:bg-white hover:text-red-600',
+    path:'/Product-Base-Services/Sky-Helmet&Safety-Accessories'
   },
 ];
 
@@ -149,9 +152,9 @@ const Banner = () => {
             </motion.p>
 
             <motion.button
-              className={`${currentSlide.buttonColor} z-[60] font-semibold px-4 py-2 sm:px-6 sm:py-2 rounded-md shadow-lg text-sm sm:text-base md:text-xl transition transform`}
+              className={`${currentSlide.buttonColor} cursor-pointer z-[60] font-semibold px-4 py-2 sm:px-6 sm:py-2 rounded-md shadow-lg text-sm sm:text-base md:text-xl transition transform`}
               style={{ y: parallax(0.9) }}
-              onClick={() => router.push('/contact')}
+              onClick={() => router.push(currentSlide.path)}
               aria-label="Contact us to get started"
             >
               {currentSlide.buttonText}
@@ -167,7 +170,7 @@ const Banner = () => {
             key={index}
             onClick={() => setCurrent(index)}
             aria-label={`Go to slide ${index + 1}`}
-            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${
+            className={`cursor-pointer w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${
               current === index
                 ? 'bg-red-600 scale-125'
                 : 'bg-white/50 hover:bg-white'
