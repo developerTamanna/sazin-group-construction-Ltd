@@ -123,7 +123,7 @@ export default function Navbar() {
     if(pathname.startsWith('/Product-Base-Services/Agro&Fisheries')){
       setTheme([
         {
-          underline:"bg-[#144bb8]",
+          underline:"bg-green-800",
           hover:"hover:text-[#6cb12c]",
           themeText:'text-[#6cb12c]',
         }])
