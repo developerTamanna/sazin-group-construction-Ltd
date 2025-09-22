@@ -1,6 +1,7 @@
 "use client";
-import Hero from '../Agro&Fisheries/components/Hero';
+
 import Card from './components/card';
+import HeroHistory from '@/app/about/history/components/HeroHistory';
 
 export default function Home() {
   const heroData = {
@@ -10,7 +11,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen font-sans text-slate-800 bg-slate-50">
-      <Hero data={heroData} />
+      <HeroHistory/>
       <Card />
     </div>
   );
