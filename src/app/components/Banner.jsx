@@ -8,7 +8,7 @@ import { FaChevronDown } from 'react-icons/fa';
 
 const slides = [
   {
-    src: '/Banner1.jpg',
+    src: '/agency-banner-video.mp4',
     alt: 'Modern construction project banner 1',
     title: 'We Build Great Solutions',
     subtitle: 'Welcome to Our Company',
@@ -100,13 +100,25 @@ const Banner = () => {
               dragConstraints={{ left: 0, right: 0 }}
               onDragEnd={handleDragEnd}
             >
-              <Image
-                src={slide.src}
-                alt={slide.alt}
-                fill
-                priority={true}
-                className="object-cover"
-              />
+              {slide.src.endsWith('.mp4') ? (
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="w-full h-full object-cover"
+                >
+                  <source src={slide.src} type="video/mp4" />
+                </video>
+              ) : (
+                <Image
+                  src={slide.src}
+                  alt={slide.alt}
+                  fill
+                  priority={true}
+                  className="object-cover"
+                />
+              )}
             </motion.div>
           ) : null
         )}
@@ -131,7 +143,7 @@ const Banner = () => {
             className="flex flex-col items-center"
           >
             <motion.h2
-              className="text-white text-sm md:text-lg lg:text-2xl mb-2"
+              className="text-white text-sm md:text-lg lg:text-2xl mb-2 font-medium"
               style={{ y: parallax(0.3) }}
             >
               {currentSlide.subtitle}
