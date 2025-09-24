@@ -65,6 +65,11 @@ export default function Navbar() {
         href: '/Services/safety-security-construction-management',
         prefetch: false,
       },
+      {
+        name: 'Successful Project',
+        href: '/Product-Base-Services/Successful-Project',
+        prefetch: false,
+      },
 
       {
         name: 'Sazin Agro & Fisheries',

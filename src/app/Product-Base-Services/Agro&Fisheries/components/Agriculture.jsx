@@ -1,4 +1,3 @@
-// ./components/Agriculture.jsx
 "use client";
 import React from "react";
 
@@ -28,12 +27,24 @@ export default function Agriculture({ data }) {
           </ul>
         </div>
 
-        <div>
+        <div className="space-y-3">
           <img
             src={data.gallery[3]}
-            alt="Fields"
-            className="rounded-xl shadow-md object-cover w-full h-64"
+            alt="Fisheries"
+            className="w-full rounded-xl shadow-md object-cover h-56 sm:h-72"
           />
+          <div className="grid grid-cols-2 gap-3">
+            <img
+              src={data.gallery[5]}
+              alt="pond"
+              className="rounded-lg object-cover h-28 w-full"
+            />
+            <img
+              src={data.gallery[6]}
+              alt="feeding"
+              className="rounded-lg object-cover h-28 w-full"
+            />
+          </div>
         </div>
       </div>
     </section>
