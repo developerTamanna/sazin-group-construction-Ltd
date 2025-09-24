@@ -87,11 +87,11 @@ if (pathname.startsWith('/Product-Base-Services/Agro&Fisheries')) {
       <div className="container mx-auto px-4 flex items-start flex-wrap md:flex-row justify-between gap-8">
         {/* Contact Info */}
         <div className="md:flex-1 w-full text-left">
-          <Link prefetch={false} href="/" >
-          <div className="w-40 h-fit ">
+           <Link prefetch={false} href="/">
+               <div className="w-40 h-fit text-center ">
                   <Logo  />
              </div>
-          </Link>
+            </Link>
           <p className="dark:text-gray-400 text-black">
             Contractor, Civil Construction, ElectroMechanical Works, Importer &
             Supplier, etc.
@@ -102,25 +102,35 @@ if (pathname.startsWith('/Product-Base-Services/Agro&Fisheries')) {
 
           {/* Social Icons */}
           <div className="mt-6 flex justify-start gap-4 text-xl">
-            {[
-              { icon: <FaWhatsapp />, link: "https://wa.me/yourwhatsapp" },
-              { icon: <FaFacebookF />, link: "https://facebook.com/yourpage" },
-              { icon: <FaTwitter />, link: "https://twitter.com/yourpage" },
-              { icon: <FaGoogle />, link: "https://google.com/" },
-              { icon: <FaLinkedinIn />, link: "https://linkedin.com/company/yourpage" },
-              { icon: <FaPinterestP />, link: "https://pinterest.com/yourpage" },
-              { icon: <FaYoutube />, link: "https://youtube.com/yourchannel" },
-            ].map(({ icon, link }, i) => (
-              <a
-                key={i}
-                href={link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${theme[0]?.hover} transition-colors`}
-              >
-                {icon}
-              </a>
-            ))}
+              {[
+                { icon: <FaWhatsapp />, link: "#" },
+                { icon: <FaFacebookF />, link: "#" },
+                { icon: <FaTwitter />, link: "#" },
+                { icon: <FaGoogle />, link: "mailto:sazin.engineering@gmail.com" },
+                { icon: <FaLinkedinIn />, link: "#" },
+                { icon: <FaPinterestP />, link: "#" },
+                { icon: <FaYoutube />, link: "#" },
+              ].map(({ icon, link }, i) =>
+                link === "#" ? (
+                  <span
+                    key={i}
+                    className="opacity-50 cursor-not-allowed"
+                  >
+                    {icon}
+                  </span>
+                ) : (
+                  <a
+                    key={i}
+                    href={link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`${theme[0]?.hover} transition-colors`}
+                  >
+                    {icon}
+                  </a>
+                )
+              )}
+
           </div>
         </div>
 

@@ -12,6 +12,7 @@ export default function Navbar() {
     about: false,
     business: false,
   });
+  const [sazinDropdown, setSazinDropdown] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileDropdown, setMobileDropdown] = useState({
     about: false,
@@ -44,7 +45,7 @@ export default function Navbar() {
         prefetch: false,
       },
     ],
-    business: [
+    sazin_dropdown:[
       {
         name: 'Electro-Mechanical Construction',
         href: '/Services/Electro-mechanical',
@@ -66,11 +67,12 @@ export default function Navbar() {
         prefetch: false,
       },
       {
-        name: 'Successful Project',
+        name: 'Populer Project',
         href: '/Product-Base-Services/Successful-Project',
         prefetch: false,
       },
-
+    ],
+    business: [
       {
         name: 'Sazin Agro & Fisheries',
         href: '/Product-Base-Services/Agro&Fisheries',
@@ -211,6 +213,42 @@ export default function Navbar() {
                       transition={{ duration: 0.2 }}
                       className="absolute top-full left-0 bg-white/90 dark:bg-gray-800 shadow-lg mt-2 w-72 rounded-md p-2 space-y-2 z-50"
                     >
+                      {key==='business'&&
+                            <ul 
+
+                              onPointerLeave={(e)=>{e.stopPropagation() ;setSazinDropdown(false)}}
+                              onPointerEnter={(e)=>{e.stopPropagation() ;setSazinDropdown(true)}}
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -10 }}
+                                transition={{ duration: 0.2 }}
+                                className=" bg-transparent  w-full rounded-md  space-y-2 z-50"
+                            >
+                              <button
+                               className={`relative w-full  cursor-pointer flex items-center justify-between gap-1 text-gray-700 dark:text-gray-200  transition-colors ${theme[0]?.hover}`}>
+                                Sazin Construction Ltd
+                              {sazinDropdown ? (
+                                <FaChevronUp className="w-4 h-4" />
+                              ) : (
+                                <FaChevronDown className="w-4 h-4" />
+                              )}
+                              {menuData?.sazin_dropdown.some((item)=>pathname.startsWith(item.href)) && <ActiveBorder />}
+                            </button>
+                            {sazinDropdown &&
+                                menuData?.sazin_dropdown.map((link, idx) => (
+                                  <li key={idx} className="relative pl-2">
+                                    <Link
+                                      href={link.href}
+                                      prefetch={link.prefetch}
+                                      className={`block text-sm text-gray-800 dark:text-gray-200  relative transition-colors ${theme[0]?.hover}`}
+                                    >
+                                    {link.name}
+                                    {pathname.startsWith(link.href) && <ActiveBorder />}
+                                    </Link>
+                                  </li>
+                                ))}                   
+                      </ul>          
+                      }
                       {menuData[key].map((link, idx) => (
                         <li key={idx} className="relative">
                           <Link
