@@ -1,67 +1,7 @@
 "use client";
 import { useState } from "react";
-
-// Demo Data Array
-const projects = [
-  {
-    id: 1,
-    title: "Horinathpur SESDP High School, Bera, Pabna.",
-    date: "March 4, 2021",
-    category: "EED",
-    img: "/one.png",
-  },
-  {
-    id: 2,
-    title: "Maintenance Work, Pabna Sadar",
-    date: "March 4, 2021",
-    category: "LGED",
-    img: "/two.jpg",
-  },
-  {
-    id: 3,
-    title: "Fire Protection System",
-    date: "March 4, 2021",
-    category: "NHA",
-    img: "/three.png",
-  },
-  {
-    id: 4,
-    title: "Power Grid Company of Bangladesh",
-    date: "March 4, 2021",
-    category: "PGCB",
-    img: "/four.jpg",
-  },
-  {
-    id: 5,
-    title: "Public Work Department, Khulna",
-    date: "March 4, 2021",
-    category: "PWD",
-    img: "/pwd.jpg",
-  },
-  {
-    id: 6,
-    title: "Public Work Department, Kushtia",
-    date: "March 4, 2021",
-    category: "PWD",
-    img: "/pwd-1.jpg",
-  },
-  {
-    id: 7,
-    title: "Public Work Department, Natore",
-    date: "March 4, 2021",
-    category: "PWD",
-    img: "/pwd-2.jpg",
-  },
-  {
-    id: 8,
-    title: "Lalmonirhat Public Work Department",
-    date: "March 4, 2021",
-    category: "PWD",
-    img: "/pwd-3.jpg",
-  },
-];
-
-const categories = ["All Projects", "BPC", "EED", "LGED", "NHA", "PGCB", "PWD"];
+import { categories, projects } from "../projects";
+// import { projects, categories } from "/projects";
 
 export default function Card() {
   const [filter, setFilter] = useState("All Projects");
