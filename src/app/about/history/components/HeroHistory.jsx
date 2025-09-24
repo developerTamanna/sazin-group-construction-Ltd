@@ -1,9 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 
-export default function HeroHistory({ desc }) {
-  const header = 'Our Company Journey';
-
+export default function HeroHistory({ header = "Our Company Journey", desc }) {
   const letterAnimation = {
     hidden: { y: -30, opacity: 0 },
     visible: (i) => ({
