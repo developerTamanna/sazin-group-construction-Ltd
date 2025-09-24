@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 import { categories, projects } from "../projects";
-// import { projects, categories } from "/projects";
+import { FaLink } from "react-icons/fa";
 
 export default function Card() {
   const [filter, setFilter] = useState("All Projects");
@@ -37,13 +38,20 @@ export default function Card() {
             key={project.id}
             className="rounded-xl shadow-sm hover:shadow-lg transition bg-white dark:bg-gray-900 flex flex-col items-center p-5"
           >
-            {/* Image */}
-            <div className="w-full h-44 flex items-center justify-center overflow-hidden mb-4">
+            {/* Image + Overlay */}
+            <div className="relative w-full h-44 flex items-center justify-center overflow-hidden mb-4 group">
               <img
                 src={project.img}
                 alt={project.title}
-                className="max-h-full object-contain transform transition-transform duration-300 hover:scale-105"
+                className="max-h-full object-contain transform transition-transform duration-300 group-hover:scale-105"
               />
+              {/* Overlay Button with Icon */}
+              <Link
+                href={`/projects/${project.id}`}
+                className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition"
+              >
+                <FaLink className="text-white text-3xl bg-red-600 p-2 rounded-full shadow-md hover:bg-red-700 transition" />
+              </Link>
             </div>
 
             {/* Title */}

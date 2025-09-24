@@ -111,7 +111,7 @@ export default function ProjectShowcaseInfinity() {
     <>
       {/* ✅ SEO Meta Tags */}
       <Head>
-        <title>Our Projects | Company Name</title>
+        <title>Our Projects | Sazin Construction Ltd.</title>
         <meta
           name="description"
           content="Explore our latest projects in web development, design, and technology. See case studies and portfolio highlights."
@@ -120,7 +120,7 @@ export default function ProjectShowcaseInfinity() {
           name="keywords"
           content="projects, portfolio, web development, design, case studies"
         />
-        <meta property="og:title" content="Our Projects | Company Name" />
+        <meta property="og:title" content="Our Projects | Sazin Construction Ltd." />
         <meta
           property="og:description"
           content="Discover high-quality projects crafted by our expert team."
