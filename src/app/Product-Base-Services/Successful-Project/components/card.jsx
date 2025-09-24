@@ -1,67 +1,8 @@
 "use client";
 import { useState } from "react";
-
-// Demo Data Array
-const projects = [
-  {
-    id: 1,
-    title: "Horinathpur SESDP High School, Bera, Pabna.",
-    date: "March 4, 2021",
-    category: "EED",
-    img: "/one.png",
-  },
-  {
-    id: 2,
-    title: "Maintenance Work, Pabna Sadar",
-    date: "March 4, 2021",
-    category: "LGED",
-    img: "/two.jpg",
-  },
-  {
-    id: 3,
-    title: "Fire Protection System",
-    date: "March 4, 2021",
-    category: "NHA",
-    img: "/three.png",
-  },
-  {
-    id: 4,
-    title: "Power Grid Company of Bangladesh",
-    date: "March 4, 2021",
-    category: "PGCB",
-    img: "/four.jpg",
-  },
-  {
-    id: 5,
-    title: "Public Work Department, Khulna",
-    date: "March 4, 2021",
-    category: "PWD",
-    img: "/pwd.jpg",
-  },
-  {
-    id: 6,
-    title: "Public Work Department, Kushtia",
-    date: "March 4, 2021",
-    category: "PWD",
-    img: "/pwd-1.jpg",
-  },
-  {
-    id: 7,
-    title: "Public Work Department, Natore",
-    date: "March 4, 2021",
-    category: "PWD",
-    img: "/pwd-2.jpg",
-  },
-  {
-    id: 8,
-    title: "Lalmonirhat Public Work Department",
-    date: "March 4, 2021",
-    category: "PWD",
-    img: "/pwd-3.jpg",
-  },
-];
-
-const categories = ["All Projects", "BPC", "EED", "LGED", "NHA", "PGCB", "PWD"];
+import Link from "next/link";
+import { categories, projects } from "../projects";
+import { FaLink } from "react-icons/fa";
 
 export default function Card() {
   const [filter, setFilter] = useState("All Projects");
@@ -97,13 +38,20 @@ export default function Card() {
             key={project.id}
             className="rounded-xl shadow-sm hover:shadow-lg transition bg-white dark:bg-gray-900 flex flex-col items-center p-5"
           >
-            {/* Image */}
-            <div className="w-full h-44 flex items-center justify-center overflow-hidden mb-4">
+            {/* Image + Overlay */}
+            <div className="relative w-full h-44 flex items-center justify-center overflow-hidden mb-4 group">
               <img
                 src={project.img}
                 alt={project.title}
-                className="max-h-full object-contain transform transition-transform duration-300 hover:scale-105"
+                className="max-h-full object-contain transform transition-transform duration-300 group-hover:scale-105"
               />
+              {/* Overlay Button with Icon */}
+              <Link
+                href={`/projects/${project.id}`}
+                className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition"
+              >
+                <FaLink className="text-white text-3xl bg-red-600 p-2 rounded-full shadow-md hover:bg-red-700 transition" />
+              </Link>
             </div>
 
             {/* Title */}
